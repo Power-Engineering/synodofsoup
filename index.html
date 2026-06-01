@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creed & Controversy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f7f3ec;
+    --parchment-dark: #ede7d9;
+    --ink: #1a1410;
+    --ink-mid: #4a3f35;
+    --ink-light: #8a7a6a;
+    --gold: #b8860b;
+    --gold-light: #d4a017;
+    --gold-pale: #f5e9c8;
+    --crimson: #8b1a1a;
+    --crimson-light: #c0392b;
+    --teal: #1a5c5c;
+    --teal-light: #e8f4f4;
+    --border: rgba(90,70,50,0.18);
+    --border-strong: rgba(90,70,50,0.35);
+    --shadow: 0 2px 16px rgba(30,20,10,0.10);
+    --shadow-lg: 0 8px 40px rgba(30,20,10,0.16);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(184,134,11,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(139,26,26,0.05) 0%, transparent 60%);
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-cross {
+    width: 28px;
+    height: 28px;
+    color: var(--gold-light);
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: 'Cardo', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--parchment);
+  }
+  .logo-sub {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(247,243,236,0.5);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: -2px;
+  }
+  .header-auth {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: rgba(247,243,236,0.7);
+    border: 1px solid rgba(247,243,236,0.2);
+  }
+  .btn-ghost:hover { background: rgba(247,243,236,0.08); color: var(--parchment); }
+  .btn-gold {
+    background: var(--gold);
+    color: #fff;
+    border: 1px solid transparent;
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-crimson {
+    background: var(--crimson);
+    color: #fff;
+    border: 1px solid transparent;
+  }
+  .btn-crimson:hover { background: var(--crimson-light); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink-mid);
+    border: 1px solid var(--border-strong);
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 18px;
+    border-radius: 6px;
+    transition: all 0.18s;
+  }
+  .btn-outline:hover { background: var(--parchment-dark); }
+
+  /* ── User pill ── */
+  .user-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(247,243,236,0.8);
+  }
+  .user-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* ── Layout ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+  /* ── Hero ── */
+  .hero {
+    text-align: center;
+    padding: 48px 24px 36px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'Cardo', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.12;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ── Topic grid ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 16px;
+  }
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+  .topic-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.18s;
+    text-align: left;
+  }
+  .topic-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 16px rgba(184,134,11,0.12);
+    transform: translateY(-1px);
+  }
+  .topic-card.active {
+    border-color: var(--gold);
+    background: var(--gold-pale);
+    box-shadow: 0 4px 16px rgba(184,134,11,0.18);
+  }
+  .topic-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .topic-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .topic-count {
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-top: 2px;
+  }
+
+  /* ── Detail view ── */
+  #detail-view { display: none; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--ink-light);
+    cursor: pointer;
+    margin-bottom: 24px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--ink); }
+
+  .topic-header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .topic-title {
+    font-family: 'Cardo', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .topic-desc {
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    max-width: 680px;
+    margin-bottom: 16px;
+  }
+  .controversy-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .controversy-bar {
+    flex: 1;
+    max-width: 220px;
+    height: 5px;
+    background: var(--parchment-dark);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .controversy-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--crimson));
+    border-radius: 99px;
+  }
+  .controversy-text {
+    font-size: 12px;
+    color: var(--ink-light);
+  }
+
+  /* ── Denominations grid ── */
+  .denom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+  .denom-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .denom-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 8px;
+  }
+  .denom-name {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .stance-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 99px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-affirm { background: #e8f5e9; color: #2e7d32; }
+  .badge-deny   { background: #fdecea; color: #c62828; }
+  .badge-nuanced { background: #fff8e1; color: #f57f17; }
+  .badge-varies { background: #e3f2fd; color: #1565c0; }
+  .denom-position { font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+
+  /* ── Two-col layout: positions + comments ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 780px) {
+    .two-col { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 28px; }
+  }
+
+  /* ── Comments ── */
+  .comments-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    position: sticky;
+    top: 80px;
+  }
+  .comments-title {
+    font-family: 'Cardo', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .comments-subtitle {
+    font-size: 13px;
+    color: var(--ink-light);
+    margin-bottom: 20px;
+  }
+
+  /* comment form */
+  .comment-form { margin-bottom: 24px; }
+  .comment-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--parchment);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.18s;
+    line-height: 1.55;
+  }
+  .comment-form textarea:focus { border-color: var(--gold); }
+  .comment-form textarea::placeholder { color: var(--ink-light); }
+  .form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  .form-name {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--parchment);
+    outline: none;
+    transition: border-color 0.18s;
+  }
+  .form-name:focus { border-color: var(--gold); }
+  .login-prompt {
+    font-size: 13px;
+    color: var(--ink-light);
+    text-align: center;
+    padding: 14px;
+    background: var(--parchment);
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .login-prompt a {
+    color: var(--gold);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* comment list */
+  .comment-list { display: flex; flex-direction: column; gap: 14px; }
+  .comment-item {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+    display: flex;
+    gap: 10px;
+  }
+  .comment-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .comment-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--gold-pale);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600;
+    flex-shrink: 0;
+    font-family: 'Outfit', sans-serif;
+  }
+  .comment-body { flex: 1; min-width: 0; }
+  .comment-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .comment-author { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .comment-date { font-size: 11px; color: var(--ink-light); }
+  .comment-denom-tag {
+    font-size: 11px;
+    padding: 2px 7px;
+    background: var(--teal-light);
+    color: var(--teal);
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .comment-text {
+    font-size: 13.5px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-bottom: 8px;
+    word-break: break-word;
+  }
+  .comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .upvote-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-light);
+    background: var(--parchment);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 4px 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Outfit', sans-serif;
+  }
+  .upvote-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-pale); }
+  .upvote-btn.voted { border-color: var(--gold); color: var(--gold); background: var(--gold-pale); }
+  .empty-state {
+    text-align: center;
+    padding: 28px 16px;
+    color: var(--ink-light);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .empty-state-icon { font-size: 28px; margin-bottom: 10px; }
+  .loading-spinner {
+    text-align: center;
+    padding: 20px;
+    color: var(--ink-light);
+    font-size: 13px;
+  }
+  .error-msg {
+    background: #fdecea;
+    color: #c62828;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .success-msg {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+
+  /* ── Auth Modal ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(15,10,5,0.6);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  .modal-title {
+    font-family: 'Cardo', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .modal-sub {
+    font-size: 14px;
+    color: var(--ink-light);
+    margin-bottom: 24px;
+  }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    background: none; border: none; cursor: pointer;
+    font-size: 20px; color: var(--ink-light);
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--ink); }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 6px;
+  }
+  .field input, .field select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--parchment);
+    outline: none;
+    transition: border-color 0.18s;
+  }
+  .field input:focus, .field select:focus { border-color: var(--gold); }
+  .modal-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+  .modal-footer a { color: var(--gold); cursor: pointer; text-decoration: underline; }
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--ink-light); font-size: 12px; margin: 18px 0;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1;
+    height: 1px; background: var(--border);
+  }
+
+  /* ── Config banner ── */
+  .config-banner {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 14px 24px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .config-banner a { color: var(--gold-light); }
+  .config-banner code {
+    background: rgba(255,255,255,0.12);
+    padding: 1px 6px; border-radius: 4px;
+    font-size: 12px;
+  }
+  .config-banner.hidden { display: none; }
+
+  /* ── Denomination filter ── */
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .filter-label { font-size: 12px; color: var(--ink-light); }
+  .filter-select {
+    padding: 6px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    color: var(--ink);
+    background: var(--parchment);
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* ── Tooltip / denomination tag on form ── */
+  .char-count { font-size: 11px; color: var(--ink-light); }
+</style>
+</head>
+<body>
+
+<!-- Config Banner (shown when Supabase not configured) -->
+<div class="config-banner" id="config-banner">
+  ⚙️ &nbsp;To enable comments &amp; upvotes, open <code>config.js</code> and add your free <a href="https://supabase.com" target="_blank">Supabase</a> credentials. &nbsp;
+  <a href="#setup-guide" onclick="toggleSetup()">View setup guide ↓</a>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <svg class="logo-cross" viewBox="0 0 28 28" fill="none">
+        <rect x="11" y="2" width="6" height="24" rx="1.5" fill="currentColor"/>
+        <rect x="2" y="9" width="24" height="6" rx="1.5" fill="currentColor"/>
+      </svg>
+      <div>
+        <span class="logo-text">Creed &amp; Controversy</span>
+        <span class="logo-sub">Christian doctrine compared</span>
+      </div>
+    </div>
+    <div class="header-auth" id="header-auth">
+      <button class="btn btn-ghost" onclick="openModal('login')">Sign in</button>
+      <button class="btn btn-gold" onclick="openModal('signup')">Join the discussion</button>
+    </div>
+  </div>
+</header>
+
+<!-- Auth Modal -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-login">
+      <div class="modal-title">Welcome back</div>
+      <div class="modal-sub">Sign in to comment and upvote</div>
+      <div id="modal-error" class="error-msg" style="display:none"></div>
+      <div class="field"><label>Email</label><input type="email" id="login-email" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input type="password" id="login-password" placeholder="••••••••"></div>
+      <button class="btn btn-gold" style="width:100%;padding:11px" onclick="handleLogin()">Sign in</button>
+      <div class="modal-footer">No account? <a onclick="switchModal('signup')">Create one free</a></div>
+    </div>
+    <div id="modal-signup" style="display:none">
+      <div class="modal-title">Join the discussion</div>
+      <div class="modal-sub">Free account — takes 30 seconds</div>
+      <div id="signup-error" class="error-msg" style="display:none"></div>
+      <div id="signup-success" class="success-msg" style="display:none"></div>
+      <div class="field"><label>Display name</label><input type="text" id="signup-name" placeholder="e.g. Reformed in Texas"></div>
+      <div class="field">
+        <label>Your tradition (optional)</label>
+        <select id="signup-denom">
+          <option value="">— select —</option>
+          <option>Roman Catholic</option>
+          <option>Eastern Orthodox</option>
+          <option>Anglican / Episcopal</option>
+          <option>Lutheran</option>
+          <option>Presbyterian / Reformed</option>
+          <option>Baptist</option>
+          <option>Methodist / Wesleyan</option>
+          <option>Pentecostal</option>
+          <option>Charismatic</option>
+          <option>Anabaptist / Mennonite</option>
+          <option>Non-denominational</option>
+          <option>Exploring / No tradition</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Email</label><input type="email" id="signup-email" placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input type="password" id="signup-password" placeholder="min. 6 characters"></div>
+      <button class="btn btn-gold" style="width:100%;padding:11px" onclick="handleSignup()">Create account</button>
+      <div class="modal-footer">Already have one? <a onclick="switchModal('login')">Sign in</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+
+  <!-- Home View -->
+  <div id="home-view">
+    <div class="hero">
+      <div class="hero-eyebrow">Where doctrine divides</div>
+      <h1>The great debates of Christian theology</h1>
+      <p>Explore how major traditions answer the hardest questions of faith — and join the conversation.</p>
+    </div>
+
+    <div class="section-label">Choose a topic</div>
+    <div class="topic-grid" id="topic-grid"></div>
+  </div>
+
+  <!-- Detail View -->
+  <div id="detail-view">
+    <button class="back-link" onclick="showHome()">← All topics</button>
+
+    <div class="topic-header">
+      <div class="topic-title" id="detail-title"></div>
+      <div class="topic-desc" id="detail-desc"></div>
+      <div class="controversy-row">
+        <div class="controversy-bar">
+          <div class="controversy-fill" id="controversy-fill" style="width:0%"></div>
+        </div>
+        <div class="controversy-text" id="controversy-text"></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <!-- Left: Denomination positions -->
+      <div>
+        <div class="section-label">Denominational positions</div>
+        <div class="denom-grid" id="denom-grid"></div>
+      </div>
+
+      <!-- Right: Comments -->
+      <div>
+        <div class="comments-section">
+          <div class="comments-title">Community discussion</div>
+          <div class="comments-subtitle" id="comment-count-label">Loading...</div>
+
+          <!-- Comment form -->
+          <div class="comment-form" id="comment-form-area">
+            <div id="form-message"></div>
+            <div id="logged-out-prompt" class="login-prompt" style="display:none">
+              <a onclick="openModal('login')">Sign in</a> or <a onclick="openModal('signup')">create a free account</a> to share your perspective.
+            </div>
+            <div id="logged-in-form" style="display:none">
+              <textarea id="comment-text" placeholder="Share your perspective on this topic..." maxlength="600"></textarea>
+              <div class="form-row">
+                <span class="char-count" id="char-count">0 / 600</span>
+                <button class="btn btn-crimson" onclick="submitComment()" id="submit-btn">Post comment</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter -->
+          <div class="filter-row">
+            <span class="filter-label">Filter by:</span>
+            <select class="filter-select" id="denom-filter" onchange="filterComments()">
+              <option value="">All traditions</option>
+              <option>Roman Catholic</option>
+              <option>Eastern Orthodox</option>
+              <option>Anglican / Episcopal</option>
+              <option>Lutheran</option>
+              <option>Presbyterian / Reformed</option>
+              <option>Baptist</option>
+              <option>Methodist / Wesleyan</option>
+              <option>Pentecostal</option>
+              <option>Charismatic</option>
+              <option>Anabaptist / Mennonite</option>
+              <option>Non-denominational</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="comment-list" id="comment-list">
+            <div class="loading-spinner">Loading comments…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Setup Guide (hidden by default) -->
+  <div id="setup-guide" style="display:none; margin-top:48px;">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:32px;max-width:700px;">
+      <h2 style="font-family:'Cardo',serif;font-size:24px;margin-bottom:16px;">🛠 Setup Guide</h2>
+      <ol style="font-size:14px;line-height:2;color:var(--ink-mid);padding-left:20px;">
+        <li>Go to <a href="https://supabase.com" target="_blank" style="color:var(--gold)">supabase.com</a> and create a free account</li>
+        <li>Create a new project (takes ~2 minutes to provision)</li>
+        <li>In your project, go to <strong>SQL Editor</strong> and run the SQL in <code>schema.sql</code></li>
+        <li>Go to <strong>Project Settings → API</strong> and copy your <em>Project URL</em> and <em>anon/public key</em></li>
+        <li>Open <code>config.js</code> and paste those two values in</li>
+        <li>Done — reload the page and comments will be live!</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
