@@ -1,465 +1,360 @@
 // ============================================================
-//  CREED & CONTROVERSY — App Logic
+// CREED & CONTROVERSY — app.js
 // ============================================================
 
-// ── Supabase init ─────────────────────────────────────────
-const CONFIGURED = SUPABASE_URL !== 'YOUR_SUPABASE_URL_HERE';
-let sb = null;
-if (CONFIGURED) {
-  sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
-  document.getElementById('config-banner').classList.add('hidden');
-}
-
-// ── Topic data ────────────────────────────────────────────
+// ── Topic data ──────────────────────────────────────────────
 const TOPICS = [
   {
-    id: 'tongues', icon: '🔥', name: 'Speaking in tongues',
-    controversy: 92,
-    desc: 'Whether the charismatic gift of glossolalia is a sign of Spirit baptism, an ongoing gift for today, or a closed apostolic phenomenon.',
-    denominations: [
-      { name: 'Pentecostal', stance: 'affirm', badge: 'Essential sign', position: 'Initial physical evidence of Spirit baptism. Every believer can and should speak in tongues as a normative experience.' },
-      { name: 'Charismatic / Renewal', stance: 'affirm', badge: 'Ongoing gift', position: 'A valid and desirable gift available today, but not required as the sole sign of Spirit baptism.' },
-      { name: 'Baptist (SBC)', stance: 'nuanced', badge: 'Cessationist', position: 'Most hold that tongues ceased with the apostolic age. A minority are open to the gift but emphasise order and discernment.' },
-      { name: 'Presbyterian / Reformed', stance: 'deny', badge: 'Cessationist', position: 'The Westminster Confession holds extraordinary gifts have ceased. Tongues are not normative for the church today.' },
-      { name: 'Roman Catholic', stance: 'nuanced', badge: 'Permitted, cautious', position: 'Officially open to charismatic gifts within the Church, but tongues are not required and must be exercised under pastoral oversight.' },
-      { name: 'Eastern Orthodox', stance: 'nuanced', badge: 'Historical, rare', position: 'Tongues are acknowledged in patristic sources but not regarded as an expected ordinary gift. Emphasis is on liturgical worship.' },
-      { name: 'Lutheran (LCMS)', stance: 'deny', badge: 'Cessationist', position: 'Extraordinary sign gifts served the apostolic era to confirm the gospel. They are not promised to the ongoing Church.' },
-      { name: 'Anglican / Episcopal', stance: 'varies', badge: 'Divided', position: 'Wide spectrum — conservative Anglicans are cessationist; charismatic Anglicans actively practice tongues.' },
-    ]
-  },
-  {
-    id: 'baptism', icon: '💧', name: 'Baptism',
-    controversy: 95,
-    desc: 'Who should be baptised, how, and what it effects — one of the oldest and most divisive questions in Christian history.',
-    denominations: [
-      { name: 'Roman Catholic', stance: 'affirm', badge: 'Sacrament / regeneration', position: 'Baptism is necessary for salvation (ordinarily). It removes original sin and regenerates the soul. Infants are baptised.' },
-      { name: 'Eastern Orthodox', stance: 'affirm', badge: 'Sacrament / triple immersion', position: 'Baptism by triple immersion is the norm. It unites the believer to Christ\'s death and resurrection and is necessary for salvation.' },
-      { name: 'Lutheran', stance: 'affirm', badge: 'Sacrament / infant included', position: 'Baptism is a means of grace that conveys forgiveness and regeneration. Infant baptism is practiced and defended.' },
-      { name: 'Anglican / Episcopal', stance: 'affirm', badge: 'Sacrament, varied mode', position: 'Baptism is a sacrament initiating the believer into the Church. Infant baptism is standard; sprinkling and pouring are accepted.' },
-      { name: 'Presbyterian / Reformed', stance: 'nuanced', badge: 'Covenant sign', position: 'Baptism is the covenant sign replacing circumcision. It does not automatically regenerate. Infants of believers are baptised.' },
-      { name: 'Baptist', stance: 'deny', badge: 'Believer\'s baptism only', position: 'Only professing believers should be baptised, by full immersion. Baptism is an ordinance symbolising death and resurrection with Christ.' },
-      { name: 'Pentecostal', stance: 'deny', badge: 'Believer\'s, by immersion', position: 'Believer\'s baptism by immersion. Some Oneness Pentecostals baptise "in Jesus\'s name only" and hold baptism essential for salvation.' },
-      { name: 'Anabaptist / Mennonite', stance: 'deny', badge: 'Believers only, symbolic', position: 'Rejected infant baptism as the core conviction of the Radical Reformation. Baptism follows personal faith.' },
-    ]
-  },
-  {
-    id: 'eucharist', icon: '🍞', name: 'The Eucharist',
-    controversy: 93,
-    desc: 'Whether Christ is truly present in the bread and wine, and if so, how — from transubstantiation to bare memorial.',
-    denominations: [
-      { name: 'Roman Catholic', stance: 'affirm', badge: 'Transubstantiation', position: 'The substance of bread and wine is wholly converted into Christ\'s body and blood. The Real Presence is corporeal. The Mass is a sacrifice.' },
-      { name: 'Eastern Orthodox', stance: 'affirm', badge: 'Real presence / mystery', position: 'The bread and wine truly become Christ\'s body and blood through the epiclesis. The exact mechanics are a holy mystery.' },
-      { name: 'Lutheran', stance: 'affirm', badge: 'Sacramental union', position: 'Christ\'s body and blood are truly present "in, with, and under" the bread and wine (not instead of them).' },
-      { name: 'Anglican / Episcopal', stance: 'varies', badge: 'Broad — real to memorial', position: 'High-church Anglicans affirm real presence; evangelicals affirm spiritual presence or memorialism. Deliberately ambiguous.' },
-      { name: 'Presbyterian / Reformed', stance: 'nuanced', badge: 'Spiritual real presence', position: 'Christ is spiritually and truly present to faith in the Supper (Calvin\'s view), but not bodily. Elements remain bread and wine.' },
-      { name: 'Baptist', stance: 'deny', badge: 'Memorial ordinance', position: 'The Lord\'s Supper is a memorial commemorating Christ\'s death. No change occurs in the elements. It is not a sacrament.' },
-      { name: 'Pentecostal', stance: 'deny', badge: 'Memorial / symbolic', position: 'Communion is symbolic and memorial. Focus is on personal remembrance and spiritual renewal.' },
-      { name: 'Anabaptist / Mennonite', stance: 'deny', badge: 'Community memorial', position: 'A communal act of remembrance and pledge of mutual accountability. The meaning is relational and ethical.' },
-    ]
-  },
-  {
-    id: 'salvation', icon: '✝️', name: 'Salvation & election',
-    controversy: 90,
-    desc: 'Whether God unconditionally predestines individuals to salvation, or whether human free will cooperates with grace — the Reformed vs. Arminian fault line.',
-    denominations: [
-      { name: 'Presbyterian / Reformed', stance: 'affirm', badge: 'Calvinist / TULIP', position: 'God unconditionally elects individuals for salvation apart from foreseen faith. Irresistible grace and perseverance of the saints follow.' },
-      { name: 'Lutheran', stance: 'nuanced', badge: 'Single predestination', position: 'God elects the saved but does not predestine the damned. Salvation is by grace through faith alone; the Lutheran tradition resists double predestination.' },
-      { name: 'Roman Catholic', stance: 'nuanced', badge: 'Synergism', position: 'Salvation requires both divine grace and human cooperation. The Council of Trent rejected Luther\'s sola fide and affirmed merit.' },
-      { name: 'Eastern Orthodox', stance: 'nuanced', badge: 'Theosis / synergism', position: 'Salvation (theosis — participation in divine life) is a lifelong cooperative process. Penal substitution is de-emphasised.' },
-      { name: 'Baptist (General)', stance: 'deny', badge: 'Arminian', position: 'God foreknew but did not unconditionally predestine. Christ died for all. Humans can resist grace and lose salvation.' },
-      { name: 'Methodist / Wesleyan', stance: 'deny', badge: 'Arminian / prevenient grace', position: 'Prevenient grace enables all people to respond. Election is conditional on foreseen faith. Believers can apostatise.' },
-      { name: 'Anglican / Episcopal', stance: 'varies', badge: 'Divided tradition', position: 'The 39 Articles lean Calvinist, but Arminian and Wesleyan streams are strong. No enforced position.' },
-      { name: 'Pentecostal', stance: 'varies', badge: 'Mostly Arminian', position: 'Most Pentecostals are Arminian — salvation available to all, can be lost. Some Calvinist Pentecostals exist.' },
-    ]
-  },
-  {
-    id: 'papacy', icon: '👑', name: 'Papal authority',
-    controversy: 89,
-    desc: 'Whether the Bishop of Rome holds universal jurisdiction and can speak infallibly on matters of faith and morals.',
-    denominations: [
-      { name: 'Roman Catholic', stance: 'affirm', badge: 'Full primacy & infallibility', position: 'The Pope is the Vicar of Christ with supreme jurisdiction. Ex cathedra definitions on faith and morals are infallible (defined 1870).' },
-      { name: 'Eastern Orthodox', stance: 'deny', badge: 'Rejects jurisdiction', position: 'The Bishop of Rome has primacy of honor (first among equals) but no universal jurisdiction. Infallibility is rejected.' },
-      { name: 'Anglican / Episcopal', stance: 'deny', badge: 'Rejects papal jurisdiction', position: 'The break with Rome under Henry VIII rejected papal authority. The monarch is the symbolic head of the national church.' },
-      { name: 'Lutheran', stance: 'deny', badge: 'Antichrist (historical)', position: 'The Lutheran confessions identify the papacy as the Antichrist — a doctrinal claim. The office is seen as unscriptural.' },
-      { name: 'Presbyterian / Reformed', stance: 'deny', badge: 'Strongly rejected', position: 'Reformed theology rejects all claims of a human head of the Church. Christ alone is Head. Papacy usurps His authority.' },
-      { name: 'Baptist', stance: 'deny', badge: 'Rejected', position: 'No human office or institution holds authority over the local church or individual conscience. Baptist polity is congregational.' },
-      { name: 'Methodist', stance: 'deny', badge: 'Rejected', position: 'Methodism rejects papal primacy and infallibility, remaining committed to Scripture and conciliar authority.' },
-      { name: 'Pentecostal', stance: 'deny', badge: 'Rejected', position: 'Pentecostals universally reject papal authority. Many early Pentecostals saw Catholicism as part of apostate Christendom.' },
-    ]
-  },
-  {
-    id: 'icons', icon: '🖼️', name: 'Icons & images',
+    id: 'sola-scriptura',
+    name: 'Sola Scriptura',
+    icon: '📖',
     controversy: 88,
-    desc: 'Whether the veneration of icons, statues, and sacred images is legitimate devotion or a violation of the Second Commandment.',
+    desc: 'Is Scripture the sole infallible authority for Christian faith and practice, or does Sacred Tradition carry equal authority alongside it?',
     denominations: [
-      { name: 'Eastern Orthodox', stance: 'affirm', badge: 'Theologically required', position: 'Icons are windows into heaven. Veneration was dogmatically defined at the Seventh Ecumenical Council (787 AD). Iconoclasm is heresy.' },
-      { name: 'Roman Catholic', stance: 'affirm', badge: 'Permitted & encouraged', position: 'Statues and images are aids to devotion. A distinction is drawn between latria (worship, for God alone) and dulia (veneration, for saints).' },
-      { name: 'Lutheran', stance: 'nuanced', badge: 'Permitted, not venerated', position: 'Luther retained images as didactic tools but rejected veneration. Images may be used; they must not become objects of devotion.' },
-      { name: 'Anglican / Episcopal', stance: 'nuanced', badge: 'Varies by tradition', position: 'High-church Anglicans permit imagery; low-church and Reformed Anglicans are suspicious of images in worship.' },
-      { name: 'Presbyterian / Reformed', stance: 'deny', badge: 'Strongly rejected', position: 'The Regulative Principle holds that only what Scripture commands is permitted. Images of Christ and the Trinity are forbidden.' },
-      { name: 'Baptist', stance: 'deny', badge: 'Rejected', position: 'Images in worship are rejected as temptations toward idolatry. Churches are typically plain to emphasise Scripture alone.' },
-      { name: 'Pentecostal', stance: 'deny', badge: 'Generally rejected', position: 'Emphasis on Spirit and Word. Physical images are seen as distracting from genuine spiritual encounter.' },
-      { name: 'Anabaptist / Mennonite', stance: 'deny', badge: 'Rejected', position: 'Plain tradition rejects all religious imagery. Worship is simple, focused on Scripture, community, and the Spirit.' },
+      { name: 'Roman Catholic', stance: 'deny', badge: 'deny', position: 'Scripture and Sacred Tradition together constitute the single deposit of the Word of God, interpreted by the Magisterium.' },
+      { name: 'Eastern Orthodox', stance: 'deny', badge: 'deny', position: 'Holy Tradition, of which Scripture is a part, is the living witness of the Church and the proper context for interpretation.' },
+      { name: 'Lutheran', stance: 'affirm', badge: 'affirm', position: 'Scripture alone is the norma normans — the norming norm — that judges all doctrine, councils, and tradition.' },
+      { name: 'Reformed / Presbyterian', stance: 'affirm', badge: 'affirm', position: 'The Westminster Confession declares Scripture the supreme judge by which all controversies are to be determined.' },
+      { name: 'Anglican / Episcopal', stance: 'nuanced', badge: 'nuanced', position: 'The Chicago-Lambeth Quadrilateral affirms Scripture as containing all things necessary for salvation, but tradition and reason inform interpretation.' },
+      { name: 'Baptist', stance: 'affirm', badge: 'affirm', position: 'Scripture is sufficient and the final authority; the priesthood of all believers enables individual interpretation under the Spirit.' },
     ]
   },
   {
-    id: 'saints', icon: '🙏', name: 'Praying to saints',
-    controversy: 84,
-    desc: 'Whether deceased saints in heaven can intercede for the living, and whether it is appropriate to address prayers to them.',
+    id: 'real-presence',
+    name: 'Real Presence in Eucharist',
+    icon: '🍞',
+    controversy: 95,
+    desc: 'Does Christ\'s body and blood become truly, substantially present in the bread and wine of the Eucharist, or is the Lord\'s Supper a memorial ordinance?',
     denominations: [
-      { name: 'Roman Catholic', stance: 'affirm', badge: 'Encouraged', position: 'Saints intercede before God. Asking for their intercession is not "worshipping" them but asking fellow members of the Church to pray.' },
-      { name: 'Eastern Orthodox', stance: 'affirm', badge: 'Central to devotion', position: 'Veneration of saints and seeking their intercessions is a core feature of Orthodox piety. The saints are part of the living Church.' },
-      { name: 'Anglican / Episcopal', stance: 'nuanced', badge: 'Divided', position: 'High-church Anglicans retain prayers for saints; evangelical/low-church Anglicans reject this as unscriptural.' },
-      { name: 'Lutheran', stance: 'deny', badge: 'Rejected as intercessors', position: 'Saints may be honoured as examples of faith, but Scripture provides no basis for addressing prayers to them.' },
-      { name: 'Presbyterian / Reformed', stance: 'deny', badge: 'Firmly rejected', position: 'Prayer to saints obscures Christ\'s sole mediatorship. The Heidelberg Catechism explicitly condemns it.' },
-      { name: 'Baptist', stance: 'deny', badge: 'Rejected', position: 'No warrant in Scripture for praying to the dead. Christ is the sole mediator.' },
-      { name: 'Methodist', stance: 'deny', badge: 'Generally rejected', position: 'Methodism honours saints as models but does not practice invocation. Christ\'s mediation is considered sufficient.' },
-      { name: 'Pentecostal', stance: 'deny', badge: 'Firmly rejected', position: 'Praying to saints is seen as spiritually dangerous — equivalent to seeking communication with the dead.' },
+      { name: 'Roman Catholic', stance: 'affirm', badge: 'affirm', position: 'Transubstantiation: the substance of bread and wine are wholly converted into the Body and Blood of Christ.' },
+      { name: 'Eastern Orthodox', stance: 'affirm', badge: 'affirm', position: 'A real change (metousiosis) occurs; Christ is truly present, though the manner transcends human understanding.' },
+      { name: 'Lutheran', stance: 'nuanced', badge: 'nuanced', position: 'Sacramental union: Christ\'s body and blood are truly present "in, with, and under" the bread and wine (consubstantiation).' },
+      { name: 'Reformed / Presbyterian', stance: 'nuanced', badge: 'nuanced', position: 'Spiritual real presence: Christ is genuinely present to faith, but his body remains in heaven (virtualism).' },
+      { name: 'Baptist', stance: 'deny', badge: 'deny', position: 'The Lord\'s Supper is a memorial ordinance commemorating Christ\'s sacrifice; no change occurs in the elements.' },
+      { name: 'Zwinglian', stance: 'deny', badge: 'deny', position: 'The bread and cup are purely symbolic signs of spiritual truths already accomplished.' },
     ]
   },
   {
-    id: 'scripture', icon: '📖', name: 'Scripture & tradition',
-    controversy: 87,
-    desc: 'Whether the Bible alone (sola scriptura) is the supreme authority, or whether Church tradition carries independent authority.',
+    id: 'predestination',
+    name: 'Predestination',
+    icon: '🔮',
+    controversy: 92,
+    desc: 'Does God unconditionally elect individuals to salvation before creation, or does election depend on God\'s foreknowledge of human faith?',
     denominations: [
-      { name: 'Roman Catholic', stance: 'deny', badge: 'Scripture + Tradition + Magisterium', position: 'Scripture, Sacred Tradition, and the Magisterium form a single source of divine revelation. The Church\'s interpretation is authoritative.' },
-      { name: 'Eastern Orthodox', stance: 'deny', badge: 'Holy Tradition encompasses Scripture', position: 'Scripture is part of Holy Tradition, not above it. The Church produced and interprets Scripture. The seven Councils are binding.' },
-      { name: 'Anglican / Episcopal', stance: 'nuanced', badge: 'Scripture primary, tradition secondary', position: 'The Chicago-Lambeth Quadrilateral affirms Scripture as the ultimate rule of faith. Tradition and reason are honoured but subordinate.' },
-      { name: 'Lutheran', stance: 'affirm', badge: 'Sola scriptura', position: 'Scripture alone is the norma normans of all doctrine. Tradition and confessions have authority only insofar as they accord with Scripture.' },
-      { name: 'Presbyterian / Reformed', stance: 'affirm', badge: 'Sola scriptura, strict form', position: 'The Westminster Confession affirms the Bible as the only infallible rule of faith. The Regulative Principle applies this to worship.' },
-      { name: 'Baptist', stance: 'affirm', badge: 'Bible alone', position: 'Most Baptists affirm sola scriptura strongly. Many are wary even of confessions. "No creed but the Bible" is a common slogan.' },
-      { name: 'Pentecostal', stance: 'affirm', badge: 'Sola scriptura + Spirit', position: 'The Bible is the final authority. Pentecostals also emphasise the Spirit\'s illumination as a live, present voice.' },
-      { name: 'Methodist', stance: 'nuanced', badge: 'Wesleyan Quadrilateral', position: 'Scripture is primary, but interpreted through tradition, reason, and experience (the Wesleyan Quadrilateral).' },
+      { name: 'Reformed / Presbyterian', stance: 'affirm', badge: 'affirm', position: 'Double predestination (TULIP): God sovereignly elects the reprobate and the elect without respect to foreseen works or faith.' },
+      { name: 'Lutheran', stance: 'nuanced', badge: 'nuanced', position: 'Single predestination: election to salvation is unconditional, but reprobation results from human rejection, not divine decree.' },
+      { name: 'Roman Catholic', stance: 'nuanced', badge: 'nuanced', position: 'God\'s election is certain but compatible with free will; the Molinist tradition explores middle knowledge as a reconciliation.' },
+      { name: 'Methodist / Arminian', stance: 'deny', badge: 'deny', position: 'Election is conditional on foreknown faith; God desires all to be saved and provides prevenient grace enabling free response.' },
+      { name: 'Eastern Orthodox', stance: 'deny', badge: 'deny', position: 'Emphasises theosis and synergy; divine foreknowledge does not determine human choices, preserving genuine freedom.' },
+      { name: 'Open Theist', stance: 'deny', badge: 'deny', position: 'God does not foreordain individual salvation; the future is genuinely open, and election is corporate in Christ.' },
     ]
   },
   {
-    id: 'purgatory', icon: '⏳', name: 'Purgatory',
-    controversy: 82,
-    desc: 'Whether there is an intermediate state of purification after death for those who die in God\'s grace but are not yet fully purified.',
+    id: 'baptism',
+    name: 'Infant Baptism',
+    icon: '💧',
+    controversy: 85,
+    desc: 'Should infants be baptised as members of the covenant community, or should baptism be reserved for professing believers only?',
     denominations: [
-      { name: 'Roman Catholic', stance: 'affirm', badge: 'Defined doctrine', position: 'Purgatory is an intermediate state where temporal punishments for sin are purged. Defined at Florence (1439) and Trent (1563).' },
-      { name: 'Eastern Orthodox', stance: 'nuanced', badge: 'Prayers for dead, no purgatory', position: 'Orthodoxy prays for the faithful departed but rejects the Western juridical concept of purgatory and treasury of merits.' },
-      { name: 'Anglican / Episcopal', stance: 'nuanced', badge: 'Prayers allowed, purgatory rejected', position: 'The 39 Articles reject the "Romish doctrine of Purgatory." Some Anglicans pray for the dead.' },
-      { name: 'Lutheran', stance: 'deny', badge: 'Rejected', position: 'Luther attacked indulgences (tied to purgatory) as his opening salvo in the Reformation. No purgatory — the dead await resurrection.' },
-      { name: 'Presbyterian / Reformed', stance: 'deny', badge: 'Firmly rejected', position: 'Justification is by faith alone. There is no need for post-mortem purification. At death, the believer goes directly to God\'s presence.' },
-      { name: 'Baptist', stance: 'deny', badge: 'Rejected', position: 'No biblical basis for purgatory. Salvation is complete; the believer goes to be with Christ at death.' },
-      { name: 'Methodist', stance: 'deny', badge: 'Generally rejected', position: 'Methodist theology holds that sanctification is completed at death. Purgatory as a place of punishment is rejected.' },
-      { name: 'Pentecostal', stance: 'deny', badge: 'Rejected', position: 'Purgatory is regarded as a Catholic tradition without scriptural support.' },
+      { name: 'Roman Catholic', stance: 'affirm', badge: 'affirm', position: 'Baptism regenerates, removes original sin, and incorporates into the Church; infants should receive it without delay.' },
+      { name: 'Eastern Orthodox', stance: 'affirm', badge: 'affirm', position: 'Baptism, chrismation, and Eucharist are administered together to infants as full initiation into the Body of Christ.' },
+      { name: 'Lutheran', stance: 'affirm', badge: 'affirm', position: 'Baptism works forgiveness of sins and new birth by the power of the Word; infants receive faith as a gift.' },
+      { name: 'Reformed / Presbyterian', stance: 'affirm', badge: 'affirm', position: 'Infant baptism is the New Covenant counterpart to circumcision, signing and sealing covenant membership.' },
+      { name: 'Baptist', stance: 'deny', badge: 'deny', position: 'Believer\'s baptism by immersion alone is valid; infants cannot yet repent and believe, the prerequisites for baptism.' },
+      { name: 'Anabaptist / Mennonite', stance: 'deny', badge: 'deny', position: 'The gathered church of committed disciples; baptism marks voluntary covenant entry and follows personal confession of faith.' },
     ]
   },
   {
-    id: 'hell', icon: '⚠️', name: 'Hell & eternal punishment',
-    controversy: 83,
-    desc: 'Whether hell involves eternal conscious torment, annihilation, or whether universal reconciliation is possible.',
+    id: 'papacy',
+    name: 'Papal Authority',
+    icon: '⛪',
+    controversy: 97,
+    desc: 'Does the Bishop of Rome hold universal jurisdiction and the charism of infallibility when defining doctrine on faith and morals?',
     denominations: [
-      { name: 'Roman Catholic', stance: 'affirm', badge: 'Eternal conscious separation', position: 'Hell is a state of eternal separation from God, chosen freely by those who die in grave sin. The Catechism affirms eternal punishment.' },
-      { name: 'Eastern Orthodox', stance: 'nuanced', badge: 'Eternal, varied views', position: 'Orthodox affirm eternal consequences. Some theologians hold hope for universal salvation (apocatastasis) — a minority but respected position.' },
-      { name: 'Lutheran', stance: 'affirm', badge: 'Eternal conscious torment', position: 'The Lutheran confessions affirm eternal punishment for the unrepentant. Hell is real and involves separation from God.' },
-      { name: 'Presbyterian / Reformed', stance: 'affirm', badge: 'Eternal conscious torment', position: 'The Westminster Confession affirms the wicked are cast into eternal torment. Double predestination is confessionally affirmed.' },
-      { name: 'Anglican / Episcopal', stance: 'varies', badge: 'Wide range of views', position: 'Anglican theology permits annihilationism alongside eternal torment. Some Anglicans hold universalist hopes. No binding definition.' },
-      { name: 'Baptist', stance: 'affirm', badge: 'Eternal conscious torment', position: 'Traditional Baptist theology strongly affirms eternal conscious punishment. Annihilationism is a minority view among progressive Baptists.' },
-      { name: 'Methodist', stance: 'nuanced', badge: 'Eternal, hopeful tone', position: 'Wesley affirmed hell but emphasised God\'s desire for all to be saved. Some Methodist theologians hold annihilationist or universalist views.' },
-      { name: 'Pentecostal', stance: 'affirm', badge: 'Eternal conscious torment', position: 'Hell is real, eternal, and involves conscious suffering. Urgency of evangelism in Pentecostalism is driven partly by this conviction.' },
+      { name: 'Roman Catholic', stance: 'affirm', badge: 'affirm', position: 'Vatican I defined papal primacy of jurisdiction and infallibility ex cathedra; Vatican II affirmed this within collegial episcopate.' },
+      { name: 'Eastern Orthodox', stance: 'deny', badge: 'deny', position: 'The Pope is "first among equals" (primus inter pares) with honorary primacy only; infallibility belongs to Ecumenical Councils.' },
+      { name: 'Anglican / Episcopal', stance: 'deny', badge: 'deny', position: 'The 39 Articles reject the Pope\'s jurisdiction in England; primacy of honour without universal jurisdiction is theoretically discussable.' },
+      { name: 'Lutheran', stance: 'deny', badge: 'deny', position: 'Luther identified the papacy with the Antichrist; the Augsburg Confession rejects universal papal jurisdiction as unscriptural.' },
+      { name: 'Reformed / Presbyterian', stance: 'deny', badge: 'deny', position: 'Christ alone is head of the Church; no bishop or council may bind conscience beyond Scripture.' },
+      { name: 'Old Catholic', stance: 'nuanced', badge: 'nuanced', position: 'Accepts early episcopal succession but rejects Vatican I\'s definitions of papal infallibility and universal jurisdiction.' },
     ]
   },
   {
-    id: 'mary', icon: '❤️', name: 'The Virgin Mary',
-    controversy: 86,
-    desc: 'Mary\'s perpetual virginity, Immaculate Conception, bodily Assumption, and her role as intercessor.',
-    denominations: [
-      { name: 'Roman Catholic', stance: 'affirm', badge: 'Four Marian dogmas', position: 'Theotokos (431), Perpetual Virginity, Immaculate Conception (1854), and Bodily Assumption (1950) are defined dogmas.' },
-      { name: 'Eastern Orthodox', stance: 'affirm', badge: 'Theotokos, perpetual virgin', position: 'Mary is the Theotokos and the greatest of saints. The Immaculate Conception is rejected as a Western innovation.' },
-      { name: 'Lutheran', stance: 'nuanced', badge: 'Theotokos, honored example', position: 'Luther honoured Mary and held to perpetual virginity. Modern Lutheranism typically stops at Theotokos.' },
-      { name: 'Anglican / Episcopal', stance: 'nuanced', badge: 'Theotokos affirmed, dogmas disputed', position: 'Mary as Theotokos is affirmed. The Immaculate Conception and Assumption are not required beliefs.' },
-      { name: 'Presbyterian / Reformed', stance: 'deny', badge: 'Theotokos only', position: 'Mary is honoured as the mother of the incarnate Christ. All further Marian dogmas are rejected as unscriptural.' },
-      { name: 'Baptist', stance: 'deny', badge: 'Mother of Jesus, no special status', position: 'Mary is respected as the mother of Jesus but holds no special intercessory role. The Marian dogmas are rejected.' },
-      { name: 'Methodist', stance: 'deny', badge: 'Honored, not venerated', position: 'Mary is a model of faith but not venerated. The Marian dogmas are not affirmed.' },
-      { name: 'Pentecostal', stance: 'deny', badge: 'Mother of Jesus, no veneration', position: 'Mary is the mother of Jesus and a believer, but holds no special status. Marian devotion is typically viewed as idolatrous.' },
-    ]
-  },
-  {
-    id: 'church_state', icon: '🏛️', name: 'Church & state',
+    id: 'tongues',
+    name: 'Cessationism vs Continuationism',
+    icon: '🔥',
     controversy: 78,
-    desc: 'Whether the church should have a formal relationship with civil government, from established churches to strict separation.',
+    desc: 'Have the miraculous gifts of the Spirit — tongues, prophecy, healing — ceased with the apostolic age, or do they continue today?',
     denominations: [
-      { name: 'Roman Catholic', stance: 'nuanced', badge: 'Social teaching / subsidiarity', position: 'Catholic social teaching engages the state through natural law arguments. Modern popes affirm religious freedom.' },
-      { name: 'Eastern Orthodox', stance: 'nuanced', badge: 'Symphonia ideal', position: 'The Byzantine ideal of symphonia — harmonious cooperation between church and state — remains influential.' },
-      { name: 'Anglican / Episcopal', stance: 'nuanced', badge: 'Established church (UK)', position: 'The Church of England is legally established. The Episcopal Church (USA) supports separation of church and state.' },
-      { name: 'Lutheran', stance: 'nuanced', badge: 'Two-kingdoms doctrine', position: 'Luther\'s two-kingdoms doctrine distinguishes the spiritual kingdom (church) from the temporal kingdom (state).' },
-      { name: 'Presbyterian / Reformed', stance: 'nuanced', badge: 'Transformationalist / Kuyperian', position: 'Kuyper\'s neo-Calvinism holds every sphere of life belongs to Christ. The state must acknowledge God\'s lordship.' },
-      { name: 'Baptist', stance: 'affirm', badge: 'Strict separation', position: 'Baptists historically championed soul liberty and separation of church and state (Roger Williams, John Leland).' },
-      { name: 'Anabaptist / Mennonite', stance: 'deny', badge: 'Radical separation', position: 'The church is a voluntary counter-cultural community. Anabaptists reject state establishment and have refused military service.' },
-      { name: 'Pentecostal', stance: 'varies', badge: 'Varies widely', position: 'Historically apolitical. Since the 1970s–80s many Pentecostals (especially in the US) became politically active.' },
+      { name: 'Cessationist (Reformed)', stance: 'deny', badge: 'deny', position: 'The sign gifts authenticated the apostles and closed with the completion of the canon; they are not normative today.' },
+      { name: 'Pentecostal', stance: 'affirm', badge: 'affirm', position: 'Speaking in tongues is the initial physical evidence of Spirit baptism; all New Testament gifts are operative today.' },
+      { name: 'Charismatic (Catholic)', stance: 'affirm', badge: 'affirm', position: 'Charismatic Renewal affirms all gifts for today within Catholic sacramental life; tongues is a gift, not a requirement.' },
+      { name: 'Open but Cautious', stance: 'nuanced', badge: 'nuanced', position: 'Gifts have not ceased but must be tested carefully; experiences of tongues and prophecy exist alongside sober theological discernment.' },
+      { name: 'Anglican / Episcopal', stance: 'varies', badge: 'varies', position: 'Wide internal diversity; charismatic Anglicanism (New Wine, SOMA) coexists with more cessationist evangelicalism.' },
+      { name: 'Baptist', stance: 'varies', badge: 'varies', position: 'Southern Baptists are largely cessationist; other Baptist traditions vary, with some embracing charismatic renewal.' },
+    ]
+  },
+  {
+    id: 'salvation-works',
+    name: 'Faith & Works in Salvation',
+    icon: '⚖️',
+    controversy: 90,
+    desc: 'Is justification by faith alone (sola fide), or do works of charity and the sacraments cooperate in achieving final salvation?',
+    denominations: [
+      { name: 'Lutheran', stance: 'affirm', badge: 'affirm', position: 'Justification is forensic: God declares the sinner righteous for Christ\'s sake, received through faith alone, apart from works.' },
+      { name: 'Reformed / Presbyterian', stance: 'affirm', badge: 'affirm', position: 'Justification by imputed righteousness, received through faith alone; good works are the fruit, never the ground, of salvation.' },
+      { name: 'Roman Catholic', stance: 'nuanced', badge: 'nuanced', position: 'Trent: justification increases through cooperation with grace; the sacraments, charity, and perseverance contribute to final salvation.' },
+      { name: 'Eastern Orthodox', stance: 'nuanced', badge: 'nuanced', position: 'Salvation as theosis (deification); synergy between divine grace and human will; legal categories are considered inadequate.' },
+      { name: 'Methodist / Wesleyan', stance: 'nuanced', badge: 'nuanced', position: 'Initial justification by faith; entire sanctification as a second work of grace; final salvation requires perseverance in holiness.' },
+      { name: 'Moralism / Pelagianism', stance: 'deny', badge: 'deny', position: 'Historic Pelagianism taught unaided human will can choose good; condemned as heresy at Carthage (418) and Orange (529).' },
+    ]
+  },
+  {
+    id: 'womens-ordination',
+    name: 'Women\'s Ordination',
+    icon: '✝️',
+    controversy: 93,
+    desc: 'May women be ordained as priests, elders, or bishops, or does Scripture reserve the ordained ministry to men?',
+    denominations: [
+      { name: 'Roman Catholic', stance: 'deny', badge: 'deny', position: 'Ordinatio Sacerdotalis (1994): the Church has no authority to ordain women to the priesthood; this teaching is to be held definitively.' },
+      { name: 'Eastern Orthodox', stance: 'deny', badge: 'deny', position: 'The all-male priesthood reflects the incarnation and is bound to Tradition; the diaconate for women is under historical discussion.' },
+      { name: 'Anglican / Episcopal', stance: 'varies', badge: 'varies', position: 'The Episcopal Church and many provinces ordain women to all orders; conservative Anglican bodies (GAFCON) do not.' },
+      { name: 'Lutheran (ELCA)', stance: 'affirm', badge: 'affirm', position: 'The ELCA has ordained women since 1970; equality of ministry is considered consistent with the gospel.' },
+      { name: 'Reformed / Presbyterian (PCA)', stance: 'deny', badge: 'deny', position: 'The PCA holds complementarianism: the offices of elder and pastor are restricted to qualified men per 1 Timothy 2.' },
+      { name: 'Methodist / Wesleyan', stance: 'affirm', badge: 'affirm', position: 'The UMC has ordained women since 1956; Methodist ecclesiology emphasises gifts discerned by the community over gender restriction.' },
     ]
   },
 ];
 
-// ── State ─────────────────────────────────────────────────
+// ── State ────────────────────────────────────────────────────
+let supabase = null;
 let currentUser = null;
+let currentUserProfile = null;
 let currentTopic = null;
 let allComments = [];
-let userUpvotes = new Set();
+let userVotes = new Set();
 
-// ── Auth helpers ──────────────────────────────────────────
-async function initAuth() {
-  if (!sb) return;
-  const { data: { session } } = await sb.auth.getSession();
-  if (session) await setUser(session.user);
-  sb.auth.onAuthStateChange(async (_event, session) => {
-    if (session) await setUser(session.user);
-    else clearUser();
-  });
-}
+// ── Init ─────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  initSupabase();
+  renderTopics();
+  setupCharCount();
+});
 
-async function setUser(user) {
-  const { data: profile } = await sb.from('profiles').select('*').eq('id', user.id).single();
-  currentUser = { ...user, profile };
-  renderHeader();
-  if (currentTopic) {
-    await loadUserUpvotes();
-    renderComments();
-    showCommentForm();
+function initSupabase() {
+  if (typeof SUPABASE_CONFIGURED === 'undefined' || !SUPABASE_CONFIGURED) {
+    document.getElementById('config-banner').classList.remove('hidden');
+    showOfflineMode();
+    return;
+  }
+  try {
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    document.getElementById('config-banner').classList.add('hidden');
+    checkSession();
+    supabase.auth.onAuthStateChange((_event, session) => {
+      currentUser = session?.user ?? null;
+      if (currentUser) loadUserProfile();
+      updateAuthUI();
+      if (currentTopic) updateCommentFormVisibility();
+    });
+  } catch (e) {
+    console.error('Supabase init failed:', e);
+    showOfflineMode();
   }
 }
 
-function clearUser() {
-  currentUser = null;
-  renderHeader();
-  showCommentForm();
+function showOfflineMode() {
+  // App still renders topics and denomination positions; comments just disabled
+  updateAuthUI();
 }
 
-function renderHeader() {
-  const el = document.getElementById('header-auth');
-  if (currentUser) {
-    const initials = (currentUser.profile?.display_name || 'A').split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-    el.innerHTML = `
+async function checkSession() {
+  const { data: { session } } = await supabase.auth.getSession();
+  currentUser = session?.user ?? null;
+  if (currentUser) await loadUserProfile();
+  updateAuthUI();
+}
+
+async function loadUserProfile() {
+  if (!supabase || !currentUser) return;
+  const { data } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', currentUser.id)
+    .single();
+  currentUserProfile = data;
+}
+
+// ── Auth UI ──────────────────────────────────────────────────
+function updateAuthUI() {
+  const authArea = document.getElementById('header-auth');
+  if (currentUser && currentUserProfile) {
+    const initials = (currentUserProfile.display_name || 'U')
+      .split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    authArea.innerHTML = `
       <div class="user-pill">
         <div class="user-avatar">${initials}</div>
-        <span>${currentUser.profile?.display_name || 'You'}</span>
+        <span>${currentUserProfile.display_name}</span>
+        ${currentUserProfile.denomination
+          ? `<span class="comment-denom-tag">${currentUserProfile.denomination}</span>`
+          : ''}
       </div>
       <button class="btn btn-ghost" onclick="handleLogout()">Sign out</button>
     `;
   } else {
-    el.innerHTML = `
+    authArea.innerHTML = `
       <button class="btn btn-ghost" onclick="openModal('login')">Sign in</button>
       <button class="btn btn-gold" onclick="openModal('signup')">Join the discussion</button>
     `;
   }
+  if (currentTopic) updateCommentFormVisibility();
 }
 
-// ── Modal ─────────────────────────────────────────────────
-function openModal(type) {
-  document.getElementById('auth-modal').classList.add('open');
-  switchModal(type);
-}
-function closeModal() {
-  document.getElementById('auth-modal').classList.remove('open');
-  clearModalErrors();
-}
-function switchModal(type) {
-  document.getElementById('modal-login').style.display  = type === 'login'  ? '' : 'none';
-  document.getElementById('modal-signup').style.display = type === 'signup' ? '' : 'none';
-  clearModalErrors();
-}
-function clearModalErrors() {
-  ['modal-error','signup-error','signup-success'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) { el.style.display = 'none'; el.textContent = ''; }
-  });
-}
-document.getElementById('auth-modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('auth-modal')) closeModal();
-});
-
-async function handleLogin() {
-  if (!sb) { alert('Supabase not configured yet — see config.js'); return; }
-  const email = document.getElementById('login-email').value.trim();
-  const password = document.getElementById('login-password').value;
-  const errEl = document.getElementById('modal-error');
-  const { error } = await sb.auth.signInWithPassword({ email, password });
-  if (error) {
-    errEl.textContent = error.message;
-    errEl.style.display = '';
+function updateCommentFormVisibility() {
+  const loggedOut = document.getElementById('logged-out-prompt');
+  const loggedIn = document.getElementById('logged-in-form');
+  if (!loggedOut || !loggedIn) return;
+  const hasDB = supabase && SUPABASE_CONFIGURED;
+  if (!hasDB) {
+    loggedOut.style.display = 'block';
+    loggedOut.innerHTML = '⚙️ Comments are disabled until Supabase is configured in <code>config.js</code>.';
+    loggedIn.style.display = 'none';
+  } else if (currentUser) {
+    loggedOut.style.display = 'none';
+    loggedIn.style.display = 'block';
   } else {
-    closeModal();
+    loggedOut.style.display = 'block';
+    loggedOut.innerHTML = '<a onclick="openModal(\'login\')">Sign in</a> or <a onclick="openModal(\'signup\')">create a free account</a> to share your perspective.';
+    loggedIn.style.display = 'none';
   }
 }
 
-async function handleSignup() {
-  if (!sb) { alert('Supabase not configured yet — see config.js'); return; }
-  const name  = document.getElementById('signup-name').value.trim() || 'Anonymous';
-  const denom = document.getElementById('signup-denom').value;
-  const email = document.getElementById('signup-email').value.trim();
-  const password = document.getElementById('signup-password').value;
-  const errEl  = document.getElementById('signup-error');
-  const succEl = document.getElementById('signup-success');
-  const { error } = await sb.auth.signUp({
-    email, password,
-    options: { data: { display_name: name, denomination: denom } }
-  });
-  if (error) {
-    errEl.textContent = error.message;
-    errEl.style.display = '';
-  } else {
-    succEl.textContent = 'Account created! Check your email to confirm, then sign in.';
-    succEl.style.display = '';
-  }
-}
-
-async function handleLogout() {
-  if (sb) await sb.auth.signOut();
-}
-
-// ── Topic rendering ────────────────────────────────────────
-function renderTopicGrid() {
+// ── Topic rendering ──────────────────────────────────────────
+function renderTopics() {
   const grid = document.getElementById('topic-grid');
   grid.innerHTML = TOPICS.map(t => `
     <div class="topic-card" onclick="showTopic('${t.id}')" id="tc-${t.id}">
       <div class="topic-icon">${t.icon}</div>
       <div>
         <div class="topic-name">${t.name}</div>
-        <div class="topic-count" id="tc-count-${t.id}">Loading…</div>
+        <div class="topic-count">${t.controversy}% controversial</div>
       </div>
     </div>
   `).join('');
-  loadCommentCounts();
-}
-
-async function loadCommentCounts() {
-  if (!sb) {
-    TOPICS.forEach(t => {
-      const el = document.getElementById(`tc-count-${t.id}`);
-      if (el) el.textContent = 'Comments disabled';
-    });
-    return;
-  }
-  const { data } = await sb.from('comments').select('topic_id');
-  const counts = {};
-  (data || []).forEach(r => counts[r.topic_id] = (counts[r.topic_id] || 0) + 1);
-  TOPICS.forEach(t => {
-    const el = document.getElementById(`tc-count-${t.id}`);
-    const n = counts[t.id] || 0;
-    if (el) el.textContent = n === 0 ? 'No comments yet' : `${n} comment${n !== 1 ? 's' : ''}`;
-  });
 }
 
 function showHome() {
-  currentTopic = null;
-  document.getElementById('home-view').style.display = '';
+  document.getElementById('home-view').style.display = 'block';
   document.getElementById('detail-view').style.display = 'none';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  loadCommentCounts();
+  currentTopic = null;
+  document.querySelectorAll('.topic-card').forEach(c => c.classList.remove('active'));
 }
 
 async function showTopic(id) {
-  currentTopic = TOPICS.find(t => t.id === id);
-  if (!currentTopic) return;
+  const topic = TOPICS.find(t => t.id === id);
+  if (!topic) return;
+  currentTopic = topic;
 
   document.getElementById('home-view').style.display = 'none';
-  document.getElementById('detail-view').style.display = '';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('detail-view').style.display = 'block';
 
-  document.getElementById('detail-title').textContent = currentTopic.name;
-  document.getElementById('detail-desc').textContent  = currentTopic.desc;
-  document.getElementById('controversy-fill').style.width = currentTopic.controversy + '%';
-  document.getElementById('controversy-text').textContent = `Controversy level: ${currentTopic.controversy}/100`;
+  document.getElementById('detail-title').textContent = topic.name;
+  document.getElementById('detail-desc').textContent = topic.desc;
+  document.getElementById('controversy-fill').style.width = topic.controversy + '%';
+  document.getElementById('controversy-text').textContent =
+    topic.controversy + '% controversy rating';
 
-  renderDenomCards();
-  showCommentForm();
-  await loadComments();
-}
-
-function renderDenomCards() {
-  const badgeClass = { affirm: 'badge-affirm', deny: 'badge-deny', nuanced: 'badge-nuanced', varies: 'badge-varies' };
-  document.getElementById('denom-grid').innerHTML = currentTopic.denominations.map(d => `
+  // Render denomination cards
+  const denomGrid = document.getElementById('denom-grid');
+  denomGrid.innerHTML = topic.denominations.map(d => `
     <div class="denom-card">
       <div class="denom-card-top">
         <div class="denom-name">${d.name}</div>
-        <span class="stance-badge ${badgeClass[d.stance] || ''}">${d.badge}</span>
+        <div class="stance-badge badge-${d.badge}">${stanceLabel(d.stance)}</div>
       </div>
       <div class="denom-position">${d.position}</div>
     </div>
   `).join('');
+
+  document.querySelectorAll('.topic-card').forEach(c => c.classList.remove('active'));
+  const card = document.getElementById('tc-' + id);
+  if (card) card.classList.add('active');
+
+  updateCommentFormVisibility();
+  await loadComments(topic.id);
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ── Comments ──────────────────────────────────────────────
-function showCommentForm() {
-  const loggedOut = document.getElementById('logged-out-prompt');
-  const loggedIn  = document.getElementById('logged-in-form');
-  if (!sb) {
-    loggedOut.style.display = '';
-    loggedOut.innerHTML = '<em>Enable Supabase in config.js to join the discussion.</em>';
-    loggedIn.style.display = 'none';
-  } else if (currentUser) {
-    loggedOut.style.display = 'none';
-    loggedIn.style.display = '';
-  } else {
-    loggedOut.style.display = '';
-    loggedOut.innerHTML = '<a onclick="openModal(\'login\')">Sign in</a> or <a onclick="openModal(\'signup\')">create a free account</a> to share your perspective.';
-    loggedIn.style.display = 'none';
-  }
+function stanceLabel(stance) {
+  return { affirm: 'Affirms', deny: 'Denies', nuanced: 'Nuanced', varies: 'Varies' }[stance] || stance;
 }
 
-const textarea = document.getElementById('comment-text');
-if (textarea) {
-  textarea.addEventListener('input', () => {
-    document.getElementById('char-count').textContent = `${textarea.value.length} / 600`;
-  });
-}
+// ── Comments ─────────────────────────────────────────────────
+async function loadComments(topicId) {
+  const list = document.getElementById('comment-list');
+  const countLabel = document.getElementById('comment-count-label');
 
-async function loadComments() {
-  if (!currentTopic) return;
-  const listEl = document.getElementById('comment-list');
-  listEl.innerHTML = '<div class="loading-spinner">Loading comments…</div>';
-  document.getElementById('comment-count-label').textContent = 'Loading…';
-
-  if (!sb) {
-    listEl.innerHTML = `<div class="empty-state"><div class="empty-state-icon">💬</div>Configure Supabase in config.js to see comments.</div>`;
-    document.getElementById('comment-count-label').textContent = 'Comments require setup';
+  if (!supabase || !SUPABASE_CONFIGURED) {
+    list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚙️</div>Configure Supabase to enable live comments.</div>';
+    countLabel.textContent = 'Comments disabled';
     return;
   }
 
-  const { data, error } = await sb
-    .from('comments')
-    .select('*')
-    .eq('topic_id', currentTopic.id)
-    .order('upvotes', { ascending: false })
-    .order('created_at', { ascending: false });
+  list.innerHTML = '<div class="loading-spinner">Loading comments…</div>';
 
-  if (error) {
-    listEl.innerHTML = `<div class="error-msg">Error loading comments: ${error.message}</div>`;
-    return;
+  try {
+    const { data, error } = await supabase
+      .from('comments')
+      .select('*')
+      .eq('topic_id', topicId)
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    allComments = data || [];
+
+    // Load user's votes
+    if (currentUser && allComments.length > 0) {
+      const ids = allComments.map(c => c.id);
+      const { data: votes } = await supabase
+        .from('upvotes')
+        .select('comment_id')
+        .eq('user_id', currentUser.id)
+        .in('comment_id', ids);
+      userVotes = new Set((votes || []).map(v => v.comment_id));
+    } else {
+      userVotes = new Set();
+    }
+
+    countLabel.textContent = allComments.length === 0
+      ? 'No comments yet — be the first!'
+      : `${allComments.length} comment${allComments.length !== 1 ? 's' : ''}`;
+
+    renderComments(allComments);
+  } catch (err) {
+    console.error(err);
+    list.innerHTML = `<div class="error-msg">Failed to load comments: ${err.message}</div>`;
   }
-  allComments = data || [];
-  await loadUserUpvotes();
-  const n = allComments.length;
-  document.getElementById('comment-count-label').textContent = n === 0 ? 'Be the first to comment' : `${n} comment${n !== 1 ? 's' : ''}`;
-  renderComments();
 }
 
-async function loadUserUpvotes() {
-  userUpvotes = new Set();
-  if (!sb || !currentUser) return;
-  const ids = allComments.map(c => c.id);
-  if (!ids.length) return;
-  const { data } = await sb.from('upvotes').select('comment_id').eq('user_id', currentUser.id).in('comment_id', ids);
-  (data || []).forEach(r => userUpvotes.add(r.comment_id));
-}
-
-function renderComments(filterDenom) {
-  const listEl = document.getElementById('comment-list');
-  let comments = allComments;
-  if (filterDenom) comments = comments.filter(c => c.denomination === filterDenom);
-
-  if (!comments.length) {
-    listEl.innerHTML = `<div class="empty-state"><div class="empty-state-icon">✍️</div>${filterDenom ? 'No comments from this tradition yet.' : 'No comments yet — be the first to share your perspective!'}</div>`;
+function renderComments(comments) {
+  const list = document.getElementById('comment-list');
+  if (comments.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">🕊️</div>
+        No comments yet on this topic.<br>Be the first to share your perspective.
+      </div>`;
     return;
   }
-
-  listEl.innerHTML = comments.map(c => {
-    const initials = (c.display_name || 'A').split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
-    const voted = userUpvotes.has(c.id);
-    const date = new Date(c.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+  list.innerHTML = comments.map(c => {
+    const initials = (c.display_name || 'A')
+      .split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    const voted = userVotes.has(c.id);
+    const date = new Date(c.created_at).toLocaleDateString('en-AU', {
+      day: 'numeric', month: 'short', year: 'numeric'
+    });
     return `
       <div class="comment-item" id="comment-${c.id}">
         <div class="comment-avatar">${initials}</div>
@@ -471,94 +366,246 @@ function renderComments(filterDenom) {
           </div>
           <div class="comment-text">${escHtml(c.body)}</div>
           <div class="comment-actions">
-            <button class="upvote-btn ${voted ? 'voted' : ''}" onclick="toggleUpvote(${c.id})" id="upvote-${c.id}">
-              ▲ <span id="upvote-count-${c.id}">${c.upvotes}</span>
+            <button class="upvote-btn ${voted ? 'voted' : ''}"
+              onclick="toggleUpvote(${c.id})"
+              id="upvote-${c.id}"
+              ${!currentUser ? 'title="Sign in to upvote"' : ''}>
+              ${voted ? '▲' : '△'} <span id="upvote-count-${c.id}">${c.upvotes}</span>
             </button>
           </div>
         </div>
-      </div>
-    `;
+      </div>`;
   }).join('');
 }
 
 function filterComments() {
   const val = document.getElementById('denom-filter').value;
-  renderComments(val || null);
+  const filtered = val ? allComments.filter(c => c.denomination === val) : allComments;
+  renderComments(filtered);
 }
 
+// ── Submit comment ───────────────────────────────────────────
 async function submitComment() {
-  if (!sb || !currentUser || !currentTopic) return;
   const body = document.getElementById('comment-text').value.trim();
-  if (!body) return;
-  const btn = document.getElementById('submit-btn');
   const msgEl = document.getElementById('form-message');
+  const btn = document.getElementById('submit-btn');
+
+  if (!body) { showFormMsg('error', 'Please write something before posting.'); return; }
+  if (body.length > 600) { showFormMsg('error', 'Keep it under 600 characters.'); return; }
+  if (!currentUser || !currentUserProfile) { showFormMsg('error', 'Please sign in first.'); return; }
+
   btn.disabled = true;
   btn.textContent = 'Posting…';
-  msgEl.innerHTML = '';
 
-  const { error } = await sb.from('comments').insert({
-    topic_id: currentTopic.id,
-    user_id: currentUser.id,
-    display_name: currentUser.profile?.display_name || 'Anonymous',
-    denomination: currentUser.profile?.denomination || null,
-    body,
-    upvotes: 0
-  });
+  try {
+    const { error } = await supabase.from('comments').insert({
+      topic_id: currentTopic.id,
+      user_id: currentUser.id,
+      display_name: currentUserProfile.display_name,
+      denomination: currentUserProfile.denomination || null,
+      body,
+      upvotes: 0,
+    });
+    if (error) throw error;
 
-  btn.disabled = false;
-  btn.textContent = 'Post comment';
-
-  if (error) {
-    msgEl.innerHTML = `<div class="error-msg">${error.message}</div>`;
-  } else {
     document.getElementById('comment-text').value = '';
     document.getElementById('char-count').textContent = '0 / 600';
-    msgEl.innerHTML = `<div class="success-msg">Comment posted!</div>`;
-    setTimeout(() => msgEl.innerHTML = '', 3000);
-    await loadComments();
+    showFormMsg('success', 'Comment posted!');
+    await loadComments(currentTopic.id);
+  } catch (err) {
+    showFormMsg('error', err.message || 'Failed to post. Try again.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Post comment';
   }
 }
 
+function showFormMsg(type, text) {
+  const el = document.getElementById('form-message');
+  el.innerHTML = `<div class="${type}-msg">${text}</div>`;
+  setTimeout(() => { el.innerHTML = ''; }, 4000);
+}
+
+// ── Upvotes ──────────────────────────────────────────────────
 async function toggleUpvote(commentId) {
-  if (!sb) { openModal('login'); return; }
   if (!currentUser) { openModal('login'); return; }
-
-  const voted = userUpvotes.has(commentId);
-  const comment = allComments.find(c => c.id === commentId);
-  if (!comment) return;
-
-  if (voted) {
-    await sb.from('upvotes').delete().eq('user_id', currentUser.id).eq('comment_id', commentId);
-    await sb.from('comments').update({ upvotes: comment.upvotes - 1 }).eq('id', commentId);
-    userUpvotes.delete(commentId);
-    comment.upvotes = Math.max(0, comment.upvotes - 1);
-  } else {
-    await sb.from('upvotes').insert({ user_id: currentUser.id, comment_id: commentId });
-    await sb.from('comments').update({ upvotes: comment.upvotes + 1 }).eq('id', commentId);
-    userUpvotes.add(commentId);
-    comment.upvotes = comment.upvotes + 1;
-  }
+  if (!supabase) return;
 
   const btn = document.getElementById(`upvote-${commentId}`);
-  const cnt = document.getElementById(`upvote-count-${commentId}`);
-  if (btn) btn.classList.toggle('voted', !voted);
-  if (cnt) cnt.textContent = comment.upvotes;
+  const countEl = document.getElementById(`upvote-count-${commentId}`);
+  const wasVoted = userVotes.has(commentId);
+
+  // Optimistic update
+  const current = parseInt(countEl.textContent) || 0;
+  if (wasVoted) {
+    userVotes.delete(commentId);
+    countEl.textContent = current - 1;
+    btn.classList.remove('voted');
+    btn.querySelector('span') || (btn.childNodes[0].textContent = '△ ');
+  } else {
+    userVotes.add(commentId);
+    countEl.textContent = current + 1;
+    btn.classList.add('voted');
+  }
+
+  try {
+    if (wasVoted) {
+      // Remove upvote
+      await supabase.from('upvotes')
+        .delete()
+        .eq('user_id', currentUser.id)
+        .eq('comment_id', commentId);
+      await supabase.from('comments')
+        .update({ upvotes: Math.max(0, current - 1) })
+        .eq('id', commentId);
+    } else {
+      // Add upvote
+      await supabase.from('upvotes')
+        .insert({ user_id: currentUser.id, comment_id: commentId });
+      await supabase.from('comments')
+        .update({ upvotes: current + 1 })
+        .eq('id', commentId);
+    }
+    // Sync actual count from DB
+    const { data } = await supabase
+      .from('comments').select('upvotes').eq('id', commentId).single();
+    if (data) countEl.textContent = data.upvotes;
+  } catch (err) {
+    console.error('Upvote error:', err);
+    // Revert optimistic update on error
+    countEl.textContent = current;
+    if (wasVoted) { userVotes.add(commentId); btn.classList.add('voted'); }
+    else { userVotes.delete(commentId); btn.classList.remove('voted'); }
+  }
 }
 
-// ── Utilities ─────────────────────────────────────────────
+// ── Auth modal ───────────────────────────────────────────────
+function openModal(mode) {
+  document.getElementById('auth-modal').classList.add('open');
+  switchModal(mode);
+}
+
+function closeModal() {
+  document.getElementById('auth-modal').classList.remove('open');
+  clearModalErrors();
+}
+
+function switchModal(mode) {
+  document.getElementById('modal-login').style.display = mode === 'login' ? 'block' : 'none';
+  document.getElementById('modal-signup').style.display = mode === 'signup' ? 'block' : 'none';
+  clearModalErrors();
+}
+
+function clearModalErrors() {
+  ['modal-error', 'signup-error', 'signup-success'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.display = 'none'; el.textContent = ''; }
+  });
+}
+
+document.getElementById('auth-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('auth-modal')) closeModal();
+});
+
+async function handleLogin() {
+  if (!supabase) return;
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
+  const errEl = document.getElementById('modal-error');
+
+  if (!email || !password) {
+    errEl.textContent = 'Please fill in both fields.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const btn = document.querySelector('#modal-login .btn-gold');
+  btn.textContent = 'Signing in…';
+  btn.disabled = true;
+
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+  btn.textContent = 'Sign in';
+  btn.disabled = false;
+
+  if (error) {
+    errEl.textContent = error.message;
+    errEl.style.display = 'block';
+  } else {
+    closeModal();
+  }
+}
+
+async function handleSignup() {
+  if (!supabase) return;
+  const name = document.getElementById('signup-name').value.trim();
+  const denom = document.getElementById('signup-denom').value;
+  const email = document.getElementById('signup-email').value.trim();
+  const password = document.getElementById('signup-password').value;
+  const errEl = document.getElementById('signup-error');
+  const successEl = document.getElementById('signup-success');
+
+  if (!name || !email || !password) {
+    errEl.textContent = 'Please fill in your name, email, and password.';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (password.length < 6) {
+    errEl.textContent = 'Password must be at least 6 characters.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const btn = document.querySelector('#modal-signup .btn-gold');
+  btn.textContent = 'Creating account…';
+  btn.disabled = true;
+
+  const { error } = await supabase.auth.signUp({
+    email, password,
+    options: { data: { display_name: name, denomination: denom || null } }
+  });
+
+  btn.textContent = 'Create account';
+  btn.disabled = false;
+
+  if (error) {
+    errEl.textContent = error.message;
+    errEl.style.display = 'block';
+  } else {
+    errEl.style.display = 'none';
+    successEl.textContent = '✓ Check your email to confirm your account, then sign in!';
+    successEl.style.display = 'block';
+  }
+}
+
+async function handleLogout() {
+  if (!supabase) return;
+  await supabase.auth.signOut();
+  currentUser = null;
+  currentUserProfile = null;
+  userVotes = new Set();
+  updateAuthUI();
+}
+
+// ── Helpers ──────────────────────────────────────────────────
 function escHtml(str) {
-  return String(str || '')
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;');
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function setupCharCount() {
+  const ta = document.getElementById('comment-text');
+  if (!ta) return;
+  ta.addEventListener('input', () => {
+    document.getElementById('char-count').textContent = `${ta.value.length} / 600`;
+  });
 }
 
 function toggleSetup() {
   const el = document.getElementById('setup-guide');
-  el.style.display = el.style.display === 'none' ? '' : 'none';
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
-
-// ── Init ──────────────────────────────────────────────────
-renderTopicGrid();
-initAuth();
