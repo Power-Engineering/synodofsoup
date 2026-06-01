@@ -127,7 +127,7 @@ const TOPICS = [
 ];
 
 // ── State ────────────────────────────────────────────────────
-let supabase = null;
+let supabaseClient = null;
 let currentUser = null;
 let currentUserProfile = null;
 let currentTopic = null;
@@ -148,10 +148,10 @@ function initSupabase() {
     return;
   }
   try {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     document.getElementById('config-banner').classList.add('hidden');
     checkSession();
-    supabase.auth.onAuthStateChange((_event, session) => {
+    supabaseClient.auth.onAuthStateChange((_event, session) => {
       currentUser = session?.user ?? null;
       if (currentUser) loadUserProfile();
       updateAuthUI();
@@ -169,14 +169,14 @@ function showOfflineMode() {
 }
 
 async function checkSession() {
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { session } } = await supabaseClient.auth.getSession();
   currentUser = session?.user ?? null;
   if (currentUser) await loadUserProfile();
   updateAuthUI();
 }
 
 async function loadUserProfile() {
-  if (!supabase || !currentUser) return;
+  if (!supabaseClient || !currentUser) return;
   const { data } = await supabase
     .from('profiles')
     .select('*')
@@ -214,7 +214,7 @@ function updateCommentFormVisibility() {
   const loggedOut = document.getElementById('logged-out-prompt');
   const loggedIn = document.getElementById('logged-in-form');
   if (!loggedOut || !loggedIn) return;
-  const hasDB = supabase && SUPABASE_CONFIGURED;
+  const hasDB = supabaseClient && SUPABASE_CONFIGURED;
   if (!hasDB) {
     loggedOut.style.display = 'block';
     loggedOut.innerHTML = '⚙️ Comments are disabled until Supabase is configured in <code>config.js</code>.';
@@ -296,7 +296,7 @@ async function loadComments(topicId) {
   const list = document.getElementById('comment-list');
   const countLabel = document.getElementById('comment-count-label');
 
-  if (!supabase || !SUPABASE_CONFIGURED) {
+  if (!supabaseClient || !SUPABASE_CONFIGURED) {
     list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚙️</div>Configure Supabase to enable live comments.</div>';
     countLabel.textContent = 'Comments disabled';
     return;
@@ -398,7 +398,7 @@ async function submitComment() {
   btn.textContent = 'Posting…';
 
   try {
-    const { error } = await supabase.from('comments').insert({
+    const { error } = await supabaseClient.from('comments').insert({
       topic_id: currentTopic.id,
       user_id: currentUser.id,
       display_name: currentUserProfile.display_name,
@@ -429,7 +429,7 @@ function showFormMsg(type, text) {
 // ── Upvotes ──────────────────────────────────────────────────
 async function toggleUpvote(commentId) {
   if (!currentUser) { openModal('login'); return; }
-  if (!supabase) return;
+  if (!supabaseClient) return;
 
   const btn = document.getElementById(`upvote-${commentId}`);
   const countEl = document.getElementById(`upvote-count-${commentId}`);
@@ -451,18 +451,18 @@ async function toggleUpvote(commentId) {
   try {
     if (wasVoted) {
       // Remove upvote
-      await supabase.from('upvotes')
+      await supabaseClient.from('upvotes')
         .delete()
         .eq('user_id', currentUser.id)
         .eq('comment_id', commentId);
-      await supabase.from('comments')
+      await supabaseClient.from('comments')
         .update({ upvotes: Math.max(0, current - 1) })
         .eq('id', commentId);
     } else {
       // Add upvote
-      await supabase.from('upvotes')
+      await supabaseClient.from('upvotes')
         .insert({ user_id: currentUser.id, comment_id: commentId });
-      await supabase.from('comments')
+      await supabaseClient.from('comments')
         .update({ upvotes: current + 1 })
         .eq('id', commentId);
     }
@@ -508,7 +508,7 @@ document.getElementById('auth-modal').addEventListener('click', e => {
 });
 
 async function handleLogin() {
-  if (!supabase) return;
+  if (!supabaseClient) return;
   const email = document.getElementById('login-email').value.trim();
   const password = document.getElementById('login-password').value;
   const errEl = document.getElementById('modal-error');
@@ -523,7 +523,7 @@ async function handleLogin() {
   btn.textContent = 'Signing in…';
   btn.disabled = true;
 
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
 
   btn.textContent = 'Sign in';
   btn.disabled = false;
@@ -537,7 +537,7 @@ async function handleLogin() {
 }
 
 async function handleSignup() {
-  if (!supabase) return;
+  if (!supabaseClient) return;
   const name = document.getElementById('signup-name').value.trim();
   const denom = document.getElementById('signup-denom').value;
   const email = document.getElementById('signup-email').value.trim();
@@ -560,7 +560,7 @@ async function handleSignup() {
   btn.textContent = 'Creating account…';
   btn.disabled = true;
 
-  const { error } = await supabase.auth.signUp({
+  const { error } = await supabaseClient.auth.signUp({
     email, password,
     options: { data: { display_name: name, denomination: denom || null } }
   });
@@ -579,8 +579,8 @@ async function handleSignup() {
 }
 
 async function handleLogout() {
-  if (!supabase) return;
-  await supabase.auth.signOut();
+  if (!supabaseClient) return;
+  await supabaseClient.auth.signOut();
   currentUser = null;
   currentUserProfile = null;
   userVotes = new Set();
