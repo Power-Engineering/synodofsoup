@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synod of Soup — The Doctrine Ledger</title>
+  <meta name="description" content="The Doctrine Ledger: a scholarly comparison of how Christian traditions answer the greatest questions of faith. Confessional citations, biblical exegesis, and reasoned dialogue." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+</head>
+<body>
+
+  <!-- ═══ TOP NAV ═══ -->
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" onclick="showHome()">
+        <span class="brand-mark">⛪</span>
+        <span class="brand-text">
+          <span class="brand-name">Synod of Soup</span>
+          <span class="brand-sub">The Doctrine Ledger</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a onclick="showHome()" class="nav-link">Ledger</a>
+        <a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" class="nav-link">About</a>
+        <a onclick="document.getElementById('method').scrollIntoView({behavior:'smooth'})" class="nav-link">Method</a>
+      </div>
+      <div class="topbar-auth" id="header-auth">
+        <button class="btn btn-ghost" onclick="openModal('login')">Sign in</button>
+        <button class="btn btn-primary" onclick="openModal('signup')">Join the Synod</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ CONFIG BANNER ═══ -->
+  <div id="config-banner" class="config-banner hidden">
+    <div class="config-banner-inner">
+      ⚙️ Comments are currently disabled — Supabase is not configured. Site administrator: see <code>config.js</code>.
+    </div>
+  </div>
+
+  <!-- ═══ HOME VIEW ═══ -->
+  <main id="home-view">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">A scholarly comparison · For the curious, the convicted, and the searching</div>
+        <h1 class="hero-title">Where doctrine divides,<br/><em>let the witnesses speak.</em></h1>
+        <p class="hero-lede">The Doctrine Ledger sets the great traditions of Christianity side by side — Catholic, Orthodox, Lutheran, Reformed, Anglican, Baptist, Methodist, Pentecostal, Anabaptist — on the questions that have shaped two thousand years of debate. Every position is sourced to its confessions, councils, and Scripture. You bring the conversation.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="#topics">Browse the Ledger ↓</a>
+          <a class="btn btn-outline btn-lg" onclick="openModal('signup')">Join the Synod</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="stat-num" id="stat-topics">—</div><div class="stat-lbl">Doctrinal debates</div></div>
+          <div class="hero-stat"><div class="stat-num">11</div><div class="stat-lbl">Traditions surveyed</div></div>
+          <div class="hero-stat"><div class="stat-num">2,000</div><div class="stat-lbl">Years of dialogue</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICS SECTION -->
+    <section id="topics" class="topics-section">
+      <div class="section-inner">
+
+        <div class="section-head">
+          <div class="section-eyebrow">The Ledger</div>
+          <h2 class="section-title">Every great debate, set in order</h2>
+          <p class="section-sub">Filter by theme, search by name, or click any debate to read every tradition's case — in their own confessional words.</p>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+          <div class="search-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="topic-search" class="search-input" placeholder="Search debates, e.g. baptism, predestination, papacy…" />
+          </div>
+          <div id="category-filters" class="cat-pills"></div>
+        </div>
+
+        <!-- Grid -->
+        <div id="topic-grid" class="topic-grid"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+      <div class="section-inner about-grid">
+        <div>
+          <div class="section-eyebrow">About the Ledger</div>
+          <h2 class="section-title">Charitable, accurate, accessible.</h2>
+          <p class="prose">Synod of Soup exists for one reason: to let each Christian tradition speak its own conviction, from its own confessional documents, in its own theological idiom — without caricature.</p>
+          <p class="prose">We are not adjudicators. The Ledger is not a verdict. It is a witness stand, where the Council of Trent and the Westminster Confession, the Confession of Dositheus and the Schleitheim Articles, each get their hearing in full. When traditions disagree, the disagreement is preserved exactly — not flattened into false agreement, not sharpened into caricature.</p>
+          <p class="prose">The Synod is also a forum. Once you have read the historic positions, the comment thread is yours: argue, question, defend, refine. The marketplace of theological reasoning is one of the oldest institutions in the Christian tradition. We are simply giving it a new room.</p>
+        </div>
+        <aside class="about-aside">
+          <div class="aside-card">
+            <div class="aside-title">📜 Confessional citations</div>
+            <p>Every position quotes or paraphrases its own primary documents: Trent, Westminster, Augsburg, Heidelberg, Dort, the Thirty-Nine Articles, the Confession of Dositheus, the Schleitheim Confession, the Baptist Faith & Message, and many more.</p>
+          </div>
+          <div class="aside-card">
+            <div class="aside-title">📖 Scripture in full</div>
+            <p>Each debate lists the key biblical passages adduced by all sides — and explains how different hermeneutical traditions read the same texts to opposite ends.</p>
+          </div>
+          <div class="aside-card">
+            <div class="aside-title">🕊️ Civil dialogue</div>
+            <p>The comment threads are for theological reasoning, not for personal attack. We expect the dignity of disagreement — and remove what falls below it.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section id="method" class="method-section">
+      <div class="section-inner">
+        <div class="section-head section-head-center">
+          <div class="section-eyebrow">Our method</div>
+          <h2 class="section-title">How the Ledger is built</h2>
+        </div>
+        <div class="method-grid">
+          <div class="method-card">
+            <div class="method-num">01</div>
+            <div class="method-title">Primary sources first</div>
+            <p>We cite confessions, conciliar decrees, papal documents, and patristic writings directly. No second-hand polemics, no straw men.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-num">02</div>
+            <div class="method-title">Each tradition in its idiom</div>
+            <p>Catholics speak of <em>transubstantiation</em>; the Orthodox of <em>theosis</em>; Lutherans of <em>sola fide</em>. We let each speak its own language.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-num">03</div>
+            <div class="method-title">Scripture for all sides</div>
+            <p>Every key biblical passage adduced by any tradition is listed. Different schools read the same verses to opposite conclusions — and we show how.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-num">04</div>
+            <div class="method-title">Historical context</div>
+            <p>Every debate is set in its historical frame: when it broke out, who shaped it, which councils settled or failed to settle it.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-num">05</div>
+            <div class="method-title">Living conversation</div>
+            <p>The reader is welcomed not only to study but to argue. Every debate ends with an open thread.</p>
+          </div>
+          <div class="method-card">
+            <div class="method-num">06</div>
+            <div class="method-title">Charity, not caricature</div>
+            <p>If a tradition would not recognise itself in our summary, we have failed. We revise as readers — especially insiders — flag inaccuracies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ DETAIL VIEW (single topic) ═══ -->
+  <main id="detail-view" style="display:none">
+    <div class="detail-bar">
+      <div class="detail-bar-inner">
+        <button class="back-link" onclick="showHome()">← Back to the Ledger</button>
+        <span class="detail-category-tag" id="detail-category"></span>
+      </div>
+    </div>
+
+    <article class="detail-article">
+      <div class="detail-inner">
+
+        <header class="detail-head">
+          <h1 class="detail-title" id="detail-title"></h1>
+          <p class="detail-desc" id="detail-desc"></p>
+
+          <div class="controversy-block">
+            <div class="controversy-label">
+              <span>Controversy index</span>
+              <span id="controversy-text"></span>
+            </div>
+            <div class="controversy-bar">
+              <div class="controversy-fill" id="controversy-fill"></div>
+            </div>
+          </div>
+
+          <div class="historical-note" id="historical-note"></div>
+
+          <div class="key-verses-block" id="key-verses-block">
+            <div class="kv-label">Key Scripture passages</div>
+            <div class="key-verses" id="key-verses"></div>
+          </div>
+        </header>
+
+        <!-- Subtopics -->
+        <nav class="subtopic-tabs" id="subtopic-tabs"></nav>
+
+        <!-- Definition / overview block -->
+        <section class="definition-block" id="definition-block">
+          <div class="def-label">In brief</div>
+          <div class="def-body" id="definition-body"></div>
+        </section>
+
+        <!-- Denominations -->
+        <section class="denom-section">
+          <h2 class="part-title">Denominational positions</h2>
+          <p class="part-sub">Each tradition in its own words, sourced to its confessional documents.</p>
+          <div class="denom-grid" id="denom-grid"></div>
+        </section>
+
+        <!-- Related -->
+        <section class="related-section" id="related-section">
+          <h3 class="related-title">Related debates</h3>
+          <div class="related-pills" id="related-topics"></div>
+        </section>
+
+        <!-- Comments -->
+        <section class="comments-section">
+          <h2 class="part-title">The Synod floor</h2>
+          <p class="part-sub" id="comment-count-label">Loading…</p>
+
+          <div class="comment-form-wrap">
+            <div id="logged-out-prompt" class="form-locked"></div>
+            <div id="logged-in-form" class="form-active" style="display:none">
+              <textarea id="comment-text" class="comment-textarea" maxlength="600" placeholder="Make your case. Cite Scripture. Be charitable. (Max 600 characters.)"></textarea>
+              <div class="form-bottom">
+                <span class="char-count" id="char-count">0 / 600</span>
+                <button id="submit-btn" class="btn btn-primary" onclick="submitComment()">Post comment</button>
+              </div>
+              <div id="form-message"></div>
+            </div>
+          </div>
+
+          <div class="comment-controls">
+            <select id="denom-filter" class="select-input" onchange="filterComments()">
+              <option value="">All traditions</option>
+              <option>Roman Catholic</option>
+              <option>Eastern Orthodox</option>
+              <option>Anglican / Episcopal</option>
+              <option>Lutheran</option>
+              <option>Presbyterian / Reformed</option>
+              <option>Baptist</option>
+              <option>Methodist / Wesleyan</option>
+              <option>Pentecostal</option>
+              <option>Charismatic</option>
+              <option>Anabaptist / Mennonite</option>
+              <option>Non-denominational</option>
+              <option>Other</option>
+            </select>
+            <select id="comment-sort" class="select-input" onchange="filterComments()">
+              <option value="top">Top voted</option>
+              <option value="new">Newest first</option>
+            </select>
+          </div>
+
+          <div id="comment-list" class="comment-list"></div>
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ═══ AUTH MODAL ═══ -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+
+      <div id="modal-login">
+        <h2 class="modal-title">Welcome back</h2>
+        <p class="modal-sub">Sign in to comment and upvote.</p>
+        <label class="field-lbl">Email</label>
+        <input type="email" id="login-email" class="text-input" autocomplete="email" />
+        <label class="field-lbl">Password</label>
+        <input type="password" id="login-password" class="text-input" autocomplete="current-password" />
+        <div id="modal-error" class="alert-error" style="display:none"></div>
+        <button class="btn btn-primary btn-full" onclick="handleLogin()">Sign in</button>
+        <div class="modal-foot">No account? <a onclick="switchModal('signup')">Create one free</a></div>
+      </div>
+
+      <div id="modal-signup" style="display:none">
+        <h2 class="modal-title">Join the Synod</h2>
+        <p class="modal-sub">A free account — takes 30 seconds.</p>
+        <label class="field-lbl">Display name</label>
+        <input type="text" id="signup-name" class="text-input" />
+        <label class="field-lbl">Your tradition <span class="field-opt">(optional)</span></label>
+        <select id="signup-denom" class="select-input">
+          <option value="">— select —</option>
+          <option>Roman Catholic</option>
+          <option>Eastern Orthodox</option>
+          <option>Anglican / Episcopal</option>
+          <option>Lutheran</option>
+          <option>Presbyterian / Reformed</option>
+          <option>Baptist</option>
+          <option>Methodist / Wesleyan</option>
+          <option>Pentecostal</option>
+          <option>Charismatic</option>
+          <option>Anabaptist / Mennonite</option>
+          <option>Non-denominational</option>
+          <option>Exploring / No tradition</option>
+          <option>Other</option>
+        </select>
+        <label class="field-lbl">Email</label>
+        <input type="email" id="signup-email" class="text-input" autocomplete="email" />
+        <label class="field-lbl">Password</label>
+        <input type="password" id="signup-password" class="text-input" autocomplete="new-password" />
+        <div id="signup-error" class="alert-error" style="display:none"></div>
+        <div id="signup-success" class="alert-success" style="display:none"></div>
+        <button class="btn btn-primary btn-full" onclick="handleSignup()">Create account</button>
+        <div class="modal-foot">Already have one? <a onclick="switchModal('login')">Sign in</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <span class="brand-mark">⛪</span>
+        <div>
+          <div class="brand-name">Synod of Soup</div>
+          <div class="brand-sub">The Doctrine Ledger</div>
+        </div>
+      </div>
+      <div class="foot-text">
+        <p>A scholarly, charitable, lay-readable comparison of Christian doctrinal traditions. All confessional citations are reproduced from primary sources. The Synod takes no theological position of its own.</p>
+        <p class="foot-meta">© 2025 Synod of Soup · For the curious, the convicted, and the searching · Soli Deo gloria</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
