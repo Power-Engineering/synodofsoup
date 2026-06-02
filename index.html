@@ -220,39 +220,65 @@
           <h2 class="part-title">The Synod floor</h2>
           <p class="part-sub" id="comment-count-label">Loading…</p>
 
-          <div class="comment-form-wrap">
-            <div id="logged-out-prompt" class="form-locked"></div>
-            <div id="logged-in-form" class="form-active" style="display:none">
-              <textarea id="comment-text" class="comment-textarea" maxlength="600" placeholder="Make your case. Cite Scripture. Be charitable. (Max 600 characters.)"></textarea>
-              <div class="form-bottom">
-                <span class="char-count" id="char-count">0 / 600</span>
-                <button id="submit-btn" class="btn btn-primary" onclick="submitComment()">Post comment</button>
-              </div>
-              <div id="form-message"></div>
-            </div>
-          </div>
+<div class="comment-form-wrap">
+  <div id="logged-out-prompt" class="form-locked"></div>
+  <div id="logged-in-form" class="form-active" style="display:none">
 
-          <div class="comment-controls">
-            <select id="denom-filter" class="select-input" onchange="filterComments()">
-              <option value="">All traditions</option>
-              <option>Roman Catholic</option>
-              <option>Eastern Orthodox</option>
-              <option>Anglican / Episcopal</option>
-              <option>Lutheran</option>
-              <option>Presbyterian / Reformed</option>
-              <option>Baptist</option>
-              <option>Methodist / Wesleyan</option>
-              <option>Pentecostal</option>
-              <option>Charismatic</option>
-              <option>Anabaptist / Mennonite</option>
-              <option>Non-denominational</option>
-              <option>Other</option>
-            </select>
-            <select id="comment-sort" class="select-input" onchange="filterComments()">
-              <option value="top">Top voted</option>
-              <option value="new">Newest first</option>
-            </select>
-          </div>
+    <div class="ctype-tabs" id="ctype-tabs">
+      <button class="ctype-tab active" data-ctype="general" onclick="setCommentType('general')">
+        💬 General
+      </button>
+      <button class="ctype-tab" data-ctype="responding" onclick="setCommentType('responding')">
+        ⚔️ Respond to a tradition
+      </button>
+      <button class="ctype-tab" data-ctype="edit_suggestion" onclick="setCommentType('edit_suggestion')">
+        ✏️ Suggest an edit
+      </button>
+      <button class="ctype-tab" data-ctype="verse_citation" onclick="setCommentType('verse_citation')">
+        📖 Cite a verse
+      </button>
+    </div>
+
+    <div class="ctype-helper" id="ctype-helper">
+      Share a general observation about this debate.
+    </div>
+
+    <div class="ctype-fields" id="ctype-fields" style="display:none">
+      <div class="ctype-field-row">
+        <label class="ctype-field-label" id="target-denom-label">Which tradition?</label>
+        <select id="target-denom-select" class="select-input"></select>
+      </div>
+      <div class="ctype-field-row" id="verse-ref-row" style="display:none">
+        <label class="ctype-field-label">Bible reference</label>
+        <input type="text" id="verse-ref-input" class="text-input" placeholder="e.g. Rom 9:11–23"/>
+      </div>
+    </div>
+
+    <textarea id="comment-text" class="comment-textarea" maxlength="600" placeholder="Make your case. Cite Scripture. Be charitable. (Max 600 characters.)"></textarea>
+    <div class="form-bottom">
+      <span class="char-count" id="char-count">0 / 600</span>
+      <button id="submit-btn" class="btn btn-primary" onclick="submitComment()">Post contribution</button>
+    </div>
+    <div id="form-message"></div>
+  </div>
+</div>
+
+<div class="comment-controls">
+  <select id="ctype-filter" class="select-input" onchange="filterComments()">
+    <option value="">All contributions</option>
+    <option value="general">💬 General</option>
+    <option value="responding">⚔️ Responses</option>
+    <option value="edit_suggestion">✏️ Edit suggestions</option>
+    <option value="verse_citation">📖 Verse citations</option>
+  </select>
+  <select id="target-filter" class="select-input" onchange="filterComments()">
+    <option value="">All targets</option>
+  </select>
+  <select id="comment-sort" class="select-input" onchange="filterComments()">
+    <option value="top">Top voted</option>
+    <option value="new">Newest first</option>
+  </select>
+</div>
 
           <div id="comment-list" class="comment-list"></div>
         </section>
