@@ -518,8 +518,6 @@ const TOPICS = [
     historicalNote: 'The Marburg Colloquy (October 1–4, 1529): Luther and Zwingli (with Oecolampadius, Bucer, and Melanchthon present) agreed on 14 of 15 articles but could not reach accord on the Eucharist. Luther repeatedly wrote "Hoc est corpus meum" on the table in chalk. This permanently divided Protestantism into Lutheran and Reformed streams and foreclosed a united Reformation front against Rome. Trent\'s Decree on the Most Holy Eucharist (1551) and Decree on the Sacrifice of the Mass (1562) codified the Catholic response. The Lutheran-Catholic dialogue\'s "The Eucharist" (1978) and the Reformed-Catholic "Towards a Common Understanding of the Church" (1990) have narrowed the differences considerably.',
     relatedTopics: ['baptism', 'number-of-sacraments', 'salvation-works'],
   },
-
-];
 {
     id: 'baptism',
     name: 'Baptism: Subjects, Mode & Effect',
