@@ -2085,6 +2085,11 @@ function renderDenominations(topic) {
   renderRepliesUnderDenoms();
 }
 
+function stanceLabel(stance) {
+  return { affirm: 'Affirms', deny: 'Denies', nuanced: 'Nuanced', varies: 'Varies' }[stance] || stance;
+}
+
+
 function cssId(name) {
   return name.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
 }
