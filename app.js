@@ -2320,12 +2320,16 @@ function escHtml(str) {
 function setupCharCount() {
   const ta = document.getElementById('comment-text');
   if (!ta) return;
-  ta.addEventListener('input', () => {
+ta.addEventListener('input', () => {
     const len = ta.value.length;
     const el = document.getElementById('char-count');
     el.textContent = `${len} / 600`;
     el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
-  }
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   BIBLE VERSE LINKING + HOVER POPOVER             
                      // ═══════════════════════════════════════════════════════════════
 //   BIBLE VERSE LINKING + HOVER POPOVER
 // ═══════════════════════════════════════════════════════════════
@@ -2427,5 +2431,4 @@ async function fetchVerseText(ref) {
     return null;
   }
 }
-                     );
-}
+         
