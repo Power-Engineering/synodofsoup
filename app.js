@@ -1017,8 +1017,6 @@ const TOPICS = [
     relatedTopics: ['salvation-works', 'atonement', 'sola-scriptura'],
   },
 
-];
-
 {
     id: 'atonement',
     name: 'Theories of the Atonement',
