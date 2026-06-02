@@ -1785,6 +1785,9 @@ let allComments = [];
 let userVotes = new Set();
 let activeCategory = 'All';
 let searchQuery = '';
+let currentCommentType = 'general';
+let currentTargetDenom = '';
+let currentVerseRef = '';
 
 // ═══════════════════════════════════════════════════════════════
 //   INIT
@@ -1795,6 +1798,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCategoryFilters();
   renderTopics();
   setupCharCount();
+  setupCommentTypeTabs();
   setupSearch();
   updateStats();
 });
@@ -2057,7 +2061,7 @@ function renderDenominations(topic) {
   const grid = document.getElementById('denom-grid');
   if (!grid) return;
   grid.innerHTML = topic.denominations.map(d => `
-    <div class="denom-card stance-${d.stance}">
+    <div class="denom-card stance-${d.stance}" data-denom="${escHtml(d.name)}">
       <div class="denom-card-top">
         <div class="denom-name">${escHtml(d.name)}</div>
         <div class="stance-badge badge-${d.stance}">${stanceLabel(d.stance)}</div>
@@ -2068,14 +2072,29 @@ function renderDenominations(topic) {
           <div class="denom-verses-label">Their proof-texts</div>
           <div>${d.verses.map(v => `<span class="verse-pill">${escHtml(v)}</span>`).join(' ')}</div>
         </div>` : ''}
+      <button class="denom-reply-btn" onclick="startReplyToDenom('${escHtml(d.name).replace(/'/g,"\\'")}')">
+        ⚔️ Respond to this position
+      </button>
+      <div class="denom-replies" id="denom-replies-${cssId(d.name)}" style="display:none">
+        <div class="denom-replies-label">Replies to this tradition</div>
+        <div id="denom-replies-list-${cssId(d.name)}"></div>
+      </div>
     </div>`).join('');
   enhanceVersePills();
+  populateTargetFilter(topic);
+  renderRepliesUnderDenoms();
 }
 
-function stanceLabel(stance) {
-  return { affirm: 'Affirms', deny: 'Denies', nuanced: 'Nuanced', varies: 'Varies' }[stance] || stance;
+function cssId(name) {
+  return name.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
 }
 
+function populateTargetFilter(topic) {
+  const sel = document.getElementById('target-filter');
+  if (!sel) return;
+  sel.innerHTML = `<option value="">All targets</option>` +
+    topic.denominations.map(d => `<option value="${escHtml(d.name)}">${escHtml(d.name)}</option>`).join('');
+}
 // ═══════════════════════════════════════════════════════════════
 //   COMMENTS
 // ═══════════════════════════════════════════════════════════════
@@ -2124,35 +2143,93 @@ function renderComments(comments) {
   const list = document.getElementById('comment-list');
   if (!list) return;
   if (comments.length === 0) {
-    list.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🕊️</div>No contributions yet on this debate.<br>The floor is open — share your perspective.</div>`;
+    list.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🕊️</div>No contributions yet under these filters.</div>`;
     return;
   }
-  list.innerHTML = comments.map(c => {
-    const initials = (c.display_name || 'A').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-    const voted = userVotes.has(c.id);
-    const date = new Date(c.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
-    const isOwn = currentUser && c.user_id === currentUser.id;
-    return `
-      <div class="comment-item">
-        <div class="comment-avatar">${initials}</div>
-        <div class="comment-body">
-          <div class="comment-meta">
-            <span class="comment-author">${escHtml(c.display_name)}</span>
-            ${c.denomination ? `<span class="comment-denom-tag">${escHtml(c.denomination)}</span>` : ''}
-            <span class="comment-date">${date}</span>
-          </div>
-          <div class="comment-text">${escHtml(c.body)}</div>
-          <div class="comment-actions">
-            <button class="upvote-btn ${voted ? 'voted' : ''}" onclick="toggleUpvote(${c.id})" id="upvote-${c.id}">
-              ${voted ? '▲' : '△'} <span id="upvote-count-${c.id}">${c.upvotes}</span>
-            </button>
-            ${isOwn ? `<button class="delete-btn" onclick="deleteComment(${c.id})">Delete</button>` : ''}
-          </div>
-        </div>
-      </div>`;
-  }).join('');
+  list.innerHTML = comments.map(renderCommentItem).join('');
+  enhanceVersePills();
 }
 
+function renderCommentItem(c) {
+  const initials = (c.display_name || 'A').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  const voted = userVotes.has(c.id);
+  const date = new Date(c.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+  const isOwn = currentUser && c.user_id === currentUser.id;
+  const ctype = c.comment_type || 'general';
+  const badges = {
+    general:        '<span class="comment-type-badge ctb-general">💬 General</span>',
+    responding:     '<span class="comment-type-badge ctb-responding">⚔️ Response</span>',
+    edit_suggestion:'<span class="comment-type-badge ctb-edit">✏️ Edit</span>',
+    verse_citation: '<span class="comment-type-badge ctb-verse">📖 Verse</span>',
+  };
+  let targetLine = '';
+  if (c.target_denomination && (ctype === 'responding' || ctype === 'edit_suggestion')) {
+    const verb = ctype === 'responding' ? 'Responding to' : 'Proposed edit for';
+    targetLine = `<div class="comment-target-line">${verb} <strong>${escHtml(c.target_denomination)}</strong></div>`;
+  }
+  let versePill = '';
+  if (ctype === 'verse_citation' && c.verse_reference) {
+    versePill = `<div class="comment-target-line">📖 <span class="verse-pill">${escHtml(c.verse_reference)}</span>${c.target_denomination ? ' · supports <strong>' + escHtml(c.target_denomination) + '</strong>' : ''}</div>`;
+  }
+  return `
+    <div class="comment-item">
+      <div class="comment-avatar">${initials}</div>
+      <div class="comment-body">
+        <div class="comment-meta">
+          <span class="comment-author">${escHtml(c.display_name)}</span>
+          ${c.denomination ? `<span class="comment-denom-tag">${escHtml(c.denomination)}</span>` : ''}
+          ${badges[ctype] || ''}
+          <span class="comment-date">${date}</span>
+        </div>
+        ${targetLine}
+        ${versePill}
+        <div class="comment-text">${escHtml(c.body)}</div>
+        <div class="comment-actions">
+          <button class="upvote-btn ${voted ? 'voted' : ''}" onclick="toggleUpvote(${c.id})" id="upvote-${c.id}">
+            ${voted ? '▲' : '△'} <span id="upvote-count-${c.id}">${c.upvotes}</span>
+          </button>
+          ${isOwn ? `<button class="delete-btn" onclick="deleteComment(${c.id})">Delete</button>` : ''}
+        </div>
+      </div>
+    </div>`;
+}
+
+function filterComments() {
+  const ctypeSel = document.getElementById('ctype-filter');
+  const targetSel = document.getElementById('target-filter');
+  const sortSel = document.getElementById('comment-sort');
+  const ctype = ctypeSel ? ctypeSel.value : '';
+  const target = targetSel ? targetSel.value : '';
+  const sort = sortSel ? sortSel.value : 'top';
+
+  let filtered = [...allComments];
+  if (ctype) filtered = filtered.filter(c => (c.comment_type || 'general') === ctype);
+  if (target) filtered = filtered.filter(c => c.target_denomination === target);
+  if (sort === 'top') filtered.sort((a, b) => b.upvotes - a.upvotes);
+  else filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  renderComments(filtered);
+  renderRepliesUnderDenoms();
+}
+
+function renderRepliesUnderDenoms() {
+  if (!currentTopic) return;
+  currentTopic.denominations.forEach(d => {
+    const wrap = document.getElementById('denom-replies-' + cssId(d.name));
+    const inner = document.getElementById('denom-replies-list-' + cssId(d.name));
+    if (!wrap || !inner) return;
+    const replies = allComments
+      .filter(c => c.target_denomination === d.name && (c.comment_type === 'responding' || c.comment_type === 'edit_suggestion'))
+      .sort((a, b) => b.upvotes - a.upvotes)
+      .slice(0, 3);  // top 3 replies inline; rest visible in main thread
+    if (replies.length === 0) {
+      wrap.style.display = 'none';
+    } else {
+      wrap.style.display = 'block';
+      inner.innerHTML = replies.map(renderCommentItem).join('');
+    }
+  });
+  enhanceVersePills();
+}
 function filterComments() {
   const val = document.getElementById('denom-filter').value;
   const sortEl = document.getElementById('comment-sort');
@@ -2163,12 +2240,93 @@ function filterComments() {
   renderComments(filtered);
 }
 
+function setCommentType(type) {
+  currentCommentType = type;
+  document.querySelectorAll('.ctype-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.ctype === type);
+  });
+  const helper = document.getElementById('ctype-helper');
+  const fields = document.getElementById('ctype-fields');
+  const verseRow = document.getElementById('verse-ref-row');
+  const denomLabel = document.getElementById('target-denom-label');
+  const targetSelect = document.getElementById('target-denom-select');
+  const textArea = document.getElementById('comment-text');
+
+  // Populate denom dropdown with current topic's traditions
+  if (currentTopic && targetSelect) {
+    targetSelect.innerHTML = `<option value="">— select tradition —</option>` +
+      currentTopic.denominations.map(d => `<option value="${escHtml(d.name)}">${escHtml(d.name)}</option>`).join('');
+    if (currentTargetDenom) targetSelect.value = currentTargetDenom;
+  }
+
+  if (type === 'general') {
+    helper.textContent = 'Share a general observation about this debate.';
+    fields.style.display = 'none';
+    verseRow.style.display = 'none';
+    if (textArea) textArea.placeholder = 'Make your case. Cite Scripture. Be charitable. (Max 600 characters.)';
+  } else if (type === 'responding') {
+    helper.textContent = 'Engage critically with a specific tradition\'s position. Select which one below.';
+    fields.style.display = 'flex';
+    verseRow.style.display = 'none';
+    denomLabel.textContent = 'Responding to which tradition?';
+    if (textArea) textArea.placeholder = 'Make your counter-argument. Be specific and charitable.';
+  } else if (type === 'edit_suggestion') {
+    helper.textContent = 'Propose a correction or addition to how a tradition is summarised. Most valuable when you belong to that tradition.';
+    fields.style.display = 'flex';
+    verseRow.style.display = 'none';
+    denomLabel.textContent = 'Edit suggestion for which tradition?';
+    if (textArea) textArea.placeholder = 'What should be changed, added, or clarified? Cite sources where you can.';
+  } else if (type === 'verse_citation') {
+    helper.textContent = 'Add a Bible passage you believe is relevant to this debate, with brief commentary.';
+    fields.style.display = 'flex';
+    verseRow.style.display = 'flex';
+    denomLabel.textContent = 'Supports which tradition? (optional)';
+    if (targetSelect) targetSelect.innerHTML = `<option value="">— general / no specific tradition —</option>` +
+      (currentTopic ? currentTopic.denominations.map(d => `<option value="${escHtml(d.name)}">${escHtml(d.name)}</option>`).join('') : '');
+    if (textArea) textArea.placeholder = 'How does this passage bear on the debate?';
+  }
+}
+
+function startReplyToDenom(denomName) {
+  // Scroll to comment area, set type=responding, preselect tradition
+  if (!currentUser) { openModal('login'); return; }
+  setCommentType('responding');
+  const select = document.getElementById('target-denom-select');
+  if (select) select.value = denomName;
+  currentTargetDenom = denomName;
+  const ta = document.getElementById('comment-text');
+  if (ta) {
+    ta.focus();
+    ta.value = '';
+  }
+  document.querySelector('.comments-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+
+
 async function submitComment() {
   const body = document.getElementById('comment-text').value.trim();
   const btn = document.getElementById('submit-btn');
+  const targetSelect = document.getElementById('target-denom-select');
+  const verseInput = document.getElementById('verse-ref-input');
   if (!body) { showFormMsg('error', 'Please write something before posting.'); return; }
   if (body.length > 600) { showFormMsg('error', 'Keep it under 600 characters.'); return; }
   if (!currentUser || !currentUserProfile) { showFormMsg('error', 'Please sign in first.'); return; }
+
+  const target = targetSelect ? targetSelect.value : '';
+  const verseRef = verseInput ? verseInput.value.trim() : '';
+
+  // Validation by type
+  if (currentCommentType === 'responding' && !target) {
+    showFormMsg('error', 'Pick a tradition to respond to.'); return;
+  }
+  if (currentCommentType === 'edit_suggestion' && !target) {
+    showFormMsg('error', 'Pick a tradition whose summary you wish to edit.'); return;
+  }
+  if (currentCommentType === 'verse_citation' && !verseRef) {
+    showFormMsg('error', 'Enter the Bible reference (e.g. Rom 8:28–30).'); return;
+  }
+
   btn.disabled = true; btn.textContent = 'Posting…';
   try {
     const { error } = await supabaseClient.from('comments').insert({
@@ -2176,17 +2334,24 @@ async function submitComment() {
       user_id: currentUser.id,
       display_name: currentUserProfile.display_name,
       denomination: currentUserProfile.denomination || null,
-      body, upvotes: 0,
+      body,
+      upvotes: 0,
+      comment_type: currentCommentType,
+      target_denomination: target || null,
+      verse_reference: (currentCommentType === 'verse_citation' && verseRef) ? verseRef : null,
     });
     if (error) throw error;
     document.getElementById('comment-text').value = '';
     document.getElementById('char-count').textContent = '0 / 600';
+    if (verseInput) verseInput.value = '';
+    setCommentType('general');
+    currentTargetDenom = '';
     showFormMsg('success', 'Posted!');
     await loadComments(currentTopic.id);
   } catch (err) {
     showFormMsg('error', err.message || 'Failed to post. Try again.');
   } finally {
-    btn.disabled = false; btn.textContent = 'Post comment';
+    btn.disabled = false; btn.textContent = 'Post contribution';
   }
 }
 
@@ -2326,6 +2491,11 @@ ta.addEventListener('input', () => {
     el.textContent = `${len} / 600`;
     el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
   });
+}
+
+function setupCommentTypeTabs() {
+  // Ensure the helper text is correct on initial load
+  if (document.getElementById('ctype-helper')) setCommentType('general');
 }
 
 // ═══════════════════════════════════════════════════════════════
