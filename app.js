@@ -2004,12 +2004,13 @@ async function showTopic(id) {
     }
   }
 
-  // Key verses
+// Key verses
   const versesEl = document.getElementById('key-verses');
   const versesBlock = document.getElementById('key-verses-block');
   if (versesEl && topic.keyVerses && topic.keyVerses.length) {
     versesBlock.style.display = 'block';
     versesEl.innerHTML = topic.keyVerses.map(v => `<span class="verse-pill">${escHtml(v)}</span>`).join('');
+    enhanceVersePills();          // ← ADD THIS LINE
   } else if (versesBlock) {
     versesBlock.style.display = 'none';
   }
@@ -2068,6 +2069,7 @@ function renderDenominations(topic) {
           <div>${d.verses.map(v => `<span class="verse-pill">${escHtml(v)}</span>`).join(' ')}</div>
         </div>` : ''}
     </div>`).join('');
+  enhanceVersePills();
 }
 
 function stanceLabel(stance) {
@@ -2323,5 +2325,107 @@ function setupCharCount() {
     const el = document.getElementById('char-count');
     el.textContent = `${len} / 600`;
     el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
+  }
+                     // ═══════════════════════════════════════════════════════════════
+//   BIBLE VERSE LINKING + HOVER POPOVER
+// ═══════════════════════════════════════════════════════════════
+
+// Convert "Rom 9:11–23" or "2 Tim 3:16–17" to BibleGateway URL-friendly form
+function verseToBGQuery(ref) {
+  return encodeURIComponent(
+    ref.replace(/[–—]/g, '-')   // en/em dashes → hyphen
+       .replace(/\s+/g, ' ')
+       .trim()
+  );
+}
+
+function verseToBibleGatewayURL(ref) {
+  return `https://www.biblegateway.com/passage/?search=${verseToBGQuery(ref)}&version=ESV`;
+}
+
+// Convert the existing static verse pills into interactive links.
+// Called after every render that produces .verse-pill elements.
+function enhanceVersePills() {
+  document.querySelectorAll('.verse-pill').forEach(pill => {
+    if (pill.dataset.enhanced) return; // skip already-processed
+    pill.dataset.enhanced = '1';
+    const ref = pill.textContent.trim();
+    pill.dataset.verseRef = ref;
+    pill.style.cursor = 'pointer';
+    pill.setAttribute('title', `Click to open ${ref} on BibleGateway · hover for text`);
+    pill.addEventListener('click', () => {
+      window.open(verseToBibleGatewayURL(ref), '_blank', 'noopener');
+    });
+    pill.addEventListener('mouseenter', () => showVersePopover(pill, ref));
+    pill.addEventListener('mouseleave', hideVersePopover);
   });
+}
+
+// Cache so we don't refetch the same verse repeatedly
+const verseTextCache = new Map();
+let activePopover = null;
+
+async function showVersePopover(anchorEl, ref) {
+  hideVersePopover();
+  const popover = document.createElement('div');
+  popover.className = 'verse-popover';
+  popover.innerHTML = `
+    <div class="verse-popover-ref">${escHtml(ref)} <span style="opacity:.6;font-weight:400">· ESV</span></div>
+    <div class="verse-popover-body" id="verse-popover-body">Loading…</div>
+    <div class="verse-popover-foot">Click pill to open in BibleGateway →</div>
+  `;
+  document.body.appendChild(popover);
+  activePopover = popover;
+  // position below the pill
+  const r = anchorEl.getBoundingClientRect();
+  popover.style.left = Math.max(10, Math.min(window.innerWidth - 380, r.left)) + 'px';
+  popover.style.top = (r.bottom + window.scrollY + 8) + 'px';
+
+  // Fetch text
+  let text = verseTextCache.get(ref);
+  if (!text) {
+    text = await fetchVerseText(ref);
+    if (text) verseTextCache.set(ref, text);
+  }
+  const body = document.getElementById('verse-popover-body');
+  if (body) {
+    body.innerHTML = text
+      ? text
+      : `<em style="opacity:.7">Couldn't fetch verse text. Click the pill to read it on BibleGateway.</em>`;
+  }
+}
+
+function hideVersePopover() {
+  if (activePopover && activePopover.parentNode) activePopover.parentNode.removeChild(activePopover);
+  activePopover = null;
+}
+
+// Use the bible-api.com free public API (KJV/WEB). No key required.
+// We use the World English Bible (WEB) — public domain, no licence issue.
+async function fetchVerseText(ref) {
+  try {
+    // bible-api.com expects e.g. "rom+9:11-23"
+    const query = ref
+      .replace(/[–—]/g, '-')
+      .replace(/\s+/g, '+')
+      .replace(/\u00A0/g, '+');
+    const res = await fetch(`https://bible-api.com/${encodeURIComponent(query)}?translation=web`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!data || !data.text) return null;
+    // Clean up: collapse newlines, escape HTML, italicise verse numbers
+    const clean = escHtml(data.text.trim()).replace(/\s+/g, ' ');
+    // If verses array exists, render with verse-number superscripts
+    if (Array.isArray(data.verses)) {
+      return data.verses.map(v =>
+        `<sup style="color:var(--gold-dark);font-weight:600;margin-right:3px">${v.verse}</sup>${escHtml(v.text.trim())}`
+      ).join(' ');
+    }
+    return clean;
+  } catch (err) {
+    console.warn('Verse fetch failed:', err);
+    return null;
+  }
+}
+                     );
 }
