@@ -1299,3 +1299,134 @@ a:hover { color: var(--crimson); }
 @media (max-width: 520px) {
   .verse-popover { width: calc(100vw - 20px); }
 }
+/* ═══ COMMENT TYPE TABS ═══ */
+.ctype-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.ctype-tab {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-light);
+  padding: 7px 13px;
+  border-radius: var(--radius);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.ctype-tab:hover {
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.ctype-tab.active {
+  background: var(--ink);
+  color: var(--white-warm);
+  border-color: var(--ink);
+}
+.ctype-helper {
+  font-size: 13px;
+  color: var(--ink-light);
+  padding: 6px 2px 10px;
+  font-style: italic;
+}
+.ctype-fields {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ctype-field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.ctype-field-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-light);
+  font-weight: 600;
+}
+
+/* ═══ REPLY-TO-POSITION BUTTON ═══ */
+.denom-reply-btn {
+  margin-top: 14px;
+  padding: 6px 13px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  border-radius: var(--radius);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.denom-reply-btn:hover {
+  border-color: var(--crimson);
+  color: var(--crimson);
+  background: var(--white-warm);
+}
+
+/* ═══ COMMENT THREADS UNDER DENOMINATIONS ═══ */
+.denom-replies {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+.denom-replies-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-light);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.denom-replies .comment-item {
+  background: var(--parchment-warm);
+  border: 1px solid var(--line-soft);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+.denom-replies .comment-text { font-size: 14px; }
+.denom-replies-empty {
+  font-size: 13px;
+  color: var(--ink-light);
+  font-style: italic;
+}
+
+/* ═══ COMMENT TYPE BADGES ═══ */
+.comment-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  border-radius: 100px;
+  margin-left: 4px;
+}
+.ctb-general      { background: #eef2f5; color: #5a6b7a; }
+.ctb-responding   { background: var(--deny-bg); color: var(--deny); }
+.ctb-edit         { background: var(--nuanced-bg); color: var(--nuanced); }
+.ctb-verse        { background: var(--aff-bg); color: var(--aff); }
+
+.comment-target-line {
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-bottom: 6px;
+  font-style: italic;
+}
+.comment-target-line strong { color: var(--ink-soft); font-style: normal; font-weight: 600; }
