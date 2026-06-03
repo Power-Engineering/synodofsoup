@@ -1761,6 +1761,952 @@ const TOPICS = [
     historicalNote: 'Origen\'s apokatastasis was condemned at Constantinople II (553 AD), though scholars debate the precise target of the condemnation. F.D. Maurice\'s Theological Essays (1853) — questioning eternal punishment — cost him his King\'s College London professorship in one of the major Victorian theological controversies. C.S. Lewis\'s The Great Divorce (1945) and The Problem of Pain (1940) gave nuanced ECT defences that have shaped much contemporary evangelical thought ("the doors of hell are locked on the inside"). John Stott\'s tentative annihilationism in Essentials (1988) made evangelical annihilationism respectable. Rob Bell\'s Love Wins (2011) generated the largest popular evangelical debate on hell in a generation. David Bentley Hart\'s That All Shall Be Saved (2019) is the most recent sustained scholarly universalist statement, generating significant responses including Michael McClymond\'s two-volume The Devil\'s Redemption (2018).',
     relatedTopics: ['atonement', 'predestination', 'salvation-works'],
   },
+// ═══════════════════════════════════════════════════════════
+// PATCH 4 — 6 NEW TOPICS to be inserted into the TOPICS array
+// Append these BEFORE the closing "];" of the TOPICS array
+// (i.e. right after the "hell" topic, before "];")
+// ═══════════════════════════════════════════════════════════
+
+  // ╔══════════════════════════════════════════════════════════╗
+  // ║  MINISTRY & ETHICS                                        ║
+  // ╚══════════════════════════════════════════════════════════╝
+
+  {
+    id: 'womens-ordination',
+    name: 'Women in Ministry & Ordination',
+    icon: '⛪',
+    controversy: 90,
+    category: 'Ministry',
+    desc: 'May women be ordained to the pastoral office, teach men in the gathered church, and exercise ruling authority over a congregation? Are 1 Timothy 2:12 and 1 Corinthians 14:34–35 transcultural commands, or culturally-bound first-century corrections?',
+    definition: `<p>The question of <strong>women in ministry</strong> turns on whether the New Testament restrictions on women teaching and exercising authority over men in the gathered church are <em>transcultural and permanent</em> (the complementarian position) or <em>culturally-bound first-century corrections</em> that no longer apply when their original context is understood (the egalitarian position).</p>
+      <p>The defining biblical texts are 1 Timothy 2:11–14 ("I do not permit a woman to teach or to exercise authority over a man") and 1 Corinthians 14:34–35 ("the women should keep silent in the churches"). Complementarians argue Paul grounds his prohibition in the creation order (1 Tim 2:13: "For Adam was formed first") — making it a permanent ordinance, not a cultural accommodation. Egalitarians argue the texts address specific local problems (uneducated women asking disruptive questions in Ephesus, Corinthian disorder) and that Galatians 3:28 ("there is no male and female, for you are all one in Christ Jesus") establishes the deeper principle.</p>
+      <p>The Catholic and Orthodox positions are more comprehensive still: women cannot be ordained <em>to the priesthood at all</em> because the priest acts <em>in persona Christi</em> — in the person of Christ — at the altar, and only a male can sacramentally re-present the male Christ. This is held to be a matter of divine institution that the Church has no authority to alter.</p>`,
+    subtopics: [
+      { id: 'wo-priesthood', label: 'Ordination to priesthood' },
+      { id: 'wo-teaching', label: 'Teaching/preaching to men' },
+      { id: 'wo-eldership', label: 'Eldership and authority' },
+      { id: 'wo-deacons', label: 'Female deacons' },
+    ],
+    denominations: [
+      {
+        name: 'Roman Catholic',
+        stance: 'deny',
+        position: `The Catholic Church teaches definitively that priestly ordination is reserved to baptised males alone (<em>viri</em>). Pope John Paul II's apostolic letter <strong><em>Ordinatio Sacerdotalis</em></strong> (May 22, 1994) declared: "I declare that the Church has no authority whatsoever to confer priestly ordination on women and that this judgment is to be definitively held by all the Church's faithful." The Congregation for the Doctrine of the Faith, then under Cardinal Joseph Ratzinger, subsequently clarified (October 1995) that this teaching has been "set forth infallibly by the ordinary and universal Magisterium" — placing it beyond legitimate Catholic debate.
+      <br><br>
+      The theological reasoning rests on three pillars. <strong>(1) Christological:</strong> at the altar, the priest acts <em>in persona Christi capitis</em> — in the person of Christ the Head. The sacramental sign requires a "natural resemblance" between Christ and his minister (CDF, <em>Inter Insigniores</em>, October 15, 1976, §5). Christ is male; the sacramental priesthood must therefore be male. <strong>(2) Apostolic:</strong> Christ chose only men as his Twelve Apostles, even though he could have chosen otherwise — even though his own mother, surpassing all the apostles in grace, was not among the Twelve. The Church understands itself bound by this Dominical choice. <strong>(3) Constant tradition:</strong> No bishop, council, or pope in the two thousand years of Catholic history has purported to ordain a woman to priesthood. This constant practice is itself evidence of the Spirit's guidance of the Church.
+      <br><br>
+      <em>Inter Insigniores</em> §1 lists the patristic witness: Irenaeus, Tertullian, Hippolytus, Cyprian, Epiphanius, John Chrysostom, Augustine all reject female ordination. The medieval scholastics (Bonaventure, Aquinas, Duns Scotus) treated the matter as settled.
+      <br><br>
+      The Catechism of the Catholic Church §1577 codifies this: "Only a baptised man (<em>vir</em>) validly receives sacred ordination."
+      <br><br>
+      <strong>However</strong>, the question of <em>female deacons</em> is open in Catholic theology. The early Church had deaconesses (Romans 16:1–2 — Phoebe is called <em>diakonos</em>; the Council of Chalcedon canon 15, the Apostolic Constitutions). Pope Francis established commissions on the female diaconate in 2016 and 2020. The 2024 Synod on Synodality discussed the question without resolving it. The CDF distinguishes between the sacramental priesthood (closed to women by divine institution) and the diaconal ministry (whose precise sacramental character and historical scope remain under study).
+      <br><br>
+      Catholic women exercise vast ministry in religious orders, theology, catechesis, parish administration, lay liturgical roles, and as Doctors of the Church — Teresa of Ávila (1970), Catherine of Siena (1970), Thérèse of Lisieux (1997), Hildegard of Bingen (2012) — but the sacramental priesthood remains male.`,
+        verses: ['Matt 10:1–4', 'Luke 6:12–16', '1 Tim 3:1–7', '1 Tim 2:11–14', '1 Cor 11:3', '1 Cor 14:34–35', 'Eph 5:22–33'],
+      },
+      {
+        name: 'Eastern Orthodox',
+        stance: 'deny',
+        position: `Orthodoxy uniformly restricts the priesthood (presbyterate and episcopate) to men, on essentially the same theological grounds as Rome: the priest at the altar functions as an icon of Christ, and the iconographic relationship requires the male sex.
+      <br><br>
+      The Inter-Orthodox Theological Consultation at Rhodes (1988) gave the contemporary pan-Orthodox statement: women cannot be ordained to priesthood because "the order of redemption" preserves the order of creation; because of the unbroken apostolic and patristic tradition; and because the sacramental priesthood is bound to the male Christ in a way Orthodox theology cannot abstract from.
+      <br><br>
+      Metropolitan Kallistos Ware's <em>Man, Woman, and the Priesthood of Christ</em> (1978, with various subsequent essays) gives the most accessible Orthodox systematic treatment. Ware argues that the question is not about women's spiritual capacity (which Orthodoxy affirms abundantly — the Theotokos is honoured above all the saints; women monastics, mystics, and teachers are central to Orthodox life) but about the iconographic and typological character of liturgical priesthood.
+      <br><br>
+      <strong>The female diaconate</strong> is a live and contested question in Orthodoxy. The order of <em>deaconess</em> existed in the early Church and into the Byzantine period — Olympias, the friend and patron of John Chrysostom, was ordained deaconess by Patriarch Nectarius (c. 391). The rite of ordination for deaconesses is preserved in Byzantine euchologion. The order fell into disuse by the 11th–12th centuries but was never formally abolished.
+      <br><br>
+      Several Orthodox churches have moved to restore the order in recent years. The Patriarchate of Alexandria revived the deaconess order in 2016. The Russian Orthodox Church Outside Russia has discussed the question. The 1988 Rhodes consultation called for "renewal" of the diaconate in forms appropriate to contemporary Orthodox life.
+      <br><br>
+      Orthodox women teach theology (Elisabeth Behr-Sigel, Frederica Mathewes-Green, Eva Catafygiotu Topping), serve as abbesses with substantial spiritual authority over both women and men, and lead in nearly every dimension of church life except the eucharistic priesthood and episcopate.`,
+        verses: ['Matt 10:1–4', 'Luke 1:46–55', 'Rom 16:1–2', '1 Tim 3:11', '1 Tim 2:11–14', '1 Cor 11:3–16', 'Gal 3:28'],
+      },
+      {
+        name: 'Anglican / Episcopal',
+        stance: 'varies',
+        position: `Anglicanism is genuinely divided on this question across provinces and within them. The Anglican Communion has no central authority to settle it; each province decides.
+      <br><br>
+      <strong>Provinces ordaining women to all three orders</strong> (bishop, priest, deacon): the Episcopal Church (USA — first woman priest 1976, first woman bishop Barbara Harris 1989, first woman Presiding Bishop Katharine Jefferts Schori 2006); the Anglican Church of Canada (1976); the Church of England (priests 1994, bishops 2014, with the consecration of Libby Lane); the Anglican Church of Australia (priests 1992, bishops 2008); the Scottish Episcopal Church; the Anglican Church of New Zealand; and most Western provinces.
+      <br><br>
+      <strong>Provinces that ordain women as deacons and priests but not bishops</strong>: a small and shrinking number.
+      <br><br>
+      <strong>Provinces that do not ordain women at all</strong>: most provinces in Africa (especially the more conservative Anglican Realignment provinces — Nigeria, Uganda, Kenya, Rwanda), some Asian provinces, the breakaway Anglican Church in North America (ACNA, though some ACNA dioceses ordain women to the diaconate or priesthood; the question of female bishops is closed).
+      <br><br>
+      The theological argument within Anglicanism follows the broader Protestant divide. <strong>The Lambeth Conference 1968</strong> declared that "the theological arguments as at present presented for and against the ordination of women to the priesthood are inconclusive." The 1978 Lambeth Conference asked provinces to "respect the autonomy of each Church in this matter."
+      <br><br>
+      The Anglican-Roman Catholic ARCIC dialogue has been strained by women's ordination: Rome regards Anglican female priests as invalid (and now treats their consecrations as adding nothing to the question of Anglican orders, which Rome had already declared "null and void" in <em>Apostolicae Curae</em> 1896).
+      <br><br>
+      Within provinces that ordain women, theological space is generally preserved for traditionalists. The Church of England's "Five Guiding Principles" (2014) recognise that those who cannot in conscience accept women's ordination remain "loyal Anglicans," with provision for them to receive episcopal ministry from male bishops. The Society of St Wilfrid and St Hilda and the Society of the Holy Cross serve traditionalist clergy.`,
+        verses: ['Gal 3:28', 'Acts 2:17–18', 'Rom 16:1–7', 'Matt 10:1–4', '1 Tim 2:11–14', '1 Tim 3:1–7', 'Phil 4:2–3'],
+      },
+      {
+        name: 'Lutheran',
+        stance: 'varies',
+        position: `Lutheranism is split. Among the major Lutheran bodies:
+      <br><br>
+      <strong>Ordain women</strong>: the Evangelical Lutheran Church in America (ELCA, women pastors from 1970, women bishops from 1992); most Scandinavian Lutheran state churches (Sweden 1958, Norway 1961, Denmark 1948, Finland 1988); many German EKD churches; most Lutheran World Federation members.
+      <br><br>
+      <strong>Do not ordain women</strong>: the Lutheran Church—Missouri Synod (LCMS), the Wisconsin Evangelical Lutheran Synod (WELS), the Evangelical Lutheran Synod, and most confessional Lutheran bodies worldwide.
+      <br><br>
+      The LCMS position is articulated in <em>The Service of Women in Congregational and Synodical Offices</em> (CTCR, 1985, revised 1994) and subsequent documents. The LCMS argues from 1 Corinthians 14:34–37 (which it reads as Paul appealing to the Lord's command, not to local custom) and 1 Timothy 2:11–14 (which grounds the prohibition in creation order, not in cultural circumstance). The pastoral office is the office of "the public ministry of the Word and sacraments" — what Augsburg Confession Article V establishes as Christ's institution. Only men may hold this office.
+      <br><br>
+      The LCMS permits women to serve in many capacities — teaching, church administration, missions, deaconess service (restored in the LCMS in 1979), parochial leadership — but not in the pastoral office and not in publicly preaching from the pulpit in the gathered worship.
+      <br><br>
+      The ELCA position rests on a different exegesis: the Pauline restrictions address specific Greco-Roman cultural situations (uneducated wives interrupting worship; the prominence of false women teachers in Ephesus). Galatians 3:28 establishes the deeper Pauline principle. The ELCA also reads Romans 16:1–16 as showing Paul commending female co-workers in apostolic ministry — Phoebe the deacon, Junia among the apostles (Romans 16:7 — the manuscript tradition strongly favours "Junia" as a woman's name), Prisca alongside Aquila.
+      <br><br>
+      The LCMS-ELCA divide is one of the largest unresolved questions in American Lutheran ecumenism.`,
+        verses: ['1 Tim 2:11–14', '1 Cor 14:33–37', 'Gal 3:28', 'Rom 16:1–7', 'Acts 2:17–18', 'Acts 18:24–26', '1 Cor 11:5'],
+      },
+      {
+        name: 'Reformed / Presbyterian',
+        stance: 'varies',
+        position: `The Reformed world is divided along the same complementarian / egalitarian lines as the broader Protestant world, generally tracking the conservative / progressive divide of each particular denomination.
+      <br><br>
+      <strong>Ordain women</strong>: the Presbyterian Church (USA) — women elders 1930, women deacons 1922, women ministers 1956; the Christian Reformed Church (CRC, women elders and ministers 1995, though with ongoing tension); the Reformed Church in America (RCA, 1979); the United Church of Christ; many continental European Reformed bodies.
+      <br><br>
+      <strong>Do not ordain women</strong>: the Presbyterian Church in America (PCA, the largest conservative American Presbyterian body); the Orthodox Presbyterian Church (OPC); the United Reformed Churches in North America (URCNA); most Reformed Baptist bodies; many international Reformed churches.
+      <br><br>
+      The PCA position is articulated in the PCA Book of Church Order and in numerous study committee reports. The PCA permits women to teach in many contexts (children's ministry, women's ministry, mixed-audience teaching outside the gathered worship) but reserves the offices of teaching elder, ruling elder, and deacon (in most PCA presbyteries) to qualified men. The PCA reads 1 Timothy 3:1–7 ("the husband of one wife") and 1 Timothy 2:11–14 as restricting the offices of authority and public teaching in the gathered church to men.
+      <br><br>
+      <strong>Wayne Grudem</strong> (Reformed Baptist) and <strong>John Piper</strong> founded the Council on Biblical Manhood and Womanhood (CBMW, 1987) and authored the Danvers Statement (1987). Their book <em>Recovering Biblical Manhood and Womanhood</em> (1991, with multiple contributors) gave systematic complementarianism its scholarly defence. The book argues that male-female differentiation is a creation good, grounded in Genesis 1–2, and that the New Testament restrictions on women in church office reflect this creation order rather than a transient cultural concession.
+      <br><br>
+      Egalitarian Reformed scholarship (Phyllis Trible, Aída Besançon Spencer, Linda Belleville, Cynthia Long Westfall) reads the same texts as culturally-conditioned applications of the deeper Galatians 3:28 principle. The egalitarian organisation Christians for Biblical Equality (CBE) was founded in 1988 in response to CBMW.
+      <br><br>
+      The Reformed debate is among the most exegetically rigorous, with both sides producing extensive commentary on the disputed Greek vocabulary — especially <em>authentein</em> (1 Tim 2:12, "to exercise authority"), which the egalitarians often translate "to domineer" or "to usurp authority," giving the verse a narrower meaning.`,
+        verses: ['1 Tim 2:11–14', '1 Tim 3:1–7', 'Titus 1:5–9', '1 Cor 14:33–37', '1 Cor 11:3', 'Gen 1:27', 'Gen 2:18–24', 'Gal 3:28'],
+      },
+      {
+        name: 'Baptist',
+        stance: 'varies',
+        position: `Baptist practice ranges from absolute complementarianism (Southern Baptist Convention, most Independent Baptist bodies) to full egalitarianism (American Baptist Churches USA, Cooperative Baptist Fellowship, Alliance of Baptists).
+      <br><br>
+      The <strong>Southern Baptist Convention</strong> formally restricted the pastoral office to men in the 2000 revision of the Baptist Faith & Message, Article VI: "While both men and women are gifted for service in the church, the office of pastor is limited to men as qualified by Scripture." This was a significant change from earlier BF&M versions which left the question open.
+      <br><br>
+      The 2023 SBC annual meeting voted to disfellowship Saddleback Church (founded by Rick Warren) and several other prominent congregations for having women on their pastoral staff with the title "pastor." The "Law Amendment" of 2024 — attempting to embed the male-only pastor requirement in the SBC constitution — failed to gain a two-thirds majority in the 2024 vote, exposing significant internal SBC division. The question remains live.
+      <br><br>
+      The SBC's complementarian position is articulated by figures such as <strong>Albert Mohler</strong> (president of Southern Seminary), <strong>Wayne Grudem</strong>, <strong>John Piper</strong>, and the broader CBMW network. The argument follows the Reformed complementarian case: 1 Timothy 2:11–14 grounds the restriction in creation order; 1 Timothy 3:1–7 specifies the qualifications "the husband of one wife"; the cumulative pattern of male leadership through Scripture is intentional, not incidental.
+      <br><br>
+      The <strong>American Baptist Churches USA</strong> has ordained women since the late 19th century — Helen Barrett Montgomery served as the first female president of the American Baptist Convention (1921). The Cooperative Baptist Fellowship (formed 1991 as a moderate alternative to the SBC) practises full egalitarianism. The Alliance of Baptists (1987) likewise.
+      <br><br>
+      <strong>Free Will Baptist, Primitive Baptist, and most Independent Baptist bodies</strong> are uniformly complementarian.
+      <br><br>
+      The Black Baptist tradition has been complicated. The National Baptist Convention USA, National Baptist Convention of America, and Progressive National Baptist Convention have historically been male-pastor-dominant but have moved increasingly toward ordaining women in recent decades. Many large historic Black Baptist churches now have women in significant pastoral or co-pastoral roles.`,
+        verses: ['1 Tim 2:11–14', '1 Tim 3:1–7', 'Titus 1:5–9', '1 Cor 14:33–37', 'Gal 3:28', 'Acts 2:17–18', 'Rom 16:1–7', 'Acts 18:24–26'],
+      },
+      {
+        name: 'Methodist / Wesleyan',
+        stance: 'affirm',
+        position: `Methodism has been historically among the most open Protestant traditions to women in ministry, though the position took centuries to settle.
+      <br><br>
+      <strong>John Wesley himself</strong> authorised women to preach and exhort in extraordinary cases. His Methodist movement included prominent female preachers: Mary Bosanquet Fletcher (1739–1815), Sarah Crosby (1729–1804), Hannah Ball (1733–92). Wesley's 1771 letter to Mary Bosanquet conceded that she had "an extraordinary call" to preach.
+      <br><br>
+      The 19th-century Holiness movement, growing out of Methodism, produced women preachers in unprecedented numbers. <strong>Phoebe Palmer</strong> (1807–74) was one of the most influential American religious figures of her century; her <em>Promise of the Father</em> (1859) was a sustained biblical defence of women's preaching. <strong>Catherine Booth</strong>, co-founder of the Salvation Army with her husband William, made female ministry constitutive of the Salvation Army from its founding (1865).
+      <br><br>
+      The <strong>Methodist Episcopal Church</strong> first granted women local preacher's licences in 1869, ordained women as deacons in 1924, and granted full clergy rights to women in 1956. The United Methodist Church (formed 1968) has ordained women throughout its existence.
+      <br><br>
+      The <strong>Wesleyan Church</strong> (formed by the abolitionist anti-slavery Methodists) has ordained women since its inception in 1843 — making it one of the earliest American denominations to do so on principled theological grounds.
+      <br><br>
+      The <strong>African Methodist Episcopal Church</strong> (AME) ordained Jarena Lee as a preacher in 1819, though full ordination came later. The AME elected its first female bishop, Vashti McKenzie, in 2000.
+      <br><br>
+      The <strong>Free Methodist Church</strong>, <strong>Church of the Nazarene</strong>, and other Holiness denominations all ordain women.
+      <br><br>
+      The Wesleyan theological case rests on: Joel 2:28–29 / Acts 2:17–18 (the outpouring of the Spirit on sons <em>and daughters</em>); Galatians 3:28; the prominence of women in the gospels and Acts; the gift-based ecclesiology of Wesleyan-Holiness theology (the Spirit gifts whom he wills, not according to sex); and the apostolic precedent in Romans 16 (Phoebe, Junia, Prisca, the unnamed female co-workers in Philippians 4:2–3).`,
+        verses: ['Joel 2:28–29', 'Acts 2:17–18', 'Gal 3:28', 'Rom 16:1–16', 'Acts 18:24–26', 'Phil 4:2–3', 'Luke 8:1–3', 'John 20:11–18'],
+      },
+      {
+        name: 'Pentecostal',
+        stance: 'varies',
+        position: `Pentecostalism has been complicated on this question. The early Pentecostal movement was strikingly open to women in ministry — at Azusa Street (1906) women preached, prophesied, and led; Aimee Semple McPherson founded the Foursquare Church in 1923 and became one of the most famous preachers of her era. The Assemblies of God ordained women from its founding in 1914.
+      <br><br>
+      But the institutional Pentecostal denominations gradually moved toward more complementarian practice as they assimilated to American evangelicalism. By the mid-20th century, women in Pentecostal pulpits had become much rarer than in the early decades.
+      <br><br>
+      <strong>The Assemblies of God</strong> formally permits women in all levels of ministry, including ordination as ministers and election as district superintendents. The 2010 AG position paper "The Role of Women in Ministry" gives the systematic defence: Joel 2 / Acts 2 promises the outpouring of the Spirit on daughters as well as sons; the New Testament shows women in significant ministry roles; the restrictive passages address specific local issues. In practice, however, only a small percentage of AG senior pastors are women, and the AG has fewer female bishops/district superintendents than its theology would permit.
+      <br><br>
+      <strong>The Church of God in Christ</strong> (COGIC, the largest Black Pentecostal denomination, founded 1907) has historically ordained women as evangelists and missionaries but reserved the offices of pastor and bishop to men. This remains contested within COGIC.
+      <br><br>
+      <strong>The International Pentecostal Holiness Church</strong> ordains women.
+      <br><br>
+      <strong>The United Pentecostal Church International</strong> (Oneness Pentecostal) restricts pastoral office to men.
+      <br><br>
+      The <strong>Foursquare Church</strong> remains shaped by its female founder; women hold every level of office.
+      <br><br>
+      Globally, Pentecostalism's role for women varies enormously. In Latin America, Africa, and parts of Asia, Pentecostal women have been pioneers of evangelism, church planting, and pastoral ministry — often in contexts where mainline Protestant and Catholic women were excluded from such roles.`,
+        verses: ['Joel 2:28–29', 'Acts 2:17–18', 'Acts 21:9', '1 Cor 11:5', 'Gal 3:28', 'Acts 18:24–26', '1 Tim 2:11–14', 'Rom 16:1–7'],
+      },
+    ],
+    keyVerses: ['1 Tim 2:11–14', '1 Tim 3:1–7', 'Titus 1:5–9', '1 Cor 14:33–37', '1 Cor 11:3–16', 'Gal 3:28', 'Acts 2:17–18', 'Joel 2:28–29', 'Rom 16:1–16', 'Acts 18:24–26', 'Phil 4:2–3', 'Gen 1:27', 'Gen 2:18–24', 'Eph 5:22–33', 'Luke 8:1–3'],
+    historicalNote: 'Pope John Paul II\'s Ordinatio Sacerdotalis (May 22, 1994) closed the question for Catholicism. The Church of England consecrated its first female priest in March 1994 (a watershed moment for global Anglicanism) and its first female bishop, Libby Lane, in January 2015. The Southern Baptist Convention added "the office of pastor is limited to men" to the Baptist Faith & Message in 2000. The Council on Biblical Manhood and Womanhood (1987) and Christians for Biblical Equality (1988) institutionalised the evangelical complementarian and egalitarian positions respectively. The 2023–24 SBC controversy over Saddleback Church and the "Law Amendment" exposed continuing fault lines within American complementarianism itself.',
+    relatedTopics: ['homosexuality', 'papacy', 'sola-scriptura'],
+  },
+
+  {
+    id: 'homosexuality',
+    name: 'Homosexuality & Same-Sex Marriage',
+    icon: '🌈',
+    controversy: 98,
+    category: 'Ministry',
+    desc: 'Are same-sex sexual relationships and marriages compatible with Christian discipleship? Do the biblical prohibitions (Leviticus 18:22, Romans 1:26–27, 1 Corinthians 6:9, 1 Timothy 1:10) apply to today\'s consensual, monogamous same-sex unions, or only to exploitative ancient practices?',
+    definition: `<p>The question of <strong>homosexuality and same-sex marriage</strong> is the most painful and divisive issue in contemporary Christianity. It splits every major Protestant denomination, divides the Anglican Communion, generates schism after schism, and remains the defining flashpoint of 21st-century Christian debate.</p>
+      <p>The biblical texts most often cited are Genesis 19 (Sodom and Gomorrah), Leviticus 18:22 and 20:13 (the Levitical prohibitions), Romans 1:26–27 (Paul's most extended treatment), 1 Corinthians 6:9 (with the disputed Greek terms <em>malakoi</em> and <em>arsenokoitai</em>), and 1 Timothy 1:10 (<em>arsenokoitai</em> again). The traditional reading takes these texts as straightforward prohibitions of same-sex sexual activity. The revisionist reading argues that the texts address specific ancient practices — temple prostitution, pederasty, exploitative master-slave relationships — and not the modern category of consensual same-sex partnership between adults of equal status.</p>
+      <p>Catholics, Orthodox, evangelical Protestants, and most global Christianity (especially in Africa, Asia, and Latin America) maintain the traditional position: same-sex sexual activity is sin; same-sex marriage is impossible in principle, not merely forbidden in practice. Liberal mainline Protestants, the Episcopal Church, the ELCA, the PCUSA, the United Methodist Church (after its 2024 General Conference removed restrictions), the United Church of Christ, and the Anglican Church of Canada have moved to varying degrees of affirmation — performing same-sex marriages, ordaining sexually-active LGBTQ+ clergy, blessing same-sex unions.</p>`,
+    subtopics: [
+      { id: 'hs-bible', label: 'Biblical interpretation' },
+      { id: 'hs-marriage', label: 'Same-sex marriage' },
+      { id: 'hs-ordination', label: 'LGBTQ+ clergy' },
+      { id: 'hs-pastoral', label: 'Pastoral approach' },
+    ],
+    denominations: [
+      {
+        name: 'Roman Catholic',
+        stance: 'deny',
+        position: `Catholic teaching is firm and unchanged: same-sex sexual acts are intrinsically disordered (<em>intrinsece disordinati</em>) and cannot under any circumstances be approved. Same-sex marriage is impossible in principle — marriage by its nature is the union of one man and one woman, ordered toward the procreation and education of children.
+      <br><br>
+      The Catechism of the Catholic Church §§2357–2359 gives the systematic statement: "Basing itself on Sacred Scripture, which presents homosexual acts as acts of grave depravity, tradition has always declared that 'homosexual acts are intrinsically disordered.' They are contrary to the natural law. They close the sexual act to the gift of life. They do not proceed from a genuine affective and sexual complementarity. Under no circumstances can they be approved."
+      <br><br>
+      But §2358 distinguishes the orientation from the acts: "The number of men and women who have deep-seated homosexual tendencies is not negligible. This inclination, which is objectively disordered, constitutes for most of them a trial. They must be accepted with respect, compassion, and sensitivity. Every sign of unjust discrimination in their regard should be avoided. These persons are called to fulfill God's will in their lives and, if they are Christians, to unite to the sacrifice of the Lord's Cross the difficulties they may encounter from their condition."
+      <br><br>
+      The Congregation for the Doctrine of the Faith's <em>Persona Humana</em> (1975), <em>Letter on the Pastoral Care of Homosexual Persons</em> (1986, signed by Cardinal Ratzinger), <em>Considerations Regarding Proposals to Give Legal Recognition to Unions Between Homosexual Persons</em> (2003), and <em>Responsum ad Dubium</em> (March 15, 2021, denying the possibility of blessing same-sex unions) reinforce and clarify the teaching.
+      <br><br>
+      The Vatican's <strong><em>Fiducia Supplicans</em></strong> (Declaration on the Pastoral Meaning of Blessings, December 18, 2023, under Pope Francis and Cardinal Víctor Manuel Fernández) generated enormous controversy by permitting "non-liturgical blessings" of "couples in irregular situations," including same-sex couples. The declaration was careful to specify that this is not a sacramental blessing, not a blessing of the union as such, and not a recognition of same-sex marriage — but a pastoral blessing of the individuals. Many bishops conferences in Africa, Eastern Europe, and elsewhere have rejected the declaration's application in their territories.
+      <br><br>
+      Pope Francis's pastoral tone has shifted significantly from Pope Benedict XVI's — "Who am I to judge?" (July 2013); the welcoming language of <em>Amoris Laetitia</em> (2016); the appointment of openly affirming bishops; the elevation of theologians such as Cardinal Robert McElroy who have urged greater pastoral openness. But the doctrine remains unchanged. Catholic same-sex couples cannot marry sacramentally, cannot receive eucharistic communion if living in a sexually active union, and cannot be ordained.`,
+        verses: ['Gen 1:27–28', 'Gen 2:24', 'Lev 18:22', 'Lev 20:13', 'Rom 1:26–27', '1 Cor 6:9–11', '1 Tim 1:10', 'Matt 19:4–6'],
+      },
+      {
+        name: 'Eastern Orthodox',
+        stance: 'deny',
+        position: `Orthodoxy uniformly teaches that homosexual sexual activity is sin and that marriage is the union of a man and a woman ordered to procreation and the icon of Christ and the Church. There is no significant Orthodox movement toward affirmation of same-sex unions in any of the autocephalous churches.
+      <br><br>
+      The Basis of the Social Concept of the Russian Orthodox Church (2000), §XII, addresses the question directly: "Homosexual desires, just as other passions which torture fallen man, are healed by the sacraments, prayer, fasting, repentance, reading of Holy Scriptures and patristic works, and Christian fellowship. Considering homosexual aspirations sinful, the Church however does not reject those who have them, but call them to fellowship with itself in the spiritual victory over the malady for the sake of their salvation."
+      <br><br>
+      The Holy and Great Council of Crete (2016), the most significant pan-Orthodox conciliar gathering in centuries, addressed marriage in its document "The Sacrament of Marriage and Its Impediments": marriage is between man and woman, instituted by God in creation, blessed by Christ at Cana, and constitutive of the family as the "domestic church."
+      <br><br>
+      The Greek Orthodox Archdiocese of America's position paper "Homosexuality" (2003, revised 2015) gives the systematic Orthodox-American statement. The Orthodox Church in America (OCA), the Antiochian Orthodox Christian Archdiocese, the Serbian Orthodox Church in America, and the Romanian Orthodox Episcopate all hold the traditional position.
+      <br><br>
+      A distinctive feature of Orthodox pastoral approach is the emphasis on the universal call to chastity. Marriage and monasticism are the two blessed states; all single Christians (including those experiencing same-sex attraction) are called to chastity. Sexual chastity outside marriage is not a special burden for the same-sex-attracted — it is the universal vocation of every unmarried Christian.
+      <br><br>
+      Orthodoxy also strongly distinguishes between (1) sinful acts (which are repentable and forgivable) and (2) the conscientious adoption of a sinful identity (which raises pastoral questions about whether genuine repentance is occurring). The Orthodox tradition cares deeply about <em>metanoia</em> (repentance, conversion of heart) and is suspicious of any framing that makes ongoing unrepented sin compatible with full Christian discipleship.
+      <br><br>
+      Russian Orthodox Patriarch Kirill's outspoken rejection of LGBTQ+ rights and his framing of the war in Ukraine partly in terms of resistance to "Western liberal" sexual ideologies has become geopolitically controversial. Within Orthodox theology, however, his fundamental position on same-sex sexuality is not in doubt — all Orthodox bishops agree on the substance even when they disagree about pastoral application or political rhetoric.`,
+        verses: ['Gen 1:27–28', 'Gen 2:24', 'Lev 18:22', 'Lev 20:13', 'Rom 1:18–27', '1 Cor 6:9–11', '1 Tim 1:10', 'Eph 5:31–32'],
+      },
+      {
+        name: 'Anglican / Episcopal',
+        stance: 'varies',
+        position: `Anglicanism is split as no other communion is. The Anglican Communion's crisis on this issue may be the largest single ecclesial fracture of the 21st century.
+      <br><br>
+      <strong>Affirming provinces</strong>: the Episcopal Church (USA, performing same-sex marriages since 2015), the Anglican Church of Canada (2019), the Scottish Episcopal Church (2017), the Church in Wales (blessings 2021), the Anglican Church of Australia in some dioceses, and the Church of England (which authorised blessings — but not marriages — for same-sex couples in February 2023 under the "Prayers of Love and Faith").
+      <br><br>
+      <strong>Traditionalist provinces</strong>: most of the Global South, including Nigeria, Uganda, Kenya, Rwanda, Tanzania, South Sudan, Sudan, Egypt, Chile, Bolivia, Bangladesh, Indonesia, Myanmar, Pakistan, and the Anglican Church in North America (ACNA). The Global Anglican Future Conference (GAFCON), founded in 2008, has organised the traditionalist response.
+      <br><br>
+      <strong>The Lambeth Conference 1998</strong>, Resolution 1.10, declared homosexual practice "incompatible with Scripture" — by a margin of 526 to 70. This resolution remains the formal teaching of the Anglican Communion at the conciliar level. But subsequent provincial actions have repeatedly contradicted it.
+      <br><br>
+      The watershed event was the consecration of <strong>Gene Robinson</strong>, an openly partnered gay man, as Bishop of New Hampshire in November 2003. The reaction in the global Anglican Communion was severe. The Windsor Report (2004) called for a moratorium on further consecrations, blessings, and lawsuits. The moratorium was repeatedly broken on both sides.
+      <br><br>
+      The result has been a fragmented Communion. GAFCON provinces have declared themselves in "impaired communion" with the Episcopal Church. The Global South Fellowship of Anglican Churches (GSFA) operates parallel structures. ACNA was formed in 2009 by Anglicans leaving the Episcopal Church and Canadian Church specifically over this issue, and was recognised by GAFCON though not (officially) by Canterbury.
+      <br><br>
+      The Lambeth Conference 2022 conducted under Archbishop Justin Welby attempted unity through "good disagreement" — explicitly retaining Lambeth 1998 1.10 as the Communion's teaching while permitting provinces to take different pastoral approaches. The compromise satisfied few.
+      <br><br>
+      In the Church of England's General Synod, the February 2023 vote authorising "Prayers of Love and Faith" — non-liturgical, non-sacramental blessings — passed narrowly. The Bishop of Oxford has called for full marriage equality; the Bishops of Birkenhead, Maidstone, and several others have publicly opposed any change. The Living in Love and Faith process continues.`,
+        verses: ['Gen 1:27–28', 'Gen 2:24', 'Lev 18:22', 'Rom 1:24–27', '1 Cor 6:9–11', '1 Tim 1:10', 'Matt 19:4–6', 'Gal 3:28', 'Acts 10:34–35'],
+      },
+      {
+        name: 'Lutheran (mainline)',
+        stance: 'affirm',
+        position: `The mainline Lutheran position has shifted dramatically over the past two decades.
+      <br><br>
+      The <strong>Evangelical Lutheran Church in America</strong> (ELCA) voted in August 2009 to permit the ordination of openly partnered LGBTQ+ pastors. The 2009 vote was the result of two decades of internal study and debate. It triggered the largest schism in modern American Lutheranism: the North American Lutheran Church (NALC) and Lutheran Congregations in Mission for Christ (LCMC) were formed by departing conservative congregations. Several hundred ELCA congregations left.
+      <br><br>
+      The ELCA now blesses same-sex marriages, ordains LGBTQ+ clergy in same-sex relationships, and elects LGBTQ+ bishops. Bishop R. Guy Erwin (Southwest California Synod, 2013) was the first openly gay partnered ELCA bishop. The ELCA's social statement <em>Human Sexuality: Gift and Trust</em> (2009) provides the theological framework, articulating four broad approaches that ELCA members may take and committing the denomination to "bound conscience" — protecting traditionalist pastors from being forced to officiate same-sex marriages.
+      <br><br>
+      The <strong>Church of Sweden</strong> performs same-sex marriages (2009). The <strong>Evangelical Lutheran Church in Denmark</strong> blesses same-sex unions. Most Scandinavian Lutheran state churches have moved similarly. The German EKD churches vary by region.
+      <br><br>
+      The theological argument: the biblical texts addressing same-sex behaviour are addressing specific ancient practices (cult prostitution, pederasty, exploitative slave-master sex) that are not analogous to modern consensual covenanted same-sex partnerships; Galatians 3:28 establishes a principle of equality that extends to sexual minorities; the church's pastoral experience of LGBTQ+ Christians in long-term faithful relationships testifies to the work of grace; the larger biblical trajectory moves toward inclusion (Acts 10–15 — the inclusion of Gentiles is presented as a Spirit-led expansion of categories that the original texts of the law would not have permitted).
+      <br><br>
+      The argument has been articulated theologically by <strong>James K. Brownson</strong> in <em>Bible, Gender, Sexuality</em> (2013); by <strong>Karen Keen</strong>'s <em>Scripture, Ethics, and the Possibility of Same-Sex Relationships</em> (2018); and by various ELCA scholars including <strong>Mark Allan Powell</strong> and <strong>Diane Jacobson</strong>.`,
+        verses: ['Gen 1:27', 'Acts 10:34–35', 'Acts 15:6–11', 'Gal 3:28', 'Matt 19:11–12', 'Rom 1:26–27', '1 Cor 6:9–11', 'Lev 18:22'],
+      },
+      {
+        name: 'Lutheran (confessional)',
+        stance: 'deny',
+        position: `Confessional Lutheran bodies maintain the historic Christian position without ambiguity. The Lutheran Church—Missouri Synod, Wisconsin Evangelical Lutheran Synod, North American Lutheran Church, Lutheran Congregations in Mission for Christ, Evangelical Lutheran Synod, and most international confessional Lutheran bodies all teach that same-sex sexual activity is sin and that marriage is between man and woman alone.
+      <br><br>
+      The LCMS document <em>Together with All Creatures: Caring for God's Living Earth</em> (2010) and the more direct statements in the CTCR's <em>Christian Sexual Ethics</em> (1999, updated subsequently) articulate the position. Marriage is a creation ordinance established by God in Genesis 1–2; ratified by Christ in Matthew 19:4–6; understood by Paul as an icon of Christ and the Church in Ephesians 5:21–33.
+      <br><br>
+      The exegetical case follows traditional lines: Romans 1:24–27 explicitly addresses same-sex behaviour as <em>para physin</em> ("against nature"), grounding the prohibition in the creation order — not in temple prostitution (which the text does not mention) or pederasty (the women in Romans 1:26 cannot fit this framing). 1 Corinthians 6:9–11 lists <em>malakoi</em> (likely "the soft / passive partners") and <em>arsenokoitai</em> (a Pauline neologism evidently coined from Leviticus 18:22 LXX, <em>meta arsenos koitēn</em>) as among those excluded from the kingdom — but immediately adds "and such were some of you. But you were washed, you were sanctified, you were justified" (1 Cor 6:11), making clear that the gospel offers genuine transformation, not affirmation of unrepented sin.
+      <br><br>
+      The pastoral approach is the universal call to repentance and the universal offer of grace. Same-sex attraction itself is not chosen and not a particular sin; same-sex sexual acts are sin requiring repentance like any other sin. The LCMS specifically rejects "conversion therapy" approaches that promise change of orientation as a precondition of discipleship; chastity, not orientation change, is the call.
+      <br><br>
+      The NALC (North American Lutheran Church), formed in 2010 in the wake of the ELCA's 2009 decision, was constituted explicitly around the historic confession on marriage and sexuality. The LCMC similarly. These bodies represent a significant ongoing conservative Lutheran presence in North America.`,
+        verses: ['Gen 1:27–28', 'Gen 2:24', 'Lev 18:22', 'Lev 20:13', 'Matt 19:4–6', 'Rom 1:18–32', '1 Cor 6:9–11', '1 Tim 1:9–11', 'Eph 5:31–32'],
+      },
+      {
+        name: 'Reformed (confessional)',
+        stance: 'deny',
+        position: `The confessional Reformed and Presbyterian bodies — the PCA, OPC, URCNA, RPCNA, ARP, and most international Reformed churches — uniformly teach that same-sex sexual activity is sin and that marriage is exclusively the union of one man and one woman.
+      <br><br>
+      The PCA's 2020 study committee report <em>On Human Sexuality</em> gives the systematic Reformed statement. The PCA affirms the historic confessional position, exegetes the relevant biblical texts in detail, and provides pastoral guidance for ministering to those experiencing same-sex attraction.
+      <br><br>
+      The PCA has been internally divided over the "Revoice" controversy — the Revoice Conference (2018, hosted at a PCA congregation in St. Louis) brought together same-sex-attracted but celibate Christians, primarily from Side B perspectives (affirming traditional sexual ethics but maintaining LGBTQ+ identity language). The conference drew sharp criticism from PCA traditionalists who objected to the use of LGBTQ+ identity categories. The PCA's 2019 General Assembly study committee and 2020 report attempted to navigate the question, generally affirming the call to chastity while raising concerns about identity language. The "Nashville Statement" (2017), drafted by the Council on Biblical Manhood and Womanhood and signed by many PCA leaders, gave a sharper line.
+      <br><br>
+      The <strong>PCUSA</strong> (Presbyterian Church USA), distinct from the PCA, moved to ordination of partnered LGBTQ+ clergy in 2011 (Amendment 10-A) and to same-sex marriage in 2014–15. This precipitated the formation of ECO (the Evangelical Covenant Order of Presbyterians, 2012) as a more theologically conservative Presbyterian alternative.
+      <br><br>
+      Major Reformed treatments: <strong>Robert Gagnon's <em>The Bible and Homosexual Practice</em></strong> (2001) — the definitive evangelical Reformed exegetical defence of the traditional position. <strong>Kevin DeYoung's <em>What Does the Bible Really Teach About Homosexuality?</em></strong> (2015). <strong>Sam Allberry's <em>Is God Anti-Gay?</em></strong> (2013) — an Anglican but widely-read evangelical pastoral defence from a same-sex-attracted celibate perspective.
+      <br><br>
+      The Heidelberg Catechism Q. 108–109 (on the Seventh Commandment) is regularly invoked: the commandment against adultery requires that "we live decent and chaste lives, within or outside of holy marriage." All sexual activity outside man-woman marriage falls under this prohibition.`,
+        verses: ['Gen 1:27–28', 'Gen 2:24', 'Lev 18:22', 'Lev 20:13', 'Rom 1:18–32', '1 Cor 6:9–11', '1 Tim 1:9–11', 'Heb 13:4', 'Matt 19:4–6', 'Eph 5:31–32'],
+      },
+      {
+        name: 'Methodist',
+        stance: 'varies',
+        position: `The United Methodist Church (UMC) underwent one of the most dramatic denominational realignments in modern Protestant history over this issue.
+      <br><br>
+      From 1972, the UMC Book of Discipline contained the language: "The United Methodist Church does not condone the practice of homosexuality and considers this practice incompatible with Christian teaching." Through 2019, repeated General Conference debates were unsuccessful in changing this language; in fact, the 2019 special General Conference (the "Traditional Plan" GC) tightened enforcement provisions against pastors performing same-sex marriages.
+      <br><br>
+      The resulting tension was untenable. The <strong>Global Methodist Church</strong> (GMC) was launched on May 1, 2022, as a theologically conservative Methodist alternative. Several thousand UMC congregations have disaffiliated to join the GMC or to become independent. The disaffiliation process was facilitated by a special "Paragraph 2553" provision (2019) allowing congregations to leave with their property under specific conditions.
+      <br><br>
+      Then at the <strong>2024 UMC General Conference</strong> (Charlotte, North Carolina, April 23 – May 3), the UMC removed all prohibitive language regarding homosexuality from the Book of Discipline by overwhelming majorities. The "incompatible with Christian teaching" clause was deleted. The ban on ordaining "self-avowed practicing homosexuals" was removed. Pastors were authorised to perform same-sex marriages. Bishops could no longer be sanctioned for being in same-sex marriages.
+      <br><br>
+      The result: by mid-2024, the UMC and the GMC stand as theologically distinct denominations. The UMC is now an affirming denomination; the GMC is a traditional one. Each has its own seminaries, polity, mission boards, and identity.
+      <br><br>
+      The <strong>African Methodist Episcopal Church</strong>, the <strong>African Methodist Episcopal Zion Church</strong>, and the <strong>Christian Methodist Episcopal Church</strong> (the three historic Black Methodist denominations) have generally maintained more traditional positions on sexuality, though with significant internal diversity.
+      <br><br>
+      The <strong>Wesleyan Church</strong>, <strong>Free Methodist Church</strong>, <strong>Church of the Nazarene</strong>, and the <strong>Salvation Army</strong> — the Wesleyan-Holiness denominations — uniformly maintain the traditional position. These bodies are essentially aligned with global evangelicalism on this issue.
+      <br><br>
+      Globally, the United Methodist Church's African and Filipino conferences had been the bulwark of the traditional position before the 2024 vote. The geographic reorganisation following 2024 may produce an autonomous African Methodist Church or significant African disaffiliation.`,
+        verses: ['Gen 1:27–28', 'Matt 19:4–6', 'Lev 18:22', 'Rom 1:26–27', '1 Cor 6:9–11', 'Acts 10:34–35', 'Gal 3:28', '1 John 4:7–8'],
+      },
+      {
+        name: 'Evangelical / Baptist',
+        stance: 'deny',
+        position: `Broad evangelicalism — Southern Baptist, non-denominational, Pentecostal, Charismatic, conservative Baptist of all stripes, and most independent and Bible-church congregations — maintains the historic Christian position uniformly.
+      <br><br>
+      The <strong>Baptist Faith & Message (2000)</strong>, Article XVIII ("The Family"): "Marriage is the uniting of one man and one woman in covenant commitment for a lifetime." The Southern Baptist Convention has repeatedly affirmed this position by overwhelming majorities — Resolutions in 1976, 1980, 1985, 1988, 1993, 1996, 2003, 2014, 2015, and others.
+      <br><br>
+      The <strong>Nashville Statement</strong> (August 25, 2017), drafted under the auspices of the Council on Biblical Manhood and Womanhood and signed by leading evangelicals (including Albert Mohler, John Piper, James Dobson, R.C. Sproul before his death, John MacArthur, Sam Allberry, and many others), gives the most comprehensive recent evangelical statement. Its 14 articles affirm: biological sex as God's design; marriage as one-man-one-woman; sexual immorality including homosexual conduct as sin; and "the approval of homosexual immorality" as a "departure from Christian faithfulness and witness."
+      <br><br>
+      The <strong>Gospel Coalition's Foundation Documents</strong>, the <strong>Lausanne Covenant</strong>, the <strong>Cape Town Commitment</strong> (2010), and most evangelical confessional documents include statements affirming traditional sexual ethics.
+      <br><br>
+      Major evangelical exegetical treatments: <strong>Robert Gagnon's <em>The Bible and Homosexual Practice</em></strong> (2001) — over 500 pages of detailed exegesis, regarded as the definitive scholarly treatment. <strong>Don Carson</strong>'s contributions across multiple writings. <strong>Andreas Köstenberger and David Jones's <em>God, Marriage, and Family</em></strong>. <strong>Rosaria Butterfield</strong>, a former lesbian English professor who converted, has written widely-read first-person evangelical accounts (<em>The Secret Thoughts of an Unlikely Convert</em>, 2012).
+      <br><br>
+      The "Side B" movement within evangelicalism — affirming traditional sexual ethics while acknowledging same-sex attraction as an ongoing reality — has been articulated by writers including <strong>Wesley Hill</strong> (<em>Washed and Waiting</em>, 2010), <strong>Sam Allberry</strong>, and <strong>Greg Coles</strong>. Side B writers have been controversial within evangelicalism: some traditionalists view them as compromising; some affirming Christians view them as cooperating with their own oppression. The movement nonetheless represents a serious evangelical attempt to take both biblical authority and contemporary LGBTQ+ experience seriously.
+      <br><br>
+      Internationally, the African Bible Commentary (2006) and global evangelical statements have been even more uniformly traditional than American evangelical positions. The global South evangelical church is overwhelmingly traditional on sexuality and has resisted Western liberal pressure with increasing confidence.`,
+        verses: ['Gen 1:27–28', 'Gen 2:24', 'Lev 18:22', 'Lev 20:13', 'Matt 19:4–6', 'Rom 1:18–32', '1 Cor 6:9–11', '1 Tim 1:9–11', 'Heb 13:4', 'Jude 7'],
+      },
+    ],
+    keyVerses: ['Gen 1:27–28', 'Gen 2:24', 'Gen 19:1–11', 'Lev 18:22', 'Lev 20:13', 'Matt 19:4–6', 'Rom 1:18–32', '1 Cor 6:9–11', '1 Tim 1:9–11', 'Heb 13:4', 'Eph 5:31–32', 'Gal 3:28', 'Acts 10:34–35', 'Acts 15:6–11', '1 John 4:7–8', 'Jude 7'],
+    historicalNote: 'The trajectory of mainline Protestant change: the UCC ordained the first openly gay minister (William Johnson) in 1972. The Episcopal Church consecrated Gene Robinson as Bishop of New Hampshire on November 2, 2003 — the pivotal global Anglican rupture. The ELCA permitted partnered LGBTQ+ ordinations in 2009. The PCUSA permitted them in 2011 and approved same-sex marriage in 2014–15. The US Supreme Court legalised same-sex civil marriage nationally in Obergefell v. Hodges (June 26, 2015). The UMC removed all prohibitions on homosexuality at General Conference 2024 (May 1–3, Charlotte, NC). The Vatican\'s Fiducia Supplicans (December 18, 2023) permitted non-liturgical blessings of same-sex couples, drawing fierce rejection from African bishops conferences and continued traditionalist Catholic objection. The Global Anglican Future Conference (GAFCON) and the Anglican Church in North America (ACNA, 2009) represent the global traditionalist response. The Global Methodist Church (GMC, 2022) and the North American Lutheran Church (NALC, 2010) are the major denominational realignments.',
+    relatedTopics: ['womens-ordination', 'abortion', 'sola-scriptura'],
+  },
+
+  {
+    id: 'israel-church',
+    name: 'Israel and the Church',
+    icon: '✡️',
+    controversy: 82,
+    category: 'Last Things',
+    desc: 'Is the Church the "new Israel" — having replaced (or fulfilled, or expanded) ethnic Israel as God\'s covenant people? Or does Israel retain a distinct future role in God\'s redemptive plan, with the modern State of Israel a sign of prophecy being fulfilled?',
+    definition: `<p>The question of <strong>Israel and the Church</strong> is one of the deepest fault lines in Christian eschatology and hermeneutics. It asks: what is the relationship between Israel and the Church in God's plan of redemption?</p>
+      <p><strong>Replacement theology</strong> (called "supersessionism" by its critics, "covenant theology" or "fulfilment theology" by its adherents) holds that the Church has succeeded Israel as God's covenant people. The promises made to ethnic Israel in the Old Testament are now fulfilled in the New Israel — the Church, made up of Jew and Gentile in Christ (Galatians 3:28–29; Galatians 6:16). Ethnic Israel as such has no continuing distinct role. This was the dominant view from the early Church Fathers through the Reformation and remains the position of most Catholic, Orthodox, Lutheran, Reformed, and Anglican theology.</p>
+      <p><strong>Dispensationalism</strong> (originating with John Nelson Darby in the 1830s and popularised by the Scofield Reference Bible, 1909) holds that Israel and the Church are two distinct peoples with two distinct programs in God's redemptive plan. The Church is the heavenly people of Christ; ethnic Israel remains the earthly people of God. God's promises to Israel are unconditional and territorial; they will be fulfilled literally in a future millennial reign of Christ from Jerusalem. The Church is a "parenthesis" or "mystery" not foreseen in the Old Testament prophets, who spoke of Israel's future restoration.</p>
+      <p>Modern Christian Zionism, especially American evangelical support for the State of Israel, is largely dispensational in theological origin — though many non-dispensational Christians also support Israel for theological and historical reasons.</p>`,
+    subtopics: [
+      { id: 'ic-supersession', label: 'Has the Church replaced Israel?' },
+      { id: 'ic-dispensational', label: 'Dispensational theology' },
+      { id: 'ic-romans11', label: 'Romans 9–11' },
+      { id: 'ic-state', label: 'The modern State of Israel' },
+    ],
+    denominations: [
+      {
+        name: 'Roman Catholic',
+        stance: 'nuanced',
+        position: `Catholic teaching has evolved significantly. The pre-Vatican II Latin tradition included strong supersessionist elements; Vatican II decisively repudiated them and opened a new chapter in Catholic-Jewish relations.
+      <br><br>
+      The Second Vatican Council's declaration <strong><em>Nostra Aetate</em></strong> (October 28, 1965), §4, gave the foundational modern Catholic statement on the relationship to Judaism: "As Holy Scripture testifies, Jerusalem did not recognize the time of her visitation, nor did the Jews in large number, accept the Gospel; indeed not a few opposed its spreading. Nevertheless, God holds the Jews most dear for the sake of their Fathers; He does not repent of the gifts He makes or of the calls He issues [Romans 11:28–29]." The decree explicitly rejected the historic charge of deicide (the accusation that the Jewish people collectively bore responsibility for Christ's death).
+      <br><br>
+      <em>Nostra Aetate</em> §4 also affirmed: "The Church... cannot forget that she received the revelation of the Old Testament through the people with whom God in His inexpressible mercy concluded the Ancient Covenant. Nor can she forget that she draws sustenance from the root of that well-cultivated olive tree onto which have been grafted the wild shoots, the Gentiles."
+      <br><br>
+      The Pontifical Biblical Commission's <strong><em>The Jewish People and Their Sacred Scriptures in the Christian Bible</em></strong> (2001), under Cardinal Ratzinger as Prefect of the CDF, gave a more developed account. The document carefully avoids strict supersessionism while affirming that Jesus is the Messiah for all peoples, including Jews. It calls Christian-Jewish relations a continuing dialogue rather than a closed question.
+      <br><br>
+      The Vatican Commission for Religious Relations with the Jews issued <strong><em>The Gifts and the Calling of God Are Irrevocable</em></strong> (December 10, 2015) marking the 50th anniversary of <em>Nostra Aetate</em>. The document states explicitly: "The Catholic Church neither conducts nor supports any specific institutional mission work directed towards Jews." This was a startling and controversial development — interpreted by some Jewish observers as the Church renouncing all attempts to convert Jews to Christianity, and by some Catholic observers as a problematic limitation on Christ's universal call.
+      <br><br>
+      Pope John Paul II's visit to the Roman synagogue (April 13, 1986) — addressing Jews as "our elder brothers" — and his Holy Land pilgrimage (March 2000) including prayer at the Western Wall, and Pope Francis's similar gestures, exemplify the new posture.
+      <br><br>
+      Catholic theology of the State of Israel is distinct from theology of the people of Israel. The Vatican formally recognised the State of Israel on December 30, 1993 (Fundamental Agreement between the Holy See and the State of Israel), establishing diplomatic relations. But the Vatican has been consistent in supporting a two-state solution, in expressing concern for Palestinian Christians, and in distinguishing political support for Israel from theological affirmation of the modern state as the fulfilment of biblical prophecy. The Catholic position is not Christian Zionism.`,
+        verses: ['Rom 9:1–5', 'Rom 11:1–2', 'Rom 11:25–29', 'Eph 2:11–16', 'Eph 3:6', 'Gal 3:28–29', 'John 4:22'],
+      },
+      {
+        name: 'Eastern Orthodox',
+        stance: 'nuanced',
+        position: `Orthodox theology has not produced a single systematic statement on Israel and the Church comparable to Vatican II's <em>Nostra Aetate</em>. The patristic and Byzantine tradition contains both strongly supersessionist voices (John Chrysostom's <em>Eight Homilies Against the Jews</em>, c. 386 AD — among the harshest anti-Jewish texts in patristic literature) and more nuanced voices.
+      <br><br>
+      The general Orthodox position is supersessionist in a non-displacement sense: the Church is the fulfilment and continuation of Israel; the New Covenant continues and expands the Old, not by replacing the Jewish people but by extending the covenant to all nations. The Orthodox Church understands itself as in deep continuity with the Israel of God — the icons, the liturgy, the typological reading of the Old Testament, the patristic exegesis all assume the Church as the eschatological people of God in whom the promises to Israel are realised.
+      <br><br>
+      But Orthodox theology does not endorse modern Christian Zionism. The Russian Orthodox Church, the Patriarchate of Constantinople, the Greek Orthodox Patriarchate of Jerusalem (which has a deep pastoral concern for Arab Orthodox Christians in Israel-Palestine), and the other autocephalous churches generally do not treat the modern State of Israel as a fulfilment of biblical prophecy.
+      <br><br>
+      The Greek Orthodox Patriarchate of Jerusalem, established in the 4th century, predates the modern State of Israel by 1,600 years and ministers to Arab Christian populations across Israel, the West Bank, and Jordan. Its concerns are pastoral and indigenous: the survival of the ancient Christian communities in the Holy Land. The Patriarchate has at times protested Israeli land confiscations affecting Church properties.
+      <br><br>
+      The Orthodox Church's relationship to Judaism has been improving in recent decades through formal dialogues — the International Jewish Committee for Interreligious Consultations (IJCIC) has engaged the Ecumenical Patriarchate, the Russian Orthodox Church, and other Orthodox bodies. The Patriarch Bartholomew has spoken warmly of the Jewish people and visited the Israeli Holocaust memorial Yad Vashem.
+      <br><br>
+      The patristic anti-Jewish texts (Chrysostom, Cyril of Alexandria, parts of the Byzantine hymnography) remain a difficult inheritance that contemporary Orthodox theologians are increasingly willing to acknowledge and contextualise without simply expunging.`,
+        verses: ['John 4:22', 'Rom 11:25–29', 'Eph 2:11–22', 'Heb 8:6–13', 'Heb 9:11–15', 'Rev 7:4–8', '1 Pet 2:9–10'],
+      },
+      {
+        name: 'Reformed / Presbyterian (covenant theology)',
+        stance: 'affirm',
+        position: `Reformed covenant theology holds that the Church is the continuation, fulfilment, and full flowering of the covenant community whose Old Testament expression was Israel. There is one people of God across both Testaments, with the same covenant of grace administered in different historical dispensations. The Church does not replace Israel so much as expand it — the wild olive branches (Gentiles) being grafted into the cultivated olive tree (the covenant people, Romans 11:17–24).
+      <br><br>
+      The Westminster Confession (1646), Chapter VII §§5–6, articulates this: "This covenant was differently administered in the time of the law, and in the time of the gospel: under the law, it was administered by promises, prophecies, sacrifices, circumcision, the paschal lamb, and other types and ordinances delivered to the people of the Jews, all foresignifying Christ to come; which were, for that time, sufficient and efficacious, through the operation of the Spirit, to instruct and build up the elect in faith in the promised Messiah, by whom they had full remission of sins, and eternal salvation; and is called the Old Testament. Under the gospel, when Christ, the substance, was exhibited, the ordinances in which this covenant is dispensed are the preaching of the Word, and the administration of the sacraments of Baptism and the Lord's Supper... There are not therefore two covenants of grace, differing in substance, but one and the same, under various dispensations."
+      <br><br>
+      The Reformed position therefore reads "Israel" in the Pauline letters as primarily (in many cases) the new covenant people — the Church — even when ethnic Israel is also in view. Galatians 6:16 ("the Israel of God") is read as the Church. Ephesians 2:11–22 describes the dissolution of the dividing wall and the constitution of one new humanity from Jew and Gentile. The "true Israel" is the believing remnant within ethnic Israel, joined to believing Gentiles, in Christ.
+      <br><br>
+      <strong>Romans 9–11</strong> is the great Reformed crux. The traditional Reformed reading: Paul affirms that not all ethnic Israel is true Israel (Rom 9:6); a remnant is being saved in his own day; God's promises have not failed; and a future ingathering of ethnic Jews into the Church is anticipated (Romans 11:25–26: "all Israel will be saved"). What this future "all Israel" means is contested — most Reformed exegetes read it as either the full elect remnant of Jews across history, or a future large-scale conversion of ethnic Jews to Christ, but in either case the salvation of Jews comes through faith in Christ, not through a separate covenant.
+      <br><br>
+      <strong>The modern State of Israel</strong> has no special theological status in Reformed covenant theology. The state is a political reality; it is not the prophesied fulfilment of the restoration promises (which Reformed theology generally reads as fulfilled in Christ and in the Church). Many Reformed theologians have been critical of Christian Zionism as theologically confused and politically problematic.
+      <br><br>
+      Major Reformed treatments: <strong>O. Palmer Robertson's <em>The Israel of God</em></strong> (2000); <strong>Hans LaRondelle's <em>The Israel of God in Prophecy</em></strong> (1983); much of <strong>Anthony Hoekema's <em>The Bible and the Future</em></strong> (1979).`,
+        verses: ['Rom 2:28–29', 'Rom 9:6–8', 'Rom 11:11–24', 'Rom 11:25–29', 'Gal 3:6–9', 'Gal 3:28–29', 'Gal 6:16', 'Eph 2:11–22', 'Phil 3:3'],
+      },
+      {
+        name: 'Dispensational',
+        stance: 'deny',
+        position: `Dispensationalism, originating with the Irish-British Brethren teacher <strong>John Nelson Darby</strong> (1800–82) and reaching its widest reach through the Scofield Reference Bible (1909, ed. C.I. Scofield), holds that Israel and the Church are two distinct peoples with two distinct programs in God's plan. The promises to ethnic Israel in the Old Testament are unconditional, territorial, and literal — and will be fulfilled in a future millennial kingdom ruled by Christ from Jerusalem.
+      <br><br>
+      The foundational distinction: God has dealt with humanity through a series of "dispensations" (Innocence, Conscience, Government, Promise, Law, Grace, Kingdom — though the precise number varies among dispensationalists). Each dispensation tests humanity under different terms; each ends in human failure and divine judgement; each is succeeded by a new dispensation. The Church Age (the dispensation of Grace) is distinct from both the prior age of Law (Israel under the Mosaic covenant) and the coming Millennial Kingdom (Israel restored).
+      <br><br>
+      The Church is a "mystery" not foretold in the Old Testament (Ephesians 3:1–6 read literally) — a people called out from both Jews and Gentiles, with a heavenly destiny, between the rejection of Christ by ethnic Israel and the future restoration of ethnic Israel in the millennial kingdom. Romans 11:25 — "a partial hardening has come upon Israel <em>until the fullness of the Gentiles has come in</em>" — is read as describing the present age, with Israel's hardening to be lifted at the rapture / second coming.
+      <br><br>
+      The territorial promises to Abraham (Genesis 12:1–3; 13:14–17; 15:18–21; 17:7–8) are unconditional and eternal. The boundaries promised — from the river of Egypt to the great river Euphrates — have never been fully possessed by Israel and must therefore be fulfilled literally in the future millennial kingdom.
+      <br><br>
+      The rebirth of the State of Israel (May 14, 1948) and the Six-Day War (June 5–10, 1967, when Israel captured the Old City of Jerusalem) are seen by many dispensationalists as fulfilment of prophecy — preparing the way for the millennial kingdom. The rebuilt Temple, the unconverted Israel of the present, and the events of Revelation 4–22 are read as future history involving the literal nation of Israel.
+      <br><br>
+      <strong>Classical dispensationalism</strong>: Darby, Scofield, Lewis Sperry Chafer (Dallas Seminary's first president), Charles Ryrie (<em>Dispensationalism Today</em>, 1965), J. Dwight Pentecost (<em>Things to Come</em>, 1958), John Walvoord. The classical view sharply separates the program for Israel from the program for the Church.
+      <br><br>
+      <strong>Progressive dispensationalism</strong>: Craig Blaising and Darrell Bock (<em>Progressive Dispensationalism</em>, 1993), Robert Saucy. Progressive dispensationalism softens the Israel/Church distinction, sees Christ's kingdom as already inaugurated in the present age (an "already / not yet" eschatology), and acknowledges that the Church is not entirely a parenthesis. But it retains a distinct future role for ethnic Israel.
+      <br><br>
+      Dispensationalism has been culturally enormous in American evangelicalism. The Scofield Reference Bible, the Dallas Theological Seminary, the Left Behind novels (Tim LaHaye and Jerry B. Jenkins, 1995–2007, 65+ million copies), and most independent Bible churches have been dispensational. Christian Zionism's enormous American political influence is in significant part the political expression of dispensational theology.`,
+        verses: ['Gen 12:1–3', 'Gen 13:14–17', 'Gen 15:18–21', 'Gen 17:7–8', 'Deut 30:1–10', 'Jer 31:31–37', 'Ezek 36:24–28', 'Ezek 37:1–14', 'Rom 11:25–29', 'Rev 7:4–8', 'Rev 20:1–6', 'Matt 24:15–31'],
+      },
+      {
+        name: 'Lutheran',
+        stance: 'nuanced',
+        position: `Confessional Lutheran theology generally holds a covenantal / supersessionist position similar to the Reformed: the Church is the continuation and fulfilment of Israel; the promises to Israel are fulfilled in Christ and his people.
+      <br><br>
+      But Lutheranism has had to wrestle with a particularly painful history. Martin Luther's late writings — especially <strong><em>On the Jews and Their Lies</em></strong> (1543) — contained extreme anti-Jewish polemic. Luther, frustrated by the failure of his earlier hopes that Jewish people would convert to Christ on hearing the gospel preached freely (his earlier <em>That Jesus Christ Was Born a Jew</em>, 1523, had been much more open), turned to advocating severe persecution: burning synagogues, destroying Jewish books, forbidding Jewish worship and travel. This material was used by the National Socialists as Christian justification for their anti-Semitism.
+      <br><br>
+      After the Holocaust, Lutheran bodies have engaged in significant self-examination. The Lutheran World Federation declaration <em>The Church and the Jewish People</em> (1990) and the LWF's <em>Statement on the Jewish People and the Land of Israel</em> repeatedly condemn supersessionism in its hardest displacement form, repudiate Luther's anti-Jewish writings, and commit to the dignity of Jewish-Christian relations.
+      <br><br>
+      The Evangelical Lutheran Church in America's <em>Declaration of the ELCA to the Jewish Community</em> (1994) specifically: "In the spirit of truth-telling, we who bear his name and heritage must with pain acknowledge also Luther's anti-Judaic diatribes and the violent recommendations of his later writings against the Jews. As did many of Luther's own companions in the sixteenth century, we reject this violent invective, and yet more do we express our deep and abiding sorrow over its tragic effects on subsequent generations."
+      <br><br>
+      The Lutheran-Jewish dialogues since 1990 have produced substantial theological agreement that the Jewish people remain in the covenant; that Christian mission to Jews must be distinguished from coercive proselytism; that the Holocaust requires permanent theological response.
+      <br><br>
+      The Lutheran World Federation's position on the modern State of Israel is sympathetic but not Christian Zionist — supporting Israel's security and right to exist while also supporting Palestinian self-determination and protesting specific Israeli policies (settlement expansion, treatment of Palestinian Christians).
+      <br><br>
+      The LCMS and confessional Lutheran bodies generally maintain a similar covenantal theology while exercising more caution about Lutheran political positions.`,
+        verses: ['Rom 9:1–5', 'Rom 11:1–2', 'Rom 11:11–32', 'Eph 2:11–22', 'Eph 3:1–11', 'Heb 8:6–13', 'Gal 6:16'],
+      },
+      {
+        name: 'Anglican',
+        stance: 'varies',
+        position: `Anglican theology spans from supersessionist Reformed-leaning positions to progressive dispensational sympathy. The Thirty-Nine Articles do not specifically address the Israel-Church question.
+      <br><br>
+      The Lambeth Conferences have engaged Jewish-Christian relations carefully. Lambeth 1988, Resolution 21, called for "a sincere and continued dialogue" between Christians and Jews and rejected anti-Semitism. Lambeth 1998 affirmed the State of Israel's right to exist alongside a Palestinian state. The Anglican Consultative Council and various provincial bodies have produced material on Christian-Jewish relations.
+      <br><br>
+      The <strong>Church of England's <em>Sharing One Hope?</em></strong> (2001) and similar documents articulate a nuanced position: the Church is the people of God in Christ; the Jewish people retain a special relationship to God; the question of whether Christians should engage in mission to Jews is internally contested.
+      <br><br>
+      <strong>Christian Zionist Anglicans</strong> — historically including figures like Lord Shaftesbury (1801–85, who actively promoted Jewish return to Palestine) and contemporary figures like the late John Stott (more measured) and the broader evangelical Anglican networks — have been a significant though minority voice.
+      <br><br>
+      <strong>Palestinian Christian Anglicans</strong> — represented by Naim Ateek and the Sabeel Ecumenical Liberation Theology Center (Jerusalem) — have developed Palestinian liberation theology, sharply critical of Christian Zionism and of Israeli policies. Ateek's <em>Justice and Only Justice</em> (1989) and <em>A Palestinian Christian Cry for Reconciliation</em> (2008) give the major Palestinian Anglican voice. The Anglican Bishop in Jerusalem oversees Anglican congregations in Israel, Palestine, Jordan, Lebanon, and Syria.
+      <br><br>
+      The Episcopal Church (USA) has been involved in debates about its investments in companies operating in Israeli settlements, and the broader question of how to relate to Israel-Palestine politically. The Anglican Church of Canada has likewise.`,
+        verses: ['Rom 11:25–29', 'John 4:22', 'Eph 2:11–22', 'Gal 3:28–29', 'Matt 21:33–46', 'Rom 9:1–5', 'Acts 15:13–18'],
+      },
+      {
+        name: 'Evangelical / Baptist',
+        stance: 'varies',
+        position: `American evangelicalism is sharply divided on this question — perhaps more divided than any other doctrinal issue. The divide largely tracks dispensational versus non-dispensational (covenant or progressive) theology.
+      <br><br>
+      <strong>Dispensational evangelicals</strong> — historically the largest segment, encompassing most Baptist Bible Fellowship congregations, many Southern Baptists, most independent Bible churches, the Plymouth Brethren, Calvary Chapel, Chuck Smith's influence, Tim LaHaye's enormous influence through Left Behind, the John Hagee / Christians United for Israel network, Greg Laurie, much of the Word of Faith movement — strongly support Christian Zionism. The State of Israel is viewed as the fulfilment of biblical prophecy; American support for Israel is seen as both biblically obligatory (Genesis 12:3: "I will bless those who bless you, and him who dishonours you I will curse") and politically right.
+      <br><br>
+      Christians United for Israel (CUFI), founded by Pastor John Hagee in 2006, is the largest Christian Zionist organisation in the US with claimed membership over 11 million. The International Christian Embassy Jerusalem (ICEJ, founded 1980) operates internationally.
+      <br><br>
+      <strong>Non-dispensational evangelicals</strong> — including most Reformed evangelicals, the Gospel Coalition broadly, many Southern Baptists, Anglican evangelicals, and an increasing portion of younger evangelicals — hold various non-dispensational positions and are typically more critical of Christian Zionism. They support Israel's right to exist and to security but reject the theological claim that the modern state's actions are prophecy fulfilment.
+      <br><br>
+      <strong>The Southern Baptist Convention</strong> has officially supported Israel through various resolutions (1989, 1995, 2002) but the SBC has both dispensational and covenant theology among its leaders.
+      <br><br>
+      The 2017 controversy over President Trump's recognition of Jerusalem as Israel's capital exposed the evangelical Christian Zionist alignment with US foreign policy. The October 7, 2023 Hamas attack on Israel and the subsequent Gaza war have sharpened evangelical debate about how to relate to Israel-Palestine ethically and theologically.
+      <br><br>
+      Important non-dispensational evangelical critiques: <strong>Gary Burge's <em>Jesus and the Land</em></strong> (2010) and <em>Whose Land? Whose Promise?</em> (2003); <strong>Stephen Sizer's <em>Christian Zionism</em></strong> (2004); <strong>Colin Chapman's <em>Whose Promised Land?</em></strong> (1983, multiple revisions). These authors argue that Christian Zionism misreads the New Testament's fulfilment of land promises in Christ and misuses Old Testament prophecy.`,
+        verses: ['Gen 12:1–3', 'Rom 11:25–29', 'Gal 3:28–29', 'Gal 6:16', 'Eph 2:11–22', 'Rev 7:4–8', 'Matt 24:15–31', 'Luke 21:24'],
+      },
+    ],
+    keyVerses: ['Gen 12:1–3', 'Gen 17:7–8', 'Jer 31:31–37', 'Ezek 36:24–28', 'Matt 21:33–46', 'Matt 24:15–31', 'Luke 21:24', 'John 4:22', 'Rom 2:28–29', 'Rom 9:1–8', 'Rom 11:1–2', 'Rom 11:11–32', 'Gal 3:28–29', 'Gal 6:16', 'Eph 2:11–22', 'Eph 3:1–11', 'Heb 8:6–13', 'Rev 7:4–8'],
+    historicalNote: 'John Nelson Darby developed dispensationalism in the 1830s, breaking with the Plymouth Brethren. The Scofield Reference Bible (1909) gave it enormous American reach. Vatican II\'s Nostra Aetate (October 28, 1965) decisively repudiated Catholic anti-Judaism. The State of Israel was reconstituted on May 14, 1948 — read by dispensationalists as prophetic fulfilment, by covenant theologians as a political event without specific eschatological significance. The Six-Day War (1967), Israel\'s capture of the Old City of Jerusalem, and the rebuilding of the Old Testament-pattern political nation deepened Christian Zionist conviction. Tim LaHaye and Jerry Jenkins\'s Left Behind novels (1995–2007) sold 65+ million copies, popularising dispensational eschatology to a mass evangelical audience. Christians United for Israel (CUFI, 2006) institutionalised American evangelical Zionism politically. The October 7, 2023 Hamas attack and the subsequent Gaza war have generated new debate within American evangelicalism about the theological and ethical status of Christian Zionism.',
+    relatedTopics: ['eschatology', 'sola-scriptura', 'hell'],
+  },
+
+  {
+    id: 'creation',
+    name: 'Creation, Age of the Earth & Evolution',
+    icon: '🌍',
+    controversy: 81,
+    category: 'Creation',
+    desc: 'Did God create the universe in six 24-hour days roughly 6,000 years ago (Young Earth Creationism), over vast geological ages (Old Earth Creationism), or through guided evolutionary processes over billions of years (Theistic Evolution / Evolutionary Creationism)? Are the Genesis days literal, allegorical, framework, or analogical?',
+    definition: `<p>The question of <strong>creation</strong> asks how Christians should read Genesis 1–3 in light of modern scientific understanding of the age of the universe (~13.8 billion years), the age of the earth (~4.5 billion years), and the evolutionary development of life (~3.8 billion years of biological history, with humans appearing ~300,000 years ago).</p>
+      <p>The four main Christian positions are:</p>
+      <p><strong>Young Earth Creationism (YEC)</strong>: God created the universe and all life in six literal 24-hour days approximately 6,000 to 10,000 years ago. The flood of Noah was a global, catastrophic event that accounts for most of the geological column and the fossil record. Evolution did not occur. Major institutional voices: Answers in Genesis (Ken Ham), Institute for Creation Research (ICR), Creation Research Society.</p>
+      <p><strong>Old Earth Creationism (OEC)</strong> / <strong>Progressive Creationism</strong>: God created the universe billions of years ago in stages, with the Genesis "days" representing long ages or epochs (the day-age view) or successive divine creative acts over geological time (progressive creationism). Microevolution within "kinds" occurred; macroevolution between major taxonomic groups did not. Adam and Eve are historical individuals specially created. Major voices: Reasons to Believe (Hugh Ross), Hugh Ross.</p>
+      <p><strong>Theistic Evolution / Evolutionary Creationism</strong>: God created through evolutionary processes; the universe and life developed over billions of years according to natural laws that God ordained and sustains. Genesis 1–2 teaches theological truth about who created and why, not scientific information about how. Adam and Eve may be historical, representative, or literary figures. Major voices: BioLogos Foundation (founded by Francis Collins), N.T. Wright, John Lennox (with qualifications).</p>
+      <p><strong>Intelligent Design (ID)</strong>: a more philosophical position (sometimes overlapping with YEC or OEC) arguing that natural processes alone cannot account for the complexity of life — design is empirically detectable in nature. Major voices: Discovery Institute, William Dembski, Michael Behe, Stephen Meyer.</p>`,
+    subtopics: [
+      { id: 'cr-days', label: 'The Genesis days' },
+      { id: 'cr-age', label: 'Age of the earth' },
+      { id: 'cr-evolution', label: 'Evolution and theistic evolution' },
+      { id: 'cr-adam', label: 'Historical Adam and Eve' },
+    ],
+    denominations: [
+      {
+        name: 'Roman Catholic',
+        stance: 'nuanced',
+        position: `The Catholic Church accepts the scientific consensus on the age of the universe and the broad fact of biological evolution while maintaining specific theological commitments about the special creation of the human soul and the historical reality of original sin.
+      <br><br>
+      Pope Pius XII's encyclical <strong><em>Humani Generis</em></strong> (August 12, 1950) gave the foundational modern Catholic statement. The encyclical permitted "research and discussions" on evolution insofar as it deals with the human body "since the human body takes its origin from pre-existent and living matter." But it required Catholics to hold that "souls are immediately created by God" and that Adam was a real historical individual who committed an original sin transmitted to all humanity (§§36–37).
+      <br><br>
+      Pope John Paul II's <em>Message to the Pontifical Academy of Sciences</em> (October 22, 1996) went further: "New knowledge has led to the recognition of more than one hypothesis in the theory of evolution. It is indeed remarkable that this theory has been progressively accepted by researchers, following a series of discoveries in various fields of knowledge. The convergence, neither sought nor fabricated, of the results of work that was conducted independently is in itself a significant argument in favor of this theory."
+      <br><br>
+      The Catechism of the Catholic Church §§282–301 treats creation theologically without specifying a particular scientific account. CCC §283: "The question about the origins of the world and of man has been the object of many scientific studies which have splendidly enriched our knowledge of the age and dimensions of the cosmos, the development of life-forms and the appearance of man. These discoveries invite us to even greater admiration for the greatness of the Creator."
+      <br><br>
+      CCC §390 affirms the doctrine of original sin while distinguishing it from a particular reading of the Genesis narrative: "The account of the fall in Genesis 3 uses figurative language, but affirms a primeval event, a deed that took place at the beginning of the history of man."
+      <br><br>
+      The 2004 International Theological Commission document <em>Communion and Stewardship: Human Persons Created in the Image of God</em> gave the most developed Catholic engagement with evolutionary theory. It affirms that "current scientific debate about the mechanisms at work in evolution requires philosophical attention that goes beyond the limits of the scientific debate itself" — encouraging Catholics to engage evolutionary biology seriously while maintaining the Catholic doctrine of the special divine endowment of humanity with the rational soul.
+      <br><br>
+      Most Catholic theologians, scientists (including the Vatican Observatory astronomers), and biblical scholars accept the standard scientific consensus on the age of the universe and biological evolution. Young Earth Creationism is essentially absent from mainstream Catholic theology, although some traditionalist Catholic publications give it limited expression.`,
+        verses: ['Gen 1:1–31', 'Gen 2:4–25', 'Ps 19:1–6', 'Ps 104', 'John 1:1–3', 'Col 1:15–17', 'Heb 11:3', 'Rom 5:12–21'],
+      },
+      {
+        name: 'Eastern Orthodox',
+        stance: 'nuanced',
+        position: `Orthodox theology has not produced a formal magisterial statement on the age of the earth or evolution analogous to Catholic encyclicals. The Orthodox approach is generally less anxious about the literal reading of Genesis than American evangelical traditions but more cautious about accepting evolutionary biology than mainline Western traditions.
+      <br><br>
+      Orthodox theology emphasises that Genesis 1–3 must be read patristically — through the eyes of the Church Fathers — not through either modern fundamentalist literalism or modern critical biblical scholarship. The Fathers themselves varied enormously in their reading of Genesis. <strong>Origen</strong> (<em>De Principiis</em> IV.3, c. 220 AD) explicitly rejected a strictly literal reading: "What man of sense will agree with the statement that the first, second and third days, in which the evening is named and the morning, were without sun, and moon, and stars; and that the first day was, as it were, also without a sky?" <strong>Augustine</strong> in <em>De Genesi ad Litteram</em> (5.23, c. 415 AD) argued that the "days" were not 24-hour days but a single instantaneous creative act that the human mind requires sequential narration to grasp. <strong>Basil the Great</strong>, <strong>Gregory of Nyssa</strong>, and <strong>Maximus the Confessor</strong> all engaged Genesis with sophisticated theological readings that did not depend on a young-earth chronology.
+      <br><br>
+      The Orthodox theology of creation is centred on <em>logos</em>-theology (Christ as the Word through whom all things were made), on the cosmic scope of redemption (Romans 8:18–25, the whole creation groaning), and on the sacramental significance of matter. The world is a theophany — a showing-forth of God's glory — that exists for liturgical participation in the divine life.
+      <br><br>
+      Most contemporary Orthodox theologians and scientists accept the scientific consensus on the age of the universe and the broad fact of evolution. <strong>Christopher Knight</strong> (<em>The God of Nature</em>, 2007) and <strong>Alexei Nesteruk</strong> (<em>Light from the East</em>, 2003) have developed Orthodox theology of science. The Russian Orthodox Church has been somewhat more publicly cautious about evolution; the Greek Orthodox, OCA, and Antiochian American Orthodox have generally been more open.
+      <br><br>
+      Young Earth Creationism in its American evangelical form has had little uptake in Orthodox theology, though some Russian Orthodox traditionalists and certain converts from American fundamentalist backgrounds have brought it into Orthodox parish life informally.
+      <br><br>
+      The historical Adam and original sin are theologically essential for Orthodoxy — but the Orthodox understanding of original sin (inherited mortality and corruption, not inherited guilt) makes the question of Adam's biological vs. theological reality slightly different from the Latin tradition.`,
+        verses: ['Gen 1:1–2:3', 'Ps 33:6–9', 'Ps 104:5–9', 'Prov 8:22–31', 'John 1:1–3', 'Col 1:15–17', 'Rom 8:18–25', 'Heb 11:3'],
+      },
+      {
+        name: 'Young Earth Creationist',
+        stance: 'affirm',
+        position: `Young Earth Creationism holds that the universe and life were created by God in six 24-hour days approximately 6,000 to 10,000 years ago, that Adam and Eve were the first humans specially created from the dust of the earth, that there was no death of any kind before the Fall, and that the global flood of Noah accounts for most of the geological record and fossil sequence.
+      <br><br>
+      The position rests on the literal reading of Genesis 1: "And there was evening, and there was morning — the first day" (Genesis 1:5). The Hebrew <em>yom</em> with a number ("first day," "second day") is taken to refer unambiguously to a 24-hour day. The genealogies of Genesis 5 and Genesis 11 are read as continuous father-son lists; their lifespans add up to approximately 6,000 years from Adam to the present, consistent with the calculations of Archbishop James Ussher (1581–1656), whose <em>Annals of the World</em> (1650) placed creation at 4004 BC.
+      <br><br>
+      Exodus 20:11 is a key supporting text: "For in six days the Lord made the heavens and the earth, the sea, and all that is in them, but he rested on the seventh day." The Sabbath commandment grounds itself in the literal six-day creation pattern; if the creation days were long ages, the Sabbath analogy becomes incoherent.
+      <br><br>
+      Theological arguments: (1) Death is "the wages of sin" (Romans 6:23), introduced by Adam's fall (Romans 5:12). Therefore there can have been no animal death before Adam's sin. But the standard scientific account requires billions of years of animal death before any humans existed — contradicting the doctrine of the Fall. (2) Christ refers to Adam and Eve as historical: Matthew 19:4–5; Mark 10:6 ("from the beginning of creation, God made them male and female"). Christ's "from the beginning of creation" implies a young earth — humans were present from the start, not 13.8 billion years later.
+      <br><br>
+      Geological arguments: the flood of Noah was global (Genesis 7:19: "All the high mountains under the entire heavens were covered") and catastrophic. The vast sedimentary layers, fossil graveyards, and many geological features are products of the flood, not slow accumulation over millions of years. Major theorists: <strong>Henry Morris and John Whitcomb's <em>The Genesis Flood</em></strong> (1961), the founding text of modern creationism. <strong>Andrew Snelling's <em>Earth's Catastrophic Past</em></strong> (2009).
+      <br><br>
+      Major institutional voices: <strong>Answers in Genesis</strong> (Ken Ham, with the Creation Museum in Kentucky 2007 and the Ark Encounter in 2016). <strong>Institute for Creation Research</strong> (founded by Henry Morris in 1970). <strong>Creation Ministries International</strong>. <strong>Creation Research Society</strong> (1963).
+      <br><br>
+      Adoption: very high in independent Baptist, Pentecostal, and non-denominational evangelical circles; moderate-to-high in Southern Baptist; very low in mainline Protestant; absent in Catholic and Orthodox; significant in Seventh-day Adventism (which had a major historical role in forming modern creationism through Ellen White's influence on early YEC theorists).`,
+        verses: ['Gen 1:1–2:3', 'Gen 1:5', 'Gen 5:1–32', 'Gen 7:19', 'Gen 11:10–32', 'Exod 20:11', 'Exod 31:17', 'Matt 19:4–5', 'Mark 10:6', 'Rom 5:12–14', '2 Pet 3:3–6'],
+      },
+      {
+        name: 'Old Earth Creationist',
+        stance: 'nuanced',
+        position: `Old Earth Creationism accepts the standard scientific consensus on the age of the universe (13.8 billion years) and the age of the earth (4.5 billion years), while maintaining special divine creative acts — particularly for the origin of life and the special creation of humans. Adam and Eve are historical individuals.
+      <br><br>
+      The most influential contemporary OEC organisation is <strong>Reasons to Believe</strong> (RTB), founded by astronomer <strong>Hugh Ross</strong> in 1986. Ross's <em>The Fingerprint of God</em> (1989), <em>A Matter of Days</em> (2004), and <em>More Than a Theory</em> (2009) give the systematic position.
+      <br><br>
+      Several specific readings of Genesis 1 support old-earth chronology while preserving the historicity of the creation account:
+      <br><br>
+      <strong>(1) Day-Age view</strong>: the Hebrew <em>yom</em> can mean "day" (24 hours), "daylight period," "indefinite time period," or "epoch" (e.g. "the day of the Lord"). The Genesis days are long geological ages. The sequence of creation broadly corresponds to the scientific sequence (formless and dark earth → atmosphere → ocean and land → vegetation → sun, moon, stars become visible → marine and aerial life → land animals and humans).
+      <br><br>
+      <strong>(2) Gap theory</strong>: the older and now less common reading inserts a long gap between Genesis 1:1 ("In the beginning God created the heavens and the earth") and Genesis 1:2 ("Now the earth was formless and void"). The gap accommodates geological ages, Lucifer's fall, and a pre-Adamic catastrophe. Reach the present through this gap. The original 1909 Scofield Reference Bible promoted the gap theory.
+      <br><br>
+      <strong>(3) Framework hypothesis</strong>: Genesis 1 is structured as a literary framework (days 1–3 form domains; days 4–6 fill those domains) and is not intended as a chronological account. The "days" are organisational categories, not literal time units. Proponents: Henri Blocher (<em>In the Beginning</em>, 1984), Meredith Kline.
+      <br><br>
+      <strong>(4) Analogical days view</strong>: the days are real divine working periods analogous to human days but not identical in duration. Proponent: C. John Collins (<em>Genesis 1–4: A Linguistic, Literary, and Theological Commentary</em>, 2006).
+      <br><br>
+      <strong>(5) Cosmic temple inauguration view</strong>: John Walton's <em>The Lost World of Genesis One</em> (2009) argues that Genesis 1 is not about material origins at all but about the functional ordering of the cosmos as God's temple, completed in seven liturgical days. The age and material origins of the universe are not in view; theological inauguration is.
+      <br><br>
+      OEC generally rejects macroevolution between major taxonomic groups. God created different "kinds" through successive direct creative acts over geological time. Some microevolution within kinds is accepted. Adam and Eve are historical, specially created humans.
+      <br><br>
+      OEC has been adopted by significant evangelical figures: William Lane Craig (with a developmental view), Hugh Ross, Norman Geisler, J.P. Moreland, Walter Kaiser. It is the dominant position at many evangelical seminaries (Dallas, Talbot, Trinity, Denver) that reject both YEC literalism and theistic evolution.`,
+        verses: ['Gen 1:1', 'Gen 1:2–31', 'Ps 90:4', '2 Pet 3:8', 'Ps 104:5–9', 'Job 38:4–11', 'Heb 11:3', 'Rom 1:20', 'Col 1:15–17'],
+      },
+      {
+        name: 'Theistic Evolution / Evolutionary Creationism',
+        stance: 'affirm',
+        position: `Evolutionary Creationism (the term preferred by most contemporary advocates over "theistic evolution," which they regard as misleading) holds that God created through the evolutionary processes that science describes — that the universe is 13.8 billion years old, the earth 4.5 billion years old, life developed through 3.8 billion years of biological evolution, and humans share common ancestry with other primates and indeed all living organisms — but that God is the ultimate Creator who set this whole process in motion, sustains it in being, and providentially superintends it toward his purposes.
+      <br><br>
+      The position is grounded in the conviction that the natural world reveals God's creative wisdom (Romans 1:20; Psalm 19:1) and that since natural science investigates the natural world, scientific findings rightly understood will not contradict biblical truth rightly understood. When apparent conflicts arise, either the science is wrong, or the biblical interpretation is wrong, or both — but truth cannot contradict truth.
+      <br><br>
+      The major contemporary institutional voice is <strong>BioLogos</strong>, founded in 2007 by <strong>Francis Collins</strong> (the geneticist who led the Human Genome Project, served as Director of the National Institutes of Health 2009–2021, and was the namesake of the President's Council of Advisors on Science). Collins's <em>The Language of God</em> (2006) is the most widely-read evangelical defence of evolutionary creationism.
+      <br><br>
+      Other major evolutionary creationist voices: <strong>Denis Alexander</strong> (Cambridge, <em>Creation or Evolution: Do We Have to Choose?</em> 2008); <strong>N.T. Wright</strong> (Anglican biblical scholar, generally sympathetic); <strong>John Polkinghorne</strong> (Anglican physicist-theologian, deceased 2021); <strong>Alister McGrath</strong> (Oxford, multiple works); <strong>Deborah Haarsma</strong> (current President of BioLogos); <strong>Karl Giberson</strong>; <strong>John Walton</strong> (his "cosmic temple" view is compatible with both old-earth creationism and evolutionary creationism); <strong>Tim Keller</strong> (with public sympathies, though carefully avoiding doctrinal certainty); <strong>C.S. Lewis</strong> (in earlier generation, generally sympathetic).
+      <br><br>
+      The position on Adam and Eve is contested even among evolutionary creationists. Options include: (1) Adam and Eve as a real historical couple chosen by God from among the earliest humans (specially endowed with the imago Dei); (2) Adam and Eve as representatives of an early human population; (3) Adam and Eve as literary figures conveying theological truth without strict historical reference; (4) Adam and Eve as a real historical couple but understood within a population (population genetics suggests humans descend from a population of at least several thousand, not a single original pair — making strict monogenesis problematic).
+      <br><br>
+      Major evangelical theological treatments engaging Adam and the historical question: <strong>Denis Alexander's <em>Creation or Evolution</em></strong>. <strong>Peter Enns's <em>The Evolution of Adam</em></strong> (2012) — controversial, departs from traditional evangelical position. <strong>Joshua Swamidass's <em>The Genealogical Adam and Eve</em></strong> (2019) — a more recent attempt to reconcile a historical Adam and Eve with mainstream evolutionary biology and population genetics.
+      <br><br>
+      Acceptance: high among Anglican biblical scholars and theologians, mainline Protestant scholars generally, Catholic scientists and theologians, many evangelical biologists; lower among evangelical pastors and laypeople; very low in fundamentalist Baptist and independent church circles.`,
+        verses: ['Gen 1:1–31', 'Gen 2:7', 'Ps 19:1–6', 'Ps 104', 'Prov 8:22–31', 'John 1:1–3', 'Col 1:15–17', 'Rom 1:20', 'Heb 11:3'],
+      },
+      {
+        name: 'Intelligent Design (ID)',
+        stance: 'nuanced',
+        position: `Intelligent Design is not strictly a theological position but a philosophical and scientific argument that some features of the natural world are best explained by an intelligent cause rather than by unguided natural processes. ID claims to be empirically detectable without making theological claims about who the designer is.
+      <br><br>
+      The movement is centred at the <strong>Discovery Institute</strong> in Seattle (founded 1990; the Center for Science and Culture launched 1996). Major figures and works:
+      <br><br>
+      <strong>Phillip Johnson's <em>Darwin on Trial</em></strong> (1991) — a Berkeley law professor's critique of evolutionary biology as bad science, often credited as launching the ID movement.
+      <br><br>
+      <strong>Michael Behe's <em>Darwin's Black Box</em></strong> (1996) — a Lehigh University biochemist's argument that certain cellular systems exhibit "irreducible complexity" that cannot evolve gradually. Behe's later <em>The Edge of Evolution</em> (2007) and <em>Darwin Devolves</em> (2019).
+      <br><br>
+      <strong>William Dembski's <em>The Design Inference</em></strong> (1998) — a mathematician's attempt to formalise the detection of design through statistical inference based on specified complexity.
+      <br><br>
+      <strong>Stephen Meyer's <em>Signature in the Cell</em></strong> (2009) — argues that the information content in DNA is best explained by intelligent design rather than chemical evolution. <em>Darwin's Doubt</em> (2013) extends the argument to the Cambrian explosion.
+      <br><br>
+      ID is in significant tension with mainstream science. The 2005 <strong>Kitzmiller v. Dover Area School District</strong> ruling held that ID is not science but a form of religion that cannot be taught in US public school science classes. The mainstream scientific community (the American Association for the Advancement of Science, the National Academy of Sciences) has uniformly rejected ID as failing standard scientific methodology.
+      <br><br>
+      Theologically, ID is compatible with multiple Christian positions on origins. Some ID proponents are Young Earth Creationists; some are Old Earth Creationists; some are even theistic evolutionists who think ID's case for design within evolutionary processes is sound. ID is therefore not a fourth fully separate position but a methodological commitment that can be attached to other origins frameworks.
+      <br><br>
+      Critics from evangelical evolutionary creationism (Francis Collins, BioLogos generally) argue that ID conflates the question of <em>whether</em> God designed creation (which all Christians affirm) with the question of <em>how</em> God designed (which they argue is properly a scientific question). They concern that ID concedes scientific ground unnecessarily and may damage Christian credibility when its specific claims are scientifically disconfirmed.
+      <br><br>
+      ID has been most influential among evangelical philosophers and apologists, less so among evangelical biologists. It has had some influence in Catholic, Orthodox, and Jewish circles as a non-denominational design argument.`,
+        verses: ['Ps 19:1–6', 'Ps 139:13–14', 'Rom 1:20', 'Job 38:4–11', 'Prov 8:22–31', 'Heb 11:3', 'John 1:1–3', 'Acts 17:24–28'],
+      },
+    ],
+    keyVerses: ['Gen 1:1', 'Gen 1:1–31', 'Gen 1:5', 'Gen 1:26–28', 'Gen 2:4–25', 'Gen 5:1–32', 'Gen 7:19–24', 'Exod 20:11', 'Exod 31:17', 'Ps 19:1–6', 'Ps 90:4', 'Ps 104:5–9', 'Ps 139:13–14', 'Prov 8:22–31', 'Job 38:4–11', 'John 1:1–3', 'Acts 17:24–28', 'Rom 1:20', 'Rom 5:12–21', 'Col 1:15–17', 'Heb 11:3', '2 Pet 3:8', 'Matt 19:4–5', 'Mark 10:6'],
+    historicalNote: 'Archbishop James Ussher\'s Annals of the World (1650) gave Western Christianity the famous 4004 BC creation date that the Authorised Version Bibles eventually printed as a marginal note. Darwin\'s On the Origin of Species (1859) and The Descent of Man (1871) precipitated the modern crisis. The 1925 Scopes "Monkey Trial" in Dayton, Tennessee, brought the question to American public consciousness. Henry Morris and John Whitcomb\'s The Genesis Flood (1961) launched modern Young Earth Creationism. Pope Pius XII\'s Humani Generis (1950) opened space for Catholic engagement with evolution. Pope John Paul II\'s 1996 statement to the Pontifical Academy of Sciences described evolution as "more than a hypothesis." The BioLogos Foundation was launched by Francis Collins in 2007. The 2005 Kitzmiller v. Dover ruling barred ID from US public school science classrooms. The Ark Encounter in Williamstown, Kentucky (Ken Ham\'s Answers in Genesis) opened in 2016 as the largest Young Earth Creationist installation in the world. Recent decades have seen evangelicalism becoming more openly diverse on this question, with major figures (Tim Keller, John Lennox, William Lane Craig) publicly endorsing positions other than YEC.',
+    relatedTopics: ['hell', 'salvation-works', 'sola-scriptura'],
+  },
+
+  {
+    id: 'eschatology',
+    name: 'The Millennium & End Times',
+    icon: '🌅',
+    controversy: 78,
+    category: 'Last Things',
+    desc: 'Is Christ\'s thousand-year reign of Revelation 20 a literal future kingdom on earth (premillennialism), a present spiritual reign of Christ from heaven (amillennialism), or the present age of gospel triumph leading to Christ\'s return (postmillennialism)? Will the Church be raptured before the great tribulation, after it, or not at all in that specific sense?',
+    definition: `<p><strong>Eschatology</strong> (from Greek <em>eschatos</em>, "last") is the doctrine of the last things — the second coming of Christ, the millennium, the resurrection, the final judgement, heaven and hell, the new creation. The Christian traditions agree on the broad framework (Christ will return, judge, raise the dead, establish his eternal kingdom) but disagree sharply on the timing and nature of the millennium and the events surrounding the parousia.</p>
+      <p>The three main millennial positions:</p>
+      <p><strong>Premillennialism</strong>: Christ returns <em>before</em> a literal thousand-year kingdom on earth. After his return, Satan is bound, the dead in Christ are raised, and Christ reigns from Jerusalem. After the millennium, Satan is released for a final rebellion, then final judgement and new creation.</p>
+      <p><strong>Amillennialism</strong>: The "thousand years" is symbolic — it refers to the present church age, in which Christ reigns spiritually from heaven through his Word and Spirit. Satan is bound in a sense that limits his power. There is no future earthly millennium distinct from the present age; Christ's return inaugurates the eternal state directly.</p>
+      <p><strong>Postmillennialism</strong>: Christ returns <em>after</em> a long age of gospel triumph in which the world is increasingly Christianised. The "millennium" is a golden age of Christian civilization before the parousia. After this age, Christ returns to consummate his kingdom.</p>
+      <p>Within premillennialism, the further question of the <strong>rapture</strong> divides dispensationalists (pretribulational rapture — Christ secretly raptures the Church before a seven-year tribulation; then returns in glory at the end of the tribulation) from historic premillennialists (posttribulational rapture — Christ returns once, after the tribulation; the Church is gathered to him at that single coming).</p>`,
+    subtopics: [
+      { id: 'es-millennium', label: 'The thousand years (Rev 20)' },
+      { id: 'es-rapture', label: 'The rapture' },
+      { id: 'es-tribulation', label: 'The great tribulation' },
+      { id: 'es-preterist', label: 'Preterism (already-fulfilled)' },
+    ],
+    denominations: [
+      {
+        name: 'Roman Catholic',
+        stance: 'affirm',
+        position: `Catholic eschatology is amillennial in its essential structure. The Catechism of the Catholic Church §§668–682 and §§1020–1060 outline the Catholic vision: Christ presently reigns from heaven (CCC §668, citing Ephesians 1:20–22); the Church lives now in the "messianic kingdom" that has been "given over" but is not yet consummated (CCC §671); the millennium of Revelation 20 is not a future earthly thousand years but the present age of the Church.
+      <br><br>
+      CCC §676 explicitly addresses chiliasm (the literal millennial reading): "The Church has rejected even modified forms of this falsification of the kingdom to come under the name of millenarianism, especially the 'intrinsically perverse' political form of a secular messianism."
+      <br><br>
+      The Catholic eschatological structure: (1) at death, individual judgement; (2) the present age of the Church under the reign of the ascended Christ; (3) the second coming of Christ (the parousia); (4) the general resurrection; (5) the final judgement; (6) the new heavens and new earth (Revelation 21–22). There is no distinct "millennial kingdom" between the present age and the eternal state.
+      <br><br>
+      The historical Catholic position rejected millennialism as early as the 4th century. The Council of Ephesus (431 AD) condemned the millenarianism of <strong>Apollinaris</strong>. Augustine's <em>City of God</em> Book XX (c. 425 AD) gave the classical Catholic reading: the thousand years of Revelation 20 is the present age of the Church between Christ's first coming and his second; Satan is "bound" in the sense that he can no longer prevent the gospel from spreading to the nations.
+      <br><br>
+      The rapture (pretribulational or otherwise) is absent from Catholic theology. The Catholic understanding of 1 Thessalonians 4:16–17 ("the dead in Christ will rise first; then we who are alive... will be caught up together with them in the clouds to meet the Lord in the air") is that this describes the single second coming of Christ, at which all the dead in Christ are raised and all living believers are gathered. It is not a separate, prior, secret event.
+      <br><br>
+      The Catholic understanding of the antichrist and tribulation is more spiritualised and historical than dispensational. Various tribulations have come upon the Church through history; the final antichrist (1 John 2:18; 2 Thessalonians 2:3–10) will be the consummation of evil before Christ's return, but the focus is on the final judgement rather than on a literal seven-year period preceded by a rapture.
+      <br><br>
+      The 1992 Catechism does not endorse a particular detailed eschatological scenario but affirms the essential Catholic structure: Christ will return in glory to judge the living and the dead; the dead will be raised; the kingdom will be consummated; God will be all in all (CCC §§1038–1060).`,
+        verses: ['Matt 24:30–31', 'Matt 25:31–46', '1 Thess 4:13–18', '2 Thess 2:1–12', 'Rev 20:1–6', 'Rev 21:1–8', '1 Cor 15:20–28', 'Acts 1:11'],
+      },
+      {
+        name: 'Eastern Orthodox',
+        stance: 'affirm',
+        position: `Orthodox eschatology is also essentially amillennial in structure, though Orthodox theology is generally more cautious about systematic eschatological speculation than Western theology. The Orthodox liturgical life is profoundly eschatological — every Divine Liturgy is the foretaste of the eschatological banquet, the eighth day, the kingdom that is and is to come — but Orthodox theology resists detailed prophetic charts and timeline calculations.
+      <br><br>
+      The Orthodox understanding: Christ presently reigns from heaven; the Church is the kingdom in its inaugural form, growing toward its consummation; the parousia (second coming) will inaugurate the general resurrection, the final judgement, and the new creation.
+      <br><br>
+      Orthodox theology generally rejects:
+      <br><br>
+      <strong>(1)</strong> A literal millennial kingdom distinct from the present church age (which is the chiliasm rejected by the early Church).
+      <br><br>
+      <strong>(2)</strong> A pretribulational rapture (which is regarded as a Protestant innovation foreign to patristic eschatology).
+      <br><br>
+      <strong>(3)</strong> Detailed identifications of the antichrist with specific contemporary political figures or institutions.
+      <br><br>
+      <strong>(4)</strong> Postmillennial gradualism that expects a golden age of Christian civilisation before Christ returns.
+      <br><br>
+      The Orthodox tradition includes a strong sense of <em>kairos</em> — the present moment as eschatologically charged — alongside the conviction that the timing of the parousia is in God's hand and not subject to human calculation. "But concerning that day or that hour, no one knows" (Mark 13:32).
+      <br><br>
+      The patristic tradition includes some millennial-leaning voices (Justin Martyr, Irenaeus, Tertullian — all of whom held some form of premillennialism in the second and early third centuries) and the more strongly amillennial voices that prevailed after the 4th century (Augustine in the West, the Cappadocians and Chrysostom in the East).
+      <br><br>
+      The Russian Orthodox apocalyptic tradition has been particularly rich — the Old Believer schism after Patriarch Nikon's reforms (1652–66) was partly eschatologically motivated; various Russian Orthodox writers (Vladimir Soloviev's <em>A Brief Tale of the Antichrist</em>, 1899/1900) have produced apocalyptic literature. But these have been individual writings rather than dogmatic teaching.
+      <br><br>
+      The Orthodox tradition's emphasis on the present-eschatological character of the Eucharist — "Thy kingdom come" is fulfilled now in liturgical participation — provides a distinctively realised eschatology that contrasts with both dispensationalist futurism and the more this-worldly postmillennialism.`,
+        verses: ['Matt 24:30–31', 'Matt 25:31–46', 'Mark 13:32', '1 Thess 4:13–18', '1 Cor 15:20–28', 'Rev 20:1–6', 'Rev 21:1–8', 'Acts 1:11'],
+      },
+      {
+        name: 'Reformed (Amillennial)',
+        stance: 'affirm',
+        position: `Amillennialism has been the dominant position in confessional Reformed theology since the Reformation. The Westminster Confession (1646), Chapter XXXIII, sketches an essentially amillennial eschatology without using the term: Christ has appointed a day to judge the world; the wicked will go into everlasting torment, the righteous into everlasting life; no specific millennial kingdom is envisioned between the present age and the final judgement.
+      <br><br>
+      Major Reformed amillennial treatments: <strong>Geerhardus Vos's <em>The Pauline Eschatology</em></strong> (1930) — the foundational modern Reformed work on biblical eschatology. <strong>Anthony Hoekema's <em>The Bible and the Future</em></strong> (1979) — the most influential 20th-century Reformed amillennial systematic treatment. <strong>Cornelis Venema's <em>The Promise of the Future</em></strong> (2000). <strong>Kim Riddlebarger's <em>A Case for Amillennialism</em></strong> (2003, rev. 2013).
+      <br><br>
+      The amillennial reading of Revelation 20: Revelation is a symbolic vision, not a chronological account. The "thousand years" represents the long present age of the gospel, between Christ's first coming and his return. Satan was "bound" at the cross (Matthew 12:29; Colossians 2:14–15) in the sense that he can no longer prevent the gospel from going to the nations (Revelation 20:3 specifies the binding's purpose: "so that he should deceive the nations no longer"). The "first resurrection" (Revelation 20:4–6) is the spiritual resurrection of believers in regeneration (or, on some accounts, the entry into heaven of departed saints between death and the final resurrection); the "second resurrection" is the bodily resurrection of all the dead at Christ's return.
+      <br><br>
+      Crucial exegetical commitments: (1) Revelation employs apocalyptic symbolism not literalist chronology; the recapitulating structure of the seven major sections of Revelation (rather than a single chronological sequence) governs how chapter 20 relates to chapters 19 and 21. (2) The New Testament repeatedly speaks of a single second coming, a single general resurrection, a single final judgement — not two phases separated by a thousand years (John 5:28–29; Acts 24:15; 2 Peter 3:10; 1 Corinthians 15:22–24). (3) Christ's kingdom has already been inaugurated; he reigns now from the right hand of the Father (Acts 2:32–36; Hebrews 1:3, 13; Ephesians 1:20–22). There is no need for a separate future millennial kingdom.
+      <br><br>
+      The "two-age" structure of New Testament eschatology (this age and the age to come — Matthew 12:32; Luke 18:30; 20:34–35; Ephesians 1:21; Hebrews 6:5) leaves no room for a third intermediate age (a millennial kingdom). The age to come is the eternal state; the present age is the church age; there is no separate millennium.
+      <br><br>
+      Amillennialism is dominant in: the Reformed denominations broadly (PCA, OPC, URCNA, CRC, RCA, PCUSA); Lutheran theology generally; mainline Anglican theology; classical Reformed Baptist theology; most Roman Catholic and Orthodox theology.`,
+        verses: ['Matt 12:28–29', 'Matt 12:32', 'Acts 2:32–36', 'Acts 24:15', '1 Cor 15:22–28', 'Eph 1:20–22', 'Col 2:14–15', '2 Pet 3:10', 'John 5:28–29', 'Rev 20:1–6'],
+      },
+      {
+        name: 'Reformed (Postmillennial)',
+        stance: 'affirm',
+        position: `Postmillennialism — the view that Christ returns <em>after</em> a long age of gospel triumph in which the world is gradually Christianised — was a major Reformed position in earlier centuries and has experienced revival in recent decades.
+      <br><br>
+      The historic Reformed postmillennial tradition includes <strong>Jonathan Edwards</strong>, <strong>Iain Murray</strong> (modern), <strong>B.B. Warfield</strong>, <strong>Charles Hodge</strong>, <strong>A.A. Hodge</strong>, <strong>Loraine Boettner</strong> (<em>The Millennium</em>, 1957), and large segments of Reformed Christianity from the 17th century into the early 20th century.
+      <br><br>
+      The contemporary revival of Reformed postmillennialism has been driven by <strong>Christian Reconstructionism</strong> — the movement founded by <strong>Rousas John Rushdoony</strong> (1916–2001) and developed by <strong>Greg Bahnsen</strong>, <strong>Gary North</strong>, <strong>Kenneth Gentry</strong>, and others. Christian Reconstructionism combines postmillennialism with theonomy (the view that Old Testament civil law remains binding in its general equity for nations today) and a commitment to building Christian civilization through gospel transformation of every sphere — family, church, state, business, education.
+      <br><br>
+      <strong>Kenneth Gentry's <em>He Shall Have Dominion</em></strong> (1992, rev. 2010) is the major modern Reformed postmillennial treatment. <strong>Keith Mathison's <em>Postmillennialism: An Eschatology of Hope</em></strong> (1999) gives the more moderate Reformed postmillennial position without the theonomic commitments.
+      <br><br>
+      Postmillennial exegesis emphasises: (1) the Great Commission (Matthew 28:18–20) — Christ has been given <em>all</em> authority in heaven and on earth; the Church's mission is to disciple <em>nations</em>, not just individuals. The mission will succeed. (2) Old Testament prophecies of a transformed world (Isaiah 2:2–4; 11:9 — "the earth will be full of the knowledge of the Lord as the waters cover the sea"; Habakkuk 2:14; Daniel 2:35, 44 — the kingdom of God grows from a small stone into a great mountain that fills the whole earth). (3) Romans 11:25–32 — the eventual ingathering of "all Israel" and "all the Gentiles" implies a future age of gospel success. (4) 1 Corinthians 15:24–25 — Christ reigns "until he has put all his enemies under his feet" — implies progressive subjugation through history, not a sudden eschatological reversal.
+      <br><br>
+      Postmillennialists are typically optimistic about the long-term future of the gospel mission; they reject the dispensational and amillennial pessimism that expects the world to grow worse until Christ returns. The kingdom of God advances; the gospel triumphs; the nations are gradually discipled; a long golden age of Christian civilization precedes the parousia.
+      <br><br>
+      Postmillennialism declined sharply in the early 20th century — World War I, the rise of theological liberalism, the collapse of cultural Christianity in the West, and the rise of dispensationalism all undermined postmillennial optimism. Its current revival in some Reformed circles is tied to renewed cultural confidence and the conviction that biblical eschatology requires more than pessimistic withdrawal.`,
+        verses: ['Matt 28:18–20', 'Matt 13:31–33', 'Isa 2:2–4', 'Isa 11:9', 'Hab 2:14', 'Dan 2:35,44', 'Rom 11:25–32', '1 Cor 15:24–25', 'Ps 2:7–9', 'Ps 110:1–2'],
+      },
+      {
+        name: 'Historic Premillennial',
+        stance: 'nuanced',
+        position: `Historic premillennialism — sometimes called "classic" or "covenantal" premillennialism, in contrast to dispensational premillennialism — holds that Christ returns once, after the great tribulation, before a literal earthly thousand-year reign. It rejects the dispensational distinction between Israel and the Church, the pretribulational rapture, and the rigid Israel/Church program of dispensationalism.
+      <br><br>
+      The position has ancient credentials. Justin Martyr (<em>Dialogue with Trypho</em> 80, c. 155 AD): "I and others, who are right-minded Christians on all points, are assured that there will be a resurrection of the dead, and a thousand years in Jerusalem, which will then be built, adorned, and enlarged." Irenaeus (<em>Against Heresies</em> V.32–35, c. 180 AD) gave the major patristic systematic premillennialism — Christ would return; the dead in Christ would be raised; the saints would reign with him on earth for a thousand years before the final judgement. Tertullian (<em>Against Marcion</em> III.24) likewise.
+      <br><br>
+      After Augustine's amillennial reading prevailed in the 4th-5th centuries, premillennialism became marginal in Western theology until the 17th century. It revived among Puritan post-Reformation theologians and among Protestants generally in the 19th and 20th centuries.
+      <br><br>
+      Major modern historic premillennial voices: <strong>George Eldon Ladd</strong> at Fuller Theological Seminary (1911–82) — his <em>The Blessed Hope</em> (1956) and <em>The Presence of the Future</em> (1974) are the foundational modern works. <strong>Don Carson</strong>, generally sympathetic. <strong>Wayne Grudem</strong> (his <em>Systematic Theology</em>, 1994, articulates historic premillennialism). <strong>John Piper</strong>, sympathetic. <strong>Craig Blomberg</strong>. <strong>Robert Mounce</strong>'s commentary on Revelation.
+      <br><br>
+      Key differences from dispensational premillennialism:
+      <br><br>
+      <strong>(1)</strong> Single second coming. Christ returns once, after the tribulation. There is no separate pretribulational rapture. 1 Thessalonians 4:13–17 describes Christ's single return; "we who are alive will be caught up" is part of this single event, not a prior secret event.
+      <br><br>
+      <strong>(2)</strong> Israel and the Church. Historic premillennialism reads "Israel" in Romans 9–11 and elsewhere as referring to ethnic Israel (not just the Church), but does not maintain a sharp Israel/Church distinction. The Church is the people of God in Christ; ethnic Israel will be brought into the Church through future conversion (Romans 11:25–32). One people of God ultimately, with ethnic Israel having a special place in the divine plan.
+      <br><br>
+      <strong>(3)</strong> The millennium. After Christ's return and the resurrection of the just, Christ reigns from earth (perhaps from Jerusalem, though this is not always emphasised) for a literal thousand years. The wicked dead remain in the grave; the saints reign with Christ; Satan is bound. At the end of the millennium, Satan is released for a final rebellion; then the final judgement; then the new creation.
+      <br><br>
+      Adoption: significant among evangelical biblical scholars (especially New Testament specialists); moderately influential at Fuller, Trinity, Gordon-Conwell, and similar evangelical seminaries; less common in popular evangelicalism (where dispensational premillennialism dominates).`,
+        verses: ['1 Thess 4:13–17', 'Matt 24:21–31', 'Rev 19:11–21', 'Rev 20:1–10', 'Rev 20:11–15', 'Rom 11:25–32', '1 Cor 15:22–28', '2 Pet 3:10–13'],
+      },
+      {
+        name: 'Dispensational Premillennial',
+        stance: 'affirm',
+        position: `Dispensational premillennialism, originating with John Nelson Darby in the 1830s and reaching its mature form through C.I. Scofield (1909), Lewis Sperry Chafer at Dallas Theological Seminary, John Walvoord, Charles Ryrie, J. Dwight Pentecost, Tim LaHaye, and Hal Lindsey, has been the dominant eschatology of American evangelicalism for over a century.
+      <br><br>
+      The full dispensational system:
+      <br><br>
+      <strong>(1) Pretribulational rapture.</strong> Before the seven-year tribulation, Christ comes secretly for his Church. The dead in Christ are raised; living believers are translated; both are taken to be with Christ (1 Thessalonians 4:13–17 — read as a separate event from the public second coming). The rapture is imminent — it could happen at any moment.
+      <br><br>
+      <strong>(2) The seven-year tribulation.</strong> After the rapture, a seven-year period of unprecedented divine judgement on the earth begins. The antichrist arises (Daniel 9:27 read as a future seven-year covenant; 2 Thessalonians 2:3–10; Revelation 13). The temple in Jerusalem is rebuilt; sacrifices are reinstituted; the antichrist desecrates the temple at the midpoint of the seven years (Matthew 24:15; Daniel 9:27). The second half is the "great tribulation" — three and a half years of catastrophic judgement (Revelation 6–18). During this period, 144,000 sealed Jewish witnesses (Revelation 7) and "the great multitude" of tribulation saints (Revelation 7:9–17) are saved.
+      <br><br>
+      <strong>(3) The second coming (Revelation 19).</strong> At the end of the tribulation, Christ returns publicly and visibly with his saints (those raptured earlier) and the angels. He destroys the antichrist and his armies at Armageddon. The Old Testament saints and the tribulation martyrs are raised.
+      <br><br>
+      <strong>(4) The millennial kingdom (Revelation 20:1–6).</strong> Christ binds Satan and reigns from Jerusalem for a literal thousand years. The Old Testament prophetic promises to Israel are fulfilled literally — the Temple is rebuilt (Ezekiel 40–48), sacrifices may be reinstituted as memorial, the boundaries of the land of Israel reach from the Nile to the Euphrates, Christ reigns from David's throne in Jerusalem. The nations come to Jerusalem to worship; peace is established; the curse is lifted in part.
+      <br><br>
+      <strong>(5) The final rebellion (Revelation 20:7–10).</strong> Satan is released; a final rebellion is gathered; Satan and his followers are destroyed; the wicked dead are raised for the great white throne judgement.
+      <br><br>
+      <strong>(6) The new heavens and new earth (Revelation 21–22).</strong> The eternal state begins.
+      <br><br>
+      Key texts and arguments: <strong>1 Thessalonians 4:13–17</strong> as a separate rapture event distinct from the second coming. <strong>2 Thessalonians 2:7–8</strong> — "the restrainer" being taken out of the way before the lawless one is revealed (often read as the Spirit-indwelt Church being raptured before the antichrist arises). <strong>Revelation 3:10</strong> — Christ's promise to the Philadelphian church to "keep you from the hour of trial" (read as the Church being kept out of the tribulation entirely, not just preserved through it). <strong>Daniel 9:24–27</strong> — the seventieth week of Daniel (the seven-year tribulation) is yet future; the Church Age is a "parenthesis" between the 69th and 70th weeks.
+      <br><br>
+      <strong>Cultural influence:</strong> the Scofield Reference Bible (1909, multiple revisions), Hal Lindsey's <em>The Late Great Planet Earth</em> (1970, the bestselling non-fiction book of the 1970s), Tim LaHaye and Jerry Jenkins's Left Behind series (1995–2007, 65+ million copies), Dallas Theological Seminary, the Bible Institute Movement, the Bible Believer's Bible Commentary, the Word of Faith and Pentecostal movements broadly, and most independent Baptist Bible churches.
+      <br><br>
+      Adoption: dominant in independent Baptist and Bible church movements; very high in Southern Baptist circles (though declining among younger SBC scholars); high in Pentecostal and Charismatic movements; high in Calvary Chapel; lower in Reformed Baptist circles; minimal in mainline Protestant, Catholic, and Orthodox theology.`,
+        verses: ['Dan 9:24–27', 'Matt 24:15–31', '1 Thess 4:13–18', '2 Thess 2:1–12', 'Rev 3:10', 'Rev 4–18', 'Rev 19:11–21', 'Rev 20:1–10', 'Ezek 40–48', 'Rom 11:25–29', 'Zech 12–14'],
+      },
+      {
+        name: 'Preterist',
+        stance: 'nuanced',
+        position: `Preterism (from Latin <em>praeter</em>, "past") holds that most or all of New Testament prophecy was fulfilled in the first century, particularly in the events surrounding the Roman destruction of Jerusalem and the Temple in 70 AD. The "great tribulation," the "coming of the Son of Man" in Matthew 24, and large portions of Revelation describe past events, not future ones.
+      <br><br>
+      <strong>Partial preterism</strong> (the more widely-held form) sees most of the Olivet Discourse (Matthew 24, Mark 13, Luke 21) and much of Revelation as fulfilled in 70 AD, while maintaining that Christ's future bodily second coming, the general resurrection, and the final judgement remain future. Partial preterism is compatible with amillennialism, postmillennialism, or even some forms of premillennialism.
+      <br><br>
+      Major partial preterist voices: <strong>R.C. Sproul</strong> (<em>The Last Days According to Jesus</em>, 1998) — the most influential popular-level statement. <strong>Kenneth Gentry</strong> (his postmillennialism is paired with partial preterism). <strong>Gary DeMar</strong>. <strong>James B. Jordan</strong>. <strong>N.T. Wright</strong> in some respects (his reading of the Olivet Discourse in <em>Jesus and the Victory of God</em>, 1996).
+      <br><br>
+      <strong>Full preterism</strong> (also called "hyper-preterism" or "consistent preterism" by its advocates) holds that <em>all</em> New Testament prophecy was fulfilled in 70 AD, including the second coming, the resurrection, and the final judgement. There is no future bodily second coming; we are now in the eternal kingdom. Full preterism is regarded as heretical by virtually all mainstream Christian traditions because it denies the future bodily return of Christ (Acts 1:11; 1 Corinthians 15) and the future bodily resurrection. Its main contemporary voice is Don Preston.
+      <br><br>
+      Key preterist exegesis: <strong>Matthew 24:34</strong> — "Truly I tell you, this generation will not pass away until all these things have taken place." Jesus is speaking to his disciples in c. 30 AD; "this generation" is their own generation; the things Jesus predicted (the destruction of Jerusalem, the Temple, the dispersion of the Jews) all happened by 70 AD — within their own generation. <strong>Matthew 16:28</strong> — "Truly I tell you, there are some standing here who will not taste death until they see the Son of Man coming in his kingdom." This was fulfilled in the events of 70 AD, when the Son of Man came in judgement against Jerusalem. <strong>Revelation 1:1; 22:6, 7, 10, 12, 20</strong> — repeated emphasis that the events of Revelation "must soon take place." This was true if the events were 70 AD-related; it's been 2,000 years and counting if the events are future.
+      <br><br>
+      The strength of partial preterism is its historical specificity — the events of 66–70 AD (the Jewish-Roman War, the destruction of the Temple, the dispersion of the Jewish people) really did happen within Jesus's predicted generation, and they really did transform the religious world of the first century. The weakness of full preterism is that it denies what most Christians regard as the core eschatological hope — the future bodily return of Christ.`,
+        verses: ['Matt 24:34', 'Matt 16:28', 'Matt 24:1–28', 'Mark 13:1–30', 'Luke 21:5–24', 'Rev 1:1', 'Rev 22:6,7,10,12,20', 'Acts 1:11'],
+      },
+    ],
+    keyVerses: ['Matt 24:1–51', 'Matt 25:31–46', 'Mark 13:1–37', 'Luke 21:5–28', 'John 5:28–29', 'Acts 1:11', 'Acts 24:15', '1 Cor 15:20–28', '1 Cor 15:50–58', '1 Thess 4:13–18', '2 Thess 2:1–12', '2 Pet 3:3–13', 'Rev 19:11–21', 'Rev 20:1–15', 'Rev 21:1–22:21', 'Dan 9:24–27', 'Dan 12:1–13', 'Zech 12–14', 'Rom 11:25–32', 'Matt 28:18–20'],
+    historicalNote: 'Justin Martyr, Irenaeus, and Tertullian held premillennial positions in the 2nd-3rd centuries. Augustine\'s amillennial reading (City of God Book XX, c. 425 AD) prevailed in the West. Joachim of Fiore (1135–1202) reintroduced apocalyptic speculation. The Reformation continued the amillennial tradition. John Nelson Darby developed dispensationalism in the 1830s. The Scofield Reference Bible (1909) and Dallas Theological Seminary (1924) institutionalised it. Hal Lindsey\'s The Late Great Planet Earth (1970) sold 35+ million copies. Tim LaHaye and Jerry Jenkins\'s Left Behind series (1995–2007) sold 65+ million copies. R.C. Sproul\'s The Last Days According to Jesus (1998) reintroduced partial preterism to American evangelicalism. The October 7, 2023 Hamas attack and the Gaza war have intensified eschatological speculation in American evangelical circles.',
+    relatedTopics: ['israel-church', 'hell', 'creation'],
+  },
+
+  {
+    id: 'abortion',
+    name: 'Abortion & the Status of the Unborn',
+    icon: '🤰',
+    controversy: 95,
+    category: 'Ethics',
+    desc: 'When does human life begin — at conception, at implantation, at viability, at birth? What moral status does the unborn have, and what are the legitimate Christian responses when its life conflicts with the life or wellbeing of the mother?',
+    definition: `<p>The question of <strong>abortion</strong> sits at the intersection of biology, philosophy, theology, and law. All Christian traditions affirm the sanctity of human life made in the image of God (Genesis 1:27). They disagree on three related questions: (1) <em>When does a human person, as the bearer of full moral status, begin to exist?</em> (2) <em>Under what circumstances, if any, is the deliberate termination of pregnancy morally permissible?</em> (3) <em>What ought the law to be?</em></p>
+      <p>The historic Christian position, with virtually unbroken witness from the first-century <em>Didache</em> ("Do not murder a child by abortion") through the entire patristic, medieval, and Reformation traditions, has condemned abortion as a grave sin. This historic consensus held essentially intact across Catholic, Orthodox, and Protestant Christianity until the second half of the 20th century, when mainline Protestant denominations and some Catholic theological voices began to develop more permissive positions.</p>
+      <p>The contemporary divide:</p>
+      <p><strong>Catholic, Orthodox, evangelical, and most global Christianity</strong>: the unborn child has full human moral status from conception (or at least from implantation); deliberate abortion is gravely wrong; exceptions are very narrow (typically only where indirect, where the principle of double effect applies — e.g., in treating ectopic pregnancy).</p>
+      <p><strong>Mainline Protestant traditions (PCUSA, ELCA, UMC pre-disaffiliations, Episcopal Church, UCC, Disciples of Christ)</strong>: vary, with many supporting abortion access while acknowledging moral complexity and grief; the unborn has real but possibly developing moral status.</p>`,
+    subtopics: [
+      { id: 'ab-personhood', label: 'When does personhood begin?' },
+      { id: 'ab-exceptions', label: 'Exceptions: rape, life of mother, fetal anomaly' },
+      { id: 'ab-law', label: 'Law and policy' },
+      { id: 'ab-pastoral', label: 'Pastoral response' },
+    ],
+    denominations: [
+      {
+        name: 'Roman Catholic',
+        stance: 'deny',
+        position: `Catholic teaching is unequivocal: direct abortion is "intrinsically evil" — never morally permissible regardless of intention, circumstance, or consequence. The Catechism of the Catholic Church §§2270–2275 gives the systematic statement.
+      <br><br>
+      CCC §2270: "Human life must be respected and protected absolutely from the moment of conception. From the first moment of his existence, a human being must be recognized as having the rights of a person — among which is the inviolable right of every innocent being to life."
+      <br><br>
+      CCC §2271: "Since the first century the Church has affirmed the moral evil of every procured abortion. This teaching has not changed and remains unchangeable. Direct abortion, that is to say, abortion willed either as an end or as a means, is gravely contrary to the moral law." The Catechism cites the <em>Didache</em> 2.2 (c. 90 AD): "You shall not kill the embryo by abortion and shall not cause the newborn to perish."
+      <br><br>
+      <strong>Excommunication</strong>: CCC §2272 — "Formal cooperation in an abortion constitutes a grave offense. The Church attaches the canonical penalty of excommunication to this crime against human life. 'A person who procures a successful abortion incurs excommunication <em>latae sententiae</em>' [automatic excommunication], 'by the very commission of the offense.'" Canon 1398 of the 1983 Code of Canon Law.
+      <br><br>
+      Pope John Paul II's encyclical <strong><em>Evangelium Vitae</em></strong> ("The Gospel of Life," March 25, 1995) gave the most extensive papal statement: "I declare that direct abortion, that is, abortion willed as an end or as a means, always constitutes a grave moral disorder, since it is the deliberate killing of an innocent human being. This doctrine is based upon the natural law and upon the written Word of God, is transmitted by the Church's Tradition and taught by the ordinary and universal Magisterium" (§62). This declaration is widely understood as having been made <em>ex cathedra</em> — though not in the strictest technical sense, the teaching is regarded as infallibly proposed by the ordinary universal magisterium.
+      <br><br>
+      <strong>Double effect</strong>: Catholic moral theology permits medical interventions whose <em>primary</em> intended effect saves the mother's life, even if the <em>foreseen but unintended</em> secondary effect is the death of the unborn child. The classic case is the surgical removal of a fallopian tube containing an ectopic pregnancy — the surgery's intent is to remove diseased tissue threatening the mother's life; the death of the embryo is a foreseen but not intended consequence. This is morally distinct from direct abortion (intentional killing of the unborn child as the means or end). Similarly, the treatment of a cancerous uterus during pregnancy that may result in fetal death is permitted under double effect principles.
+      <br><br>
+      The Catholic Church's historic teaching has not always specified the precise moment when human personhood begins. Augustine, Aquinas, and many medieval theologians distinguished between the "unformed" and "formed" embryo, holding that ensoulment occurred at quickening (when fetal movement begins). This delayed-ensoulment view, however, did not justify abortion in those earlier centuries — abortion at any stage was condemned. The modern Catholic position simplifies the issue: from conception forward, the embryo has the full status of a human person, with full moral rights.
+      <br><br>
+      The political theology of abortion in the United States has made the Catholic Church one of the leading institutional voices in the pro-life movement. The US Conference of Catholic Bishops has consistently advocated against abortion access. Catholic Charities, Catholic hospitals, the March for Life, the Knights of Columbus, and many lay organisations have institutionalised the Catholic pro-life witness.`,
+        verses: ['Exod 21:22–25', 'Ps 139:13–16', 'Ps 51:5', 'Jer 1:5', 'Luke 1:39–45', 'Gen 1:27', 'Gen 9:5–6', 'Job 31:15'],
+      },
+      {
+        name: 'Eastern Orthodox',
+        stance: 'deny',
+        position: `Orthodox teaching is uniformly and strongly against abortion. The Orthodox Church has held the same position as the Catholic Church on this question through the entire history of the undivided Church — abortion is forbidden as the killing of a human being.
+      <br><br>
+      The <em>Didache</em> 2.2 (c. 90 AD), preserved in the Orthodox tradition along with the Catholic, gave the foundational early Christian command: "You shall not kill the embryo by abortion and shall not cause the newborn to perish." Subsequent patristic witnesses are unanimous: Athenagoras (<em>Plea for the Christians</em> 35), Tertullian (<em>Apology</em> 9), Hippolytus (<em>Refutation of All Heresies</em> 9.7), Basil the Great (Letter 188, Canon 2), John Chrysostom (<em>Homilies on Romans</em> 24).
+      <br><br>
+      Basil the Great's <em>First Canonical Letter</em> (Letter 188, c. 374 AD), Canon 2: "The woman who purposely destroys her unborn child is guilty of murder. With us there is no nice enquiry as to its being formed or unformed." This is the canonical Orthodox position.
+      <br><br>
+      The Holy and Great Council of Crete (June 2016), in the document "The Mission of the Orthodox Church in Today's World," addressed abortion explicitly: "The Church always teaches that human life begins from conception. Therefore, abortion, that is, the deliberate killing of the unborn child, is a sin."
+      <br><br>
+      The Basis of the Social Concept of the Russian Orthodox Church (2000), Section XII.2: "The Orthodox Church in no case can approve of abortion. Without rejecting women who have had an abortion, the Church does not give blessing to it... The wide spread and justification of abortion in modern society are seen by the Church as a threat to the future of mankind and a clear sign of moral degradation."
+      <br><br>
+      <strong>Exceptions and pastoral approach</strong>: Orthodox theology, like Catholic, recognises the principle of double effect for medical interventions whose primary intent is to save the mother's life. The deliberate, direct termination of pregnancy is forbidden; medical treatments that may indirectly result in fetal death (where the death is foreseen but not intended) are permitted.
+      <br><br>
+      In cases of rape, the unborn child has the same moral status as any other unborn child — but the pastoral response involves caring deeply for the trauma of the mother and providing whatever support is possible.
+      <br><br>
+      Orthodox jurisdictions have varied somewhat in their canonical disciplinary response. Basil's canon prescribed 10 years' excommunication from communion for a woman who procured an abortion, though Basil himself noted that this was severe and could be modified by pastoral discretion. Contemporary Orthodox practice varies — some jurisdictions follow strict canonical penalties, others apply pastoral economy.
+      <br><br>
+      The major Orthodox pro-life voices: Stanley Harakas, John Breck (<em>The Sacred Gift of Life</em>, 1998), Christopher Knight, the Orthodox Christians for Life organisation.`,
+        verses: ['Exod 21:22–25', 'Ps 139:13–16', 'Jer 1:5', 'Luke 1:39–45', 'Gen 1:27', 'Wisdom 12:5', 'Deut 30:19', 'Prov 6:16–17'],
+      },
+      {
+        name: 'Evangelical / Baptist',
+        stance: 'deny',
+        position: `American evangelicalism became the most politically organised pro-life movement in the world from the late 1970s onward. The Baptist Faith & Message (2000), Article XV ("The Christian and the Social Order"): "We should speak on behalf of the unborn and contend for the sanctity of all human life from conception to natural death."
+      <br><br>
+      The transformation of evangelicalism on abortion is itself a significant historical phenomenon. In the early 1970s, the Southern Baptist Convention had passed resolutions (1971, 1974, 1976) that permitted abortion in cases of rape, incest, fetal deformity, and danger to the mother's emotional and physical health. <em>Christianity Today</em> in 1971 endorsed legalised abortion in limited cases. The 1973 <em>Roe v. Wade</em> decision was met with relatively muted evangelical reaction.
+      <br><br>
+      The shift began in the late 1970s, driven by <strong>Francis Schaeffer</strong> and <strong>C. Everett Koop</strong>'s <em>Whatever Happened to the Human Race?</em> (1979, book and five-part film). Schaeffer argued that abortion was inseparable from a broader cultural rejection of the imago Dei and the sanctity of human life; that evangelicals could not in good conscience remain neutral. The 1980s saw the formation of the Moral Majority (Jerry Falwell, 1979), Concerned Women for America (Beverly LaHaye, 1979), and Focus on the Family's political wing, all making opposition to abortion central to the new "Religious Right" coalition.
+      <br><br>
+      The SBC's 1980 resolution reversed earlier positions and called for a constitutional amendment prohibiting abortion. The 1984 SBC resolution further hardened the position. By 2003 the SBC Resolution called for protection of human life from "the moment of fertilization."
+      <br><br>
+      Major evangelical pro-life institutions: <strong>Focus on the Family</strong> (James Dobson), <strong>Family Research Council</strong>, <strong>National Right to Life Committee</strong>, <strong>Americans United for Life</strong> (with significant evangelical input), <strong>Susan B. Anthony List</strong>, <strong>Live Action</strong> (Lila Rose), <strong>Care Net</strong> and <strong>Heartbeat International</strong> (the two largest pregnancy resource center networks, providing free pregnancy testing, counselling, and material support to women considering abortion).
+      <br><br>
+      Major evangelical theological treatments: <strong>Scott Klusendorf's <em>The Case for Life</em></strong> (2009, rev. 2022); <strong>Francis Beckwith's <em>Defending Life</em></strong> (2007); <strong>Randy Alcorn's <em>ProLife Answers to ProChoice Arguments</em></strong> (1992, multiple revisions); <strong>R.C. Sproul's <em>Abortion: A Rational Look at an Emotional Issue</em></strong> (1990).
+      <br><br>
+      The <strong>Dobbs v. Jackson Women's Health Organization</strong> decision (June 24, 2022) overturned Roe v. Wade, returning abortion policy to the states. The evangelical pro-life movement reached its central political goal after nearly fifty years of organising. The post-Dobbs era has surfaced internal evangelical debate about the path forward — whether to pursue federal abortion bans, state-by-state efforts, or stronger maternal support policies.
+      <br><br>
+      Within evangelicalism, exceptions for the life of the mother are nearly universally permitted (and typically understood under double-effect principles); exceptions for rape and incest are debated (the SBC's official position does not permit them; many evangelical leaders disagree); exceptions for fatal fetal anomalies are debated (most pro-life positions hold that the unborn child's right to life is not contingent on prognosis).`,
+        verses: ['Ps 139:13–16', 'Jer 1:5', 'Luke 1:39–45', 'Ps 51:5', 'Exod 21:22–25', 'Gen 1:27', 'Job 31:15', 'Isa 49:1', 'Gen 25:22–23'],
+      },
+      {
+        name: 'Reformed / Presbyterian (conservative)',
+        stance: 'deny',
+        position: `The conservative Reformed and Presbyterian bodies — the PCA, OPC, URCNA, RPCNA, RCUS, and most international Reformed churches — uniformly oppose abortion as the unjustified taking of human life made in God's image.
+      <br><br>
+      The PCA Position Paper on Abortion (1978, reaffirmed) declares: "We hold that the Bible teaches that all human life is sacred from the moment of conception to the moment of natural death." The PCA Book of Church Order does not include abortion in its lists of disciplinable offences (church discipline is not the primary tool), but the PCA understanding is that direct procured abortion is morally indistinguishable from murder.
+      <br><br>
+      The Reformed exegetical case follows traditional pro-life arguments: <strong>Psalm 139:13–16</strong> — "you knit me together in my mother's womb"; the personal pronouns and conscious activity attributed to the unborn child indicate full personhood. <strong>Jeremiah 1:5</strong> — God's calling of Jeremiah "before I formed you in the womb." <strong>Luke 1:39–45</strong> — John the Baptist leaping in Elizabeth's womb at six months gestation, attributed personhood and Spirit-filled activity. <strong>Exodus 21:22–25</strong> — the lex talionis applies in cases of injury to a pregnant woman that causes premature birth or fetal death, suggesting that the unborn child's death is treated as analogous to the death of any other human being.
+      <br><br>
+      The Reformed natural-law argument: human nature is determined by the Creator's design; God designs the unborn child as a member of the human species from conception; the unborn child therefore has full human dignity by virtue of being human, not by virtue of any acquired capacity that may or may not be present at various developmental stages.
+      <br><br>
+      <strong>Civil law and theonomy</strong>: some Reformed positions (especially those influenced by Christian Reconstructionism) argue that civil law should prohibit abortion as murder, following the general equity of the Mosaic law. Most Reformed positions are less explicitly theonomic but support pro-life civil law on natural-law and creational grounds.
+      <br><br>
+      Major Reformed and broadly Reformed treatments: <strong>John Frame</strong> (<em>The Doctrine of the Christian Life</em>, 2008, Chapter 26); <strong>Tim Keller</strong> (sympathetic, with characteristic pastoral nuance); <strong>R.C. Sproul</strong> (<em>Abortion: A Rational Look</em>, 1990); <strong>D.A. Carson</strong>; <strong>John Piper</strong> (frequent sermons and writings); <strong>Wayne Grudem</strong> (<em>Politics — According to the Bible</em>, 2010, Chapter 6).
+      <br><br>
+      The PCUSA, by contrast, has a quite different position (see below).
+      <br><br>
+      The <strong>Westminster Confession (1646), Chapter XXIII</strong> ("Of the Civil Magistrate"), historically obligated the magistrate to suppress blasphemy and to promote the true religion. Modern Reformed Christians vary on the implications of this for abortion law, with most supporting a civil prohibition while recognising the distinction between sin and crime in the natural-law tradition.`,
+        verses: ['Ps 139:13–16', 'Jer 1:5', 'Luke 1:39–45', 'Exod 21:22–25', 'Ps 51:5', 'Gen 1:26–27', 'Gen 9:5–6', 'Prov 6:16–17', 'Isa 49:1'],
+      },
+      {
+        name: 'Mainline Protestant',
+        stance: 'varies',
+        position: `Mainline Protestant denominations have generally moved away from absolute prohibitions on abortion since the 1960s, while remaining theologically diverse and continuing to acknowledge the moral significance of the unborn life.
+      <br><br>
+      <strong>The Presbyterian Church (USA)</strong>: PCUSA General Assembly statements (1970, 1972, 1992, 2006, 2010, 2018) have consistently supported "the right of women to make moral choices, including abortion, in the freedom of Christian conscience." The 2006 General Assembly statement: "The PCUSA reaffirms that abortion is a matter of conscience and a moral choice... while recognising the gravity of such decisions and the spiritual support required."
+      <br><br>
+      <strong>The Episcopal Church</strong>: General Convention resolutions (1967, 1976, 1988, 1994, 2018, 2022) have affirmed "the wellbeing and dignity of the woman and the wellbeing of the unborn child" while declining to declare abortion intrinsically wrong. The 2018 resolution explicitly opposed legislation restricting abortion access.
+      <br><br>
+      <strong>The Evangelical Lutheran Church in America</strong>: the 1991 social statement "Abortion" articulates a nuanced position recognising the value of unborn life while supporting access to abortion in cases where the woman's wellbeing is significantly at stake. The ELCA opposes abortion as a method of birth control and as gender selection.
+      <br><br>
+      <strong>The United Church of Christ</strong>: has the most clearly pro-choice institutional position among mainline Protestants. The UCC General Synod has supported abortion rights since 1971.
+      <br><br>
+      <strong>The Disciples of Christ</strong>: similar to UCC.
+      <br><br>
+      <strong>The United Methodist Church</strong>: had a more complex position. The 1972 Social Principles permitted abortion in cases of "tragic conflicts of life with life," carefully qualifying. Through 2024, the UMC Social Principles included nuanced language acknowledging the moral significance of the unborn while permitting abortion in defined circumstances. The 2024 General Conference adopted revised Social Principles. The Global Methodist Church (departed UMC since 2022) takes a strongly pro-life position.
+      <br><br>
+      The mainline Protestant theological case for permissive positions has several strands. <strong>(1)</strong> The biblical texts (Exodus 21:22–25; Psalm 139; Jeremiah 1:5; Luke 1:39–45) are read as expressing love for the unborn without specifying personhood beginning at conception or condemning all abortions absolutely. <strong>(2)</strong> The tradition's distinction between "formed" and "unformed" embryo (Augustine, Aquinas) shows that the church has not always treated all stages of pregnancy as equivalent. <strong>(3)</strong> The complex realities of pregnancy (rape, incest, severe fetal abnormalities, danger to the mother's life and health) require moral discernment, not absolute prohibition. <strong>(4)</strong> The well-being of women — including their ability to make conscientious decisions about their own bodies and futures — is a serious theological consideration.
+      <br><br>
+      Within mainline Protestantism there are conservative dissenters. The Presbyterian Lay Committee, the Anglican Communion's traditionalist wing, the Confessing Movement within the UMC (before its disaffiliations), and various Lutheran movements within the ELCA have maintained traditional pro-life positions while remaining in mainline denominations.`,
+        verses: ['Exod 21:22–25', 'Ps 139:13–16', 'Gen 1:26–27', 'Luke 1:39–45', 'Matt 25:31–46', 'Jas 1:27', 'Mic 6:8'],
+      },
+      {
+        name: 'Anglican / Episcopal',
+        stance: 'varies',
+        position: `Anglican positions on abortion vary by province and within provinces. The Lambeth Conference has not produced a binding pan-Anglican statement.
+      <br><br>
+      The Lambeth Conference 1958, Resolution 115: "The conference believes that the sanctity of human life requires that the deliberate termination of pregnancy is justified only by the most serious medical or moral considerations." This relatively moderate position has been the closest thing to a pan-Anglican statement.
+      <br><br>
+      The Lambeth Conference 1968, Resolution 22 ("Responsible Parenthood"): "The Conference reaffirms its statement at Lambeth 1958 on family planning, contraception, sterilization, and abortion."
+      <br><br>
+      The Lambeth Conference 1988, Resolution 26: "This Conference reaffirms its strong opposition to abortion as a means of birth control, family planning, sex selection or any reason of mere convenience."
+      <br><br>
+      <strong>The Episcopal Church (USA)</strong>: has moved to a strongly pro-choice institutional position. General Convention resolutions (1967, 1976, 1988, 1994, 2018, 2022) have supported abortion rights while acknowledging moral complexity. The 2022 General Convention reaffirmed support for "the dignity of every human being and the right of every individual to make decisions regarding their own bodies."
+      <br><br>
+      <strong>The Anglican Church of Canada</strong>: has been similarly pro-choice in its institutional positions.
+      <br><br>
+      <strong>The Church of England</strong>: has been more moderate. The House of Bishops has consistently expressed concern about high abortion rates while accepting the legal availability of abortion under the Abortion Act 1967. Major Church of England theologians (John Stott, Rowan Williams in particular contexts, current bishops varying widely) have produced significant pro-life statements while acknowledging the complexities of pastoral care.
+      <br><br>
+      <strong>The Anglican Church in North America (ACNA)</strong>, the Global South provinces, the Anglican Realignment provinces (Nigeria, Uganda, Kenya, Rwanda): uniformly pro-life on a Catholic/evangelical model.
+      <br><br>
+      Major Anglican voices: <strong>John Stott</strong> (consistently pro-life across his long career), <strong>John Macquarrie</strong> (more permissive), <strong>Oliver O'Donovan</strong> (<em>Begotten or Made?</em>, 1984, gives a sophisticated Anglican theological treatment of reproductive technologies and abortion), <strong>N.T. Wright</strong> (sympathetic to pro-life concerns).`,
+        verses: ['Exod 21:22–25', 'Ps 139:13–16', 'Jer 1:5', 'Luke 1:39–45', 'Gen 1:26–27', 'Matt 25:31–46', 'Mic 6:8'],
+      },
+    ],
+    keyVerses: ['Gen 1:26–27', 'Gen 9:5–6', 'Gen 25:22–23', 'Exod 20:13', 'Exod 21:22–25', 'Lev 24:17', 'Job 10:8–12', 'Job 31:15', 'Ps 22:9–10', 'Ps 51:5', 'Ps 139:13–16', 'Prov 6:16–17', 'Prov 24:11–12', 'Isa 49:1', 'Jer 1:5', 'Matt 25:31–46', 'Luke 1:13–17', 'Luke 1:39–45', 'Mic 6:8'],
+    historicalNote: 'The Didache (c. 90 AD) gave the earliest extant Christian condemnation of abortion: "You shall not kill the embryo by abortion." This position was unanimous across patristic, medieval, and Reformation theology. The transformation in mainline Protestant attitudes came rapidly between 1965 and 1975. Roe v. Wade (January 22, 1973) constitutionalised abortion access in the United States. Pope John Paul II\'s Evangelium Vitae (March 25, 1995) gave the most authoritative modern Catholic statement. The "rise of the Religious Right" in evangelical America (1979–80) was substantially driven by Francis Schaeffer\'s "Whatever Happened to the Human Race?" (1979). Dobbs v. Jackson Women\'s Health Organization (June 24, 2022) overturned Roe and returned abortion policy to the states — fulfilling a near-50-year pro-life movement objective and inaugurating a new phase of American abortion politics.',
+    relatedTopics: ['homosexuality', 'womens-ordination', 'creation'],
+  },
 
 ];
 
@@ -1781,13 +2727,13 @@ let currentUser = null;
 let currentUserProfile = null;
 let currentTopic = null;
 let currentSubtopic = null;
-let allComments = [];
+let allComments = [];          // every comment on the current topic
 let userVotes = new Set();
 let activeCategory = 'All';
 let searchQuery = '';
-let currentCommentType = 'general';
-let currentTargetDenom = '';
-let currentVerseRef = '';
+let openForums = new Set();    // which denom forums are open (by denom name)
+let activeReplyTo = null;      // id of comment being replied-to (anywhere)
+let bottomCtype = 'general';   // selected comment-type for the bottom Open Discussion form
 
 // ═══════════════════════════════════════════════════════════════
 //   INIT
@@ -1798,7 +2744,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCategoryFilters();
   renderTopics();
   setupCharCount();
-  setupCommentTypeTabs();
   setupSearch();
   updateStats();
 });
@@ -1873,34 +2818,29 @@ function updateAuthUI() {
 }
 
 function updateCommentFormVisibility() {
-  const loggedOut = document.getElementById('logged-out-prompt');
-  const loggedIn = document.getElementById('logged-in-form');
-  if (!loggedOut || !loggedIn) return;
-  const hasDB = supabaseClient && typeof SUPABASE_CONFIGURED !== 'undefined' && SUPABASE_CONFIGURED;
-  if (!hasDB) {
-    loggedOut.style.display = 'block';
-    loggedOut.innerHTML = '⚙️ Comments are currently disabled — Supabase is not yet configured.';
-    loggedIn.style.display = 'none';
-  } else if (currentUser) {
-    loggedOut.style.display = 'none';
-    loggedIn.style.display = 'block';
+  const logged = document.getElementById('logged-in-form');
+  const out = document.getElementById('logged-out-prompt');
+  if (!logged || !out) return;
+  if (currentUser && currentUserProfile) {
+    logged.style.display = 'block';
+    out.style.display = 'none';
   } else {
-    loggedOut.style.display = 'block';
-    loggedOut.innerHTML = '<a onclick="openModal(\'login\')">Sign in</a> or <a onclick="openModal(\'signup\')">join the Synod</a> to share your perspective.';
-    loggedIn.style.display = 'none';
+    logged.style.display = 'none';
+    out.style.display = 'block';
+    out.innerHTML = `Sign in to contribute to the Open discussion. <button class="btn btn-primary btn-sm" onclick="openModal('signup')">Join the Synod</button>`;
   }
 }
 
 // ═══════════════════════════════════════════════════════════════
-//   CATEGORY FILTERS & SEARCH
+//   CATEGORY FILTERS / SEARCH
 // ═══════════════════════════════════════════════════════════════
 
 function renderCategoryFilters() {
-  const container = document.getElementById('category-filters');
-  if (!container) return;
+  const el = document.getElementById('category-filters');
+  if (!el) return;
   const cats = ['All', ...CATEGORIES];
-  container.innerHTML = cats.map(c =>
-    `<button class="cat-pill ${c === activeCategory ? 'active' : ''}" onclick="setCategory('${c.replace(/'/g, "\\'")}')">${c}</button>`
+  el.innerHTML = cats.map(c =>
+    `<button class="cat-pill ${activeCategory === c ? 'active' : ''}" onclick="setCategory('${escAttr(c)}')">${escHtml(c)}</button>`
   ).join('');
 }
 
@@ -1913,8 +2853,8 @@ function setCategory(cat) {
 function setupSearch() {
   const input = document.getElementById('topic-search');
   if (!input) return;
-  input.addEventListener('input', e => {
-    searchQuery = e.target.value.toLowerCase();
+  input.addEventListener('input', () => {
+    searchQuery = input.value.trim().toLowerCase();
     renderTopics();
   });
 }
@@ -1928,38 +2868,39 @@ function renderTopics() {
   if (!grid) return;
   let filtered = TOPICS;
   if (activeCategory !== 'All') filtered = filtered.filter(t => t.category === activeCategory);
-  if (searchQuery) filtered = filtered.filter(t =>
-    t.name.toLowerCase().includes(searchQuery) ||
-    t.desc.toLowerCase().includes(searchQuery) ||
-    t.category.toLowerCase().includes(searchQuery)
-  );
+  if (searchQuery) {
+    filtered = filtered.filter(t =>
+      t.name.toLowerCase().includes(searchQuery) ||
+      t.desc.toLowerCase().includes(searchQuery) ||
+      t.category.toLowerCase().includes(searchQuery)
+    );
+  }
   if (filtered.length === 0) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--ink-light)">No debates match your search.</div>';
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">🔍</div>No debates match your search.</div>`;
     return;
   }
   grid.innerHTML = filtered.map(t => `
     <div class="topic-card" onclick="showTopic('${t.id}')">
       <div class="topic-card-top">
         <div class="topic-icon">${t.icon}</div>
-        <div class="cat-badge">${t.category}</div>
+        <div class="cat-badge">${escHtml(t.category)}</div>
       </div>
-      <div class="topic-name">${t.name}</div>
-      <div class="topic-desc-preview">${t.desc}</div>
+      <div class="topic-name">${escHtml(t.name)}</div>
+      <div class="topic-desc-preview">${escHtml(t.desc)}</div>
       <div class="topic-card-foot">
         <div class="controversy-bar-mini"><div class="controversy-fill-mini" style="width:${t.controversy}%"></div></div>
         <div class="topic-card-meta">
-          <span>${t.controversy}% controversial</span>
           <span>${t.denominations.length} traditions</span>
+          <span>Controversy ${t.controversy}%</span>
         </div>
       </div>
     </div>`).join('');
 }
 
 function showHome() {
+  currentTopic = null;
   document.getElementById('home-view').style.display = 'block';
   document.getElementById('detail-view').style.display = 'none';
-  currentTopic = null;
-  currentSubtopic = null;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1972,6 +2913,9 @@ async function showTopic(id) {
   if (!topic) return;
   currentTopic = topic;
   currentSubtopic = null;
+  openForums = new Set();      // start with forums collapsed
+  activeReplyTo = null;
+  bottomCtype = 'general';
 
   document.getElementById('home-view').style.display = 'none';
   document.getElementById('detail-view').style.display = 'block';
@@ -1983,16 +2927,12 @@ async function showTopic(id) {
   const catEl = document.getElementById('detail-category');
   if (catEl) catEl.textContent = topic.category;
 
-  // Definition block
+  // Definition
   const defBlock = document.getElementById('definition-block');
   const defBody = document.getElementById('definition-body');
   if (defBlock && defBody) {
-    if (topic.definition) {
-      defBlock.style.display = 'block';
-      defBody.innerHTML = topic.definition;
-    } else {
-      defBlock.style.display = 'none';
-    }
+    if (topic.definition) { defBlock.style.display = 'block'; defBody.innerHTML = topic.definition; }
+    else defBlock.style.display = 'none';
   }
 
   renderSubtopics(topic);
@@ -2003,22 +2943,22 @@ async function showTopic(id) {
     if (topic.historicalNote) {
       histEl.style.display = 'block';
       histEl.innerHTML = `<span class="hist-label">📜 Historical context</span> ${topic.historicalNote}`;
-    } else {
-      histEl.style.display = 'none';
-    }
+    } else histEl.style.display = 'none';
   }
 
-// Key verses
+  // Key verses
   const versesEl = document.getElementById('key-verses');
   const versesBlock = document.getElementById('key-verses-block');
   if (versesEl && topic.keyVerses && topic.keyVerses.length) {
     versesBlock.style.display = 'block';
     versesEl.innerHTML = topic.keyVerses.map(v => `<span class="verse-pill">${escHtml(v)}</span>`).join('');
-    enhanceVersePills();          // ← ADD THIS LINE
-  } else if (versesBlock) {
-    versesBlock.style.display = 'none';
-  }
+    enhanceVersePills();
+  } else if (versesBlock) versesBlock.style.display = 'none';
 
+  // Reset the bottom comment form to general
+  setCommentType('general');
+
+  // Render denoms (each with empty forum, comment counts populate after load)
   renderDenominations(topic);
 
   // Related
@@ -2030,9 +2970,7 @@ async function showTopic(id) {
       const rel = TOPICS.find(t => t.id === rid);
       return rel ? `<button class="related-pill" onclick="showTopic('${rid}')">${rel.icon} ${escHtml(rel.name)}</button>` : '';
     }).join('');
-  } else if (relatedSection) {
-    relatedSection.style.display = 'none';
-  }
+  } else if (relatedSection) relatedSection.style.display = 'none';
 
   updateCommentFormVisibility();
   await loadComments(topic.id);
@@ -2057,61 +2995,299 @@ function setSubtopic(id) {
   renderSubtopics(currentTopic);
 }
 
+// ═══════════════════════════════════════════════════════════════
+//   DENOMINATIONS AS FORUMS
+// ═══════════════════════════════════════════════════════════════
+
 function renderDenominations(topic) {
   const grid = document.getElementById('denom-grid');
   if (!grid) return;
-  grid.innerHTML = topic.denominations.map(d => `
-    <div class="denom-card stance-${d.stance}" data-denom="${escHtml(d.name)}">
-      <div class="denom-card-top">
-        <div class="denom-name">${escHtml(d.name)}</div>
-        <div class="stance-badge badge-${d.stance}">${stanceLabel(d.stance)}</div>
+  grid.innerHTML = topic.denominations.map(d => {
+    const isOpen = openForums.has(d.name);
+    const count = countCommentsForDenom(d.name);
+    return `
+    <div class="denom-card stance-${d.stance} ${isOpen ? 'forum-open' : ''}" data-denom="${escAttr(d.name)}">
+      <div class="denom-card-content">
+        <div class="denom-card-top">
+          <div class="denom-name">${escHtml(d.name)}</div>
+          <div class="stance-badge badge-${d.stance}">${stanceLabel(d.stance)}</div>
+        </div>
+        <div class="denom-position">${d.position}</div>
+        ${d.verses && d.verses.length ? `
+          <div class="denom-verses">
+            <div class="denom-verses-label">Their proof-texts</div>
+            <div>${d.verses.map(v => `<span class="verse-pill">${escHtml(v)}</span>`).join(' ')}</div>
+          </div>` : ''}
       </div>
-      <div class="denom-position">${d.position}</div>
-      ${d.verses && d.verses.length ? `
-        <div class="denom-verses">
-          <div class="denom-verses-label">Their proof-texts</div>
-          <div>${d.verses.map(v => `<span class="verse-pill">${escHtml(v)}</span>`).join(' ')}</div>
-        </div>` : ''}
-      <button class="denom-reply-btn" onclick="startReplyToDenom('${escHtml(d.name).replace(/'/g,"\\'")}')">
-        ⚔️ Respond to this position
+      <button class="denom-forum-toggle" onclick="toggleDenomForum('${escAttr(d.name)}')">
+        <span class="denom-forum-toggle-left">
+          <span class="denom-forum-icon">💬</span>
+          <span>Discuss this position</span>
+          <span class="denom-activity-count ${count === 0 ? 'zero' : ''}">${count}</span>
+        </span>
+        <span class="denom-forum-chevron">▾</span>
       </button>
-      <div class="denom-replies" id="denom-replies-${cssId(d.name)}" style="display:none">
-        <div class="denom-replies-label">Replies to this tradition</div>
-        <div id="denom-replies-list-${cssId(d.name)}"></div>
+      <div class="denom-forum-body" id="forum-body-${escAttr(d.name)}">
+        ${renderForumForDenom(d.name)}
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
   enhanceVersePills();
-  populateTargetFilter(topic);
-  renderRepliesUnderDenoms();
+}
+
+function countCommentsForDenom(denomName) {
+  // count direct + replies that target this denom
+  return allComments.filter(c =>
+    c.target_denomination === denomName ||
+    (c.parent_comment_id && getRootComment(c)?.target_denomination === denomName)
+  ).length;
+}
+
+function getRootComment(c) {
+  let cur = c;
+  let safety = 10;
+  while (cur && cur.parent_comment_id && safety-- > 0) {
+    const parent = allComments.find(x => x.id === cur.parent_comment_id);
+    if (!parent) return cur;
+    cur = parent;
+  }
+  return cur;
+}
+
+function toggleDenomForum(denomName) {
+  if (openForums.has(denomName)) {
+    openForums.delete(denomName);
+  } else {
+    openForums.add(denomName);
+  }
+  // Re-render only this card's open state and forum body — but simplest correct path is full re-render
+  if (currentTopic) renderDenominations(currentTopic);
+}
+
+function renderForumForDenom(denomName) {
+  // Top-level comments targeting this denom (not replies)
+  const topLevel = allComments.filter(c =>
+    c.target_denomination === denomName && !c.parent_comment_id
+  ).sort((a, b) => (b.upvotes || 0) - (a.upvotes || 0));
+
+  const compose = renderForumCompose(denomName);
+  const list = topLevel.length === 0
+    ? `<div class="denom-forum-empty">No one has engaged this tradition's position yet. Be the first.</div>`
+    : `<div class="forum-comment-list">${topLevel.map(c => renderThreadedComment(c, 0)).join('')}</div>`;
+  return compose + list;
+}
+
+function renderForumCompose(denomName) {
+  if (!currentUser || !currentUserProfile) {
+    return `<div class="forum-locked">Sign in to respond to this tradition. <button class="btn btn-primary btn-sm" onclick="openModal('signup')">Join the Synod</button></div>`;
+  }
+  const fid = `forum-compose-${cssId(denomName)}`;
+  return `
+    <div class="forum-compose">
+      <div class="ctype-tabs">
+        <button class="ctype-tab active" data-ctype="responding">⚔️ Respond to this position</button>
+        <button class="ctype-tab" data-ctype="edit_suggestion" onclick="toggleForumCtype('${escAttr(denomName)}', 'edit_suggestion')">✏️ Suggest an edit</button>
+      </div>
+      <div class="ctype-helper" id="${fid}-helper">Push back on, defend, or refine this tradition's position.</div>
+      <textarea id="${fid}-text" maxlength="600" placeholder="Make your case. Cite Scripture. Be charitable. (Max 600 characters.)"></textarea>
+      <div class="forum-compose-bottom">
+        <span class="char-count" id="${fid}-count">0 / 600</span>
+        <button class="btn btn-primary btn-sm" onclick="submitForumComment('${escAttr(denomName)}')">Post</button>
+      </div>
+      <div id="${fid}-msg"></div>
+    </div>`;
+}
+
+function toggleForumCtype(denomName, ctype) {
+  const fid = `forum-compose-${cssId(denomName)}`;
+  const helper = document.getElementById(`${fid}-helper`);
+  if (!helper) return;
+  // Find tabs in this forum
+  const card = document.querySelector(`.denom-card[data-denom="${cssAttr(denomName)}"]`);
+  if (!card) return;
+  card.querySelectorAll('.forum-compose .ctype-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.ctype === ctype);
+  });
+  card.querySelector('.forum-compose').dataset.ctype = ctype;
+  helper.textContent = ctype === 'edit_suggestion'
+    ? 'Propose a correction or refinement to how this tradition\'s position is summarised.'
+    : 'Push back on, defend, or refine this tradition\'s position.';
+}
+
+async function submitForumComment(denomName) {
+  if (!currentUser || !currentUserProfile) return;
+  const fid = `forum-compose-${cssId(denomName)}`;
+  const ta = document.getElementById(`${fid}-text`);
+  const msg = document.getElementById(`${fid}-msg`);
+  if (!ta) return;
+  const body = ta.value.trim();
+  if (!body) { showInlineMsg(msg, 'error', 'Please write something first.'); return; }
+  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  // ctype: read from active tab in this card
+  const card = document.querySelector(`.denom-card[data-denom="${cssAttr(denomName)}"]`);
+  const ctype = card?.querySelector('.forum-compose .ctype-tab.active')?.dataset.ctype || 'responding';
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: currentTopic.id,
+      user_id: currentUser.id,
+      display_name: currentUserProfile.display_name,
+      denomination: currentUserProfile.denomination || null,
+      body,
+      upvotes: 0,
+      comment_type: ctype,
+      target_denomination: denomName,
+      parent_comment_id: null,
+    });
+    if (error) throw error;
+    ta.value = '';
+    showInlineMsg(msg, 'success', 'Posted.');
+    await loadComments(currentTopic.id);
+  } catch (err) {
+    showInlineMsg(msg, 'error', err.message || 'Failed to post.');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//   THREADED COMMENT RENDERING
+// ═══════════════════════════════════════════════════════════════
+
+function renderThreadedComment(c, depth) {
+  const replies = allComments.filter(r => r.parent_comment_id === c.id)
+    .sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+  const initials = (c.display_name || 'A').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  const voted = userVotes.has(c.id);
+  const date = new Date(c.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+  const isOwn = currentUser && c.user_id === currentUser.id;
+  const classes = depth === 0 ? 'comment-item' : 'comment-item comment-reply-item';
+
+  const replyForm = (activeReplyTo === c.id) ? renderReplyForm(c.id) : '';
+
+  // Nested replies (only one level of visual nesting beyond the top)
+  const nestedHtml = replies.length ? `
+    <div class="comment-replies-wrap">
+      ${replies.map(r => renderThreadedComment(r, depth >= 1 ? 1 : depth + 1)).join('')}
+    </div>` : '';
+
+  return `
+    <div class="${classes}">
+      <div class="comment-avatar">${initials}</div>
+      <div class="comment-body">
+        <div class="comment-meta">
+          <span class="comment-author">${escHtml(c.display_name)}</span>
+          ${c.denomination ? `<span class="comment-denom-tag">${escHtml(c.denomination)}</span>` : ''}
+          ${renderCtypeBadge(c)}
+          <span class="comment-date">${date}</span>
+        </div>
+        ${c.verse_reference ? `<div class="comment-target-line">📖 <strong>${escHtml(c.verse_reference)}</strong></div>` : ''}
+        <div class="comment-text">${escHtml(c.body)}</div>
+        <div class="comment-actions">
+          <button class="upvote-btn ${voted ? 'voted' : ''}" onclick="toggleUpvote(${c.id})" id="upvote-${c.id}">
+            ${voted ? '▲' : '△'} <span id="upvote-count-${c.id}">${c.upvotes || 0}</span>
+          </button>
+          ${currentUser ? `<button class="reply-btn" onclick="startReply(${c.id})">↳ Reply</button>` : ''}
+          ${isOwn ? `<button class="delete-btn" onclick="deleteComment(${c.id})">Delete</button>` : ''}
+        </div>
+        ${replyForm}
+      </div>
+      ${nestedHtml}
+    </div>`;
+}
+
+function renderCtypeBadge(c) {
+  const t = c.comment_type;
+  if (c.parent_comment_id) return `<span class="comment-type-badge ctb-reply">↳ Reply</span>`;
+  if (!t || t === 'general') return `<span class="comment-type-badge ctb-general">💬 General</span>`;
+  if (t === 'responding') return `<span class="comment-type-badge ctb-responding">⚔️ Response</span>`;
+  if (t === 'edit_suggestion') return `<span class="comment-type-badge ctb-edit">✏️ Edit</span>`;
+  if (t === 'verse_citation') return `<span class="comment-type-badge ctb-verse">📖 Verse</span>`;
+  return '';
+}
+
+function renderReplyForm(parentId) {
+  return `
+    <div class="reply-form-wrap" id="reply-form-${parentId}">
+      <textarea id="reply-text-${parentId}" maxlength="600" placeholder="Write your reply…"></textarea>
+      <div class="form-bottom">
+        <span class="char-count" id="reply-count-${parentId}">0 / 600</span>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-ghost btn-sm" onclick="cancelReply()">Cancel</button>
+          <button class="btn btn-primary btn-sm" onclick="submitReply(${parentId})">Post reply</button>
+        </div>
+      </div>
+      <div id="reply-msg-${parentId}"></div>
+    </div>`;
+}
+
+function startReply(parentId) {
+  if (!currentUser) { openModal('login'); return; }
+  activeReplyTo = parentId;
+  // Re-render the relevant section. Simplest: re-render denoms (if reply target is inside a forum) and the bottom list.
+  if (currentTopic) renderDenominations(currentTopic);
+  filterComments();
+  // Focus the new textarea
+  setTimeout(() => {
+    const ta = document.getElementById(`reply-text-${parentId}`);
+    if (ta) {
+      ta.focus();
+      ta.addEventListener('input', () => {
+        const el = document.getElementById(`reply-count-${parentId}`);
+        if (el) {
+          const len = ta.value.length;
+          el.textContent = `${len} / 600`;
+          el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
+        }
+      });
+    }
+  }, 30);
+}
+
+function cancelReply() {
+  activeReplyTo = null;
+  if (currentTopic) renderDenominations(currentTopic);
+  filterComments();
+}
+
+async function submitReply(parentId) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById(`reply-text-${parentId}`);
+  const msg = document.getElementById(`reply-msg-${parentId}`);
+  if (!ta) return;
+  const body = ta.value.trim();
+  if (!body) { showInlineMsg(msg, 'error', 'Write something first.'); return; }
+  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: currentTopic.id,
+      user_id: currentUser.id,
+      display_name: currentUserProfile.display_name,
+      denomination: currentUserProfile.denomination || null,
+      body,
+      upvotes: 0,
+      parent_comment_id: parentId,
+    });
+    if (error) throw error;
+    activeReplyTo = null;
+    await loadComments(currentTopic.id);
+  } catch (err) {
+    showInlineMsg(msg, 'error', err.message || 'Failed to post reply.');
+  }
 }
 
 function stanceLabel(stance) {
   return { affirm: 'Affirms', deny: 'Denies', nuanced: 'Nuanced', varies: 'Varies' }[stance] || stance;
 }
 
-
-function cssId(name) {
-  return name.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
-}
-
-function populateTargetFilter(topic) {
-  const sel = document.getElementById('target-filter');
-  if (!sel) return;
-  sel.innerHTML = `<option value="">All targets</option>` +
-    topic.denominations.map(d => `<option value="${escHtml(d.name)}">${escHtml(d.name)}</option>`).join('');
-}
 // ═══════════════════════════════════════════════════════════════
-//   COMMENTS
+//   COMMENTS — LOAD & RENDER (Open Discussion at bottom)
 // ═══════════════════════════════════════════════════════════════
 
 async function loadComments(topicId) {
   const list = document.getElementById('comment-list');
   const countLabel = document.getElementById('comment-count-label');
-  if (!list || !countLabel) return;
+  if (!list) return;
 
   if (!supabaseClient || typeof SUPABASE_CONFIGURED === 'undefined' || !SUPABASE_CONFIGURED) {
-    list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚙️</div>Comments require Supabase configuration. The Synod floor will open once the site administrator has set this up.</div>';
-    countLabel.textContent = 'Discussion currently unavailable';
+    list.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚙️</div>Comments require Supabase configuration. Discussion will open once configured.</div>';
     return;
   }
 
@@ -2134,204 +3310,73 @@ async function loadComments(topicId) {
       userVotes = new Set();
     }
 
-    countLabel.textContent = allComments.length === 0
-      ? 'No one has spoken on the floor yet — be the first.'
-      : `${allComments.length} contribution${allComments.length !== 1 ? 's' : ''} to the discussion`;
-    renderComments(allComments);
+    // Re-render denoms so activity badges update
+    if (currentTopic) renderDenominations(currentTopic);
+    filterComments();
   } catch (err) {
     console.error(err);
     list.innerHTML = `<div class="error-msg">Failed to load comments: ${escHtml(err.message)}</div>`;
   }
 }
 
-function renderComments(comments) {
+// The bottom "Open discussion" section shows ONLY general comments and
+// unattributed verse_citation comments (i.e. not targeting a denomination)
+function filterComments() {
   const list = document.getElementById('comment-list');
   if (!list) return;
-  if (comments.length === 0) {
-    list.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🕊️</div>No contributions yet under these filters.</div>`;
-    return;
-  }
-  list.innerHTML = comments.map(renderCommentItem).join('');
-  enhanceVersePills();
-}
-
-function renderCommentItem(c) {
-  const initials = (c.display_name || 'A').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-  const voted = userVotes.has(c.id);
-  const date = new Date(c.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
-  const isOwn = currentUser && c.user_id === currentUser.id;
-  const ctype = c.comment_type || 'general';
-  const badges = {
-    general:        '<span class="comment-type-badge ctb-general">💬 General</span>',
-    responding:     '<span class="comment-type-badge ctb-responding">⚔️ Response</span>',
-    edit_suggestion:'<span class="comment-type-badge ctb-edit">✏️ Edit</span>',
-    verse_citation: '<span class="comment-type-badge ctb-verse">📖 Verse</span>',
-  };
-  let targetLine = '';
-  if (c.target_denomination && (ctype === 'responding' || ctype === 'edit_suggestion')) {
-    const verb = ctype === 'responding' ? 'Responding to' : 'Proposed edit for';
-    targetLine = `<div class="comment-target-line">${verb} <strong>${escHtml(c.target_denomination)}</strong></div>`;
-  }
-  let versePill = '';
-  if (ctype === 'verse_citation' && c.verse_reference) {
-    versePill = `<div class="comment-target-line">📖 <span class="verse-pill">${escHtml(c.verse_reference)}</span>${c.target_denomination ? ' · supports <strong>' + escHtml(c.target_denomination) + '</strong>' : ''}</div>`;
-  }
-  return `
-    <div class="comment-item">
-      <div class="comment-avatar">${initials}</div>
-      <div class="comment-body">
-        <div class="comment-meta">
-          <span class="comment-author">${escHtml(c.display_name)}</span>
-          ${c.denomination ? `<span class="comment-denom-tag">${escHtml(c.denomination)}</span>` : ''}
-          ${badges[ctype] || ''}
-          <span class="comment-date">${date}</span>
-        </div>
-        ${targetLine}
-        ${versePill}
-        <div class="comment-text">${escHtml(c.body)}</div>
-        <div class="comment-actions">
-          <button class="upvote-btn ${voted ? 'voted' : ''}" onclick="toggleUpvote(${c.id})" id="upvote-${c.id}">
-            ${voted ? '▲' : '△'} <span id="upvote-count-${c.id}">${c.upvotes}</span>
-          </button>
-          ${isOwn ? `<button class="delete-btn" onclick="deleteComment(${c.id})">Delete</button>` : ''}
-        </div>
-      </div>
-    </div>`;
-}
-
-function filterComments() {
-  const ctypeSel = document.getElementById('ctype-filter');
-  const targetSel = document.getElementById('target-filter');
-  const sortSel = document.getElementById('comment-sort');
-  const ctype = ctypeSel ? ctypeSel.value : '';
-  const target = targetSel ? targetSel.value : '';
-  const sort = sortSel ? sortSel.value : 'top';
-
-  let filtered = [...allComments];
-  if (ctype) filtered = filtered.filter(c => (c.comment_type || 'general') === ctype);
-  if (target) filtered = filtered.filter(c => c.target_denomination === target);
-  if (sort === 'top') filtered.sort((a, b) => b.upvotes - a.upvotes);
-  else filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-  renderComments(filtered);
-  renderRepliesUnderDenoms();
-}
-
-function renderRepliesUnderDenoms() {
-  if (!currentTopic) return;
-  currentTopic.denominations.forEach(d => {
-    const wrap = document.getElementById('denom-replies-' + cssId(d.name));
-    const inner = document.getElementById('denom-replies-list-' + cssId(d.name));
-    if (!wrap || !inner) return;
-    const replies = allComments
-      .filter(c => c.target_denomination === d.name && (c.comment_type === 'responding' || c.comment_type === 'edit_suggestion'))
-      .sort((a, b) => b.upvotes - a.upvotes)
-      .slice(0, 3);  // top 3 replies inline; rest visible in main thread
-    if (replies.length === 0) {
-      wrap.style.display = 'none';
-    } else {
-      wrap.style.display = 'block';
-      inner.innerHTML = replies.map(renderCommentItem).join('');
-    }
-  });
-  enhanceVersePills();
-}
-function filterComments() {
-  const val = document.getElementById('denom-filter').value;
+  const typeFilter = document.getElementById('ctype-filter')?.value || '';
   const sortEl = document.getElementById('comment-sort');
   const sort = sortEl ? sortEl.value : 'top';
-  let filtered = val ? allComments.filter(c => c.denomination === val) : [...allComments];
-  if (sort === 'top') filtered.sort((a, b) => b.upvotes - a.upvotes);
-  else filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-  renderComments(filtered);
+
+  // Eligible for bottom section: top-level + (general or untargeted verse_citation)
+  let bottom = allComments.filter(c =>
+    !c.parent_comment_id &&
+    !c.target_denomination &&
+    (c.comment_type === 'general' || c.comment_type === 'verse_citation' || !c.comment_type)
+  );
+  if (typeFilter) bottom = bottom.filter(c => (c.comment_type || 'general') === typeFilter);
+  if (sort === 'top') bottom.sort((a, b) => (b.upvotes || 0) - (a.upvotes || 0));
+  else bottom.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+  if (bottom.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🕊️</div>No open contributions yet on this debate.<br>To respond to a specific tradition, use that tradition's discussion above.</div>`;
+  } else {
+    list.innerHTML = bottom.map(c => renderThreadedComment(c, 0)).join('');
+  }
 }
 
-function setCommentType(type) {
-  currentCommentType = type;
-  document.querySelectorAll('.ctype-tab').forEach(t => {
-    t.classList.toggle('active', t.dataset.ctype === type);
+// ═══════════════════════════════════════════════════════════════
+//   COMMENT TYPE TABS (bottom Open Discussion form)
+// ═══════════════════════════════════════════════════════════════
+
+function setCommentType(t) {
+  bottomCtype = t;
+  document.querySelectorAll('#ctype-tabs .ctype-tab').forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.ctype === t);
   });
   const helper = document.getElementById('ctype-helper');
   const fields = document.getElementById('ctype-fields');
   const verseRow = document.getElementById('verse-ref-row');
-  const denomLabel = document.getElementById('target-denom-label');
-  const targetSelect = document.getElementById('target-denom-select');
-  const textArea = document.getElementById('comment-text');
-
-  // Populate denom dropdown with current topic's traditions
-  if (currentTopic && targetSelect) {
-    targetSelect.innerHTML = `<option value="">— select tradition —</option>` +
-      currentTopic.denominations.map(d => `<option value="${escHtml(d.name)}">${escHtml(d.name)}</option>`).join('');
-    if (currentTargetDenom) targetSelect.value = currentTargetDenom;
-  }
-
-  if (type === 'general') {
-    helper.textContent = 'Share a general observation about this debate.';
-    fields.style.display = 'none';
-    verseRow.style.display = 'none';
-    if (textArea) textArea.placeholder = 'Make your case. Cite Scripture. Be charitable. (Max 600 characters.)';
-  } else if (type === 'responding') {
-    helper.textContent = 'Engage critically with a specific tradition\'s position. Select which one below.';
-    fields.style.display = 'flex';
-    verseRow.style.display = 'none';
-    denomLabel.textContent = 'Responding to which tradition?';
-    if (textArea) textArea.placeholder = 'Make your counter-argument. Be specific and charitable.';
-  } else if (type === 'edit_suggestion') {
-    helper.textContent = 'Propose a correction or addition to how a tradition is summarised. Most valuable when you belong to that tradition.';
-    fields.style.display = 'flex';
-    verseRow.style.display = 'none';
-    denomLabel.textContent = 'Edit suggestion for which tradition?';
-    if (textArea) textArea.placeholder = 'What should be changed, added, or clarified? Cite sources where you can.';
-  } else if (type === 'verse_citation') {
-    helper.textContent = 'Add a Bible passage you believe is relevant to this debate, with brief commentary.';
-    fields.style.display = 'flex';
-    verseRow.style.display = 'flex';
-    denomLabel.textContent = 'Supports which tradition? (optional)';
-    if (targetSelect) targetSelect.innerHTML = `<option value="">— general / no specific tradition —</option>` +
-      (currentTopic ? currentTopic.denominations.map(d => `<option value="${escHtml(d.name)}">${escHtml(d.name)}</option>`).join('') : '');
-    if (textArea) textArea.placeholder = 'How does this passage bear on the debate?';
+  if (t === 'general') {
+    if (helper) helper.textContent = 'Share a general observation about this debate.';
+    if (fields) fields.style.display = 'none';
+  } else if (t === 'verse_citation') {
+    if (helper) helper.textContent = 'Cite a Bible passage you think bears on this debate.';
+    if (fields) fields.style.display = 'block';
+    if (verseRow) verseRow.style.display = 'flex';
   }
 }
-
-function startReplyToDenom(denomName) {
-  // Scroll to comment area, set type=responding, preselect tradition
-  if (!currentUser) { openModal('login'); return; }
-  setCommentType('responding');
-  const select = document.getElementById('target-denom-select');
-  if (select) select.value = denomName;
-  currentTargetDenom = denomName;
-  const ta = document.getElementById('comment-text');
-  if (ta) {
-    ta.focus();
-    ta.value = '';
-  }
-  document.querySelector('.comments-section').scrollIntoView({ behavior: 'smooth' });
-}
-
-
 
 async function submitComment() {
   const body = document.getElementById('comment-text').value.trim();
   const btn = document.getElementById('submit-btn');
-  const targetSelect = document.getElementById('target-denom-select');
-  const verseInput = document.getElementById('verse-ref-input');
   if (!body) { showFormMsg('error', 'Please write something before posting.'); return; }
   if (body.length > 600) { showFormMsg('error', 'Keep it under 600 characters.'); return; }
   if (!currentUser || !currentUserProfile) { showFormMsg('error', 'Please sign in first.'); return; }
-
-  const target = targetSelect ? targetSelect.value : '';
-  const verseRef = verseInput ? verseInput.value.trim() : '';
-
-  // Validation by type
-  if (currentCommentType === 'responding' && !target) {
-    showFormMsg('error', 'Pick a tradition to respond to.'); return;
+  const verseRef = document.getElementById('verse-ref-input')?.value.trim() || null;
+  if (bottomCtype === 'verse_citation' && !verseRef) {
+    showFormMsg('error', 'Please provide a Bible reference.'); return;
   }
-  if (currentCommentType === 'edit_suggestion' && !target) {
-    showFormMsg('error', 'Pick a tradition whose summary you wish to edit.'); return;
-  }
-  if (currentCommentType === 'verse_citation' && !verseRef) {
-    showFormMsg('error', 'Enter the Bible reference (e.g. Rom 8:28–30).'); return;
-  }
-
   btn.disabled = true; btn.textContent = 'Posting…';
   try {
     const { error } = await supabaseClient.from('comments').insert({
@@ -2339,18 +3384,16 @@ async function submitComment() {
       user_id: currentUser.id,
       display_name: currentUserProfile.display_name,
       denomination: currentUserProfile.denomination || null,
-      body,
-      upvotes: 0,
-      comment_type: currentCommentType,
-      target_denomination: target || null,
-      verse_reference: (currentCommentType === 'verse_citation' && verseRef) ? verseRef : null,
+      body, upvotes: 0,
+      comment_type: bottomCtype,
+      verse_reference: bottomCtype === 'verse_citation' ? verseRef : null,
+      target_denomination: null,
+      parent_comment_id: null,
     });
     if (error) throw error;
     document.getElementById('comment-text').value = '';
     document.getElementById('char-count').textContent = '0 / 600';
-    if (verseInput) verseInput.value = '';
-    setCommentType('general');
-    currentTargetDenom = '';
+    if (document.getElementById('verse-ref-input')) document.getElementById('verse-ref-input').value = '';
     showFormMsg('success', 'Posted!');
     await loadComments(currentTopic.id);
   } catch (err) {
@@ -2375,11 +3418,18 @@ function showFormMsg(type, text) {
   setTimeout(() => { el.innerHTML = ''; }, 4000);
 }
 
+function showInlineMsg(el, type, text) {
+  if (!el) return;
+  el.innerHTML = `<div class="${type}-msg">${escHtml(text)}</div>`;
+  setTimeout(() => { el.innerHTML = ''; }, 4000);
+}
+
 async function toggleUpvote(commentId) {
   if (!currentUser) { openModal('login'); return; }
   if (!supabaseClient) return;
   const btn = document.getElementById(`upvote-${commentId}`);
   const countEl = document.getElementById(`upvote-count-${commentId}`);
+  if (!btn || !countEl) return;
   const wasVoted = userVotes.has(commentId);
   const current = parseInt(countEl.textContent) || 0;
   if (wasVoted) { userVotes.delete(commentId); countEl.textContent = current - 1; btn.classList.remove('voted'); }
@@ -2429,19 +3479,12 @@ function clearModalErrors() {
   });
 }
 
-const modalEl = document.getElementById('auth-modal');
-if (modalEl) {
-  modalEl.addEventListener('click', e => {
-    if (e.target === modalEl) closeModal();
-  });
-}
-
 async function handleLogin() {
   if (!supabaseClient) return;
   const email = document.getElementById('login-email').value.trim();
   const password = document.getElementById('login-password').value;
   const errEl = document.getElementById('modal-error');
-  if (!email || !password) { errEl.textContent = 'Please fill in both fields.'; errEl.style.display = 'block'; return; }
+  if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; errEl.style.display = 'block'; return; }
   const btn = document.querySelector('#modal-login .btn-primary');
   btn.textContent = 'Signing in…'; btn.disabled = true;
   const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
@@ -2487,32 +3530,49 @@ function escHtml(str) {
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+// For attribute values being templated into onclick="..." — must escape single quotes safely
+function escAttr(s) {
+  if (s === null || s === undefined) return '';
+  return String(s).replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+}
+
+// For CSS-attribute-selector matching: convert a denom name to a quoted-safe form
+function cssAttr(s) {
+  if (s === null || s === undefined) return '';
+  return String(s).replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+}
+
+// For DOM ID suffixes: strip non-ID-safe chars
+function cssId(s) {
+  if (s === null || s === undefined) return '';
+  return String(s).replace(/[^a-zA-Z0-9-]/g, '_');
+}
+
 function setupCharCount() {
   const ta = document.getElementById('comment-text');
   if (!ta) return;
-ta.addEventListener('input', () => {
+  ta.addEventListener('input', () => {
     const len = ta.value.length;
     const el = document.getElementById('char-count');
+    if (!el) return;
     el.textContent = `${len} / 600`;
     el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
   });
 }
 
-function setupCommentTypeTabs() {
-  // Ensure the helper text is correct on initial load
-  if (document.getElementById('ctype-helper')) setCommentType('general');
-}
+// Close modal when clicking the backdrop
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('auth-modal');
+  if (modal && e.target === modal) closeModal();
+});
 
 // ═══════════════════════════════════════════════════════════════
-//   BIBLE VERSE LINKING + HOVER POPOVER             
-                     // ═══════════════════════════════════════════════════════════════
 //   BIBLE VERSE LINKING + HOVER POPOVER
 // ═══════════════════════════════════════════════════════════════
 
-// Convert "Rom 9:11–23" or "2 Tim 3:16–17" to BibleGateway URL-friendly form
 function verseToBGQuery(ref) {
   return encodeURIComponent(
-    ref.replace(/[–—]/g, '-')   // en/em dashes → hyphen
+    ref.replace(/[–—]/g, '-')
        .replace(/\s+/g, ' ')
        .trim()
   );
@@ -2522,11 +3582,9 @@ function verseToBibleGatewayURL(ref) {
   return `https://www.biblegateway.com/passage/?search=${verseToBGQuery(ref)}&version=ESV`;
 }
 
-// Convert the existing static verse pills into interactive links.
-// Called after every render that produces .verse-pill elements.
 function enhanceVersePills() {
   document.querySelectorAll('.verse-pill').forEach(pill => {
-    if (pill.dataset.enhanced) return; // skip already-processed
+    if (pill.dataset.enhanced) return;
     pill.dataset.enhanced = '1';
     const ref = pill.textContent.trim();
     pill.dataset.verseRef = ref;
@@ -2540,7 +3598,6 @@ function enhanceVersePills() {
   });
 }
 
-// Cache so we don't refetch the same verse repeatedly
 const verseTextCache = new Map();
 let activePopover = null;
 
@@ -2555,12 +3612,10 @@ async function showVersePopover(anchorEl, ref) {
   `;
   document.body.appendChild(popover);
   activePopover = popover;
-  // position below the pill
   const r = anchorEl.getBoundingClientRect();
   popover.style.left = Math.max(10, Math.min(window.innerWidth - 380, r.left)) + 'px';
   popover.style.top = (r.bottom + window.scrollY + 8) + 'px';
 
-  // Fetch text
   let text = verseTextCache.get(ref);
   if (!text) {
     text = await fetchVerseText(ref);
@@ -2579,11 +3634,8 @@ function hideVersePopover() {
   activePopover = null;
 }
 
-// Use the bible-api.com free public API (KJV/WEB). No key required.
-// We use the World English Bible (WEB) — public domain, no licence issue.
 async function fetchVerseText(ref) {
   try {
-    // bible-api.com expects e.g. "rom+9:11-23"
     const query = ref
       .replace(/[–—]/g, '-')
       .replace(/\s+/g, '+')
@@ -2592,9 +3644,7 @@ async function fetchVerseText(ref) {
     if (!res.ok) return null;
     const data = await res.json();
     if (!data || !data.text) return null;
-    // Clean up: collapse newlines, escape HTML, italicise verse numbers
     const clean = escHtml(data.text.trim()).replace(/\s+/g, ' ');
-    // If verses array exists, render with verse-number superscripts
     if (Array.isArray(data.verses)) {
       return data.verses.map(v =>
         `<sup style="color:var(--gold-dark);font-weight:600;margin-right:3px">${v.verse}</sup>${escHtml(v.text.trim())}`
@@ -2606,4 +3656,26 @@ async function fetchVerseText(ref) {
     return null;
   }
 }
-         
+
+// Wire up the forum compose tabs (delegate clicks since they're rendered dynamically)
+document.addEventListener('click', (e) => {
+  const tab = e.target.closest('.forum-compose .ctype-tab');
+  if (!tab) return;
+  const card = tab.closest('.denom-card');
+  if (!card) return;
+  const denom = card.dataset.denom;
+  if (denom) toggleForumCtype(denom, tab.dataset.ctype);
+});
+
+// Wire up forum compose textarea char counters (delegate)
+document.addEventListener('input', (e) => {
+  if (!e.target.matches('.forum-compose textarea')) return;
+  const compose = e.target.closest('.forum-compose');
+  if (!compose) return;
+  const count = compose.querySelector('.char-count');
+  if (count) {
+    const len = e.target.value.length;
+    count.textContent = `${len} / 600`;
+    count.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
+  }
+});
