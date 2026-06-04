@@ -26,8 +26,9 @@
       </a>
       <div class="nav-links">
         <a onclick="showHome()" class="nav-link">Ledger</a>
-        <a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" class="nav-link">About</a>
-        <a onclick="document.getElementById('method').scrollIntoView({behavior:'smooth'})" class="nav-link">Method</a>
+        <a onclick="scrollToSection('movements')" class="nav-link">Outside the Creeds</a>
+        <a onclick="scrollToSection('about')" class="nav-link">About</a>
+        <a onclick="scrollToSection('method')" class="nav-link">Method</a>
       </div>
       <div class="topbar-auth" id="header-auth">
         <button class="btn btn-ghost" onclick="openModal('login')">Sign in</button>
@@ -57,8 +58,8 @@
         </div>
         <div class="hero-stats">
           <div class="hero-stat"><div class="stat-num" id="stat-topics">—</div><div class="stat-lbl">Doctrinal debates</div></div>
+          <div class="hero-stat"><div class="stat-num" id="stat-movements">—</div><div class="stat-lbl">Movements profiled</div></div>
           <div class="hero-stat"><div class="stat-num">11</div><div class="stat-lbl">Traditions surveyed</div></div>
-          <div class="hero-stat"><div class="stat-num">2,000</div><div class="stat-lbl">Years of dialogue</div></div>
         </div>
       </div>
     </section>
@@ -75,12 +76,26 @@
         <div class="controls">
           <div class="search-wrap">
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="topic-search" class="search-input" placeholder="Search debates, e.g. baptism, predestination, papacy…" />
+            <input type="text" id="topic-search" class="search-input" placeholder="Search debates, e.g. baptism, predestination, papacy…" autocomplete="off" name="ledger-search" />
           </div>
           <div id="category-filters" class="cat-pills"></div>
         </div>
 
         <div id="topic-grid" class="topic-grid"></div>
+      </div>
+    </section>
+
+    <!-- ═══ OUTSIDE THE CREEDS ═══ -->
+    <section id="movements" class="movements-section">
+      <div class="section-inner">
+
+        <div class="section-head">
+          <div class="section-eyebrow movements-eyebrow">Outside the Creeds</div>
+          <h2 class="section-title">Movements at the margin of orthodoxy</h2>
+          <p class="section-sub">Religious movements that emerged from — or claim — Christian roots, but depart from the historic creeds of the undivided Church on points the early councils defined as essential. Each profile gives the movement's self-description first, then the historic Christian assessment, then five questions to drive the conversation.</p>
+        </div>
+
+        <div id="movement-grid" class="movement-grid"></div>
       </div>
     </section>
 
@@ -129,7 +144,7 @@
 
   </main>
 
-  <!-- ═══ DETAIL VIEW ═══ -->
+  <!-- ═══ TOPIC DETAIL VIEW ═══ -->
   <main id="detail-view" style="display:none">
     <div class="detail-bar">
       <div class="detail-bar-inner">
@@ -170,7 +185,6 @@
           <div class="def-body" id="definition-body"></div>
         </section>
 
-        <!-- Denomination grid: each card is now its own forum -->
         <section class="denom-section">
           <h2 class="part-title">Denominational positions</h2>
           <p class="part-sub">Each tradition in its own words, sourced to its confessional documents. Click any tradition to enter its discussion thread.</p>
@@ -182,7 +196,6 @@
           <div class="related-pills" id="related-topics"></div>
         </section>
 
-        <!-- Open Discussion (general comments only) -->
         <section class="comments-section" id="general-discussion">
           <h2 class="part-title">Open discussion</h2>
           <p class="part-sub" id="comment-count-label">For general observations about this debate — meta-comments, broad questions, and points that don't target any single tradition. To engage with a specific tradition, use that tradition's thread above.</p>
@@ -196,14 +209,12 @@
                 <button class="ctype-tab" data-ctype="verse_citation" onclick="setCommentType('verse_citation')">📖 Cite a verse</button>
               </div>
 
-              <div class="ctype-helper" id="ctype-helper">
-                Share a general observation about this debate.
-              </div>
+              <div class="ctype-helper" id="ctype-helper">Share a general observation about this debate.</div>
 
               <div class="ctype-fields" id="ctype-fields" style="display:none">
                 <div class="ctype-field-row" id="verse-ref-row" style="display:none">
                   <label class="ctype-field-label">Bible reference</label>
-                  <input type="text" id="verse-ref-input" class="text-input" placeholder="e.g. Rom 9:11–23"/>
+                  <input type="text" id="verse-ref-input" class="text-input" placeholder="e.g. Rom 9:11–23" autocomplete="off"/>
                 </div>
               </div>
 
@@ -235,6 +246,79 @@
     </article>
   </main>
 
+  <!-- ═══ MOVEMENT DETAIL VIEW ═══ -->
+  <main id="movement-view" style="display:none">
+    <div class="detail-bar movement-detail-bar">
+      <div class="detail-bar-inner">
+        <button class="back-link" onclick="showHome()">← Back to the Ledger</button>
+        <span class="detail-category-tag movement-detail-tag" id="movement-category-tag"></span>
+      </div>
+    </div>
+
+    <article class="movement-article">
+      <div class="detail-inner">
+
+        <header class="movement-head">
+          <div class="movement-head-eyebrow">Outside the Creeds</div>
+          <h1 class="movement-title" id="movement-title"></h1>
+          <div class="movement-meta-grid">
+            <div class="movement-meta-row"><span class="movement-meta-label">Founded</span><span id="movement-founded-line"></span></div>
+            <div class="movement-meta-row"><span class="movement-meta-label">Adherents</span><span id="movement-adherents-line"></span></div>
+            <div class="movement-meta-row"><span class="movement-meta-label">Headquarters</span><span id="movement-hq-line"></span></div>
+          </div>
+        </header>
+
+        <section class="movement-summary-block">
+          <div class="movement-summary" id="movement-summary"></div>
+        </section>
+
+        <section class="movement-self-block">
+          <h2 class="part-title">How they describe themselves</h2>
+          <p class="part-sub">In their own words, from their own primary documents.</p>
+          <div class="movement-self-description" id="movement-self-description"></div>
+        </section>
+
+        <section class="movement-distinctives-block">
+          <h2 class="part-title">Distinctive teachings</h2>
+          <p class="part-sub">The core convictions that distinguish this movement from historic Christianity.</p>
+          <div class="distinctives-list" id="movement-distinctives"></div>
+        </section>
+
+        <section class="movement-departures-block">
+          <h2 class="part-title departures-title">Where this departs from Nicene Christianity</h2>
+          <p class="part-sub">The mainstream Christian assessment — Catholic, Orthodox, Protestant — of where this movement parts ways with the historic creeds of the undivided Church.</p>
+          <div class="movement-departures" id="movement-departures"></div>
+        </section>
+
+        <!-- DISCUSSION QUESTIONS — THE CENTERPIECE -->
+        <section class="movement-questions-block" id="discussion">
+          <div class="questions-banner">
+            <div class="questions-eyebrow">Discussion</div>
+            <h2 class="questions-title">Five questions to start the conversation</h2>
+            <p class="questions-sub">Each question has real arguments on both sides. Read, think, sign in, post. Replies, threading, and upvotes work the same as everywhere else on the site.</p>
+          </div>
+          <div class="questions-list" id="movement-questions"></div>
+        </section>
+
+        <section class="movement-keytexts-block">
+          <h2 class="part-title">Key texts and authorities</h2>
+          <div class="keytexts-grid" id="movement-key-texts"></div>
+        </section>
+
+        <section class="movement-response-block">
+          <h2 class="part-title">Historic Christian response</h2>
+          <p class="part-sub">How mainstream Christianity — Catholic, Orthodox, Protestant — has engaged this movement.</p>
+          <div class="movement-historical-response" id="movement-historical-response"></div>
+        </section>
+
+        <div class="historical-note" id="movement-historical-note"></div>
+
+        <section class="related-section" id="movement-related"></section>
+
+      </div>
+    </article>
+  </main>
+
   <!-- ═══ AUTH MODAL ═══ -->
   <div id="auth-modal" class="modal">
     <div class="modal-card" onclick="event.stopPropagation()">
@@ -256,7 +340,7 @@
         <h2 class="modal-title">Join the Synod</h2>
         <p class="modal-sub">A free account — takes 30 seconds.</p>
         <label class="field-lbl">Display name</label>
-        <input type="text" id="signup-name" class="text-input" />
+        <input type="text" id="signup-name" class="text-input" autocomplete="off" />
         <label class="field-lbl">Your tradition <span class="field-opt">(optional)</span></label>
         <select id="signup-denom" class="select-input">
           <option value="">— select —</option>
@@ -271,6 +355,11 @@
           <option>Charismatic</option>
           <option>Anabaptist / Mennonite</option>
           <option>Non-denominational</option>
+          <option>Latter-day Saint</option>
+          <option>Jehovah's Witness</option>
+          <option>Seventh-day Adventist</option>
+          <option>Oneness Pentecostal</option>
+          <option>Christian Science</option>
           <option>Exploring / No tradition</option>
           <option>Other</option>
         </select>
@@ -297,12 +386,18 @@
         </div>
       </div>
       <div class="foot-text">
-        <p>A scholarly, charitable, lay-readable comparison of Christian doctrinal traditions. All confessional citations are reproduced from primary sources. The Synod takes no theological position of its own.</p>
-        <p class="foot-meta">© 2025 Synod of Soup · For the curious, the convicted, and the searching · Soli Deo gloria</p>
+        <p>A scholarly, charitable, lay-readable comparison of Christian doctrinal traditions. All confessional and primary-source citations are reproduced from their respective documents. The Synod takes no theological position of its own.</p>
+        <p class="foot-meta">© 2025 Synod of Soup · All rights reserved · For the curious, the convicted, and the searching · Soli Deo gloria</p>
       </div>
     </div>
   </footer>
 
   <script src="app.js"></script>
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
