@@ -4162,7 +4162,7 @@ function renderMovements() {
       <div class="movement-summary-preview">${escHtml(stripTags(m.summary).slice(0, 220))}…</div>
       <div class="movement-card-foot">
         <span class="movement-adherents">${escHtml(m.adherents)}</span>
-        <span class="movement-questions-tag">Questions →</span>
+        <span class="movement-questions-tag">5 questions →</span>
       </div>
     </div>`).join('');
 }
