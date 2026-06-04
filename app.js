@@ -2709,6 +2709,458 @@ const TOPICS = [
   },
 
 ];
+// ═══════════════════════════════════════════════════════════
+// PATCH 5 — MOVEMENTS array (Outside the Creeds)
+// ═══════════════════════════════════════════════════════════
+
+const MOVEMENTS = [
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'mov-lds',
+    name: 'Mormonism (Latter-day Saints)',
+    icon: '📜',
+    founded: '1830, by Joseph Smith Jr. (1805–1844)',
+    adherents: '~17.2 million worldwide (LDS Church, 2023 figures)',
+    headquarters: 'Salt Lake City, Utah',
+    category: 'Restorationist',
+    summary: `The Church of Jesus Christ of Latter-day Saints, founded in upstate New York in 1830 by Joseph Smith, teaches that historic Christianity fell into a Great Apostasy after the death of the apostles, and that Smith was called by God to restore the true Church. The LDS Church accepts the Bible "as far as it is translated correctly" alongside three uniquely Mormon scriptures: the Book of Mormon (1830), the Doctrine and Covenants, and the Pearl of Great Price. The Church is led by a prophet (currently Russell M. Nelson, sustained 2018) who is held to receive ongoing divine revelation, supported by the Quorum of the Twelve Apostles. Mormonism's distinctive theology — a corporeal, formerly-human God; the eternal pre-existence of human spirits; the possibility of exaltation to divine status; baptism for the dead; eternal temple marriage — places it in significant tension with the historic creeds while preserving a deep devotion to Jesus Christ as Savior.`,
+    selfDescription: `<p>The LDS Church describes itself as "the restored Church of Jesus Christ," not a Protestant denomination, not a sect, but the same Church Christ established in the first century, restored through Joseph Smith after a long apostasy. The thirteen Articles of Faith (1842), composed by Smith, summarize official belief: faith in "God, the Eternal Father, and in His Son, Jesus Christ, and in the Holy Ghost" (Article 1); the Bible as the word of God "as far as it is translated correctly" together with the Book of Mormon (Article 8); belief in "the same organization that existed in the Primitive Church, namely, apostles, prophets, pastors, teachers, evangelists, and so forth" (Article 6); and the literal gathering of Israel and the building of Zion on the American continent (Article 10).</p>
+    <p>Mormons consider themselves Christians and protest exclusion from that name. The official Church name was emphasized in 2018 when President Nelson urged that "Mormon" and "LDS" should be replaced with "The Church of Jesus Christ of Latter-day Saints" or "the restored Church of Jesus Christ." Worship centers on Christ; the sacrament (eucharist) is celebrated weekly; temple ordinances (endowment, sealing) are understood as participation in Christ's saving work for the living and the dead.</p>`,
+    distinctives: [
+      {
+        title: 'The Restoration through Joseph Smith',
+        body: `In 1820, the fourteen-year-old Joseph Smith reported a vision in a grove near Palmyra, New York, in which God the Father and Jesus Christ appeared to him in distinct bodily forms and told him that no existing church was Christ's true church. Subsequent visitations by the angel Moroni (beginning 1823) led Smith to golden plates buried near his home, which he translated from "Reformed Egyptian" through divine instruments (the Urim and Thummim, also called "seer stones"). The result was the Book of Mormon (1830), which Smith presented as a record of ancient Hebrew migrations to the Americas (the Nephites and Lamanites), Christ's post-resurrection ministry to them, and the eventual destruction of the Nephites c. 421 AD.`,
+      },
+      {
+        title: 'An embodied, progressing God',
+        body: `LDS theology teaches that God the Father has a physical body of flesh and bones "as tangible as man's" (Doctrine and Covenants 130:22), that he was once a human being who progressed to godhood, and that exalted humans may eventually become gods themselves. The principle is summarized in the famous couplet attributed to Lorenzo Snow, fifth President of the Church: "As man now is, God once was: as God now is, man may be." This doctrine of eternal progression frames the Father, the Son, and the Holy Ghost as three distinct beings — "one in purpose" but not one in substance, in explicit contrast with the Nicene homoousios.`,
+      },
+      {
+        title: 'Pre-existence and eternal families',
+        body: `All human beings are held to have existed as spirit children of Heavenly Father (and a Heavenly Mother) before mortal birth. Earthly life is a probation in which spirit children take on bodies and learn through experience. Through temple ordinances — particularly sealing in eternal marriage — families can remain united after death. The promise of being "sealed together for time and all eternity" is central to LDS spirituality and motivates the Church's emphasis on family life, genealogy, and temple work.`,
+      },
+      {
+        title: 'Three degrees of glory and exaltation',
+        body: `Mormonism rejects the binary heaven-or-hell model. Doctrine and Covenants 76 (a vision received by Joseph Smith and Sidney Rigdon, 1832) describes three degrees of post-mortal glory: the celestial kingdom (where God dwells, achievable through faith in Christ, ordinances, and temple covenants), the terrestrial kingdom (for honorable people who did not accept the gospel fully), and the telestial kingdom (for the wicked who eventually accept Christ after suffering). A small group ("sons of perdition") are consigned to outer darkness. Only celestial-kingdom inhabitants achieve "exaltation" — full deification.`,
+      },
+      {
+        title: 'Continuing revelation and a living prophet',
+        body: `Article 9 of Faith: "We believe all that God has revealed, all that He does now reveal, and we believe that He will yet reveal many great and important things pertaining to the Kingdom of God." The current Church President is understood to be a literal prophet, seer, and revelator. Recent revelations have included the 1978 lifting of the priesthood ban on Black men of African descent (Official Declaration 2), which had been in place since the early Brigham Young era. The principle of continuing revelation is core to the LDS self-understanding as distinct from Protestantism's sola scriptura.`,
+      },
+    ],
+    departures: `<p>Mainstream Christianity — Catholic, Orthodox, Anglican, Lutheran, Reformed, Methodist, Baptist, Pentecostal — has historically held that the LDS Church departs from Nicene Christianity on points that the creeds defined as essential. Specifically:</p>
+    <p><strong>(1) The nature of God.</strong> The First Council of Nicaea (325 AD) defined the Son as <em>homoousios</em> — of the same substance as the Father. The Athanasian Creed elaborates: "the Father is eternal, the Son eternal, and the Holy Spirit eternal... and yet there are not three eternals but one eternal." LDS theology of three separate divine beings progressing through experience, with the Father having once been human, is incompatible with this conciliar definition of the Trinity.</p>
+    <p><strong>(2) The doctrine of <em>creatio ex nihilo</em>.</strong> Historic Christianity confesses that God created the universe from nothing, before which only God existed. LDS theology teaches that matter is eternal and that God organized pre-existing material, including the spirits of human beings. This is a fundamental metaphysical difference about the relationship between God and the created order.</p>
+    <p><strong>(3) The closure of the canon.</strong> The historic Christian church — Catholic, Orthodox, and Protestant — recognizes the closure of public revelation with the apostolic era. The acceptance of post-biblical scriptures of equal authority to the Bible is theologically distinctive to Mormonism.</p>
+    <p><strong>(4) The doctrine of exaltation.</strong> The Eastern Orthodox doctrine of <em>theosis</em> teaches that the redeemed will become "partakers of the divine nature" (2 Peter 1:4), but emphatically not that humans become gods of their own worlds. The LDS doctrine that exalted humans may become gods, found in some forms of teaching though carefully nuanced by the modern Church, has no parallel in historic Christianity.</p>
+    <p>The LDS Church has historically not contested these descriptions; it has rather affirmed that historic Christianity is the version requiring correction, with the Restoration providing the necessary recovery of truths lost in the apostasy.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'Was a Restoration necessary?',
+        body: `<p>The LDS Church teaches that a Great Apostasy corrupted Christianity after the apostles, requiring a restoration through Joseph Smith. Mainstream Christianity points to an unbroken succession of councils, creeds, and Spirit-led witness from Pentecost forward, and to Christ's promise in Matthew 16:18 that "the gates of hell will not prevail" against his church.</p>
+        <p><strong>Did Christianity actually need restoring, or did Christ's promise to his Church preclude the possibility of a complete apostasy?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'A God who was once a man',
+        body: `<p>The LDS Church holds that God the Father has a physical body and was once a human being who progressed to godhood. Historic Christianity confesses God as eternal, immaterial, and unchanging — "the high and lofty One who inhabits eternity" (Isaiah 57:15).</p>
+        <p><strong>Which view better accounts for the biblical witness, and what difference does it make for prayer, worship, and salvation if God is a perfected being like ourselves rather than the Wholly Other?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'Additional scripture',
+        body: `<p>Latter-day Saints accept the Book of Mormon, Doctrine and Covenants, and Pearl of Great Price alongside the Bible. Protestants confess <em>sola scriptura</em>; Catholics and Orthodox accept tradition but draw the canon closed at the apostolic era.</p>
+        <p><strong>Can new scripture be given after the apostles? If yes, what could ever rule out further additions? If no, on what basis was the canon closed?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Theosis and exaltation',
+        body: `<p>The LDS doctrine of exaltation teaches that faithful Saints may become gods themselves — "as God now is, man may be." Eastern Orthodoxy teaches <em>theosis</em>, that believers become "partakers of the divine nature" (2 Peter 1:4), participating in God without becoming gods.</p>
+        <p><strong>Are these the same hope expressed in different idioms, or fundamentally different claims about what salvation finally is?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Jesus and Lucifer as spirit brothers',
+        body: `<p>LDS theology holds that Jesus and Lucifer were both spirit children of Heavenly Father, with Jesus chosen as Savior and Lucifer rebelling. Historic Christianity holds the Son to be eternally begotten of the Father, of the same divine essence — not a created being of any kind, and not in any sense a brother of Satan.</p>
+        <p><strong>Is the LDS framing a clarification of an obscure biblical theme, or a fundamental departure from the New Testament's portrait of Christ as the eternal Word made flesh?</strong></p>`,
+      },
+    ],
+    keyTexts: [
+      { title: 'The Book of Mormon', desc: 'Published 1830. Presented as ancient American scripture translated by Joseph Smith from golden plates. Contains the books of Nephi, Mosiah, Alma, Helaman, 3 Nephi (Christ\'s post-resurrection ministry to the Nephites), Moroni, and others.' },
+      { title: 'Doctrine and Covenants', desc: 'A collection of modern revelations given through Joseph Smith and subsequent prophets. Contains key doctrinal statements including D&C 76 (three degrees of glory), 130 (God\'s embodied nature), 132 (eternal marriage and plural marriage in the early Church).' },
+      { title: 'Pearl of Great Price', desc: 'Contains the Book of Moses, the Book of Abraham (translated by Joseph Smith from Egyptian papyri), Joseph Smith—History (his First Vision account), and the Articles of Faith.' },
+      { title: 'The Bible (KJV)', desc: 'Accepted "as far as it is translated correctly." The Joseph Smith Translation (JST) provides revisions Smith made in the 1830s but is not the official LDS Bible.' },
+    ],
+    historicalResponse: `<p>Mainstream Christian assessment of Mormonism has been remarkably consistent across denominational lines. The major Christian traditions — Catholic, Orthodox, Anglican, Lutheran, Reformed, Methodist, Baptist, Pentecostal — have historically concluded that the LDS Church, despite its devotion to Jesus, does not share the historic Christian faith defined by the ecumenical creeds.</p>
+    <p>The <strong>Catholic Church</strong> formally declared in 2001 (Congregation for the Doctrine of the Faith, <em>Responsum ad Propositum Dubium</em>) that LDS baptism is not valid Christian baptism, on the grounds that the LDS understanding of the Trinity differs essentially from the Christian doctrine. The <strong>Eastern Orthodox Church</strong> takes the same view. The <strong>Presbyterian Church (USA)</strong> reached a similar conclusion in 1995, as did the <strong>United Methodist Church</strong> (2000). The <strong>Southern Baptist Convention</strong> has consistently classified the LDS Church as outside historic Christianity.</p>
+    <p>Major scholarly engagements: <strong>Walter Martin's <em>The Maze of Mormonism</em></strong> (1962, rev. 1978) and <em>The Kingdom of the Cults</em> (1965, multiple editions); <strong>Jerald and Sandra Tanner's</strong> extensive documentary work through the Utah Lighthouse Ministry (1960s onward); <strong>Richard Mouw</strong> (former president of Fuller Theological Seminary), who has engaged Mormonism with charity and rigor through decades of dialogue with LDS scholars; <strong>Robert Millet and Gerald McDermott</strong>'s <em>Claiming Christ: A Mormon-Evangelical Debate</em> (2007).</p>
+    <p>The LDS Church has engaged these critiques in a substantial scholarly literature of its own. The <strong>Foundation for Apologetic Information and Research</strong> (FAIR) and the <strong>Neal A. Maxwell Institute</strong> at Brigham Young University produce substantial scholarship defending and developing LDS positions. Notable LDS scholars: <strong>Hugh Nibley</strong> (1910–2005), <strong>Truman Madsen</strong>, <strong>Robert Millet</strong>, <strong>Terryl Givens</strong>, <strong>Adam Miller</strong>.</p>
+    <p>The contemporary relationship between mainstream Christianity and the LDS Church has been increasingly cooperative on social and political questions (religious liberty, family policy, opposition to abortion and same-sex marriage) while remaining theologically distinct.</p>`,
+    historicalNote: 'Joseph Smith was murdered by a mob at Carthage Jail, Illinois, on June 27, 1844 — the LDS Church remembers him as a martyr. Brigham Young led the main body of Latter-day Saints from Illinois to the Salt Lake Valley (arrived July 1847), establishing the Utah headquarters that remain to this day. Plural marriage (polygamy), publicly acknowledged 1852, was officially discontinued in 1890 (Wilford Woodruff\'s "Manifesto" / Official Declaration 1) under intense US federal pressure. The priesthood ban on Black men of African descent (in place since the Brigham Young era) was lifted in 1978 (Official Declaration 2). The Church\'s rapid global growth in the 20th century has been driven by an extensive missionary program; over 65,000 missionaries serve at any given time.',
+    relatedMovements: ['mov-jw', 'mov-cs'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'mov-jw',
+    name: 'Jehovah\'s Witnesses',
+    icon: '🗼',
+    founded: '1870s, by Charles Taze Russell (1852–1916); current organisation 1931',
+    adherents: '~8.7 million active publishers worldwide (2023)',
+    headquarters: 'Warwick, New York (Watch Tower Bible and Tract Society)',
+    category: 'Restorationist',
+    summary: `Jehovah's Witnesses emerged from the Bible Student movement founded by Charles Taze Russell in the 1870s, formally taking the name "Jehovah's Witnesses" in 1931 under Russell's successor Joseph Franklin Rutherford. They are organized under the Watch Tower Bible and Tract Society, governed by a small Governing Body in Warwick, New York. Jehovah's Witnesses reject the Trinity, the deity of Christ as traditionally understood, the immortality of the soul, the existence of hell as eternal conscious torment, and the celebration of Christmas, Easter, and birthdays. They are best known publicly for their door-to-door evangelism, refusal of blood transfusions, refusal of military service and political participation, and their use of their own translation of the Bible (the New World Translation, 1961). Active publishers must report monthly preaching hours; baptism is by full immersion, generally as an adult, and signifies entry into the worldwide congregation.`,
+    selfDescription: `<p>Jehovah's Witnesses describe themselves as "the only true religion on earth," identified as such by their use of the divine name Jehovah (a Latinization of the Hebrew Tetragrammaton YHWH), their exclusive worship of Jehovah as the one true God, their unique organization patterned (they hold) on first-century Christianity, and their preaching work as required by Matthew 24:14. The publication <em>What Does the Bible Really Teach?</em> (2005), the primary introductory text for Bible studies with non-Witnesses, summarizes the core teaching: Jehovah is the Almighty God, the creator of all things; Jesus Christ is his first creation, his only-begotten Son, who came to earth as the perfect man and gave his life as a ransom; the holy spirit is Jehovah's active force, not a person; the Kingdom of God is a real heavenly government, established invisibly in 1914, which will soon destroy the present world system at Armageddon and bring an earthly paradise for the resurrected dead and faithful Witnesses.</p>
+    <p>The Witnesses hold that the 144,000 of Revelation are a literal number — anointed Christians who will reign in heaven with Christ. The remainder of faithful Witnesses (the "great crowd," Revelation 7:9) will live forever on a restored, paradise earth. The annual Memorial of Christ's Death (a Passover-timed observance) is the only sacrament-like observance; only the anointed partake of the bread and wine, while the great crowd attends as observers.</p>`,
+    distinctives: [
+      {
+        title: 'Rejection of the Trinity',
+        body: `The Watch Tower Society teaches that the Trinity is a pagan doctrine, foreign to the Bible, imported into Christianity through Hellenistic philosophy and formalized at the Council of Nicaea (325 AD) under Emperor Constantine. Jehovah alone is God. Jesus is "a god" (the New World Translation's rendering of John 1:1c — "the Word was a god"), the first and only direct creation of Jehovah, identified with the archangel Michael in his pre-human existence. The holy spirit is not a person but Jehovah's "active force." The brochure <em>Should You Believe in the Trinity?</em> (1989) gives the official Watch Tower critique.`,
+      },
+      {
+        title: 'The New World Translation',
+        body: `The Witnesses use their own translation of the Bible, the New World Translation of the Holy Scriptures (NT 1950, OT 1961, revised 2013). Among its distinctive renderings: "Jehovah" (rather than "LORD") throughout the Old Testament; "a god" at John 1:1; "torture stake" rather than "cross" for the Greek <em>stauros</em>; "presence" rather than "coming" for <em>parousia</em>; "exercising faith in" rather than "believing in" at John 3:16 and similar texts. The translators were not publicly identified for decades. Mainstream biblical scholarship has consistently criticized the NWT as theologically driven rather than philologically defensible.`,
+      },
+      {
+        title: '1914 and the invisible presence',
+        body: `Watch Tower teaching holds that the "Gentile Times" of Luke 21:24 ended in October 1914, when Christ took up his heavenly throne and began his invisible "presence" (the Witnesses' rendering of <em>parousia</em>). The events of 1914 — the outbreak of World War I, social upheaval, technological catastrophe — are interpreted as the sign of the end times beginning. The generation alive in 1914 was expected to witness the end; the failure of this expectation has been repeatedly reinterpreted (most recently in 1995, redefining "this generation" of Matthew 24:34 to mean a class of people rather than a chronological generation).`,
+      },
+      {
+        title: 'Refusal of blood transfusions',
+        body: `Since 1945 the Watch Tower Society has prohibited members from accepting blood transfusions, based on Acts 15:28–29 ("abstain from blood") and Leviticus 17:10–14. Members carry advance medical directives refusing blood. Acceptance of a transfusion is grounds for disfellowshipping (excommunication). The position has caused significant tension with medical authorities and has resulted in court cases, particularly when parents have refused transfusions for children. The Witnesses have developed alternative medical protocols (bloodless surgery, hemodilution, fractioned blood products which have been permitted since 2000).`,
+      },
+      {
+        title: 'Political neutrality and disfellowshipping',
+        body: `Witnesses do not vote, salute flags, sing national anthems, celebrate national holidays, serve in the military (refusing even conscientious-objector alternative service in many cases historically), or hold political office. Refusal of the Hitler salute led to the imprisonment of approximately 10,000 Witnesses in Nazi concentration camps; about 1,400 were killed. Disfellowshipping (formal expulsion for serious sin or apostasy) entails complete shunning by family and community members who remain Witnesses — a discipline that the Watch Tower defends as biblical (1 Corinthians 5) and that has been controversial in courts and media.`,
+      },
+    ],
+    departures: `<p>Mainstream Christianity holds that Jehovah's Witnesses depart from Nicene Christianity on each of the defining points of the historic creeds:</p>
+    <p><strong>(1) The Trinity.</strong> The Council of Nicaea (325 AD) defined the Son as <em>homoousios</em> with the Father — of the same divine substance. The Council of Constantinople (381 AD) extended this to the Holy Spirit. The Watch Tower Society explicitly rejects the Trinity as unbiblical and pagan.</p>
+    <p><strong>(2) The full deity of Christ.</strong> Jehovah's Witnesses teach that Jesus is a created being — the first and highest creation of Jehovah, identified with the archangel Michael in his pre-human existence. Historic Christianity confesses the Son as eternally begotten, not made — Nicaea's defining language.</p>
+    <p><strong>(3) The personhood and deity of the Holy Spirit.</strong> The Watch Tower teaches that the holy spirit is Jehovah's active force, not a divine person. The Nicene Creed (in its expanded 381 form) confesses the Holy Spirit as "the Lord, the giver of life... who together with the Father and Son is worshiped and glorified."</p>
+    <p><strong>(4) The bodily resurrection.</strong> The Watch Tower teaches that Jesus rose as a spirit creature, not bodily; his physical body was dissolved or removed. Christian orthodoxy confesses the bodily resurrection of Christ as the foundation of Christian hope (1 Corinthians 15).</p>
+    <p><strong>(5) The intermediate state of believers.</strong> The Watch Tower teaches that the soul is the body and that the dead are unconscious until the resurrection (soul sleep, an annihilationist anthropology). Historic Christianity has affirmed the conscious existence of the soul after death.</p>
+    <p>The Watch Tower Society maintains that these are <em>recoveries</em> of biblical teaching that the apostate Church abandoned after the apostles. Mainstream Christianity holds that these are <em>departures</em> from the apostolic faith preserved in the canonical Scriptures and confessed in the ecumenical creeds.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'John 1:1 — "a god" or "God"?',
+        body: `<p>The New World Translation renders John 1:1c as "the Word was a god," reflecting the absence of the article before <em>theos</em> in the Greek (<em>theos ēn ho logos</em>). Standard translations render it "the Word was God," reflecting Greek predicate-noun grammar (Colwell's Rule and broader scholarship) and the unanimous consensus of major Greek lexicons. The choice has enormous theological consequences.</p>
+        <p><strong>Is the NWT rendering a defensible Greek translation, or a theologically-driven choice that the surrounding context (John 1:3, "all things were made through him"; John 1:14, "the Word became flesh") rules out?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'The Trinity: biblical recovery or post-biblical innovation?',
+        body: `<p>Jehovah's Witnesses argue that the Trinity is a fourth-century philosophical construction, foreign to the Hebrew monotheism of the Old Testament and the simple kerygma of the apostles. Trinitarian Christians argue that Nicaea did not invent the doctrine but defined the biblical witness already present in texts like Matthew 28:19, 2 Corinthians 13:14, and John 1, 8, 10.</p>
+        <p><strong>Did the Nicene Council recover the apostolic faith, or impose a Hellenistic framework on a simpler biblical monotheism?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: '1914 and failed expectations',
+        body: `<p>The Watch Tower Society has repeatedly identified specific dates (1914, 1925, 1975 most prominently) as marking the imminent end of the world system, and has repeatedly reinterpreted predictions as those dates passed without the predicted events. Critics see this as a pattern of failed prophecy that should disqualify the Watch Tower's claim to prophetic authority (Deuteronomy 18:22). The Watch Tower frames the reinterpretations as refinements of light, citing Proverbs 4:18.</p>
+        <p><strong>How should a religious organization's track record of date-setting and revised expectations affect its claim to be God's exclusive channel of truth?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Blood, conscience, and biblical interpretation',
+        body: `<p>The Watch Tower's prohibition on blood transfusions rests on Acts 15:29 ("abstain from... blood"), read as a universal biblical principle applicable to medical transfusions. Mainstream biblical scholarship reads the Jerusalem Council's prohibition as concerning meat with the blood still in it, a Levitical food law extended for the sake of Jewish-Gentile fellowship. The Witnesses' application has cost lives, particularly children's.</p>
+        <p><strong>When does a religious community's interpretation of an ancient text rise to a level of seriousness that justifies risking physical death, especially of those who cannot consent for themselves?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Disfellowshipping and the cost of leaving',
+        body: `<p>The Watch Tower's disfellowshipping discipline requires faithful Witnesses to shun expelled members entirely, including immediate family members — no normal social contact, no holiday gatherings, no greetings beyond what is required. The discipline is defended biblically (1 Corinthians 5:11; 2 John 10) as protecting the congregation from spiritual contamination. Critics, including some former members and human rights organizations, argue that it functions as social coercion that violates conscience and human dignity.</p>
+        <p><strong>Is the Watch Tower's practice a faithful application of biblical church discipline, or an instrument of psychological control that exceeds anything the apostles intended?</strong></p>`,
+      },
+    ],
+    keyTexts: [
+      { title: 'The New World Translation', desc: 'The Watch Tower\'s own translation of the Bible (NT 1950, OT 1961, revised 2013). Used exclusively in Witness publications and worship.' },
+      { title: 'The Watchtower magazine', desc: 'Semi-monthly publication, the Witnesses\' primary teaching organ since 1879. Two editions: the public edition (for non-Witnesses, simpler doctrinal content) and the study edition (for Witnesses, contains the weekly Sunday study article).' },
+      { title: 'Awake! magazine', desc: 'Monthly companion publication addressing contemporary issues from a Watch Tower perspective.' },
+      { title: 'Insight on the Scriptures', desc: 'Two-volume Bible encyclopedia (1988) giving Watch Tower interpretations of biblical persons, places, and themes.' },
+      { title: 'What Does the Bible Really Teach?', desc: 'Primary introductory study book for Bible studies with non-Witnesses (2005, revised editions). Replaced an earlier book series in this role.' },
+    ],
+    historicalResponse: `<p>Mainstream Christianity has consistently classified Jehovah's Witnesses as outside historic Christianity. The major Christian traditions — Catholic, Orthodox, mainline Protestant, evangelical — share substantial assessment despite significant disagreements among themselves on other matters: the Watch Tower's rejection of the Trinity, the full deity of Christ, and the personhood of the Holy Spirit places it outside the Nicene communion.</p>
+    <p>Major scholarly engagements: <strong>Walter Martin's <em>The Kingdom of the Cults</em></strong> (1965, multiple editions) gave the influential mid-century evangelical assessment. <strong>Ron Rhodes</strong>'s <em>Reasoning from the Scriptures with the Jehovah's Witnesses</em> (1993). <strong>Anthony Hoekema's <em>The Four Major Cults</em></strong> (1963). The <strong>Christian Research Institute</strong>, the <strong>Watchman Fellowship</strong>, and similar evangelical apologetics organizations have produced extensive material engaging Witness theology.</p>
+    <p>Significant first-person accounts from former Witnesses have shaped public understanding: <strong>Raymond Franz</strong>'s <em>Crisis of Conscience</em> (1983, the memoir of a former Governing Body member who left the organization in 1980), <strong>Barbara Anderson</strong>'s ongoing work documenting the Watch Tower's handling of child sexual abuse, and the Australian Royal Commission into Institutional Responses to Child Sexual Abuse's significant 2015–17 findings concerning the Jehovah's Witnesses' two-witness rule and handling of abuse cases.</p>
+    <p>The Witnesses themselves maintain an internal scholarly apparatus through the Watch Tower's writing department in Warwick. The Governing Body issues the authoritative interpretations of doctrine, with regular refinements ("new light," per Proverbs 4:18) published in the study edition of The Watchtower.</p>`,
+    historicalNote: 'The Watch Tower Bible and Tract Society was incorporated in Pennsylvania in 1884 as "Zion\'s Watch Tower Tract Society," with Charles Taze Russell as president. After Russell\'s death in 1916, Joseph Franklin Rutherford took control and consolidated power, formally renaming the movement "Jehovah\'s Witnesses" at a 1931 convention in Columbus, Ohio. The Witnesses\' refusal to perform the Hitler salute, serve in the military, or pledge allegiance to the Nazi state led to severe persecution under the Third Reich — approximately 10,000 German Witnesses were imprisoned in concentration camps wearing the purple triangle, with about 1,400 killed. The US Supreme Court\'s Jehovah\'s Witnesses cases of the 1940s — particularly West Virginia State Board of Education v. Barnette (1943) — established foundational First Amendment protections for religious dissent. The Australian Royal Commission (2015–17) and subsequent national inquiries in Canada, the Netherlands, and the UK have exposed systematic Watch Tower mishandling of child sexual abuse complaints.',
+    relatedMovements: ['mov-lds', 'mov-cs'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'mov-oneness',
+    name: 'Oneness Pentecostalism',
+    icon: '🔥',
+    founded: '1913–1916, "New Issue" within early Pentecostalism',
+    adherents: '~24 million worldwide (UPCI and related Oneness groups, 2020 estimates)',
+    headquarters: 'United Pentecostal Church International — Hazelwood, Missouri; many independent and international groups',
+    category: 'Pentecostal',
+    summary: `Oneness Pentecostalism emerged in 1913–1916 as a controversy within the early Pentecostal movement, when several leaders — beginning with Robert E. McAlister at the Arroyo Seco camp meeting near Los Angeles — concluded that the apostles had baptized only "in the name of Jesus" (Acts 2:38, 8:16, 10:48, 19:5), not in the Trinitarian formula of Matthew 28:19. The deeper theological move was the rejection of the Trinity itself in favor of a "oneness" theology in which Father, Son, and Holy Spirit are not three eternal Persons but three modes, manifestations, or roles of the one God who is Jesus. The largest Oneness body, the United Pentecostal Church International (UPCI), formed in 1945 from the merger of two earlier Oneness groups. Oneness Pentecostalism shares with Trinitarian Pentecostalism the experience of Spirit baptism with tongues, divine healing, premillennial eschatology, and high biblical authority — but differs sharply on the doctrine of God and on baptismal practice (baptism by full immersion specifically "in the name of Jesus Christ"). Oneness Pentecostalism is one of the fastest-growing Christian movements globally, with particular strength in Latin America (Apostolic Church of Faith in Christ Jesus in Mexico, with millions of adherents), Africa, and Asia.`,
+    selfDescription: `<p>Oneness Pentecostals describe themselves as restorationists — recovering the apostolic faith and apostolic baptismal practice from which mainline Christianity has departed. The UPCI's "Articles of Faith" affirm: "The one true God has revealed Himself as our Father, in His Son Jesus Christ for our redemption, and as the Holy Spirit by emanation of Himself in spiritual activity in our lives" (UPCI Manual). God is absolutely one — not three persons sharing one essence, but one Person who has manifested himself in three modes or relationships through the economy of salvation.</p>
+    <p>The central Oneness conviction: the name "Jesus" reveals the one Name that belongs equally to Father, Son, and Holy Spirit. Matthew 28:19's "in the name" (singular) of "Father, Son, and Holy Spirit" is read as referring to a single name — and that name is Jesus, the only saving name (Acts 4:12). Baptism must therefore be administered specifically with the words "in the name of Jesus Christ" or some close variant — this is held to be necessary for valid baptism, not optional.</p>
+    <p>Oneness Pentecostalism shares Pentecostal distinctives: Spirit baptism as a subsequent experience to conversion, evidenced by speaking in tongues; divine healing; premillennial eschatology; biblical inerrancy. The classical UPCI position has been that Spirit baptism with tongues is necessary for salvation (a position that distinguishes it from Trinitarian Pentecostalism, which generally regards tongues as the initial physical evidence but not the means of salvation itself). Oneness Pentecostals often hold conservative cultural standards — no makeup or jewelry for women, modest dress codes, restrictions on entertainment — though these vary by congregation.</p>`,
+    distinctives: [
+      {
+        title: 'The Oneness of God',
+        body: `Oneness theology rejects the doctrine that Father, Son, and Holy Spirit are three distinct eternal Persons within one divine essence (the Nicene homoousios applied to all three Persons). Instead, the one God — Jesus — has manifested himself in three different ways through the economy of salvation: as Father (the divine essence and creator role), as Son (the human incarnation, the body), and as Holy Spirit (the divine presence in the church). David K. Bernard's <em>The Oneness of God</em> (1983) is the systematic UPCI treatment. The position is consciously similar to early modalism / Sabellianism, though Oneness theologians contest the equivalence.`,
+      },
+      {
+        title: 'Jesus is the Name',
+        body: `For Oneness Pentecostals, "Jesus" is not merely the human name of the incarnate Son but the revealed name of the one God — the singular Name in which Father, Son, and Holy Spirit are summed up. Acts 4:12 ("there is no other name under heaven... by which we must be saved") is read in this maximal sense. The doxology and the baptismal formula must therefore center on Jesus, not on a tripartite formula.`,
+      },
+      {
+        title: 'Jesus-Name baptism',
+        body: `Baptism is by full immersion, administered specifically "in the name of Jesus Christ" (Acts 2:38) or "in the name of the Lord Jesus" (Acts 8:16; 19:5). Baptism in the Trinitarian formula of Matthew 28:19 (read as a description of the one Name rather than a formula) is regarded as inadequate by most Oneness groups; converts from Trinitarian backgrounds are typically rebaptized in the Jesus name upon joining a Oneness church.`,
+      },
+      {
+        title: 'The "new birth" of Acts 2:38',
+        body: `The classical Oneness understanding of salvation, articulated as the "new birth," combines repentance, water baptism in Jesus's name, and Spirit baptism evidenced by tongues into a unified salvific event drawn from Acts 2:38: "Repent and be baptized every one of you in the name of Jesus Christ for the forgiveness of your sins, and you shall receive the gift of the Holy Spirit." All three are typically held to be necessary for full salvation. This position is more soteriologically demanding than mainstream evangelicalism and represents a recovery, Oneness Pentecostals argue, of the apostolic gospel preached on Pentecost.`,
+      },
+      {
+        title: 'Holiness standards',
+        body: `Many Oneness congregations, particularly within the UPCI, maintain conservative standards regarding dress, grooming, and entertainment that are stricter than typical evangelicalism: women keep their hair uncut and avoid pants, makeup, and jewelry; modesty standards apply to all members; many avoid television, movies, and similar entertainment. These holiness standards have been a major feature of Oneness Pentecostal identity, though they are easing in many congregations under generational pressure.`,
+      },
+    ],
+    departures: `<p>Mainstream Christianity — Catholic, Orthodox, Protestant including the largest Trinitarian Pentecostal bodies — holds that Oneness Pentecostalism departs from Nicene Christianity on the doctrine of God himself:</p>
+    <p><strong>(1) The Trinity.</strong> The Council of Nicaea (325 AD) defined the Son as <em>homoousios</em> with the Father — distinct in person, identical in essence. The Council of Constantinople (381 AD) extended this to the Spirit. The Athanasian Creed makes the distinction explicit: "we worship one God in Trinity, and Trinity in Unity; neither confounding the persons nor dividing the substance." Oneness theology rejects this conciliar definition.</p>
+    <p><strong>(2) Modalism revisited.</strong> The early Church specifically rejected modalist views — Sabellianism, Patripassianism — in the second and third centuries (Tertullian's <em>Against Praxeas</em>, c. 213 AD, is the classical patristic refutation). Modalism teaches that Father, Son, and Holy Spirit are successive modes or roles of the one God, not distinct eternal Persons. Oneness Pentecostal theologians contest the precise equivalence with ancient modalism, but the position is structurally similar enough that the historic Christian objections apply.</p>
+    <p><strong>(3) Baptismal practice.</strong> Most major Christian traditions accept Trinitarian baptism in the Matthew 28:19 form as valid Christian baptism. Oneness Pentecostalism generally requires rebaptism in the Jesus-name form, holding Trinitarian baptism to be invalid. This means that even Oneness Pentecostals who agreed with most other Pentecostal teaching would be unable to accept Trinitarian Pentecostals as having received valid baptism.</p>
+    <p>The Pentecostal World Conference, the Assemblies of God, the Church of God in Christ, the Foursquare Church, and other Trinitarian Pentecostal bodies have all declined fellowship with Oneness Pentecostals on the Trinitarian question. The Assemblies of God's 1916 "Statement of Fundamental Truths" was specifically formulated to exclude Oneness teaching from AG fellowship — the AG having lost approximately 25% of its ministers to the New Issue in the years 1913–1916.</p>
+    <p>Within Oneness Pentecostalism itself, the question of whether Trinitarian Christians are saved is genuinely contested. Many Oneness believers hold that Trinitarian Christians may be saved if they have genuine faith in Jesus, while others hold that the rejection of Oneness baptism and Oneness theology of God places one outside the saving covenant.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'Matthew 28:19 vs. Acts 2:38',
+        body: `<p>Matthew 28:19 commands baptism "in the name of the Father and of the Son and of the Holy Spirit." Acts 2:38 records Peter commanding baptism "in the name of Jesus Christ." Oneness Pentecostals read these as harmonious — Matthew gives the description of the one Name; Acts gives the actual formula. Trinitarian Christians read these as harmonious differently — Matthew gives the formula; Acts describes the authority and content of baptism in summary form.</p>
+        <p><strong>Which reading does justice to both texts? And is baptism in either form valid?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'Modalism: heresy or recovery?',
+        body: `<p>The early Church explicitly rejected modalism — the teaching that Father, Son, and Holy Spirit are modes or roles of the one God rather than distinct eternal Persons. Tertullian's <em>Against Praxeas</em> (c. 213) defended what would become the Nicene doctrine; Praxeas, Noetus, and Sabellius (whose name "Sabellianism" is given to the modalist position) were condemned. Oneness Pentecostals argue that the Church was wrong then and that the apostolic faith was modalist.</p>
+        <p><strong>Did the early Church get the Trinity right, or did it import Greek philosophical categories that distorted the simpler biblical monotheism the Oneness movement seeks to recover?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'The Jesus on the cross',
+        body: `<p>Trinitarian theology distinguishes the Father and the Son such that the Son truly dies on the cross while the Father, in his divine immortality, does not die. The Son cries to the Father ("Why have you forsaken me?"). Oneness theology has to account for these texts within a framework where Jesus simply is the Father in his Son-manifestation. Critics call this Patripassianism — the Father suffering on the cross.</p>
+        <p><strong>Does Oneness theology coherently explain Christ's prayers to the Father, the Father's voice from heaven at the baptism and transfiguration, and the dialogue of John 17 — or does it collapse these into a single divine Person performing both sides?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Tongues as initial evidence — or means of salvation?',
+        body: `<p>Trinitarian Pentecostalism (Assemblies of God, Church of God in Christ, Foursquare, classical Pentecostalism broadly) teaches that Spirit baptism is evidenced by speaking in tongues — but that conversion to Christ is what saves, and Spirit baptism is a subsequent empowering experience. Classical Oneness Pentecostalism teaches that the "new birth" of Acts 2:38 incorporates Spirit baptism with tongues as part of the salvific event itself.</p>
+        <p><strong>Are the unbaptized in the Spirit, who have not spoken in tongues, genuinely saved? If yes, what does Acts 2:38 mean? If no, what about the thief on the cross and countless faithful Christians across history who never spoke in tongues?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Holiness standards: biblical principle or cultural code?',
+        body: `<p>Conservative Oneness Pentecostalism maintains strict standards regarding women's hair, dress, makeup, jewelry, and entertainment that go significantly beyond standard evangelical Christianity. The standards are grounded in texts like 1 Corinthians 11:5–15, 1 Timothy 2:9, and 1 Peter 3:3–5. Critics argue the texts are being read selectively (men's hair is also addressed in 1 Corinthians 11; pearls are forbidden in 1 Timothy 2 but routinely worn by women in conservative congregations) and that the standards function more as a tribal identity marker than as biblical obedience.</p>
+        <p><strong>Are conservative Oneness holiness standards faithful application of biblical principle, or cultural codes that have hardened into law in ways the apostles did not intend?</strong></p>`,
+      },
+    ],
+    keyTexts: [
+      { title: 'The Bible (KJV preferred)', desc: 'Oneness Pentecostals are uniformly biblical inerrantists. The King James Version is the dominant translation, though some congregations use the NKJV.' },
+      { title: 'The Oneness of God by David K. Bernard', desc: 'The systematic statement of UPCI theology of God (1983). Part of Bernard\'s "Pentecostal Series" — the standard Oneness systematic theology.' },
+      { title: 'The New Birth by David K. Bernard', desc: 'The systematic UPCI statement on salvation as repentance, Jesus-name baptism, and Spirit baptism with tongues.' },
+      { title: 'UPCI Manual', desc: 'The constitution and articles of faith of the United Pentecostal Church International, providing the authoritative doctrinal statement for UPCI churches.' },
+    ],
+    historicalResponse: `<p>Trinitarian Christianity — Catholic, Orthodox, mainline Protestant, and Trinitarian Pentecostal — has uniformly classified Oneness Pentecostalism as outside Nicene Christian orthodoxy on the doctrine of the Trinity, while typically affirming significant agreement on biblical authority, evangelism, holiness, and the experiences of Spirit and tongues.</p>
+    <p>The 1916 Assemblies of God "Statement of Fundamental Truths" was formulated specifically to exclude Oneness teaching from AG fellowship — the AG had lost approximately 156 of its 585 ministers (about 27%) to the "New Issue" by 1916. The split was substantial and bitter, with significant relational consequences across decades. The 1948 founding of the United Pentecostal Church (which became the UPCI in 1972) consolidated the largest American Oneness body.</p>
+    <p>Trinitarian Pentecostal engagement with Oneness theology has been substantial. <strong>Gregory A. Boyd's <em>Oneness Pentecostals and the Trinity</em></strong> (1992) gave the major evangelical-Trinitarian critique. <strong>Calvin Beisner's <em>Jesus Only Churches</em></strong> (1998). <strong>William Menzies and Stanley Horton's <em>Bible Doctrines</em></strong> (1993) gives the classical AG perspective.</p>
+    <p>From the Oneness side: <strong>David K. Bernard</strong> (current General Superintendent of the UPCI) has produced an extensive systematic theological corpus — his "Pentecostal Series" includes seven volumes covering theology proper, Christology, salvation, ecclesiology, and pneumatology. Bernard's <em>The Oneness of God</em>, <em>The New Birth</em>, and <em>The Oneness View of Jesus Christ</em> are the standard treatments. Bernard's work has been notable for its scholarly engagement with patristic sources, biblical exegesis, and contemporary theology.</p>
+    <p>The global Oneness movement has grown rapidly. The Apostolic Church of Faith in Christ Jesus (Iglesia Apostólica) in Mexico, the True Jesus Church (founded 1917 in China by Paul Wei, with strong influence in East Asia), the various indigenous Oneness movements in Africa, and the UPCI's international growth have made Oneness Pentecostalism one of the fastest-growing forms of Christianity globally. The Pentecostal World Conference and Trinitarian Pentecostal bodies maintain that fellowship is not possible without resolution of the Trinitarian question.</p>`,
+    historicalNote: 'The "New Issue" emerged at the Arroyo Seco World-Wide Apostolic Faith Camp Meeting near Los Angeles in April 1913, when Canadian Pentecostal Robert E. McAlister noted in a sermon that the apostles had baptized in the name of Jesus rather than in the Trinitarian formula. Frank J. Ewart developed the theological implications. Glenn Cook brought Ewart\'s teaching to the Midwest. The doctrine spread rapidly through early Pentecostal networks. The 1916 Assemblies of God General Council in St. Louis adopted a Trinitarian "Statement of Fundamental Truths" specifically to exclude Oneness teaching, precipitating the departure of approximately 156 ministers including E. N. Bell (who initially left, then returned to Trinitarian belief and was AG\'s second General Superintendent). The Pentecostal Assemblies of the World (PAW) became the largest Oneness body in the early 20th century; the racial integration that had characterized early Pentecostalism eroded along denominational lines, with the PAW retaining a substantial Black membership while predominantly-white Oneness bodies formed separate fellowships, eventually merging into the UPCI (1945, finalized 1972). Notable Oneness figures: Andrew Urshan (Iranian-born apostle to the Persians), G.T. Haywood (the leading early Black Oneness theologian), Frank Ewart, Howard Goss, T.D. Jakes (the most prominent contemporary American Oneness preacher, though Jakes has moved toward semi-Trinitarian language in recent years).',
+    relatedMovements: ['mov-sda'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'mov-sda',
+    name: 'Seventh-day Adventism',
+    icon: '🕖',
+    founded: '1863, growing out of the Millerite movement of the 1830s–40s',
+    adherents: '~22 million baptized worldwide (General Conference of Seventh-day Adventists, 2023)',
+    headquarters: 'Silver Spring, Maryland (General Conference)',
+    category: 'Adventist',
+    summary: `Seventh-day Adventism formally organized in 1863 as a post-Millerite movement that retained the Millerite expectation of Christ's imminent second coming while reinterpreting the Great Disappointment of October 22, 1844, as the beginning of Christ's heavenly ministry in the "Most Holy Place" — the doctrine of the Investigative Judgment. The movement was shaped most decisively by Ellen G. White (1827–1915), whose prophetic gift Adventists hold to be a manifestation of the New Testament gift of prophecy. Adventists keep the seventh-day Sabbath (Saturday) rather than Sunday; teach soul sleep and conditional immortality (the wicked are annihilated, not eternally tormented); practice strict health reform including dietary recommendations (vegetarianism widely encouraged), abstinence from alcohol, tobacco, and unclean meats per Leviticus 11; and emphasize the imminent return of Christ. The Adventist position on the Trinity has evolved significantly — early Adventism (including Joseph Bates, James White, and others) was largely non-Trinitarian, but the official position since the 1931 Statement of Beliefs and especially since the 1980 formal Statement of Fundamental Beliefs is firmly Trinitarian. Adventism runs the largest Protestant educational and healthcare networks in the world (over 9,400 schools, 200+ hospitals).`,
+    selfDescription: `<p>Seventh-day Adventists describe themselves as the "remnant church" of Revelation 12:17 ("the rest of her offspring, who keep the commandments of God and have the testimony of Jesus") — the eschatological community preparing the world for Christ's return. The 28 Fundamental Beliefs (current form 2005) articulate official Adventist doctrine, beginning with the Trinity (Belief 2) and the deity of Christ (Belief 4) — both fully Nicene in formulation. Adventists confess salvation by grace through faith, the bodily resurrection of Christ, the literal second coming, and the authority of Scripture.</p>
+    <p>The distinctively Adventist beliefs cluster around eschatology, anthropology, and ecclesiology: the seventh-day Sabbath as God's eternal sign (Belief 20); the heavenly sanctuary doctrine, in which Christ entered the Most Holy Place in 1844 to perform the antitypical Day of Atonement (Belief 24); the gift of prophecy as exemplified in Ellen White's ministry (Belief 18); conditional immortality and the destruction of the wicked rather than eternal conscious torment (Belief 27); and the imminent, premillennial, literal return of Christ (Belief 25).</p>
+    <p>Adventists practice three sacraments-like ordinances: water baptism by immersion of adult believers; foot-washing and the Lord's Supper (the "ordinances of humility and the Lord's Supper," Belief 16). Health reform — vegetarianism (or at minimum kosher-like dietary restrictions), abstinence from alcohol and tobacco, regular exercise — is religiously significant, expressed through institutions like the Adventist Health hospitals and educational programs.</p>`,
+    distinctives: [
+      {
+        title: 'The seventh-day Sabbath',
+        body: `Adventists keep the seventh day (Saturday, sunset to sunset) as the Sabbath of the fourth commandment (Exodus 20:8–11). The Sabbath is held to be God's eternal sign of his creative and redemptive lordship, never abolished or transferred to Sunday. The transfer of Sabbath observance to Sunday is traced to the influence of Constantine and the Roman papacy; the restoration of the seventh-day Sabbath is held to be central to the eschatological identity of the remnant church.`,
+      },
+      {
+        title: 'The Investigative Judgment and the heavenly sanctuary',
+        body: `When Christ failed to return on October 22, 1844 (the Millerite "Great Disappointment"), Hiram Edson received what Adventists interpret as a divine insight: Christ on that date had entered the Most Holy Place of the heavenly sanctuary to begin a pre-Advent "investigative judgment" of the books of those who had professed faith in him. This doctrine, developed by Joseph Bates, Ellen White, and others, is unique to Adventism and is one of its most distinctive — and most controversial — teachings. Critics within and outside Adventism have argued it lacks biblical foundation; defenders (Gerhard Pfandl, Roy Adams, William Shea) argue it is the natural reading of Daniel 8:14 in light of the typology of Leviticus 16.`,
+      },
+      {
+        title: 'The prophetic gift of Ellen G. White',
+        body: `Ellen G. White (1827–1915, née Harmon) is held by Adventists to have manifested the New Testament gift of prophecy. Her ministry, beginning at age 17 in 1844, produced thousands of pages of writings, dreams, and visions. Her most enduringly influential works include <em>Steps to Christ</em> (1892), <em>The Desire of Ages</em> (1898), <em>The Great Controversy</em> (1888), and the five-volume Conflict of the Ages series. Official Adventist doctrine holds that her writings are not equal to Scripture (Scripture is the ultimate norm) but are "a continuing and authoritative source of truth" that provides "comfort, guidance, instruction, and correction to the church." Her counsel on health reform, education, and Christian living is regarded as inspired guidance.`,
+      },
+      {
+        title: 'Soul sleep and conditional immortality',
+        body: `Adventists teach that the soul is not naturally immortal but is the integrated unity of body and breath/spirit (Genesis 2:7). At death, the dead "sleep" unconsciously until the resurrection. The righteous are raised to eternal life at Christ's return; the wicked are raised at the end of the millennium for judgment and then destroyed permanently in the lake of fire. This is annihilationism (conditional immortality), which Adventists hold to be the consistent biblical teaching, contrasting with the doctrine of eternal conscious torment.`,
+      },
+      {
+        title: 'Health reform',
+        body: `Beginning with Ellen White's vision of 1863 on health reform, Adventists have made health a religious commitment. Vegetarianism is strongly recommended (about 35% of American Adventists are vegetarian); kosher-like dietary restrictions per Leviticus 11 are observed (no pork, shellfish, etc.); abstinence from alcohol, tobacco, and recreational drugs is required for church membership; regular exercise and rest are religiously framed. The Adventist Health system, the Loma Linda University Health hospitals, and the long-running Adventist Health Study (the world's largest cohort study on diet and longevity) reflect this distinctive emphasis. Loma Linda, California — heavily Adventist — is one of the world's five "Blue Zones" of exceptional longevity.`,
+      },
+    ],
+    departures: `<p>The question of how Seventh-day Adventism relates to historic Christianity is more complex than for some other movements on this page. Adventism in its mature form is Trinitarian, accepts the deity of Christ in fully Nicene terms, holds to salvation by grace through faith, and confesses biblical authority. On the central doctrines of God, Christ, atonement, and salvation, Adventism is within mainstream Protestantism — and is recognized as such by most evangelical bodies today, though the recognition was contested in the mid-20th century.</p>
+    <p>Mainstream Christian engagement with Adventism distinguishes between (a) Adventism's distinctive teachings on Sabbath, prophecy, sanctuary, and anthropology, which many evangelicals regard as eccentric but not heretical, and (b) historical positions taken in earlier Adventist literature that have been controversial:</p>
+    <p><strong>(1) The Investigative Judgment.</strong> Many evangelical critics (most notably Desmond Ford, a former Adventist seminary professor who lost his Adventist credentials in 1980 after challenging the doctrine) have argued that the Investigative Judgment lacks biblical foundation and creates a soteriology in which assurance of salvation is undermined. The Adventist response (Roy Adams, Gerhard Pfandl, William Shea) maintains the doctrine while emphasizing it does not threaten salvation by grace.</p>
+    <p><strong>(2) The status of Ellen White's writings.</strong> Adventism officially holds that Scripture is the ultimate norm and that White's writings are subordinate. Critics — including some who left Adventism — have argued that in practice White's writings function as a second canon. The 1980s plagiarism controversies (Walter Rea's <em>The White Lie</em>, 1982, documenting extensive uncredited borrowing in White's books) raised significant questions about the nature of her prophetic gift; the Adventist Church responded with the Veltman Report (1988, on <em>The Desire of Ages</em>) acknowledging substantial borrowing while defending White's prophetic vocation.</p>
+    <p><strong>(3) Early Adventist anti-Trinitarianism.</strong> Many of the founding Adventists — James White, Joseph Bates, Uriah Smith — were anti-Trinitarian in the Arian or semi-Arian tradition. The transition to full Trinitarianism happened gradually, with the 1931 Statement of Beliefs marking the official shift and the 1980 Fundamental Beliefs cementing it. Some critics argue the change represents a fundamental break with founding Adventism; Adventists generally view it as a maturation of doctrine under the guidance of the Spirit.</p>
+    <p><strong>(4) The "remnant" ecclesiology.</strong> Adventism's identification of itself as the eschatological "remnant church" can be read as exclusive — implying that other Christians are at best partial or compromised. Modern Adventism has nuanced this significantly, with the General Conference acknowledging that genuine Christians exist throughout Christendom while maintaining Adventism's prophetic role.</p>
+    <p>The major evangelical assessment of Adventism shifted in 1957 with the publication of <strong>Walter Martin and Donald Grey Barnhouse's <em>The Truth About Seventh-day Adventism</em></strong>. Martin (the foremost evangelical "cult watcher" of the era) and Barnhouse concluded after extensive dialogue with Adventist leaders that Seventh-day Adventism was a Christian denomination, not a non-Christian sect — albeit with significant eccentricities. This judgment has held in most evangelical circles since, though some hardline evangelical critics dissent.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'The Investigative Judgment',
+        body: `<p>The doctrine of the Investigative Judgment teaches that since 1844, Christ has been examining the records of all who have professed faith in him to determine who is truly his. Critics — including former Adventist theologian Desmond Ford in his 1979 Glacier View paper — argue that this doctrine has no clear biblical basis, that it creates anxiety about salvation, and that the events of 1844 require this complex interpretive framework only because the Millerite prediction failed.</p>
+        <p><strong>Is the Investigative Judgment a genuine biblical doctrine drawn from Daniel 8 and Leviticus 16, or a theological rescue operation that preserved Millerism by making its central prediction unfalsifiable?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'Sabbath: which day?',
+        body: `<p>Adventists keep the seventh-day Sabbath as God's eternal sign and as the fourth commandment, never abolished. Mainstream Christianity since the apostolic age has worshiped on the first day of the week (the Lord's Day, the day of resurrection), generally regarding the Sabbath commandment as either fulfilled in Christ (Hebrews 4:9–11; Colossians 2:16–17) or as transferred to Sunday by apostolic and Spirit-led practice.</p>
+        <p><strong>Did the Church rightly recognize the Lord's Day as the new Sabbath in continuity with the resurrection, or did it (as Adventists hold) compromise with paganism and papal authority in changing God's appointed day?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'Ellen White: prophet or talented religious writer?',
+        body: `<p>Adventists hold that Ellen G. White exercised the New Testament gift of prophecy and that her writings carry continuing authority (subordinate to Scripture). Critics point to: documented borrowing of significant content from contemporaneous Christian writers without attribution (the Veltman Report); failed predictions (specific dates that did not materialize); and the unusual position of her writings as functionally canonical in many Adventist contexts.</p>
+        <p><strong>Was Ellen White a genuine prophet, an inspired Christian writer in the broader sense, or something else? And what should an Adventist do with the documented evidence of her literary borrowing?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Soul sleep and the destiny of the wicked',
+        body: `<p>Adventists teach that the dead sleep unconsciously until the resurrection, that the wicked are not eternally tormented but are destroyed permanently in the lake of fire (annihilationism / conditional immortality). The historic Christian position has generally been that the soul exists consciously after death and that the wicked face eternal conscious torment.</p>
+        <p><strong>Does the Adventist position more faithfully read Scripture (which speaks of life as God's gift, death as wages of sin, and destruction of the wicked rather than their endless preservation), or does it dilute the seriousness of judgment that historic Christianity has confessed?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Health reform: faithfulness or works-righteousness?',
+        body: `<p>Adventist health reform — vegetarianism, dietary restrictions per Leviticus 11, abstinence from alcohol and tobacco, emphasis on exercise — has produced measurable longevity benefits (the Adventist Health Study, Blue Zones research at Loma Linda) and grounds an enormous global Adventist hospital and educational network. Critics argue that these practices, framed religiously, risk obscuring the gospel — making Christian identity contingent on dietary discipline rather than on grace.</p>
+        <p><strong>Is Adventist health reform faithful stewardship of the body as God's temple (1 Corinthians 6:19), or has it hardened into a quasi-legalistic regime that subtly displaces the gospel?</strong></p>`,
+      },
+    ],
+    keyTexts: [
+      { title: 'The Bible (KJV historically, multiple translations now)', desc: 'Held as the ultimate norm. The NKJV is widely used in Adventist publications today; the NIV and other translations are accepted.' },
+      { title: '28 Fundamental Beliefs', desc: 'The current (2005) official doctrinal statement of the Seventh-day Adventist Church. Replaced earlier 27 Fundamental Beliefs (1980).' },
+      { title: 'The Conflict of the Ages series by Ellen G. White', desc: 'Five volumes: Patriarchs and Prophets, Prophets and Kings, The Desire of Ages, The Acts of the Apostles, The Great Controversy. The major systematic theological narrative of Adventist understanding of salvation history.' },
+      { title: 'Steps to Christ by Ellen G. White', desc: 'A short devotional classic (1892), perhaps the most widely-distributed Adventist book; over 100 million copies printed in over 150 languages.' },
+      { title: 'Seventh-day Adventists Believe', desc: 'The official Adventist systematic theology, a chapter-by-chapter exposition of the 28 Fundamental Beliefs.' },
+    ],
+    historicalResponse: `<p>The mainstream Protestant assessment of Seventh-day Adventism shifted significantly in the mid-20th century. Earlier evangelical writers (J. Gresham Machen, Louis Talbot) had generally classified Adventism as a non-Christian sect on the basis of the Sabbath, the Investigative Judgment, and Ellen White's prophetic role.</p>
+    <p>The watershed was <strong>Walter Martin and Donald Grey Barnhouse's <em>The Truth About Seventh-day Adventism</em></strong> (1960). Martin, the foremost American evangelical apologist on the cults of his era, undertook a four-year direct dialogue with Adventist leaders (Le Roy Edwin Froom, Walter Read, T.E. Unruh) and concluded — to the dismay of some of his evangelical readers — that contemporary Adventism was a Christian denomination, deeply orthodox on the major doctrines (Trinity, deity of Christ, atonement, salvation by grace) while distinctive on the Sabbath, sanctuary doctrine, prophetic gift, and dietary practice. Martin's reassessment became the dominant evangelical position, though hardline critics (Anthony Hoekema, John Whitcomb) continued to classify Adventism as outside the Christian mainstream.</p>
+    <p>Internal Adventist controversy: <strong>Desmond Ford's</strong> 1979 paper "Daniel 8:14, the Day of Atonement, and the Investigative Judgment" challenged the foundational Adventist doctrine. The Glacier View Conference (August 1980) resulted in Ford losing his Adventist credentials. The controversy split many Adventists, with Ford's followers continuing the critique through Good News Unlimited and similar organizations. The <strong>Walter Rea controversy</strong> (1980s) followed: Rea's <em>The White Lie</em> (1982) documented Ellen White's borrowing, leading to the General Conference's Veltman Report (1988) acknowledging extensive borrowing while defending White's vocation.</p>
+    <p>Modern Adventist scholarship has engaged these questions with substantial rigor. Adventist universities (Andrews University in Michigan, Loma Linda University in California) maintain accredited theological programs. Notable Adventist scholars: Roy Adams (former Adventist Review editor), Gerhard Pfandl, William Shea, Hans LaRondelle, Sigve Tonstad, John Walton (some sympathies, though Walton himself is not Adventist).</p>
+    <p>Adventism's growth has been substantial in the global South — particularly Brazil, Mexico, the Philippines, sub-Saharan Africa. The 22 million baptized members make Adventism larger than many longer-established denominations.</p>`,
+    historicalNote: 'William Miller (1782–1849), a Baptist farmer in upstate New York, calculated from Daniel 8:14 ("unto two thousand and three hundred days; then shall the sanctuary be cleansed") that Christ would return between March 1843 and March 1844; the date was refined to October 22, 1844. The "Great Disappointment" of October 22, 1844, scattered the Millerite movement; some lost their faith entirely, others reinterpreted the date as Christ\'s entrance into the heavenly sanctuary. Hiram Edson\'s vision of October 23 became foundational for the Adventist Investigative Judgment doctrine. Ellen Harmon (later White) began receiving visions in December 1844. The Seventh-day Adventist Church was formally organized at Battle Creek, Michigan, in May 1863, with 3,500 founding members. The General Conference moved to Washington, DC in 1903 and to Silver Spring, Maryland in 1989. Loma Linda, California — established by Ellen White and John Harvey Kellogg (the cereal magnate, also an Adventist before his eventual break) — became one of the Adventist healthcare flagships. Adventist World Radio, the Hope Channel, and the Three Angels Broadcasting Network (3ABN, independent of the official Church) have given Adventism substantial global media reach.',
+    relatedMovements: ['mov-jw', 'mov-oneness'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'mov-cs',
+    name: 'Christian Science',
+    icon: '✨',
+    founded: '1879, by Mary Baker Eddy (1821–1910)',
+    adherents: 'Estimated 50,000–400,000 worldwide; declining (precise figures not published)',
+    headquarters: 'The First Church of Christ, Scientist — Boston, Massachusetts (the "Mother Church")',
+    category: 'Metaphysical',
+    summary: `Christian Science was founded by Mary Baker Eddy in Boston in 1879 following her recovery from injury in 1866 — an event she described as the discovery of the divine Science that Jesus had taught and practiced. The Church of Christ, Scientist, governed from its Boston "Mother Church," teaches that God is divine Mind — all good, infinite, and the only reality — and that matter, sin, sickness, and death are illusions or false beliefs of "mortal mind" that can be healed through correct spiritual understanding. Christian Science practitioners — trained according to standards set by Eddy's textbook <em>Science and Health with Key to the Scriptures</em> (1875, with later additions) — offer prayer-based healing as the primary therapeutic modality for members, who have historically declined medical treatment in many circumstances. The movement is the only major religious movement of American origin to have been founded and led by a woman. It has experienced sustained decline since mid-20th-century peaks, but has been historically and culturally significant far out of proportion to its current numbers — through The Christian Science Monitor newspaper (founded 1908, Pulitzer Prize-winning), the substantial publishing apparatus, and its Reading Rooms in cities worldwide.`,
+    selfDescription: `<p>Christian Scientists describe their movement as a recovery of the lost teaching of original Christianity — specifically, the science of spiritual healing that Jesus and his disciples practiced. The Church's tenets, articulated by Mary Baker Eddy in <em>Science and Health</em>, summarize the foundational teaching: "There is no life, truth, intelligence, nor substance in matter. All is infinite Mind and its infinite manifestation, for God is All-in-all. Spirit is immortal Truth; matter is mortal error. Spirit is the real and eternal; matter is the unreal and temporal. Spirit is God, and man is His image and likeness. Therefore man is not material; he is spiritual."</p>
+    <p>The Church bases its teaching on the Bible (specifically the King James Version) and on Eddy's <em>Science and Health with Key to the Scriptures</em>, which Christian Scientists hold to be inspired and which serves with the Bible as the dual "pastor" of every Christian Science church. Sunday services consist of readings from the Bible and from <em>Science and Health</em> on weekly Bible Lesson topics; there is no ordained ministry in the conventional sense, but rather Readers chosen for three-year terms.</p>
+    <p>The Christian Science understanding of healing follows from its understanding of reality: since matter is unreal and only Spirit (God, divine Mind) is real, what appears as physical illness is actually a false belief in mortal mind that yields to correct spiritual understanding. Healing comes through prayer that reorients consciousness from the false belief in disease to the truth of God's allness and man's spiritual perfection. Christian Science practitioners are trained to provide this spiritual treatment for fee; nurses provide care during healing without administering medical intervention.</p>
+    <p>Christian Science has historically opposed not only medicine for its members but also the materialist worldview underlying it. Eddy taught that hypnotism, animal magnetism, and what she called "Malicious Animal Magnetism" (M.A.M.) were real spiritual dangers — mental influences that could cause harm. Christian Scientists are encouraged to demonstrate their understanding through reliance on God in matters of health, livelihood, and life.</p>`,
+    distinctives: [
+      {
+        title: 'God as divine Mind, matter as illusion',
+        body: `The foundational metaphysical claim of Christian Science is that God — divine Mind, Spirit, Soul, Principle, Life, Truth, Love (Eddy's "seven synonyms for God") — is all that is real. Matter, including the human body, is unreal — a mistaken belief of "mortal mind." Eddy taught: "There is no life, truth, intelligence, nor substance in matter." This metaphysical idealism distinguishes Christian Science from every form of traditional Christianity (which affirms the goodness of created matter, the genuine reality of physical bodies, and the incarnation of God in a real human body).`,
+      },
+      {
+        title: 'Sickness, sin, and death as illusions',
+        body: `Because matter is unreal, sickness and physical death are also unreal — they are appearances generated by the false belief of mortal mind. They are healed not by acting on the body but by replacing the false belief with the true understanding of man's spiritual being. Sin, similarly, is the false belief that man is fallen and material; truly understood, man as God's image is already perfect. Christian Science healing is essentially a re-education of consciousness from the false to the true.`,
+      },
+      {
+        title: 'Jesus and "the Christ" distinguished',
+        body: `Christian Science distinguishes between the human Jesus and "the Christ," which Eddy understood as the divine idea or principle that Jesus most fully exemplified but did not exhaust. "Christ" is the eternal Truth that has come to humanity through many vehicles and that Jesus revealed most completely. The crucifixion is real as a historical event but is significant primarily because Jesus's understanding of the unreality of matter allowed him to overcome death and demonstrate the immortality of Spirit — not because his death made atonement for sins in any propitiatory sense. Christian Science teaches that Jesus did not suffer in the way traditional Christianity teaches — his understanding lifted him above the false belief of suffering.`,
+      },
+      {
+        title: 'Healing as core practice',
+        body: `Healing is the central practice of Christian Science. Practitioners — listed in the Christian Science Journal — offer prayer treatment for healing, typically for an hourly fee. Members traditionally do not use medical doctors or medications for their primary care, though the official position has softened slightly in recent decades. The Christian Science Sentinel and Christian Science Journal publish first-person testimonies of healing that are vetted by the Church before publication. Healing claims are foundational to Christian Science's self-understanding as a "demonstrable" religion.`,
+      },
+      {
+        title: 'No clergy, no sacraments in the usual sense',
+        body: `Christian Science has no ordained clergy. Each church has two Readers (a First Reader and a Second Reader) elected for three-year terms; they read from the Bible and <em>Science and Health</em> at services. There is no Eucharist in the traditional sense; the Lord's Supper is observed twice yearly through prayer and the reading of designated passages, not through bread and wine. Baptism is interpreted spiritually rather than performed as a water ritual. The church polity is unique: each local Church of Christ, Scientist is autonomous, but all are accountable to the Mother Church in Boston through the Christian Science Board of Directors.`,
+      },
+    ],
+    departures: `<p>Christian Science departs from historic Christianity on every major doctrinal locus — the doctrine of God, the doctrine of creation, the doctrine of humanity, the doctrine of Christ, the doctrine of sin, the doctrine of atonement, the doctrine of the resurrection, the doctrine of the sacraments. The departures are not subtle nuances but fundamental redefinitions of the categories themselves.</p>
+    <p><strong>(1) The nature of God.</strong> Christian Science teaches God as impersonal divine Mind, Principle, the seven synonyms (Mind, Spirit, Soul, Principle, Life, Truth, Love). The personal God of historic Christianity — who speaks, knows, wills, loves, and acts in history; who became incarnate in Jesus Christ; who hears prayer and forgives sin — is replaced by an impersonal divine principle whose "love" is more like a metaphysical truth than a personal relationship.</p>
+    <p><strong>(2) The reality of creation.</strong> Christian Science denies the reality of matter altogether. Genesis 1, which Christians have read as God's creation of a good material universe, is reinterpreted as the spiritual unfolding of divine Mind. The Christian doctrine that God created a real material world that is genuinely good (and which the Incarnation took up and the Resurrection vindicated) is rejected.</p>
+    <p><strong>(3) The Incarnation.</strong> Historic Christianity confesses that God the Son became truly human, taking on a real body, growing tired, eating, sleeping, suffering, and dying. Christian Science distinguishes Jesus (the man) from Christ (the divine idea) in ways that disable the historic doctrine of the hypostatic union. Jesus did not really suffer as we suffer; his elevated spiritual consciousness lifted him above material experience.</p>
+    <p><strong>(4) The Atonement.</strong> Historic Christianity confesses that Christ's death made propitiation for sin and reconciled humanity to God (Romans 3:25; 1 John 2:2). Christian Science denies that sin is real in a way that requires propitiation; the crucifixion is significant as Jesus's demonstration of the unreality of death, not as the satisfaction of divine justice.</p>
+    <p><strong>(5) The bodily Resurrection.</strong> Christian Science teaches that Jesus, having demonstrated the unreality of death, continued his ministry in such a way that his disciples could perceive him. The bodily, physical, fleshly resurrection that historic Christianity confesses is replaced by a spiritual demonstration of the unreality of death.</p>
+    <p><strong>(6) The sacraments.</strong> Water baptism and the eucharistic Lord's Supper are reinterpreted spiritually and largely set aside as outward forms that point to spiritual realities Christian Science can now access directly.</p>
+    <p>The cumulative effect is that Christian Science, despite its name and despite Mary Baker Eddy's lifelong love of the Bible, is not Christianity in the historic sense but a metaphysical philosophy in the family of New Thought and 19th-century American religious idealism, which uses Christian vocabulary to express a fundamentally different worldview. Mainstream Christianity — Catholic, Orthodox, Protestant, evangelical, Pentecostal — has uniformly classified Christian Science as outside historic Christianity.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'Is matter real?',
+        body: `<p>Christian Science teaches that matter is unreal — that the physical world is a false appearance produced by mortal mind. Historic Christianity teaches that God created a real material universe and pronounced it good (Genesis 1:31), that the Word became flesh (John 1:14), and that Christians will be raised with real bodies (1 Corinthians 15:42–44).</p>
+        <p><strong>Which view does justice to the actual experience of being human — the joys and sufferings, hungers and satisfactions, births and deaths of bodily life — and to what God himself has revealed about his creation?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'Healing and the body',
+        body: `<p>Christian Science teaches that physical illness is a false belief that yields to correct spiritual understanding, with prayer as the appropriate therapy rather than medicine. Mainstream Christianity has always taught that healing is a real possibility through prayer (James 5:14–15) but has also taught that physicians are God's instruments (Luke, the beloved physician; Sirach 38:1–15) and that bodies are real and require care.</p>
+        <p><strong>Has Christian Science recovered a forgotten New Testament practice of spiritual healing, or has it created a system that prevents members from receiving the medical care God has also provided through human means?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'Jesus suffered or only seemed to suffer?',
+        body: `<p>Christian Science distinguishes between the man Jesus and the Christ idea, teaching that Jesus's elevated consciousness lifted him above the experience of real suffering on the cross. Historic Christianity has always insisted on Jesus's genuine humanity — that he was hungry, tired, grieved, and that he died a real death in agony (Hebrews 4:15; Matthew 26:38; Philippians 2:8). The early Church specifically condemned Docetism (the view that Jesus only seemed to suffer) as heresy.</p>
+        <p><strong>Is the Christian Science Jesus the Jesus of the Gospels — the Word made flesh who shared our human suffering — or a docetic figure who merely appeared to share our condition?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Mary Baker Eddy and Scripture',
+        body: `<p>The Christian Science Mother Church established <em>Science and Health with Key to the Scriptures</em> as the "pastor" of every Christian Science church alongside the Bible. Eddy held that her book was inspired and that it provided the key to understanding the Bible — that without her interpretive framework, the Bible's spiritual teaching cannot be correctly received. Mainstream Christianity from the Reformation forward has held the Bible to be sufficient for Christian faith and life (Westminster Confession I.6) and has resisted parallel authorities of this kind.</p>
+        <p><strong>Does <em>Science and Health</em> reveal the Bible's deeper meaning, or does it impose a foreign metaphysical framework that the biblical writers themselves would not have recognized?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Children, treatment, and the limits of religious freedom',
+        body: `<p>Christian Science families have historically declined medical treatment for their children in many circumstances, leading over decades to dozens of legal cases where Christian Science parents were prosecuted for neglect when children died from treatable conditions. The Church has consistently defended the religious-liberty right to choose spiritual treatment. Critics argue that whatever an adult chooses for themselves, children cannot consent to refuse life-saving medicine.</p>
+        <p><strong>Where should religious liberty end and the state's duty to protect children begin? And what should a faithful Christian Science parent do when their child is gravely ill?</strong></p>`,
+      },
+    ],
+    keyTexts: [
+      { title: 'The Bible (KJV)', desc: 'Used in tandem with Science and Health as joint pastor of the Christian Science church.' },
+      { title: 'Science and Health with Key to the Scriptures by Mary Baker Eddy', desc: 'First edition 1875; final edition 1910. The foundational systematic statement of Christian Science teaching, with extensive scriptural exposition.' },
+      { title: 'Manual of The Mother Church by Mary Baker Eddy', desc: 'The constitutional document governing the Christian Science Mother Church and its branch churches. Eddy intended its rules to be perpetual after her death.' },
+      { title: 'Miscellaneous Writings and other works by Eddy', desc: 'Including Retrospection and Introspection (autobiographical), Pulpit and Press, and various devotional and instructional works.' },
+      { title: 'Christian Science Sentinel; Christian Science Journal; Christian Science Quarterly', desc: 'The Church\'s ongoing publications, providing weekly Bible lessons, testimonies of healing, and articles on the Christian Science life.' },
+    ],
+    historicalResponse: `<p>Mainstream Christianity has uniformly classified Christian Science as outside the historic Christian faith — not on a single point of doctrinal disagreement but on the comprehensive reinterpretation of Christian categories that Eddy's work involves. The major denominations, evangelical organizations, and Christian apologetic literature have consistently maintained this assessment.</p>
+    <p>Major scholarly engagements: <strong>Walter Martin's <em>The Kingdom of the Cults</em></strong> gives the influential 20th-century evangelical assessment. <strong>Anthony Hoekema's <em>The Four Major Cults</em></strong> (1963). <strong>Charles S. Braden's <em>Christian Science Today</em></strong> (1958) gives an academic religious-studies treatment. <strong>Stephen Gottschalk's <em>The Emergence of Christian Science in American Religious Life</em></strong> (1973) provides the major scholarly history.</p>
+    <p>Internal Christian Science scholarship has been limited compared to other movements on this page — the Church has historically not encouraged academic engagement that might subject its claims to ordinary scholarly methods. Notable Christian Science writers include Charles Carpenter, Robert Peel (Eddy's most thorough modern biographer, his three-volume biography 1966–77), and various Mother Church publications.</p>
+    <p>Christian Science has declined substantially from its mid-20th-century peak. Membership figures are not publicly reported (Eddy's <em>Manual</em> forbids public membership counts), but the visible markers of decline are clear: the number of US Christian Science churches has dropped from approximately 1,800 in 1971 to under 1,000 today; the Reading Rooms have closed in many cities; the Christian Science Monitor ceased its print daily edition in 2008. Internal Church discussion about adaptation, the role of medical care, and the meaning of Christian Science in a 21st-century context is ongoing.</p>
+    <p>The Christian Science Monitor remains a distinguished news publication, winning Pulitzer Prizes and maintaining a substantial international reporting reputation that is largely independent of the Church's specific doctrinal positions. The Christian Science Publishing Society continues to publish Eddy's works and the Church's periodicals.</p>`,
+    historicalNote: 'Mary Baker Eddy was born in Bow, New Hampshire, in 1821 into a strict Calvinist household. She suffered from chronic illness throughout her early life. After an 1866 fall on ice in Lynn, Massachusetts, that she expected would be fatal, she experienced what she described as a sudden recovery while reading Matthew 9 — Christ\'s healing of the man with palsy. She dated her discovery of Christian Science to this event. Eddy taught and developed her system through the 1870s, publishing <em>Science and Health</em> in 1875 and founding the Massachusetts Metaphysical College in 1881. The Church of Christ, Scientist, was chartered in 1879. Eddy founded The Christian Science Monitor in 1908 in part to counter unfavorable press coverage of the Church. She died at age 89 in 1910. The Mother Church\'s Christian Science Board of Directors, established by Eddy in the Manual, governs the Church to the present day. Christian Science peaked in influence and membership in the mid-20th century; sustained decline since then has not been reversed despite various adaptation efforts. Notable Christian Scientists in American public life have included senators (Charles Bennett of Florida), business figures, and entertainers (Mickey Rooney, Joan Crawford, Jean Stapleton). The film <em>Religulous</em> (2008), Caroline Fraser\'s <em>God\'s Perfect Child: Living and Dying in the Christian Science Church</em> (1999), and various media investigations have documented the human cost of medical-refusal cases.',
+    relatedMovements: ['mov-lds', 'mov-jw'],
+  },
+
+];
 
 // ═══════════════════════════════════════════════════════════════
 //   STATE & CONSTANTS
@@ -2899,8 +3351,11 @@ function renderTopics() {
 
 function showHome() {
   currentTopic = null;
+  currentMovement = null;
   document.getElementById('home-view').style.display = 'block';
   document.getElementById('detail-view').style.display = 'none';
+  const mv = document.getElementById('movement-view');
+  if (mv) mv.style.display = 'none';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -3679,3 +4134,316 @@ document.addEventListener('input', (e) => {
     count.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
   }
 });
+// ═══════════════════════════════════════════════════════════════
+//   MOVEMENTS — Outside the Creeds (Patch 5)
+// ═══════════════════════════════════════════════════════════════
+
+let currentMovement = null;
+let openQuestions = new Set();  // which discussion-question forums are open
+
+// Update stats to include movements
+function updateMovementStats() {
+  const el = document.getElementById('stat-movements');
+  if (el) el.textContent = MOVEMENTS.length;
+}
+
+// Render the "Outside the Creeds" section on the homepage
+function renderMovements() {
+  const grid = document.getElementById('movement-grid');
+  if (!grid) return;
+  grid.innerHTML = MOVEMENTS.map(m => `
+    <div class="movement-card" onclick="showMovement('${m.id}')">
+      <div class="movement-card-top">
+        <div class="movement-icon">${m.icon}</div>
+        <div class="movement-badge">${escHtml(m.category)}</div>
+      </div>
+      <div class="movement-name">${escHtml(m.name)}</div>
+      <div class="movement-founded">${escHtml(m.founded)}</div>
+      <div class="movement-summary-preview">${escHtml(stripTags(m.summary).slice(0, 220))}…</div>
+      <div class="movement-card-foot">
+        <span class="movement-adherents">${escHtml(m.adherents)}</span>
+        <span class="movement-questions-tag">5 questions →</span>
+      </div>
+    </div>`).join('');
+}
+
+function stripTags(html) {
+  return String(html || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+}
+
+// Show a movement detail page
+async function showMovement(id) {
+  const m = MOVEMENTS.find(x => x.id === id);
+  if (!m) return;
+  currentMovement = m;
+  currentTopic = null;
+  openQuestions = new Set();
+  bottomCtype = 'general';
+
+  document.getElementById('home-view').style.display = 'none';
+  document.getElementById('detail-view').style.display = 'none';
+  const mv = document.getElementById('movement-view');
+  if (mv) mv.style.display = 'block';
+
+  document.getElementById('movement-title').textContent = m.name;
+  document.getElementById('movement-founded-line').textContent = m.founded;
+  document.getElementById('movement-adherents-line').textContent = m.adherents;
+  document.getElementById('movement-hq-line').textContent = m.headquarters;
+  document.getElementById('movement-category-tag').textContent = m.category;
+
+  document.getElementById('movement-summary').innerHTML = escHtml(m.summary).replace(/\n/g, '<br/>');
+  document.getElementById('movement-self-description').innerHTML = m.selfDescription;
+
+  // Distinctives
+  const distEl = document.getElementById('movement-distinctives');
+  distEl.innerHTML = m.distinctives.map((d, i) => `
+    <div class="distinctive-card">
+      <div class="distinctive-num">${String(i + 1).padStart(2, '0')}</div>
+      <div class="distinctive-content">
+        <div class="distinctive-title">${escHtml(d.title)}</div>
+        <p class="distinctive-body">${escHtml(d.body)}</p>
+      </div>
+    </div>`).join('');
+
+  // Departures
+  document.getElementById('movement-departures').innerHTML = m.departures;
+
+  // Discussion questions — centerpiece
+  await renderMovementQuestions(m);
+
+  // Key texts
+  const textsEl = document.getElementById('movement-key-texts');
+  textsEl.innerHTML = m.keyTexts.map(t => `
+    <div class="keytext-card">
+      <div class="keytext-title">${escHtml(t.title)}</div>
+      <div class="keytext-desc">${escHtml(t.desc)}</div>
+    </div>`).join('');
+
+  // Historical response
+  document.getElementById('movement-historical-response').innerHTML = m.historicalResponse;
+
+  // Historical note
+  const noteEl = document.getElementById('movement-historical-note');
+  if (noteEl) noteEl.innerHTML = `<span class="hist-label">📜 Historical context</span> ${escHtml(m.historicalNote)}`;
+
+  // Related movements
+  const relEl = document.getElementById('movement-related');
+  if (relEl) {
+    if (m.relatedMovements && m.relatedMovements.length) {
+      relEl.innerHTML = `<h3 class="related-title">Related movements</h3><div class="related-pills">${m.relatedMovements.map(rid => {
+        const rel = MOVEMENTS.find(x => x.id === rid);
+        return rel ? `<button class="related-pill" onclick="showMovement('${rid}')">${rel.icon} ${escHtml(rel.name)}</button>` : '';
+      }).join('')}</div>`;
+      relEl.style.display = 'block';
+    } else relEl.style.display = 'none';
+  }
+
+  // Load comments (using movement id as topic_id in the comments table)
+  await loadMovementComments(m.id);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Render the 5 discussion questions with their threaded mini-forums
+async function renderMovementQuestions(m) {
+  const container = document.getElementById('movement-questions');
+  if (!container) return;
+  container.innerHTML = m.discussionQuestions.map((q, i) => {
+    const qKey = `${m.id}::${q.id}`;
+    const isOpen = openQuestions.has(qKey);
+    const count = countCommentsForQuestion(m.id, q.id);
+    return `
+      <div class="question-card ${isOpen ? 'q-open' : ''}" data-qkey="${escAttr(qKey)}">
+        <div class="question-card-head">
+          <div class="question-number">Q${i + 1}</div>
+          <div class="question-content">
+            <div class="question-title">${escHtml(q.title)}</div>
+            <div class="question-body">${q.body}</div>
+          </div>
+        </div>
+        <button class="question-toggle" onclick="toggleQuestionForum('${escAttr(qKey)}')">
+          <span class="question-toggle-left">
+            <span class="question-toggle-icon">💬</span>
+            <span>${isOpen ? 'Hide responses' : 'Discuss this question'}</span>
+            <span class="question-activity-count ${count === 0 ? 'zero' : ''}">${count}</span>
+          </span>
+          <span class="question-chevron">▾</span>
+        </button>
+        <div class="question-forum-body" id="qforum-${escAttr(qKey)}">
+          ${renderQuestionForum(m.id, q.id)}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function countCommentsForQuestion(movementId, questionId) {
+  // We store discussion-question responses with target_denomination = `q:${questionId}` (reusing the field)
+  const tag = 'q:' + questionId;
+  return allComments.filter(c =>
+    c.target_denomination === tag ||
+    (c.parent_comment_id && getRootComment(c)?.target_denomination === tag)
+  ).length;
+}
+
+function toggleQuestionForum(qKey) {
+  if (openQuestions.has(qKey)) openQuestions.delete(qKey);
+  else openQuestions.add(qKey);
+  if (currentMovement) renderMovementQuestions(currentMovement);
+}
+
+function renderQuestionForum(movementId, questionId) {
+  const tag = 'q:' + questionId;
+  const topLevel = allComments.filter(c =>
+    c.target_denomination === tag && !c.parent_comment_id
+  ).sort((a, b) => (b.upvotes || 0) - (a.upvotes || 0));
+
+  const compose = renderQuestionCompose(movementId, questionId);
+  const list = topLevel.length === 0
+    ? `<div class="denom-forum-empty">No one has weighed in on this question yet. Be the first.</div>`
+    : `<div class="forum-comment-list">${topLevel.map(c => renderThreadedComment(c, 0)).join('')}</div>`;
+  return compose + list;
+}
+
+function renderQuestionCompose(movementId, questionId) {
+  if (!currentUser || !currentUserProfile) {
+    return `<div class="forum-locked">Sign in to respond to this question. <button class="btn btn-primary btn-sm" onclick="openModal('signup')">Join the Synod</button></div>`;
+  }
+  const fid = `qc-${cssId(questionId)}`;
+  return `
+    <div class="forum-compose" data-question="${escAttr(questionId)}">
+      <div class="ctype-helper">Make your case. Engage the question, cite Scripture if relevant, be charitable.</div>
+      <textarea id="${fid}-text" maxlength="600" placeholder="Your response (max 600 characters)…"></textarea>
+      <div class="forum-compose-bottom">
+        <span class="char-count" id="${fid}-count">0 / 600</span>
+        <button class="btn btn-primary btn-sm" onclick="submitQuestionResponse('${escAttr(movementId)}', '${escAttr(questionId)}')">Post response</button>
+      </div>
+      <div id="${fid}-msg"></div>
+    </div>`;
+}
+
+async function submitQuestionResponse(movementId, questionId) {
+  if (!currentUser || !currentUserProfile) return;
+  const fid = `qc-${cssId(questionId)}`;
+  const ta = document.getElementById(`${fid}-text`);
+  const msg = document.getElementById(`${fid}-msg`);
+  if (!ta) return;
+  const body = ta.value.trim();
+  if (!body) { showInlineMsg(msg, 'error', 'Please write something first.'); return; }
+  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: movementId,
+      user_id: currentUser.id,
+      display_name: currentUserProfile.display_name,
+      denomination: currentUserProfile.denomination || null,
+      body,
+      upvotes: 0,
+      comment_type: 'responding',
+      target_denomination: 'q:' + questionId,
+      parent_comment_id: null,
+    });
+    if (error) throw error;
+    ta.value = '';
+    showInlineMsg(msg, 'success', 'Posted.');
+    await loadMovementComments(movementId);
+  } catch (err) {
+    showInlineMsg(msg, 'error', err.message || 'Failed to post.');
+  }
+}
+
+async function loadMovementComments(movementId) {
+  if (!supabaseClient || typeof SUPABASE_CONFIGURED === 'undefined' || !SUPABASE_CONFIGURED) {
+    allComments = [];
+    if (currentMovement) renderMovementQuestions(currentMovement);
+    return;
+  }
+  try {
+    const { data, error } = await supabaseClient
+      .from('comments').select('*').eq('topic_id', movementId)
+      .order('upvotes', { ascending: false })
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    allComments = data || [];
+
+    if (currentUser && allComments.length > 0) {
+      const ids = allComments.map(c => c.id);
+      const { data: votes } = await supabaseClient
+        .from('upvotes').select('comment_id').eq('user_id', currentUser.id).in('comment_id', ids);
+      userVotes = new Set((votes || []).map(v => v.comment_id));
+    } else {
+      userVotes = new Set();
+    }
+
+    if (currentMovement) renderMovementQuestions(currentMovement);
+  } catch (err) {
+    console.error('Movement comments load failed:', err);
+  }
+}
+
+// Wire up movements on DOM load (additive, doesn't replace existing handler)
+document.addEventListener('DOMContentLoaded', () => {
+  renderMovements();
+  updateMovementStats();
+});
+
+// When replying to a comment inside a question forum, re-render that forum
+const _origStartReply = startReply;
+startReply = function(parentId) {
+  if (!currentUser) { openModal('login'); return; }
+  activeReplyTo = parentId;
+  if (currentTopic) renderDenominations(currentTopic);
+  if (currentMovement) renderMovementQuestions(currentMovement);
+  filterComments();
+  setTimeout(() => {
+    const ta = document.getElementById(`reply-text-${parentId}`);
+    if (ta) {
+      ta.focus();
+      ta.addEventListener('input', () => {
+        const el = document.getElementById(`reply-count-${parentId}`);
+        if (el) {
+          const len = ta.value.length;
+          el.textContent = `${len} / 600`;
+          el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
+        }
+      });
+    }
+  }, 30);
+};
+
+const _origCancelReply = cancelReply;
+cancelReply = function() {
+  activeReplyTo = null;
+  if (currentTopic) renderDenominations(currentTopic);
+  if (currentMovement) renderMovementQuestions(currentMovement);
+  filterComments();
+};
+
+// When a reply is submitted inside a movement question forum, refresh that view
+const _origSubmitReply = submitReply;
+submitReply = async function(parentId) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById(`reply-text-${parentId}`);
+  const msg = document.getElementById(`reply-msg-${parentId}`);
+  if (!ta) return;
+  const body = ta.value.trim();
+  if (!body) { showInlineMsg(msg, 'error', 'Write something first.'); return; }
+  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  try {
+    const contextId = currentMovement ? currentMovement.id : (currentTopic ? currentTopic.id : null);
+    if (!contextId) throw new Error('No active context');
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: contextId,
+      user_id: currentUser.id,
+      display_name: currentUserProfile.display_name,
+      denomination: currentUserProfile.denomination || null,
+      body,
+      upvotes: 0,
+      parent_comment_id: parentId,
+    });
+    if (error) throw error;
+    activeReplyTo = null;
+    if (currentMovement) await loadMovementComments(currentMovement.id);
+    else if (currentTopic) await loadComments(currentTopic.id);
+  } catch (err) {
+    showInlineMsg(msg, 'error', err.message || 'Failed to post reply.');
+  }
+};
