@@ -5218,7 +5218,7 @@ function renderMovements() {
       <div class="movement-summary-preview">${escHtml(stripTags(m.summary).slice(0, 220))}…</div>
       <div class="movement-card-foot">
         <span class="movement-adherents">${escHtml(m.adherents)}</span>
-        <span class="movement-questions-tag">5 questions →</span>
+        <span class="movement-questions-tag">Questions →</span>
       </div>
     </div>`).join('');
 }
@@ -5530,7 +5530,7 @@ function renderReligions() {
       <div class="religion-summary-preview">${escHtml(stripTags(r.summary).slice(0, 240))}…</div>
       <div class="religion-card-foot">
         <span class="religion-adherents">${escHtml(r.adherents.split(';')[0].split('(')[0].trim())}</span>
-        <span class="religion-questions-tag">5 questions →</span>
+        <span class="religion-questions-tag">Questions →</span>
       </div>
     </div>`).join('');
 }
