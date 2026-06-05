@@ -2708,6 +2708,180 @@ const TOPICS = [
     relatedTopics: ['homosexuality', 'womens-ordination', 'creation'],
   },
 
+  {
+    id: 'sabbath',
+    name: 'The Sabbath: Saturday or Sunday?',
+    icon: '📅',
+    category: 'Worship & Sacraments',
+    controversyLevel: 7,
+    description: 'Which day is the Christian Sabbath — the seventh-day Saturday of the Hebrew Scriptures, or the first-day Sunday of the New Testament? And what kind of observance does the Lord\'s Day require?',
+    historicalNote: 'The earliest Christian sources (Didache 14, Justin Martyr c. 155, Pliny the Younger c. 112) describe Christians gathering on "the Lord\'s Day" (Sunday, the day of resurrection) rather than the Jewish Sabbath. The Council of Laodicea (c. 364) explicitly required Christians to rest on Sunday rather than Saturday. The Saturday-Sabbath position re-emerged most strongly through the Seventh-day Adventists in the 19th century (Ellen G. White, 1827–1915). The Sunday observance question — strict Sabbatarianism vs. flexible Lord\'s Day vs. no required observance — separately divided Reformed (Puritan strict Sabbath) from Lutheran (more flexible) from continental Reformed practice.',
+    keyVerses: ['Gen 2:2-3', 'Exod 20:8-11', 'Deut 5:12-15', 'Mark 2:27-28', 'Matt 12:1-12', 'Acts 20:7', '1 Cor 16:2', 'Col 2:16-17', 'Rev 1:10', 'Heb 4:9-11'],
+    definition: '<p>The Sabbath debate has two distinct questions that are often run together. First: which day? The Hebrew Scriptures command the seventh day (Saturday) as the day of rest in the fourth commandment. The New Testament shows Christians from the earliest period gathering on the first day (Sunday) for worship, breaking of bread, and offering — the day of the resurrection.</p><p>Second: what kind of observance? Strict Sabbatarians (especially in the Puritan tradition) hold that the fourth commandment\'s requirement of rest applies in full to the Christian Lord\'s Day — no work, no commerce, no recreation, the entire day set aside for worship and rest. More flexible positions hold that the Sabbath principle of rest and worship is observed in Christian practice without the detailed Mosaic restrictions. A third position (held by some Lutherans, by most modern evangelicals, and by Catholics in their characteristic way) holds that the ceremonial-Sabbath law is fulfilled in Christ and what remains is the church\'s discipline of regular corporate worship.</p>',
+    denominations: [
+      {
+        name: 'Roman Catholic',
+        stance: 'nuanced',
+        position: 'The Catechism teaches that Sunday — the Lord\'s Day — has replaced the Jewish Sabbath for Christians, fulfilling its meaning in the light of the resurrection (CCC 2174–2188). Sunday is a day of obligation: Catholics are bound to attend Mass and to abstain from work or activities that hinder worship and rest. The change of day from Saturday to Sunday is held to be by apostolic tradition. The Catechism cites the witness of the early Fathers — Ignatius, Justin Martyr — to show that Sunday observance is from the beginning of the Christian movement.',
+        verses: ['Acts 20:7', '1 Cor 16:2', 'Rev 1:10'],
+      },
+      {
+        name: 'Eastern Orthodox',
+        stance: 'nuanced',
+        position: 'The Orthodox Church observes Sunday as the Lord\'s Day — the day of the resurrection, the "eighth day" that is also the first day of the new creation. Sunday is the primary day of Eucharistic worship, with the Divine Liturgy being the central act of Orthodox life. Saturday retains a particular significance in Orthodox practice — commemorations of the departed, Saturday liturgies, the Saturday-Sunday Vespers cycle — but it is not the Sabbath in the sense of the day of rest replacing Sunday.',
+        verses: ['Rev 1:10', 'Acts 20:7'],
+      },
+      {
+        name: 'Anglican / Episcopal',
+        stance: 'nuanced',
+        position: 'Anglican tradition observes Sunday as the Lord\'s Day. Article VII of the Thirty-Nine Articles addresses the relationship of Old Testament law to Christian practice. Different Anglican traditions have practiced different degrees of Sunday observance: the English Sabbatarian tradition (heavily influenced by Puritanism) maintained strict Sunday rest into the 20th century; broader and high-church Anglicans have practiced more flexible observance centered on Sunday worship.',
+        verses: ['Acts 20:7', 'Col 2:16-17'],
+      },
+      {
+        name: 'Lutheran',
+        stance: 'nuanced',
+        position: 'Luther distinguished sharply between the ceremonial Sabbath of the Old Testament (fulfilled in Christ, no longer binding) and the moral principle of regular worship and rest (which Christian liberty has chosen to observe on Sunday). The Augsburg Confession (Article XXVIII) explicitly addresses the Sabbath: human ordinances about days are not binding on conscience, but Christians keep Sunday by Christian liberty for the sake of good order. The Lutheran tradition has generally been less strict about Sunday observance than the Reformed.',
+        verses: ['Col 2:16-17', 'Rom 14:5-6'],
+      },
+      {
+        name: 'Presbyterian / Reformed',
+        stance: 'affirm',
+        position: 'The Westminster Confession (XXI.7-8) gives the strictest Reformed position: the Sabbath commandment is moral, binding on all people in all ages; the day was changed from the seventh day (Saturday) to the first day (Sunday, "the Christian Sabbath") at the resurrection of Christ. The whole day is to be a "holy rest" — from worldly employments and recreations, given to public and private worship, works of necessity and mercy excepted. The Puritan Sabbatarian tradition, expressed in figures like Nicholas Bownd (1595) and the Westminster divines, has shaped Scottish, Dutch, and American Reformed practice profoundly.',
+        verses: ['Exod 20:8-11', 'Isa 58:13-14', 'Acts 20:7'],
+      },
+      {
+        name: 'Baptist',
+        stance: 'nuanced',
+        position: 'The Baptist tradition has been divided. The Second London Baptist Confession (1689) followed Westminster in affirming the Christian Sabbath as the first day with full Sabbath obligation. American Baptists, particularly Southern Baptists, have generally observed Sunday but with significantly less strict observance than Reformed Sabbatarians. The Seventh-Day Baptists (since the 17th century) — a small but historically significant Baptist group — observe the Saturday Sabbath. Their existence anticipated and influenced the later Adventist Saturday-Sabbath movement.',
+        verses: ['Acts 20:7', 'Col 2:16-17'],
+      },
+      {
+        name: 'Methodist / Wesleyan',
+        stance: 'nuanced',
+        position: 'John Wesley taught the perpetual obligation of the Sabbath, observed on Sunday by Christian practice. The early Methodist movement was strongly Sabbatarian — Sunday rest, attendance at multiple services, no commerce or recreation. Modern Methodism has moderated this significantly. The Lord\'s Day is observed as the central day of worship, but strict Sabbath observance has largely yielded to a less rigorous pattern in most Methodist communities.',
+        verses: ['Acts 20:7', 'Heb 10:25'],
+      },
+      {
+        name: 'Pentecostal',
+        stance: 'nuanced',
+        position: 'Pentecostal traditions universally observe Sunday as the Lord\'s Day but generally do not maintain strict Sabbatarian discipline. The emphasis is on the day of corporate worship — typically multiple Sunday services with significant time given to praise, preaching, and prayer ministry — rather than on the cessation of work in the Reformed Sabbath sense. Wednesday services and other midweek gatherings are common; the Pentecostal week is less Sunday-centred and more multi-day-centred than the traditional Reformed pattern.',
+        verses: ['Acts 2:1', 'Heb 10:25'],
+      },
+      {
+        name: 'Anabaptist / Mennonite',
+        stance: 'nuanced',
+        position: 'The Anabaptist tradition observes Sunday as the Lord\'s Day in keeping with the broader Christian practice but has tended to focus less on Sabbatarian discipline and more on the gathered worship of the congregation. The Schleitheim Confession (1527) does not address Sabbath observance specifically; subsequent Anabaptist tradition has typically followed the broader Protestant practice of Sunday worship with less developed Sabbath theology than the Reformed tradition.',
+        verses: ['Acts 20:7', 'Heb 10:25'],
+      },
+      {
+        name: 'Seventh-day Adventist',
+        stance: 'deny',
+        position: 'The SDA position is the most distinctive: the fourth commandment requires observance of the seventh day (Saturday) as the Sabbath; the change to Sunday observance was an unauthorized post-apostolic development; Saturday Sabbath observance is binding on all Christians as part of the unchanging moral law. SDA Sabbath observance runs from sunset Friday to sunset Saturday and involves abstention from secular work, attendance at worship, fellowship, and rest. Ellen G. White\'s writings ground this in both scriptural argument (the fourth commandment as part of the eternal moral law) and prophetic identification (the Sabbath as the "seal of God" of Revelation 7 and the Sunday as the "mark of the beast" of Revelation 13–14).',
+        verses: ['Exod 20:8-11', 'Isa 66:23', 'Rev 14:6-12'],
+      },
+      {
+        name: 'Seventh-Day Baptist',
+        stance: 'deny',
+        position: 'The Seventh-Day Baptist position predates Adventism by two centuries. SDBs observe the seventh-day Sabbath on biblical grounds (the fourth commandment as moral law; the example of Christ and the apostles) without the Adventist apocalyptic framework. The Seventh-Day Baptist tradition argues that the change from Saturday to Sunday lacks biblical warrant — no New Testament text changes the day; the early church\'s gradual shift was extra-scriptural and not normative.',
+        verses: ['Exod 20:8-11', 'Mark 2:27-28', 'Acts 13:42-44'],
+      },
+      {
+        name: 'Non-denominational',
+        stance: 'varies',
+        position: 'Non-denominational churches universally observe Sunday as the day of corporate worship but practice typically follows the broader evangelical pattern of less-strict Sabbatarianism. Sunday is the day to attend church; the rest of the day may include family time, rest, recreation, or even work depending on personal conviction and circumstance. The Sabbath as a strict day-of-rest discipline is rarely emphasized in non-denominational teaching.',
+        verses: ['Acts 20:7', 'Col 2:16-17'],
+      },
+    ],
+    related: ['baptism', 'eucharist', 'church-authority'],
+  },
+
+  {
+    id: 'spiritual-gifts',
+    name: 'Cessationism vs. Continuationism',
+    icon: '🔥',
+    category: 'Worship & Sacraments',
+    controversyLevel: 8,
+    description: 'Are the miraculous spiritual gifts (tongues, prophecy, healing, miracles) operative in the church today, or did they cease with the apostolic age? This question divides cessationist Reformed and dispensationalist traditions from continuationist Pentecostals and charismatics.',
+    historicalNote: 'The cessationist-continuationist debate is largely a modern phenomenon shaped by three developments: (1) the Reformation\'s emphasis on Scripture against later miracle claims, particularly in response to Catholic claims of continued miracles; (2) the rise of Pentecostalism (Azusa Street Revival, 1906) and the subsequent Charismatic Renewal (Catholic and Protestant, 1960s onward); (3) the responses of John MacArthur and other strong cessationists (Charismatic Chaos, 1992; Strange Fire conference, 2013) and continuationist responses (Wayne Grudem, Jack Deere, Sam Storms). The early Church Fathers (Justin Martyr, Irenaeus, Tertullian) attest to the continuation of miraculous gifts well past the apostolic age; the Reformed cessationist position is a modern development.',
+    keyVerses: ['1 Cor 12:7-11', '1 Cor 13:8-10', '1 Cor 14:1-40', 'Eph 4:11-13', 'Heb 2:3-4', 'Mark 16:17-18', 'Acts 2:17-18', 'James 5:14-16'],
+    definition: '<p>Cessationism holds that certain "sign gifts" — particularly speaking in tongues, prophecy, miraculous healing, and possibly apostleship — were given for a specific purpose (authenticating the apostolic message during the foundational period of the church) and ceased when that purpose was fulfilled (variously dated to the death of the last apostle, the completion of the New Testament canon, or the post-apostolic generation). The Reformed cessationist position particularly emphasizes the closure of the canon as marking the end of new prophetic revelation.</p><p>Continuationism holds that the spiritual gifts described in 1 Corinthians 12, Romans 12, and Ephesians 4 continue to operate in the church today. The gifts may not be exercised identically in every age or every congregation, and they require discernment and order (1 Corinthians 14), but they have not ceased. Pentecostalism additionally holds that the "baptism of the Holy Spirit" — a distinct experience subsequent to conversion, evidenced by speaking in tongues — is normative for Christian life.</p><p>The debate often turns on the interpretation of 1 Corinthians 13:8–10 ("when the perfect comes, the partial will pass away") — cessationists arguing that "the perfect" refers to the completed canon or the maturing of the church, continuationists arguing it refers to the eschatological consummation (the return of Christ, the perfect state) at which the gifts will no longer be needed.</p>',
+    denominations: [
+      {
+        name: 'Roman Catholic',
+        stance: 'affirm',
+        position: 'Catholic teaching has consistently affirmed that the charismatic gifts continue in the church. The Catechism teaches that "extraordinary graces" and "charisms" are gifts of the Spirit given for the building up of the Church (CCC 798–801, 2003). The Catholic Charismatic Renewal (since 1967) is recognized by the magisterium as authentic. Vatican II\'s <em>Lumen Gentium</em> §12 explicitly affirms that the Spirit "distributes special graces among the faithful of every rank... These charisms, whether they be the more outstanding or the more simple and widely diffused, are to be received with thanksgiving and consolation." Catholic theology distinguishes the ordinary sacramental life from extraordinary charismatic experiences; both are valid.',
+        verses: ['1 Cor 12:7-11', 'James 5:14-16'],
+      },
+      {
+        name: 'Eastern Orthodox',
+        stance: 'affirm',
+        position: 'The Orthodox tradition has consistently affirmed the continuing operation of the gifts of the Spirit through the sanctified life of monks, saints, and the broader Church. The tradition of the holy fools, the saints with the gift of clairvoyance (prozorlivost), the healing gifts of monastic elders (gerondas, startsy) — these are not relegated to the apostolic age but are seen as ongoing manifestations of the Spirit\'s work. The Orthodox approach is less concerned with categorizing specific gifts than with recognizing the sanctifying work of the Spirit in the lives of those who pursue theosis.',
+        verses: ['Acts 2:17-18', '1 Cor 12:11'],
+      },
+      {
+        name: 'Anglican / Episcopal',
+        stance: 'varies',
+        position: 'Anglican views span the spectrum. Anglo-Catholics tend toward continuationism, recognizing the saints and the charismatic experiences of figures like the 20th-century Anglican charismatic movement (Michael Harper, David Watson). Evangelical Anglicans are typically open continuationists. The cessationist position has not been a major strand of Anglican thought; the Thirty-Nine Articles do not address the question. The Charismatic Renewal in Anglicanism (since the 1960s) has been one of the most significant Anglican movements of the post-war era.',
+        verses: ['1 Cor 12:7-11', 'Eph 4:11-13'],
+      },
+      {
+        name: 'Lutheran',
+        stance: 'varies',
+        position: 'Lutheran practice has been generally cessationist in tone, with the focus on the means of grace (Word and Sacrament) as the primary channel of the Spirit\'s work. However, Lutheran theology does not explicitly require cessationism; figures like Harald Bredesen and the charismatic Lutheran movement of the 1960s–80s argued for continuationist Lutheranism. The Missouri Synod and other confessional Lutheran bodies tend to be cessationist in practice; the ELCA and other more progressive Lutheran bodies are more open to continuationism.',
+        verses: ['1 Cor 13:8-10', 'Heb 2:3-4'],
+      },
+      {
+        name: 'Presbyterian / Reformed',
+        stance: 'deny',
+        position: 'The Reformed tradition has been historically and confessionally cessationist. The Westminster Confession (I.1) states that the manner of God\'s revealing his will to his church being committed wholly to writing, "those former ways of God\'s revealing his will unto his people, being now ceased." The classical Reformed position, defended by B.B. Warfield in <em>Counterfeit Miracles</em> (1918) and by John MacArthur today, holds that the sign gifts (tongues, prophecy, healing, miracles) were given to authenticate the apostles and ceased with the apostolic age. The Spirit continues to operate through the ordinary means of grace — Word, sacrament, prayer — and through gifts of teaching, mercy, administration, etc., but not through the sign gifts.',
+        verses: ['1 Cor 13:8-10', 'Heb 2:3-4', 'Eph 2:20'],
+      },
+      {
+        name: 'Baptist',
+        stance: 'varies',
+        position: 'Baptist views are deeply divided. The Reformed Baptist tradition (e.g. John MacArthur, John Piper [continuationist], Tom Schreiner, the Founders Movement) is largely cessationist or "open but cautious." Southern Baptists have moved increasingly cessationist, with the 2015 trustees vote at the International Mission Board excluding tongues-speaking missionary candidates being a flashpoint. However, charismatic Baptists exist and continuationist Baptist theologians (Sam Storms, Wayne Grudem [Baptist-Reformed]) have made vigorous arguments for the continuation of gifts.',
+        verses: ['1 Cor 13:8-10', '1 Cor 12:7-11'],
+      },
+      {
+        name: 'Methodist / Wesleyan',
+        stance: 'affirm',
+        position: 'Methodist/Wesleyan theology has been generally continuationist. John Wesley\'s emphasis on Christian perfection and the work of the Spirit in sanctification provided fertile ground for what became Pentecostalism. The Holiness movement (19th century) — emphasizing a "second blessing" of sanctification — was the immediate forerunner of Pentecostalism. The Free Methodist, Wesleyan, Church of the Nazarene, and other Holiness denominations affirm the continuation of the gifts of the Spirit, with various degrees of emphasis on the extraordinary gifts.',
+        verses: ['Acts 2:17-18', '1 Cor 12:7-11'],
+      },
+      {
+        name: 'Pentecostal',
+        stance: 'affirm',
+        position: 'Pentecostalism is built on the conviction that the gifts of the Spirit — particularly speaking in tongues — are normative for Christian experience. The Azusa Street Revival (1906) and the subsequent Pentecostal movement (Assemblies of God 1914; Church of God in Christ; many others) hold that the "baptism of the Holy Spirit" subsequent to conversion is normally evidenced by speaking in tongues. All the gifts listed in 1 Corinthians 12 are operative today: prophecy, healing, miracles, tongues, interpretation of tongues, words of knowledge, words of wisdom. The cessationist position is regarded as a denial of biblical teaching and of present experience.',
+        verses: ['Acts 2:1-4', '1 Cor 12:7-11', 'Mark 16:17-18'],
+      },
+      {
+        name: 'Charismatic',
+        stance: 'affirm',
+        position: 'The Charismatic Renewal (1960s onward, beginning in Episcopal and Catholic contexts and spreading widely) affirms the continuation of all the spiritual gifts. Charismatic theology, while sharing Pentecostalism\'s continuationism, has typically been less strict about tongues as the necessary evidence of Spirit-baptism. Vineyard, Bethel, and many independent charismatic movements have shaped this tradition. The "Third Wave" movement (John Wimber, Peter Wagner) explicitly engaged the cessationist Reformed tradition in extended argument for continuationism.',
+        verses: ['1 Cor 12:7-11', 'Acts 2:17-18', 'James 5:14-16'],
+      },
+      {
+        name: 'Anabaptist / Mennonite',
+        stance: 'varies',
+        position: 'Historic Anabaptism affirmed the work of the Spirit through gifted believers but did not develop a strong cessationist or continuationist position. Modern Mennonite communities span the range — from quieter, cessationist-leaning congregations to charismatic Mennonite communities. The Anabaptist focus on the gathered church and the practice of discipleship has tended to foreground gifts of mercy, service, and teaching over the more dramatic sign gifts.',
+        verses: ['1 Cor 12:7-11', 'Eph 4:11-13'],
+      },
+      {
+        name: 'Non-denominational',
+        stance: 'varies',
+        position: 'Non-denominational churches span the full spectrum. Many are explicitly continuationist (especially those with Pentecostal or Charismatic genealogy — Calvary Chapel, Vineyard, Bethel, Hillsong, IHOP). Many are cessationist (especially those with Reformed Baptist genealogy — Acts 29 [varies], Sovereign Grace [continuationist-Reformed]). The largest non-denominational congregations (Lakewood, Saddleback, Willow Creek) vary widely.',
+        verses: ['1 Cor 12:7-11', '1 Cor 13:8-10'],
+      },
+      {
+        name: 'Jehovah\'s Witnesses',
+        stance: 'deny',
+        position: 'Jehovah\'s Witnesses teach that the spiritual gifts ceased with the apostolic age. Speaking in tongues, prophecy, and miraculous healings are not operative today; the Watchtower Society\'s teaching and biblical instruction (through the Watch Tower magazines and the New World Translation) are the means by which Jehovah\'s Spirit works today. Pentecostal and charismatic practice is rejected as demonic counterfeit.',
+        verses: ['1 Cor 13:8-10'],
+      },
+    ],
+    related: ['baptism', 'sanctification', 'church-authority'],
+  },
+
 ];
 // ═══════════════════════════════════════════════════════════
 // PATCH 5 — MOVEMENTS array (Outside the Creeds)
@@ -3160,7 +3334,826 @@ const MOVEMENTS = [
     relatedMovements: ['mov-lds', 'mov-jw'],
   },
 
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'mov-uu',
+    name: 'Unitarian Universalism',
+    icon: '⚛️',
+    founded: '1961 (merger of American Unitarian Association, founded 1825, and Universalist Church of America, founded 1793)',
+    adherents: '~210,000 (USA, primarily); ~1,000 congregations worldwide',
+    headquarters: 'Unitarian Universalist Association, Boston, Massachusetts',
+    category: 'Liberal religious',
+    selfDescription: `<p>Unitarian Universalists describe themselves as a "creedless" faith — a religion of shared values rather than shared beliefs. The official statement of the Unitarian Universalist Association (UUA) frames the tradition around seven Principles: the inherent worth and dignity of every person; justice, equity, and compassion in human relations; acceptance of one another and encouragement to spiritual growth; a free and responsible search for truth and meaning; the right of conscience and the use of the democratic process; the goal of world community with peace, liberty, and justice for all; and respect for the interdependent web of all existence.</p>
+    <p>The tradition draws from "Six Sources" — direct experience of transcending mystery and wonder; the words and deeds of prophetic people; wisdom from the world's religions; Jewish and Christian teachings; humanist teachings; and spiritual teachings of earth-centered traditions. UUs include theists, atheists, humanists, pagans, Buddhists, and Christians within their congregations, and the tradition explicitly affirms theological diversity as a strength rather than a weakness to be overcome.</p>
+    <p>The historical Unitarian inheritance (denying the Trinity, affirming God's strict unity) and the historical Universalist inheritance (denying eternal punishment, affirming universal salvation) merged in 1961 to form a self-consciously non-dogmatic religious tradition oriented toward ethical living, social justice activism, and individual spiritual exploration. UUs hold that revelation is "not sealed" — that truth comes through many channels and is not finally captured in any one tradition's creeds.</p>`,
+    distinctives: [
+      { title: 'Unitarianism — the rejection of the Trinity', body: 'The historical Unitarian inheritance holds that God is strictly one, not three persons. Jesus is honored as a great moral teacher and exemplar but is not held to be God incarnate. The Council of Nicaea (325) and the developed Trinitarian theology of the early Church are rejected as later philosophical accretions on a simpler original gospel.' },
+      { title: 'Universalism — no eternal punishment', body: 'The historical Universalist inheritance holds that God\'s love is finally inclusive of all, and that no soul is consigned to eternal punishment. Different Universalists have held different views on whether some intermediate purification is involved, but the conviction that hell as eternal conscious torment is incompatible with divine love is foundational.' },
+      { title: 'Creedlessness', body: 'UUs explicitly refuse to adopt or require any creed. The Cambridge Platform tradition of congregational polity is taken to its logical conclusion: each individual works out their own beliefs through reason, experience, and conscience. The Seven Principles are commitments to one another about how to behave, not statements about God or salvation.' },
+      { title: 'Theological pluralism within congregations', body: 'A single UU congregation will typically include theists, atheists, agnostics, Christians, Jews, Buddhists, pagans, and humanists worshipping together. Sunday worship draws from many traditions; sermons may reference any source. This is not regarded as syncretism to be overcome but as fidelity to the open-ended search for truth.' },
+      { title: 'Social justice as central religious practice', body: 'UU communities are characteristically active in progressive social causes — LGBT rights (UUs were the first major religious body to ordain openly gay clergy, in 1980, and have performed same-sex marriages since the 1980s), racial justice, women\'s rights, environmental advocacy, reproductive rights. Activism is regarded as worship.' },
+      { title: 'Reason and conscience as religious authorities', body: 'The UU tradition explicitly elevates individual reason and conscience as religious authorities. Where traditional Christianity has placed Scripture and Tradition (and, for Catholics and Orthodox, the Magisterium or the consensus of the Fathers) as authorities to which the individual conscience must submit, UU practice reverses this — the individual is the final arbiter of religious truth.' },
+    ],
+    departures: `<p>From the perspective of historic Christianity (Catholic, Orthodox, and confessional Protestant), the departures of Unitarian Universalism are foundational rather than peripheral.</p>
+    <p><strong>The denial of the Trinity.</strong> The Council of Nicaea (325) and the Nicene-Constantinopolitan Creed (381) defined the orthodox doctrine of God as one in essence, three in persons — the Father, the Son, and the Holy Spirit, all of one essence (homoousios). This is not one Christian position among many; it is the foundational doctrine of the Christian confession of God. To deny it, in classical Christian theology, is not to hold a different Christian view but to confess a different God.</p>
+    <p><strong>The denial of the deity of Christ.</strong> The Definition of Chalcedon (451) confessed Christ as "truly God and truly man... one and the same Christ, Son, Lord, only begotten, in two natures, without confusion, without change, without division, without separation." Unitarian theology, in denying that Christ is fully God, parts company with the orthodox confession of who Christ is.</p>
+    <p><strong>The relativizing of revelation.</strong> Where classical Christianity confesses Scripture as the written Word of God and Christ as the living Word, UU practice treats biblical and Christian sources as one among many — wisdom traditions that can speak alongside Buddhist, humanist, pagan, and other voices. This relativizes the Christian gospel in a way that the historic confessions do not permit.</p>
+    <p><strong>The Universalist claim about hell.</strong> While Christian universalism has had advocates throughout Christian history (Origen, some patristic figures, recently David Bentley Hart), it has never been the consensus or creedal position of any major Christian communion. The Universalist movement\'s strong rejection of any concept of judgment beyond death departs from the consensus reading of Christ\'s own teaching (Matthew 25:46; Mark 9:43–48; Revelation 20:11–15).</p>
+    <p><strong>Creedlessness as religious principle.</strong> The Christian tradition has historically held that confession of certain truths is constitutive of Christian identity (Romans 10:9; 1 Corinthians 15:3–4; the apostolic Rule of Faith). To make creedlessness a foundational principle is to refuse the apostolic pattern of holding to "the faith once delivered to the saints" (Jude 3).</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'Is Unitarian Universalism still a Christian church?',
+        body: `<p>The Unitarian and Universalist traditions emerged from within Protestant Christianity. The American Unitarian Association (1825) was a Christian denomination that denied the Trinity but worshipped within a recognizably Christian frame. By the time of the 1961 merger, both denominations had drifted significantly from Christian identity; today, the UUA explicitly includes non-Christian (and non-theist) voices in equal standing.</p>
+        <p><strong>At what point does a tradition that started Christian cease to be Christian — and does Unitarian Universalism still hold any meaningful continuity with the Christian movement it grew from?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'The Trinity and the unity of God',
+        body: `<p>The Unitarian tradition holds that the Council of Nicaea (325) and its Trinitarian definitions corrupted a simpler original Christianity in which God was strictly one and Jesus was a great teacher but not God. The orthodox tradition holds that Nicaea articulated what was implicit in the apostolic preaching from the beginning. Both sides claim historical continuity with the first century.</p>
+        <p><strong>Did Nicaea articulate or corrupt the apostolic gospel? And what does it mean for Unitarianism\'s claim if the New Testament itself treats Jesus in ways that strain a purely Unitarian reading?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'Creedlessness as religious principle',
+        body: `<p>UU practice makes creedlessness a foundational principle — no member must affirm any specific belief about God, Christ, salvation, or anything else; the Seven Principles are behavioral commitments, not theological claims. Traditional Christianity has held that confessing certain truths is constitutive of Christian identity. Can a religion be a religion without any required beliefs at all?</p>
+        <p><strong>Is creedlessness genuine spiritual freedom — letting each person find their own truth — or is it the dissolution of religion into a kind of progressive social club? What is the cost of having no shared confession?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Universal salvation',
+        body: `<p>The Universalist tradition holds that God\'s love is finally inclusive of all, that no soul is eternally lost. This has had Christian advocates (Origen, Gregory of Nyssa arguably, David Bentley Hart today) but has never been the mainstream Christian confession. The biblical witness includes both texts that lean universal (1 Timothy 2:4; Colossians 1:20; 1 Corinthians 15:22) and texts that strongly suggest some form of permanent judgment (Matthew 25:46; Revelation 20:11–15).</p>
+        <p><strong>Is universal salvation a true reading of Scripture finally beating out the harsher texts, or is it an emotional preference imposed on a Bible that resists it? Can divine love require the salvation of every soul?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Many sources or one Lord',
+        body: `<p>UU draws from "Six Sources" — direct experience, prophetic people, world religions, Jewish-Christian heritage, humanist insight, and earth-centered traditions. Each source carries equal authority; none is finally controlling. The Christian tradition has historically held that while truth can be found in many places, Christ is uniquely Lord — "the way, the truth, and the life" (John 14:6).</p>
+        <p><strong>Is the UU approach a generous and humble acknowledgement that truth comes from many sources, or a refusal to make the central Christian claim that the way to the Father is through the Son?</strong></p>`,
+      },
+    ],
+    keyTexts: [
+      { title: 'The Cambridge Platform (1648)', desc: 'The original New England congregational polity document. Sets out the local-church autonomy that later allowed Unitarian and Universalist divergence within Protestantism.' },
+      { title: 'William Ellery Channing, "Unitarian Christianity" (1819)', desc: 'The Baltimore Sermon — the founding theological statement of American Unitarianism. Channing argued that the Trinity is unbiblical and that Jesus is a moral exemplar but not God.' },
+      { title: 'Hosea Ballou, A Treatise on Atonement (1805)', desc: 'The foundational text of American Universalism. Ballou argued that the atonement is reconciliation of humans to God, not satisfaction of divine wrath, and that all souls are finally saved.' },
+      { title: 'The Seven Principles and Six Sources', desc: 'The contemporary foundational statement of UU identity, adopted by the UUA in 1985. Not a creed but a covenant.' },
+      { title: 'James Luther Adams, On Being Human Religiously (1976)', desc: 'The major 20th-century UU theologian. Adams (1901–1994) developed the most substantial theological account of liberal religion in the 20th century.' },
+    ],
+    historicalResponse: `<p>Christian responses to Unitarian Universalism have ranged from sharp polemic to genuine theological engagement.</p>
+    <p>The American Unitarian controversy of the early 19th century split the Congregational churches of New England, with the orthodox party (led by Lyman Beecher and others) and the Unitarian party (led by Channing and others) divided on the Trinity. Yale and Andover stood with orthodoxy; Harvard moved decisively to the Unitarian side after 1805. <strong>Andrews Norton</strong> (1786–1853, the "Unitarian Pope"), and on the orthodox side <strong>Moses Stuart</strong> (1780–1852) at Andover, conducted the most substantial theological exchange of the early 19th-century American religious scene.</p>
+    <p><strong>Karl Barth</strong> and the dialectical theology of the early 20th century engaged liberal Protestantism — including its Unitarian and proto-Unitarian forms — as a fundamental departure from the Reformed faith. Barth\'s <em>Romans</em> commentary (1922) and <em>Church Dogmatics</em> (1932 onward) framed the central question of modern theology as whether revelation is God\'s self-disclosure in Christ or human religious experience interpreted in many ways.</p>
+    <p><strong>Reinhold Niebuhr</strong> (1892–1971), though himself drawn to liberal theology in some ways, sharply criticized the optimistic anthropology and moralism of Unitarian and broader liberal Protestantism in works including <em>Moral Man and Immoral Society</em> (1932) and <em>The Nature and Destiny of Man</em> (1941–43).</p>
+    <p>Contemporary evangelical engagement (e.g. <strong>Carl Henry</strong>, <strong>D.A. Carson</strong>) has typically classified Unitarian Universalism as a post-Christian religious movement rather than a variant of Christianity. The historic confessional churches (Catholic, Orthodox, Lutheran, Reformed, Anglican in its evangelical and Anglo-Catholic forms) have not recognized UU as a Christian communion in any meaningful sense.</p>
+    <p>Catholic engagement, particularly post-Vatican II, has been irenic but clear. The Catholic Church does not recognize UU baptism (where it is practiced at all) and treats UU as a non-Christian religious tradition for purposes of marriage and other sacramental questions. The genuine theological engagement that does exist (in academic settings, in interfaith dialogue) has framed UU as a sister tradition in the broader category of religion rather than as a Christian dialogue partner.</p>`,
+    historicalNote: 'The Unitarian movement traces theologically to figures including Michael Servetus (1511–1553, executed for anti-Trinitarian theology in Geneva at Calvin\'s instigation), Faustus Socinus (1539–1604, the Polish Brethren), and John Biddle (1615–62, the "father of English Unitarianism"). The American Unitarian Association was founded in 1825 in Boston; the Universalist Church of America was organized in 1793. Their 1961 merger formed the UUA. Membership peaked around 250,000 in the 1960s and has slowly declined to ~210,000. The UU congregation in Selma, Alabama (Rev. James Reeb, murdered there in March 1965 by white supremacists during the voting rights campaign) is one of the more notable martyr-figures of the modern UU tradition. The UUA was the first major American religious body to ordain openly gay clergy (1980) and to perform same-sex weddings (early 1980s). The contemporary UU movement is characteristically progressive politically and theologically pluralistic.',
+    relatedMovements: ['mov-cs'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'mov-unification',
+    name: 'Unification Church / Family Federation',
+    icon: '☀️',
+    founded: '1954, by Sun Myung Moon (1920–2012) in South Korea',
+    adherents: 'Disputed; movement claims ~1–3 million; outside estimates ~100,000–250,000 active members worldwide',
+    headquarters: 'Family Federation for World Peace and Unification, headquartered in Seoul, South Korea',
+    category: 'New religious',
+    selfDescription: `<p>The Unification Church — formally the Family Federation for World Peace and Unification since 1994 — was founded by Sun Myung Moon (1920–2012), a Korean evangelist who claimed that as a teenager on Easter morning 1935, Jesus appeared to him and asked him to complete the mission Jesus had been unable to complete on earth.</p>
+    <p>Moon\'s teaching, set out in <em>Divine Principle</em> (Korean original 1957, English 1973), centers on his account of human history as the unfolding of God\'s providence to restore the Fall. The Fall, in Moon\'s teaching, was not Adam and Eve eating fruit but Eve\'s sexual seduction by Lucifer, transmitting fallen blood lineage to humanity. The mission of the Messiah is to establish a "True Family" through marriage and physical reproduction, restoring God\'s original lineage and ideal of creation. Jesus, according to Moon, partially accomplished this — establishing spiritual salvation through his death — but was unable to marry and complete the physical restoration. The mission therefore awaits a second Messiah, the "Lord of the Second Advent."</p>
+    <p>Moon never explicitly claimed to be that Messiah in his public teaching until late in his life, but his church increasingly identified him as such. Moon and his wife Hak Ja Han (b. 1943) are referred to as the "True Parents" of humanity; their marriage in 1960 inaugurated what the movement calls the era of restoration.</p>
+    <p>The movement is famous for its mass weddings — "blessing ceremonies" in which thousands of couples (often matched by Moon himself) are married simultaneously. The largest such ceremony, in October 1995, involved 360,000 couples worldwide via satellite. The blessing is held to graft believers into the True Family\'s lineage and to begin the restoration of God\'s original creation ideal.</p>`,
+    distinctives: [
+      { title: 'Sun Myung Moon as the Lord of the Second Advent', body: 'The movement holds that Sun Myung Moon was the second messianic figure foretold in Christian eschatology — sent to complete the unfinished mission of Jesus. Moon is regarded as the True Father; Hak Ja Han as the True Mother; together they are the True Parents through whom humanity is restored.' },
+      { title: 'The reinterpretation of the Fall', body: 'The Fall in Genesis 3 is read as Eve\'s spiritual and physical seduction by Lucifer (the serpent), transmitting "fallen lineage" to humanity through sexual reproduction. The cure must therefore involve the restoration of pure lineage through True Parents.' },
+      { title: 'Mass weddings (the Blessing)', body: 'The Blessing ceremony is the central sacrament of the movement. Couples are matched (originally by Moon personally; now by various means) and married in mass ceremonies that graft them into the True Family lineage. Blessed couples are held to be free from the satanic blood lineage of fallen humanity.' },
+      { title: 'Jesus failed', body: 'According to Divine Principle, Jesus came to establish the True Family but was killed before he could marry. His death achieved spiritual salvation but not the complete physical restoration God intended. This frank claim — that Jesus failed his core mission — is among the most controversial of Unification teachings.' },
+      { title: 'Theological syncretism', body: 'Divine Principle draws on Christian, Korean shamanistic, and Confucian elements, integrated into a distinctively Korean reading of salvation history. The movement positions itself as the completion of Christianity rather than a different religion, though most Christian observers regard it as a different religion.' },
+      { title: 'Political and economic empire', body: 'The Unification movement built one of the most extensive religious-business empires in the modern world: The Washington Times (founded 1982), the Unification Theological Seminary, news services, fishing and hotel businesses globally, university institutions in Korea and elsewhere. Moon\'s personal wealth and the movement\'s political engagement (particularly with American conservative politicians from the 1970s onward) gave it substantial geopolitical visibility.' },
+    ],
+    departures: `<p>The departures of the Unification movement from historic Christianity are comprehensive and structural rather than incidental.</p>
+    <p><strong>The deity and finality of Christ.</strong> Christianity confesses Christ as God incarnate, the unique and final Word of God. The Unification claim that Christ\'s mission was incomplete and required a second Messiah (Moon) directly contradicts the Christian confession that Christ has accomplished salvation "once for all" (Hebrews 9:26). The Christian Christ does not need a successor.</p>
+    <p><strong>The reinterpretation of the Fall.</strong> The sexual interpretation of the Fall — Eve seduced by Lucifer, fallen lineage transmitted through reproduction — has no biblical basis. The traditional Christian reading of Genesis 3 holds that the Fall consisted in disobedience to God\'s command (eating the fruit), not in sexual transgression. The Unification interpretation makes physical lineage rather than spiritual rebellion the locus of fallenness.</p>
+    <p><strong>The deification of Moon and Hak Ja Han.</strong> The treatment of Sun Myung Moon and Hak Ja Han as "True Parents" of humanity, on a par with or superseding Christ\'s role, is incompatible with Christian confession of the unique mediation of Christ (1 Timothy 2:5). Christian engagement with the movement has consistently identified this as the central theological problem.</p>
+    <p><strong>Salvation through marriage.</strong> The Unification doctrine that salvation requires the Blessing ceremony — being grafted into True Family lineage through ritual marriage — adds a requirement to salvation that has no biblical warrant. The Christian gospel of salvation by grace through faith in Christ requires no such ritual graft.</p>
+    <p><strong>The Christian text as raw material.</strong> Divine Principle treats the Bible as one source among others to be integrated into Moon\'s revelatory framework. Where historic Christianity submits all teaching to Scripture, the Unification approach submits Scripture to Divine Principle.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'Did Jesus fail?',
+        body: `<p>The most provocative Unification claim is that Jesus failed his primary mission — to establish the True Family through marriage and physical lineage — and that his death achieved only partial (spiritual) salvation. The crucifixion, in Unification teaching, was not the supreme achievement of God\'s saving plan but the tragic consequence of Israel\'s rejection of the Messiah. Traditional Christianity holds the crucifixion as the central saving event.</p>
+        <p><strong>Was the cross the climax of God\'s saving work or, as Unification teaches, the failure that necessitated a second Messiah?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'The True Family',
+        body: `<p>The Unification movement makes physical lineage central to salvation — the Fall was the corruption of human bloodline through Eve\'s sexual transgression with Lucifer; salvation is the restoration of true lineage through the True Family. Christianity has historically treated the New Birth (John 3:3) as spiritual rather than physical, and the family of God as constituted by adoption rather than bloodline (Galatians 3:28; Romans 8:15).</p>
+        <p><strong>Is salvation a matter of lineage or of relationship? And what should we make of the Unification claim that the family bloodline carries the locus of sin and redemption?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'A second Messiah',
+        body: `<p>Unification teaching identifies Sun Myung Moon as the Lord of the Second Advent — a second messianic figure with a mission Jesus could not complete. Christianity confesses one Messiah, returning at the end of the age in glory, not a second incarnate Messiah arriving in modern history.</p>
+        <p><strong>Could there be a second Messiah, completing what the first could not — or does the Christian gospel require that there be one Christ, finally and definitively?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Mass weddings as sacrament',
+        body: `<p>The Blessing ceremony — mass weddings of thousands of couples matched by the movement\'s leadership — is the central sacrament of Unification practice. It is held to graft believers into the True Family lineage and to free them from satanic bloodline. Traditional Christian marriage is between two individuals before God; the matching by religious authorities (often without the couples having met) is foreign to Christian practice.</p>
+        <p><strong>Can the Blessing ceremony be understood as a deepening of Christian marriage theology, or does the matching-by-leadership model and the lineage theology make it something fundamentally different?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'The post-Moon movement',
+        body: `<p>Sun Myung Moon died in 2012. The movement has since experienced significant family conflict over succession — sons (Hyun Jin Moon, Hyung Jin Moon, Justin Moon) and the widow Hak Ja Han claiming various legitimate inheritances of leadership. The Family Federation (Hak Ja Han\'s branch), the Family Peace Association (Hyun Jin Moon\'s branch), and the Sanctuary Church (Hyung Jin Moon\'s branch) now compete for the Unification mantle.</p>
+        <p><strong>What does the post-Moon succession crisis suggest about the Unification movement\'s claim to embody God\'s providential restoration of humanity? Should religious movements that depend on a single founder figure be evaluated by their viability after that founder\'s death?</strong></p>`,
+      },
+    ],
+    keyTexts: [
+      { title: 'Divine Principle (1957/1973)', desc: 'The foundational systematic theology of the Unification movement, attributed to Sun Myung Moon but compiled by his disciple Hyo Won Eu. Sets out the doctrine of the Fall, the providential history of restoration, and the mission of the Lord of the Second Advent.' },
+      { title: 'Outline of the Principle, Level 4', desc: 'A more accessible compilation of Unification teaching, widely used in workshops and study groups.' },
+      { title: 'The Sermons of Sun Myung Moon', desc: 'Hundreds of volumes of Moon\'s recorded teaching, sermons, and pastoral addresses, treated within the movement as ongoing revelatory teaching.' },
+      { title: 'Cheon Seong Gyeong (Heavenly Scripture)', desc: 'The compilation of Moon\'s teachings published in 2005, treated as scripture by the movement.' },
+      { title: 'Pyung Hwa Shin Gyeong (Pacific Rim Heavenly Scripture)', desc: 'Later compilation of Moon\'s teachings, post-dating Cheon Seong Gyeong.' },
+    ],
+    historicalResponse: `<p>Christian engagement with the Unification movement has been extensive since the 1970s, primarily classifying it as a non-Christian new religious movement rather than a Christian variant.</p>
+    <p>The Korean Christian context shaped early evaluations. Korean Protestant churches (heavily Presbyterian) categorically rejected Moon\'s movement as heretical from the 1960s onward. The Korean Christian theological response, especially through institutions like Yonsei University and the conservative Presbyterian seminaries, framed Moon\'s teaching as outside any meaningful Christian boundary.</p>
+    <p>The American response intensified after the movement\'s major growth in the 1970s. <strong>Ronald Enroth</strong>\'s <em>The Lure of the Cults</em> (1979) and the broader Christian "counter-cult" movement of the 1970s–80s engaged Unification theology as foreign to Christianity. Academic engagement (e.g. through the work of <strong>Eileen Barker</strong> at the London School of Economics, whose <em>The Making of a Moonie</em>, 1984, gave a sociologically careful account of the movement) has tended to be more nuanced than the popular counter-cult literature.</p>
+    <p><strong>Walter Martin</strong>\'s <em>Kingdom of the Cults</em> (multiple editions from 1965; the chapter on Unification was added in later editions) gave the standard evangelical assessment. <strong>The Christian Research Institute</strong> and similar organizations have engaged Unification theology as outside Christian orthodoxy.</p>
+    <p>The movement\'s significant social and political activity — Moon\'s relationships with American conservative politicians (Richard Nixon, George H.W. Bush, others), the founding of The Washington Times, the involvement of major academic and political figures in Unification-funded conferences — gave the movement a public visibility disproportionate to its membership.</p>
+    <p>Major mainstream Christian bodies (Catholic, Orthodox, mainline Protestant, evangelical) have consistently distinguished interfaith dialogue (in which Unification representatives may participate as representatives of their own tradition) from Christian dialogue (which presupposes shared Christian commitments that Unification does not affirm).</p>`,
+    historicalNote: 'Sun Myung Moon was born in 1920 in what is now North Korea. After his claimed Easter 1935 vision of Jesus, he studied electrical engineering in Tokyo, returned to Korea, and was imprisoned by the North Korean Communist regime (1948–50) — released by United Nations forces during the Korean War. He founded the Holy Spirit Association for the Unification of World Christianity (Tongil-gyo) on May 1, 1954, in Seoul. The movement grew through Korea and Japan in the 1950s–60s and expanded to the United States in the early 1970s. Moon married Hak Ja Han in 1960 (his second marriage). Major mass weddings: 1,800 couples in 1975; 2,075 in 1982; 6,500 in 1988; 30,000 in 1992; 360,000 worldwide (via satellite) in 1995. Moon was convicted of tax fraud in the United States in 1982 and served 13 months in federal prison. He died on September 3, 2012. The post-Moon succession dispute among his sons and widow continues to fragment the movement. The Family Federation under Hak Ja Han remains the largest branch.',
+    relatedMovements: ['mov-lds'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'mov-satanism',
+    name: 'Satanism (LaVeyan & The Satanic Temple)',
+    icon: '⛧',
+    founded: 'Church of Satan, 1966 (Anton LaVey); The Satanic Temple, 2013',
+    adherents: 'Disputed; Church of Satan does not publish numbers (likely under 100,000); The Satanic Temple claims ~700,000 registered supporters (membership tier lower)',
+    headquarters: 'Church of Satan: Salem, Massachusetts; The Satanic Temple: Salem, Massachusetts',
+    category: 'Atheistic / philosophical',
+    selfDescription: `<p>Modern Satanism, as represented by its two largest organizations, is an explicitly atheistic philosophy that uses "Satan" as a symbol of rebellion against religious authority, individualism, and the affirmation of human nature — not as a deity to be worshipped. Both organizations make this explicit and emphatic in their public materials.</p>
+    <p><strong>The Church of Satan</strong>, founded by Anton LaVey (1930–1997) in San Francisco on April 30, 1966 (Walpurgisnacht), is built on the philosophy LaVey systematized in <em>The Satanic Bible</em> (1969). LaVeyan Satanism affirms: humans are animals like any other; the supernatural does not exist; "Satan" represents the rejection of supernatural and authoritarian religion, particularly Christianity; the individual is the highest moral authority; indulgence rather than abstinence is the proper response to human desire (within the limits set by the law and others\' rights); strength, productivity, and self-reliance are virtues.</p>
+    <p><strong>The Satanic Temple</strong> (TST), founded by Lucien Greaves and Malcolm Jarry in 2013, is an explicitly atheistic religious organization that uses Satanism as a vehicle for progressive activism, especially around religious freedom, reproductive rights, and the separation of church and state. TST\'s Seven Fundamental Tenets emphasize compassion, the pursuit of justice, bodily autonomy, the freedoms of others, that beliefs should conform to one\'s best scientific understanding, that one should not distort scientific facts to fit beliefs, that mistakes should be met with apology, and that every tenet is a guiding principle to inspire nobility rather than a written law.</p>
+    <p>Both organizations are explicit that they do not believe in Satan as a literal being. Theistic Satanism (those who actually worship Satan as a deity) does exist but is a far smaller and more diffuse phenomenon than the two organized atheistic movements; estimates of theistic Satanists worldwide range from a few thousand to perhaps 50,000, with no central organization.</p>`,
+    distinctives: [
+      { title: 'Atheism', body: 'Both major Satanist organizations are explicitly atheistic. They do not believe in God, Satan, demons, heaven, hell, or any supernatural realities. "Satan" is a symbol, not a being. This distinguishes modern Satanism categorically from any form of religious tradition that worships supernatural entities.' },
+      { title: 'Anti-religious authority', body: 'Satanism positions itself in deliberate opposition to organized religion, particularly Christianity. The Christian conception of God as a moral authority binding the individual conscience is precisely what Satanism rejects. The individual is the highest moral authority.' },
+      { title: 'Indulgence rather than abstinence (LaVeyan)', body: 'LaVeyan Satanism explicitly inverts traditional Christian sexual ethics, dietary restrictions, and ascetic disciplines. Indulgence (in pleasure, comfort, and self-expression) is valorized; abstinence is regarded as life-denying. This applies within the limits of consent, the law, and respect for others.' },
+      { title: 'Religious-freedom activism (TST)', body: 'The Satanic Temple has used its religious status as a legal vehicle for activism — most notably submitting a statue of Baphomet for installation at the Oklahoma State Capitol when the state placed a Ten Commandments monument there; legal challenges to abortion restrictions framed as religious-freedom claims; the After School Satan program as counter-programming to evangelical Good News Clubs in public schools.' },
+      { title: 'Symbolic ritual', body: 'Both organizations practice ritual — Satanic Mass, Black Mass, ordination ceremonies — but understand ritual as psychological theater and group bonding rather than as efficacious religious act. The ritual achieves emotional and social effects, not metaphysical ones.' },
+      { title: 'Rejection of equating Satanism with violence or harm', body: 'Both organizations explicitly reject the popular conception of Satanism as involving animal sacrifice, child abuse, criminal activity, or any form of violence. Both publicly support law enforcement and reject claims of "Satanic Ritual Abuse" (a moral panic of the 1980s that has been thoroughly discredited).' },
+    ],
+    departures: `<p>The Satanism question is structurally different from the other movements profiled here. Where Mormonism, Jehovah\'s Witnesses, and Adventism claim Christian identity and differ on the interpretation of Christian doctrine, Satanism explicitly defines itself in opposition to Christianity. The departures are not internal Christian disputes but the affirmation of a non-Christian and indeed anti-Christian philosophy.</p>
+    <p><strong>The denial of God.</strong> The first article of Christian faith — "I believe in God the Father almighty, Creator of heaven and earth" — is denied. Satanism is atheistic. The Christian doctrine of God as the source of all that is, eternally loving, righteous, and merciful, is rejected.</p>
+    <p><strong>The denial of Christ.</strong> Satanism rejects Christ as Lord, denies the Incarnation, the atonement, the resurrection. Where Unitarian Universalism removes Christ from his central role while honoring him as a moral teacher, Satanism rejects Christianity\'s central figure as well as its central claims.</p>
+    <p><strong>The inversion of Christian ethics.</strong> LaVeyan Satanism explicitly inverts several Christian moral commitments — affirming pride, indulgence, vengeance against enemies, and self-prioritization where Christianity affirms humility, self-control, forgiveness, and love of neighbor and enemy. (The Satanic Temple\'s Seven Fundamental Tenets are more compassionate in tone and have substantial overlap with humanistic ethics that historic Christianity also shares.)</p>
+    <p><strong>The autonomous self as final authority.</strong> The deepest theological divergence may be the locus of moral authority. Christianity teaches that God is the source and standard of goodness, that human flourishing is found in conformity to God\'s will. Satanism teaches that the individual is the highest moral authority, accountable only to themselves (within the limits of others\' rights and the law).</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'Atheistic Satanism: provocative philosophy or empty pose?',
+        body: `<p>Modern Satanism\'s central insight, defenders argue, is the use of provocative iconography to expose hypocrisy in Christian-majority societies and to defend religious freedom for all. Critics argue that an atheistic philosophy that adopts "Satan" as a symbol is parasitic on Christianity — it has nothing positive to say without the Christian framework it inverts. Without Christianity, there is no Satan to be a symbol of.</p>
+        <p><strong>Is modern atheistic Satanism a coherent and positive philosophical tradition, or is it inevitably dependent on the Christianity it rejects — a kind of reactive identity that disappears the moment Christianity does?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'The individual as final moral authority',
+        body: `<p>The core ethical claim of LaVeyan Satanism is that the individual is the highest moral authority — accountable only to themselves and (in practical terms) the law and the rights of others. Christianity teaches that human flourishing is found in submission to God\'s will, that the individual conscience is not the final court.</p>
+        <p><strong>Can a moral framework that locates final authority in the autonomous individual produce stable virtue and community, or does it collapse into mere preference? What is the moral cost of denying any higher authority than the self?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'Religious freedom and Satanic activism',
+        body: `<p>The Satanic Temple\'s activism — submitting Baphomet statues alongside Ten Commandments monuments, opposing abortion restrictions on religious-freedom grounds, the After School Satan program — uses religious-freedom law as a vehicle for progressive causes. Christians who believe in robust religious-freedom protection face the question: if those protections cover Christianity, must they not also cover Satanism?</p>
+        <p><strong>Does religious-freedom protection that includes Christianity necessarily include Satanism? And what does TST\'s use of religious-freedom law reveal about the current state of American church-state relations?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'The Christian moral inheritance in Satanism',
+        body: `<p>The Satanic Temple\'s Seven Fundamental Tenets — compassion, justice, bodily autonomy, freedom, scientific responsibility, humility about mistakes, nobility of spirit — read like a humanistic restatement of much that the Christian moral tradition has affirmed. Critics argue that Satanism\'s positive content is essentially the Christian moral inheritance with the theology stripped out; defenders argue that these values can be grounded in human nature without theological foundations.</p>
+        <p><strong>Can the moral content of Western humanism survive its separation from the Christian theological tradition that nurtured it, or does it require a religious grounding it has lost?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Satanism and the dignity of opposition',
+        body: `<p>A theological question Christianity itself has not fully resolved: what is the proper Christian response to those who deliberately and self-consciously oppose the Christian gospel? The historic responses have ranged from violent persecution (most of Christian history) to argumentative engagement (the apologetic tradition) to indifference to ironic engagement. Satanism puts this question in its sharpest form — adversaries who name themselves as adversaries.</p>
+        <p><strong>How should Christians engage those who explicitly define themselves against Christianity? And what does it say about Christian witness in a particular cultural moment when a self-consciously anti-Christian organization can claim hundreds of thousands of registered supporters?</strong></p>`,
+      },
+    ],
+    keyTexts: [
+      { title: 'The Satanic Bible by Anton LaVey (1969)', desc: 'The foundational text of LaVeyan Satanism. Sets out the philosophy, the Nine Satanic Statements, the Eleven Satanic Rules of the Earth, and the ritual framework. Has remained in print continuously since 1969.' },
+      { title: 'The Satanic Rituals by Anton LaVey (1972)', desc: 'The ritual companion to The Satanic Bible. Provides texts and instructions for Satanic ceremonies, understood as psychological theater rather than supernatural acts.' },
+      { title: 'The Satanic Witch by Anton LaVey (1989)', desc: 'LaVey\'s work on what he called "Lesser Magic" — practical psychological influence — directed particularly at women practitioners.' },
+      { title: 'The Seven Fundamental Tenets of The Satanic Temple', desc: 'The founding ethical statement of The Satanic Temple, comparable in role to the UU Seven Principles or other contemporary humanistic statements.' },
+      { title: 'The Devil\'s Tome by Shane Bugbee (2021)', desc: 'A documentary work tracing the rise of The Satanic Temple. Also: the documentary film Hail Satan? (Penny Lane, 2019), which gave a sympathetic but documentary account of TST.' },
+    ],
+    historicalResponse: `<p>Christian engagement with modern Satanism has gone through several distinct phases.</p>
+    <p><strong>The Satanic Panic of the 1980s.</strong> American evangelical engagement with Satanism in the 1980s was shaped by what historians now call the "Satanic Panic" — a moral panic centered on claims of "Satanic Ritual Abuse" (organized networks of Satanists abusing children, holding human sacrifices, etc.). Major figures in the panic included Mike Warnke, whose <em>The Satan Seller</em> (1973) claimed insider knowledge of Satanism; the McMartin preschool trial (1984–90); the West Memphis Three case (1993). The panic produced extensive police investigations, lengthy prison sentences (many of which have since been overturned as the underlying claims proved false), and significant evangelical literature that has not aged well. The FBI investigation by Special Agent Kenneth Lanning (1989, 1992) and subsequent academic studies established that the alleged organized Satanic crime network did not exist; what remained was the small and diffuse phenomenon of self-identified Satanists, almost entirely non-criminal.</p>
+    <p><strong>Sober Christian engagement.</strong> Sober Christian engagement with actual organized Satanism has been more limited but more accurate. <strong>Ronald Enroth</strong>\'s academic work, <strong>James R. Lewis</strong>\'s scholarly studies of new religious movements including Satanism, and the broader sociological literature have given more accurate accounts of what Church of Satan and TST actually teach.</p>
+    <p><strong>Apologetic and pastoral engagement.</strong> Conservative Christian apologetic literature has typically engaged Satanism as a particular form of unbelief — explicit rejection of the Christian gospel — rather than as a religious tradition to be respected on its own terms. <strong>The Christian Research Institute</strong> and similar organizations have produced apologetic material aimed at Christians who might encounter Satanist claims.</p>
+    <p><strong>Cultural engagement.</strong> The cultural response to The Satanic Temple in particular has been significant. TST\'s litigation strategy (the Baphomet statue at Oklahoma; the After School Satan program; the abortion-rights cases) has made it a focal point of contemporary church-state debates. Christian responses have ranged from outraged opposition to the recognition (sometimes reluctant) that TST is using legal mechanisms that depend on the same religious-freedom framework that Christian institutions also depend on.</p>
+    <p><strong>Pastoral and theological engagement.</strong> Major Christian theological engagement with Satanism as a phenomenon — beyond apologetics — has been limited. The deepest treatments have come not from those engaging organized atheistic Satanism but from those engaging the broader cultural patterns of which it is one expression: <strong>Charles Taylor</strong> on the secular age, <strong>David Bentley Hart</strong> on atheism, <strong>Augustine</strong> on the libido dominandi as a perpetually-available human possibility.</p>`,
+    historicalNote: 'Anton LaVey (born Howard Stanton Levey, 1930–1997) was a San Francisco organist, lecturer, and showman who founded the Church of Satan on April 30, 1966 ("Year One Anno Satanas"). His daughter Karla LaVey and later Peter Gilmore led the organization after his death; Gilmore has been High Priest since 2001. The Satanic Temple was founded in 2013 by Lucien Greaves (pseudonym of Doug Mesner) and Malcolm Jarry. TST was recognized by the IRS as a tax-exempt religious organization in 2019. The 8.5-foot Baphomet statue commissioned by TST for the Oklahoma State Capitol (when the state had placed a Ten Commandments monument there) became iconic in church-state debates of the 2010s; both monuments were eventually removed. TST claimed approximately 700,000 registered members in 2023 (registration is free; active congregational membership is much lower — likely in the tens of thousands). The Church of Satan does not publish membership numbers but its public visibility has been less than TST\'s. The Hail Satan? documentary (Penny Lane, 2019) gave TST significant cultural visibility.',
+    relatedMovements: ['mov-uu'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'mov-rastafari',
+    name: 'Rastafari',
+    icon: '🦁',
+    founded: '1930s, Jamaica',
+    adherents: '~700,000–1,000,000 worldwide; majority in Jamaica and the Caribbean diaspora',
+    headquarters: 'No central authority; major centers in Jamaica (Kingston), Ethiopia (Shashamane), and the African diaspora',
+    category: 'African diasporic',
+    selfDescription: `<p>Rastafari (Rastafarians often reject the suffix "-ism" as an imposition of Western categorization) is an Afrocentric spiritual movement that emerged in Jamaica in the 1930s, centered on the belief that Haile Selassie I (1892–1975), Emperor of Ethiopia from 1930 to 1974, is the Second Coming of Christ — the messianic figure prophesied in the Bible and the King of Kings foretold in Revelation 5:5 and 19:16.</p>
+    <p>The movement emerged from the intersection of Marcus Garvey\'s Pan-Africanism (Garvey predicted "Look to Africa, where a black king shall be crowned, for the day of deliverance is at hand"), Ethiopianism (a strand of Black Christian theology emphasizing Africa\'s biblical significance), and the actual coronation of Ras Tafari Makonnen as Emperor Haile Selassie I on November 2, 1930, in Addis Ababa. For early Rastafari, this coronation fulfilled prophecy: the Lion of Judah had come; Black redemption was at hand; the return to Africa (Ethiopia) was the promised exodus.</p>
+    <p>Haile Selassie himself was a baptized member of the Ethiopian Orthodox Tewahedo Church throughout his life and never accepted the divine claims made about him. On his historic 1966 visit to Jamaica, Selassie was visibly moved by the Rastafari welcome — the visit (April 21, 1966) is celebrated as Grounation Day. Selassie reportedly told leading Rastas that they should "liberate yourselves first" before contemplating relocation to Ethiopia. After Selassie\'s death (1975, in Ethiopian Communist imprisonment), most Rastafari held either that he had not died (his "disappearance" being mystical) or that his earthly death did not negate his divine status.</p>
+    <p>Rastafari is not a single organized church but a diverse movement with various "Mansions" (houses, traditions): the Nyahbinghi Order (the oldest and most traditional); the Bobo Shanti (founded by Charles Edwards / Prince Emmanuel in 1958); the Twelve Tribes of Israel (founded by Vernon Carrington / Prophet Gad in 1968, the mansion to which Bob Marley belonged). Rastafari spread globally through reggae music — particularly the work of Bob Marley (1945–1981), Peter Tosh, Burning Spear, and others — and is now found throughout the African diaspora and beyond.</p>`,
+    distinctives: [
+      { title: 'Haile Selassie as the returned Christ', body: 'The central conviction of Rastafari is that Haile Selassie I — Ras Tafari Makonnen, crowned Emperor of Ethiopia on November 2, 1930 — was the returned Christ, the messianic figure prophesied in Daniel and Revelation. Selassie\'s lineage was traced to King Solomon and the Queen of Sheba through the Ethiopian Solomonic dynasty; his coronation as "King of Kings, Lord of Lords, Lion of the Tribe of Judah" was understood as the fulfillment of biblical prophecy.' },
+      { title: 'Repatriation to Africa', body: 'A central commitment of Rastafari is the literal or spiritual return of African-descended peoples to Africa — particularly to Ethiopia. The Shashamane settlement in Ethiopia (a land grant by Haile Selassie in 1948 to those of African descent who wished to return) has been the primary destination for those undertaking literal repatriation; the small community there continues.' },
+      { title: 'Ital diet', body: 'Rastafari typically observe a dietary discipline called "Ital" (from "vital") — a vegetarian or vegan diet emphasizing natural, unprocessed foods. Pork, shellfish, alcohol, and processed foods are typically avoided. The diet draws on Levitical principles (Leviticus 11) and on Rastafari\'s broader emphasis on natural living.' },
+      { title: 'Dreadlocks (the "natty dread")', body: 'The wearing of uncut, untrimmed hair (locks) is a Rastafari distinctive grounded in the Nazirite vow of Numbers 6:5 ("All the days of his vow of separation no razor shall pass over his head"). The locks symbolize the Lion of Judah\'s mane and the Rastafari covenant with Jah.' },
+      { title: 'Sacramental cannabis use', body: 'Rastafari hold that ganja (cannabis) is the sacred herb mentioned in scripture (variously identified with the "tree of life" in Revelation 22:2, the herbs growing on the grave of King Solomon, or other biblical references). Ganja is used in worship, in reasoning (group spiritual discussion), and in meditation. The sacramental claim has been the basis of religious-freedom litigation in multiple jurisdictions.' },
+      { title: 'Pan-African consciousness and Babylon', body: 'The historical experience of slavery, colonization, and ongoing racial injustice is theologically interpreted as "Babylon" — the system of oppression from which the chosen people must come out (Revelation 18:4: "Come out of her, my people"). Rastafari is fundamentally a Black theological movement responding to the historical situation of Africans in the diaspora.' },
+    ],
+    departures: `<p>Rastafari\'s departures from historic Christianity center on the person of Haile Selassie and the broader theology of the movement, though Rastafari positions itself as the fulfillment of biblical Christianity rather than as a departure from it.</p>
+    <p><strong>The divinity of Haile Selassie.</strong> The central Rastafari claim — that Haile Selassie was the returned Christ, Jah in human form — is incompatible with the Christian confession that Christ\'s return will be public, universal, and at the end of the age (Matthew 24:27, 30; Acts 1:11; 1 Thessalonians 4:16). Selassie was emperor of one country, never claimed messianic status, and remained a baptized Christian in the Ethiopian Orthodox tradition throughout his life. The Rastafari identification of him as the returned Christ is rejected by all major Christian communions, including the Ethiopian Orthodox Church to which Selassie himself belonged.</p>
+    <p><strong>The status of Jesus.</strong> Most Rastafari hold that Jesus and Haile Selassie are the same divine figure — Jesus came as the Lamb, returned as the conquering Lion. Some Rastafari traditions are more strictly focused on Selassie as the present manifestation, with Jesus as a prior incarnation. Either framing displaces the unique and final mediation of Christ that historic Christianity confesses.</p>
+    <p><strong>Reincarnation.</strong> Some Rastafari traditions affirm reincarnation in some form — Selassie as the returned Christ being the foundational instance. The Christian doctrine of resurrection is structurally different from reincarnation (one bodily life followed by judgment and bodily resurrection, vs. multiple lives across time).</p>
+    <p><strong>The deification of the historical political figure.</strong> The identification of a specific 20th-century political ruler (whatever his virtues) with God incarnate is a category Christian theology has not permitted since the rejection of the Roman imperial cult. Selassie\'s actual record — including his rule\'s authoritarian aspects, the famines under his government, and his eventual deposition by the Marxist Derg in 1974 — has complicated even sympathetic engagement with the Rastafari deification claim.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'Haile Selassie as the returned Christ',
+        body: `<p>Rastafari identifies Haile Selassie I, Emperor of Ethiopia 1930–74, as the returned Christ — the Lion of Judah of Revelation 5:5, the King of Kings of Revelation 19:16. Selassie himself never claimed messianic status, remained a baptized Ethiopian Orthodox Christian, and reportedly told Rastafari leaders to "liberate yourselves first." The Christian eschatological tradition holds that Christ\'s return will be public and universal (Matthew 24:27), not the rule of a single nation\'s emperor.</p>
+        <p><strong>What is the evidence that should determine whether a specific historical figure is the returned Christ? And what does it mean that the figure himself denied the claim made about him?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'African theology and Babylon',
+        body: `<p>Rastafari emerged from the experience of African peoples enslaved and dispossessed by European Christian powers. Its theological reading of Africa as Zion and Europe (or America) as Babylon — the system from which the chosen people must escape — gives African suffering a biblical interpretation that white Christianity has often refused to provide. Critics within Christianity argue that this is an ethnic narrowing of a universal gospel; defenders argue that it is the recovery of a gospel that has always had a particular concern for the oppressed.</p>
+        <p><strong>Has historic Christianity adequately reckoned with its complicity in African enslavement and colonization? And is Rastafari\'s Black theological reading of Scripture a legitimate hermeneutical recovery or a problematic ethnic reading?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'Sacramental cannabis',
+        body: `<p>Rastafari holds that ganja (cannabis) is a sacred herb that aids in worship, meditation, and reasoning together — based on various biblical interpretations and the broader Rastafari emphasis on natural creation. Christian traditions have varied widely on the use of intoxicants in worship (wine in the Eucharist is universal; the use of more strongly mind-altering substances is rare to nonexistent in mainstream Christianity).</p>
+        <p><strong>Is sacramental cannabis use a legitimate development of a biblical principle, or does it conflate scripture\'s ambiguous references to "herbs" with a particular psychoactive plant?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Reggae and the global spread',
+        body: `<p>Rastafari\'s extraordinary global spread — from a small Jamaican movement in the 1930s to a presence in virtually every African diaspora community worldwide — has been carried primarily by music, particularly the international success of reggae and figures like Bob Marley. Most global Rastafari "converts" engaged the movement initially through reggae, not through theological investigation.</p>
+        <p><strong>What does it mean theologically that a religious movement has spread primarily through popular music rather than through preaching, theological argument, or scripture? Is this a sign of the Spirit working through unexpected channels, or a sign that what has spread is a cultural style rather than a religious commitment?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'The Selassie problem',
+        body: `<p>The historical Haile Selassie was a more complicated figure than Rastafari hagiography acknowledges. His government suppressed Communist and other opposition; his response to the 1972–74 famine in Wollo (which killed an estimated 200,000 people) was widely criticized as inadequate; he was deposed by the Marxist Derg in 1974 and died in 1975 in unclear circumstances (officially of natural causes; widely believed to have been killed by his captors). Many traditional Rastafari hold that Selassie did not actually die.</p>
+        <p><strong>How should Rastafari engage with the actual historical record of the figure they identify as divine? And what does it mean for a religious claim if its central figure proved historically fallible?</strong></p>`,
+      },
+    ],
+    keyTexts: [
+      { title: 'The King James Bible', desc: 'Rastafari read the Bible — particularly the KJV, the dominant translation in English-speaking Caribbean Christianity — through a distinctive Black theological lens. Particular focus on Revelation, Daniel, the prophets, and the Genesis covenant traditions.' },
+      { title: 'The Holy Piby (Robert Athlyi Rogers, 1924)', desc: 'The "Black Man\'s Bible," a foundational text of Ethiopianist Black religious thought that significantly shaped early Rastafari. Sets out the Black religious nationalism that Rastafari developed.' },
+      { title: 'The Kebra Nagast', desc: 'The 14th-century Ethiopian text recounting the lineage of the Solomonic dynasty (the line from which Haile Selassie claimed descent) through the Queen of Sheba and Solomon. Treated by Rastafari as a key text supporting Selassie\'s messianic claim.' },
+      { title: 'The Promised Key (Leonard Howell, 1935)', desc: 'Howell (1898–1981) is generally regarded as the first Rastafari leader. His pamphlet sets out the early Rastafari understanding of Selassie\'s divinity and the call to repatriation.' },
+      { title: 'The works of Marcus Garvey', desc: 'Garvey (1887–1940), though not himself a Rastafari and arguably skeptical of the movement, is regarded as a prophetic precursor whose Pan-Africanism prepared the way for Rastafari. The Universal Negro Improvement Association\'s ideology is foundational to Rastafari self-understanding.' },
+    ],
+    historicalResponse: `<p>Christian engagement with Rastafari has been both more sympathetic and more limited than engagement with other movements profiled here. This reflects several factors: Rastafari\'s small size relative to the global Christian community; its cultural rather than aggressive missionary expansion; its substantial overlap with Black Christian theological concerns; and the relative absence of significant Christian polemic against it.</p>
+    <p><strong>The Ethiopian Orthodox engagement.</strong> The Ethiopian Orthodox Tewahedo Church — to which Haile Selassie himself belonged — has been the Christian body most directly engaged with Rastafari. The Ethiopian Orthodox position is clear: Selassie was a baptized Orthodox Christian throughout his life, never claimed divinity, and is not to be worshipped. The Ethiopian Orthodox Church has welcomed Rastafari pilgrims to the Shashamane settlement and to Ethiopia broadly, but has consistently called for Rastafari to receive Christian baptism and to recognize Christ rather than Selassie as Lord. Some Rastafari have converted to Ethiopian Orthodoxy; others have maintained Rastafari identity while engaging Orthodox practice.</p>
+    <p><strong>Caribbean Christian engagement.</strong> The Caribbean churches (predominantly evangelical Protestant, with significant Catholic and Anglican presences) have generally engaged Rastafari with a mixture of pastoral concern and theological clarity. The substantial Rastafari population in Jamaica means that virtually every Caribbean Christian community has Rastafari acquaintances, family members, or neighbors; the engagement is typically more personal than polemical.</p>
+    <p><strong>Black liberation theology.</strong> The Black liberation theology of <strong>James Cone</strong> (1938–2018), the broader Black Christian theological tradition (Cornel West, J. Deotis Roberts, others), and the Caribbean theological work of <strong>Theo Witvliet</strong>, <strong>Noel Erskine</strong>, and others has engaged Rastafari as a sibling movement in the broader project of African Christian self-understanding — sharing many concerns with Rastafari (the Black experience of suffering, the call to liberation, the need for African theological self-articulation) while disagreeing on Christology and the deification of Selassie.</p>
+    <p><strong>Reggae and Christian musical engagement.</strong> The musical and cultural overlap between Rastafari reggae and Caribbean Christian gospel has produced a substantial body of crossover work. Bob Marley\'s engagement with Christian themes (the album <em>Burnin\'</em>, songs like "Redemption Song"), the wider reggae tradition\'s biblical lyricism, and the response of Caribbean gospel artists who have drawn from reggae forms have made the Rastafari-Christian encounter a substantial cultural phenomenon.</p>
+    <p><strong>Christian conversion narratives.</strong> Bob Marley\'s reported deathbed baptism into Ethiopian Orthodoxy (November 1980), the conversion of various other notable Rastafari to Christianity over the decades, and the broader phenomenon of conversion between Rastafari and Christian identity has been an area of mutual engagement. Marley\'s baptism remains contested in Rastafari circles; some hold it was coerced by family, others that it reflected a genuine end-of-life return to Orthodox Christianity.</p>`,
+    historicalNote: 'Haile Selassie I (born Tafari Makonnen, 1892) was crowned Emperor of Ethiopia on November 2, 1930. His coronation was attended by representatives of major world powers and reported globally. Marcus Garvey had reportedly predicted ("Look to Africa, where a black king shall be crowned, for the day of deliverance is at hand"), and early Rastafari saw the coronation as that prophecy\'s fulfillment. Leonard Howell, generally regarded as the first Rastafari leader, was preaching Selassie\'s divinity by 1933. Selassie\'s visit to Jamaica on April 21, 1966 — Grounation Day — was the most consequential moment in Rastafari history; an estimated 100,000 Rastafari met his plane at Kingston airport. The Marxist Derg deposed Selassie in September 1974; he died in custody on August 27, 1975 (the official cause was respiratory failure; he was reportedly suffocated by his captors). Bob Marley\'s rise to global stardom (Burnin\' 1973; Natty Dread 1974; Exodus 1977) made Rastafari globally visible. Marley died of cancer on May 11, 1981, having reportedly received baptism into the Ethiopian Orthodox Church days before his death. The contemporary global Rastafari movement has perhaps 700,000-1,000,000 adherents.',
+    relatedMovements: ['mov-sda'],
+  },
+
 ];
+
+// ═══════════════════════════════════════════════════════════
+// PATCH 6 — RELIGIONS array (The Wider Conversation)
+// ═══════════════════════════════════════════════════════════
+
+const RELIGIONS = [
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'rel-judaism',
+    name: 'Judaism',
+    icon: '✡️',
+    founded: 'Patriarchal period c. 2000–1500 BC; Sinai covenant c. 1300 BC; rabbinic Judaism after 70 AD',
+    adherents: '~15 million worldwide (2023): ~7.5M Israel, ~6M USA, ~1.5M elsewhere',
+    category: 'Abrahamic',
+    founder: 'Abraham, called by God (Genesis 12); Moses, the lawgiver (Exodus); the prophets',
+    summary: `Judaism is the oldest of the Abrahamic monotheisms and the religion of the people of Israel. It is uniquely positioned in relation to Christianity: not a foreign religion to be encountered from outside, but the matrix from which Christianity emerged, the religion of Jesus and the apostles, and the people to whom the Hebrew Scriptures were given. Modern Judaism is the rabbinic tradition that developed after the destruction of the Second Temple in 70 AD, organized around Torah study, the synagogue, halakhic practice, and the unbroken witness of the Jewish people. The major contemporary branches include Orthodox (Modern Orthodox and Haredi), Conservative/Masorti, Reform/Progressive, and Reconstructionist, with significant cultural and Secular Jewish identities alongside. The question of who Jesus was — and is — divides Judaism from Christianity decisively; the question of the one God of Israel unites them as no other religions are united.`,
+    coreBeliefs: `<p><strong>The Oneness of God (Shema).</strong> Deuteronomy 6:4 — "Hear, O Israel: the LORD our God, the LORD is one" — is the central confession of Judaism, recited twice daily by observant Jews. God is strictly one, indivisible, incorporeal, eternal, the Creator and sustainer of all that exists. Maimonides's Thirteen Principles of Faith (12th century) articulate the classical formulation: God's existence, unity, incorporeality, eternity, exclusive worship, prophecy, the supremacy of Moses, the divine origin of Torah, the immutability of Torah, divine providence, divine retribution, the coming of the Messiah, and the resurrection of the dead.</p>
+    <p><strong>The Torah and the Tanakh.</strong> The Hebrew Bible (Tanakh — Torah, Nevi'im, Ketuvim) is the foundational revelation. The Torah (the five books of Moses) is held to be the direct revelation of God to Moses at Sinai; the Prophets and Writings are also divinely inspired. Rabbinic Judaism holds that Moses received both the Written Torah and the Oral Torah at Sinai, with the Oral Torah eventually committed to writing in the Mishnah (c. 200 AD) and the Talmud (Jerusalem c. 400 AD; Babylonian c. 500 AD).</p>
+    <p><strong>Covenant.</strong> The defining structure of Judaism is the covenant between God and the people of Israel — initiated with Abraham (Genesis 12, 15, 17), renewed and elaborated at Sinai (Exodus 19–24), and continually reaffirmed throughout the Hebrew Scriptures. The Jewish people are a chosen people not in a sense of metaphysical privilege but of particular responsibility: to bear witness to the one God, to study and live by Torah, and to be a light to the nations (Isaiah 49:6).</p>
+    <p><strong>Halakha — the way.</strong> Jewish religious life is shaped by halakha, the body of Jewish law derived from Torah and rabbinic interpretation. The commandments (mitzvot) — traditionally counted as 613 — include the obligations of Sabbath observance, kosher food laws, sexual ethics, festival observance, charity, justice, prayer, and Torah study. Orthodox Judaism holds halakha to be binding in its full traditional form; Conservative Judaism affirms halakhic obligation while permitting more historical-critical interpretation; Reform Judaism emphasizes ethical monotheism and individual autonomy in ritual observance.</p>
+    <p><strong>Messianic hope.</strong> Judaism awaits a Messiah (mashiach — "anointed one") — a human figure descended from David, who will rebuild the Temple in Jerusalem, gather the exiles of Israel back to the land, establish universal peace and justice, and inaugurate the age to come. The Messiah is not divine in Jewish expectation; he is a great king and prophet, not God incarnate. Some Jewish traditions speak of the World to Come (Olam Ha-Ba) and the resurrection of the dead, though these doctrines are less developed than in Christianity and Islam.</p>`,
+    keyTexts: [
+      { title: 'The Tanakh (Hebrew Bible)', desc: 'The acrostic name (Torah, Nevi\'im, Ketuvim) for the Hebrew Scriptures. Roughly corresponds to the Christian Old Testament with a different ordering. The Torah (Genesis, Exodus, Leviticus, Numbers, Deuteronomy) is the most central text; reading the Torah through annually in the synagogue is a foundational Jewish practice.' },
+      { title: 'The Mishnah', desc: 'The first major codification of the Oral Torah, compiled by Rabbi Judah ha-Nasi c. 200 AD. Six orders covering all areas of Jewish law and life.' },
+      { title: 'The Talmud', desc: 'The vast rabbinic discussion and elaboration of the Mishnah. The Babylonian Talmud (Bavli, c. 500 AD) is the more authoritative; the Jerusalem Talmud (Yerushalmi, c. 400 AD) is less complete. Over 5,000 pages in standard editions, the Talmud has been the central study text of rabbinic Judaism for 1,500 years.' },
+      { title: 'The Mishneh Torah by Maimonides', desc: 'Moses Maimonides\'s (1138–1204) systematic compilation of Jewish law in 14 books, completed 1180. Among the most influential post-Talmudic works.' },
+      { title: 'The Shulchan Aruch by Joseph Karo', desc: 'The 16th-century code of Jewish law (1565) that, with the glosses of Moses Isserles for Ashkenazi practice, remains the standard halakhic reference for Orthodox Judaism.' },
+      { title: 'The Zohar', desc: 'The foundational text of Jewish mysticism (Kabbalah), traditionally attributed to Rabbi Shimon bar Yochai (2nd century AD) but actually compiled in 13th-century Spain by Moses de Leon. The Zohar shapes Hasidic and much of Sephardic spirituality.' },
+    ],
+    pointsOfContact: `<p>Judaism and Christianity share more than any two religions on earth. They share:</p>
+    <p><strong>One God</strong> — the strict monotheism of the Shema, the personal Creator God who made the heavens and the earth, called Abraham, delivered Israel from Egypt, gave the Torah at Sinai, and spoke through the prophets.</p>
+    <p><strong>The Hebrew Scriptures</strong> — the Tanakh is the Christian Old Testament, accepted by Christians as inspired and authoritative Scripture, read in every Christian liturgy.</p>
+    <p><strong>The covenant tradition</strong> — God's covenants with Noah, Abraham, Moses, and David are received by both traditions as foundational acts of divine self-revelation.</p>
+    <p><strong>The prophetic tradition</strong> — Isaiah, Jeremiah, Ezekiel, the twelve minor prophets are honored in both traditions as God's messengers.</p>
+    <p><strong>Messianic expectation</strong> — both traditions await the coming of the Messiah and the age of universal peace and justice; Christianity holds that the Messiah has come and will come again, Judaism holds that the Messiah is yet to come.</p>
+    <p><strong>The ethical tradition</strong> — the Ten Commandments, the call to love one's neighbour (Leviticus 19:18), the demand for justice for the poor and the stranger, the centrality of family and community.</p>
+    <p><strong>Eschatological hope</strong> — both traditions speak of the resurrection of the dead, the World to Come, and God's ultimate triumph over evil.</p>
+    <p>The earliest Christians were Jews. Jesus, Mary, the Twelve Apostles, Paul, and the early Jerusalem church were all observant Jews. The New Testament is saturated with the language, imagery, and theology of the Hebrew Scriptures. Paul's anguished reflection in Romans 9–11 on the unbelief of Israel — "the gifts and calling of God are irrevocable" (Romans 11:29) — captures something the Christian tradition has never been able fully to resolve: the Jewish people remain, in some sense the Church has struggled to define, in covenant with God.</p>`,
+    pointsOfDivergence: `<p>The fundamental divergence is the person of Jesus.</p>
+    <p><strong>Jesus.</strong> Judaism does not accept Jesus as the Messiah. Specifically: the Jewish messianic expectation required the Messiah to gather the exiles of Israel back to the land, rebuild the Temple, establish universal peace, and bring the knowledge of God to all nations (Isaiah 2:2–4; 11:1–10; Jeremiah 33:14–18; Ezekiel 37:21–28). Jesus did none of these things in his earthly ministry. The Temple was destroyed in 70 AD, not rebuilt; the Jewish people were dispersed further, not gathered; the world remained at war, not at peace. For traditional Judaism, this is sufficient evidence that Jesus was not the Messiah.</p>
+    <p><strong>The deity of Christ.</strong> Beyond the Messianic question, Judaism cannot accept the Christian claim that Jesus is God incarnate. The Christian doctrine of the Trinity — one God in three persons, the Son co-eternal with the Father — is widely understood in Judaism to compromise the strict monotheism of the Shema. From the Jewish perspective, no man can be God; God is incorporeal, indivisible, and beyond human form (Deuteronomy 4:15–16; Numbers 23:19). The Christian doctrine of the Incarnation is the most fundamental theological barrier between the two faiths.</p>
+    <p><strong>Original sin and salvation.</strong> Judaism does not hold the Christian doctrine of original sin in the Augustinian form. Each person stands responsible before God for their own actions; the yetzer ha-ra (evil inclination) struggles against the yetzer ha-tov (good inclination) in every heart, but humans are not radically incapable of obeying God. Salvation in Judaism is not a single moment of justification by faith but a way of life — Torah observance, repentance (teshuvah), good deeds (mitzvot), and the mercy of God.</p>
+    <p><strong>Torah and the Law.</strong> Christianity (since Paul) has held that the ceremonial law (sacrifices, kosher laws, circumcision, Sabbath in its Jewish form) is fulfilled in Christ and no longer binding on Gentile believers. Judaism holds the Torah eternally binding on the Jewish people. The Gentile world is bound by the seven Noahide laws (the universal moral obligations of all humanity); Jews are bound by the full 613 commandments.</p>
+    <p><strong>The Trinity and the Holy Spirit.</strong> The Christian doctrines of the Trinity and the personhood of the Holy Spirit are absent from Jewish theology. Judaism speaks of God's spirit (ruach Elohim) as God's active presence in the world, not as a distinct person within the Godhead.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'The Messiah and the unfulfilled prophecies',
+        body: `<p>Traditional Jewish messianic expectation requires the Messiah to gather the exiles to Israel, rebuild the Temple, establish universal peace, and bring all nations to acknowledge the God of Israel. Christianity confesses Jesus as the Messiah and explains the unfulfilled prophecies as awaiting his second coming. Judaism asks: a Messiah who must come twice — is that really the Messiah promised in the prophets?</p>
+        <p><strong>If Jesus is the Messiah, why was the world he left behind so visibly unredeemed — and what kind of evidence could decide this question between Christians and Jews?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'One God, three persons',
+        body: `<p>The Shema — "Hear, O Israel: the LORD our God, the LORD is one" — is the most central confession of Judaism. The Christian doctrine of the Trinity confesses one God in three persons, with Jesus as God the Son co-eternal with the Father. Judaism holds that this compromises monotheism; Christianity holds that the Trinity is the deepest possible expression of monotheism, drawn from the New Testament's portrait of Jesus.</p>
+        <p><strong>Is the Trinity the truest reading of God's self-revelation, or a Hellenistic philosophical construction that obscured the simpler unity of God taught by Moses and the prophets?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'The Suffering Servant',
+        body: `<p>Isaiah 52:13–53:12 — the "Suffering Servant" passage — describes one who is "despised and rejected," "wounded for our transgressions," who bore "the sin of many." Christians have read this from the first century as a prophecy of Christ's atoning death. Jewish interpretation has traditionally read the Servant as the people of Israel collectively, suffering as a corporate witness to the nations.</p>
+        <p><strong>Does the Suffering Servant of Isaiah 53 point to the corporate suffering of Israel, to an individual Messiah, or to both — and how do we adjudicate between such different readings of the same text?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'The continuing covenant with Israel',
+        body: `<p>Paul writes in Romans 11:29: "The gifts and calling of God are irrevocable." After 1,900 years of supersessionist Christian theology that read the Church as having replaced Israel, Vatican II's <em>Nostra Aetate</em> (1965) and subsequent Protestant statements have moved decisively away from that position. Judaism asks: if God's covenant with Israel remains, why does Christianity continue to evangelize Jews?</p>
+        <p><strong>Does the Jewish people remain in covenant with God in such a way that conversion to Christianity is unnecessary — or even inappropriate — for Jews? What does Christian mission to Jews mean in light of the gifts and calling that "are irrevocable"?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Torah, Law, and the life of obedience',
+        body: `<p>Judaism's life of Torah obedience — 613 commandments shaping every meal, every Sabbath, every life passage — has sustained Jewish identity through millennia of dispersion, persecution, and assimilation. Paul wrote of the Law as a "tutor to bring us to Christ" (Galatians 3:24), now fulfilled in Christ. Christians often perceive Jewish Torah observance as legalistic; Jews perceive Christian freedom from the Law as antinomian.</p>
+        <p><strong>Is Torah observance an obstacle to grace, or its embodiment in daily life? And what does it mean that Jewish Torah-observant communities have produced extraordinary moral and spiritual depth over millennia?</strong></p>`,
+      },
+    ],
+    historicalRelation: `<p>The relationship between Judaism and Christianity is the deepest, longest, and most painful interreligious relationship in Western history.</p>
+    <p>For the first decades of the Church, Christianity was a Jewish movement. The decisive break came gradually: the Council of Jerusalem (Acts 15, c. 50 AD) ruled that Gentile converts need not observe the ceremonial law; the destruction of the Second Temple in 70 AD reshaped both Jewish and Christian self-understanding; the Bar Kokhba revolt (132–135 AD), in which Rabbi Akiva proclaimed Bar Kokhba as Messiah and many Jewish Christians refused to follow, sealed the institutional separation.</p>
+    <p>The patristic period developed Christian anti-Jewish polemic in tragic directions. John Chrysostom's <em>Eight Homilies Against the Jews</em> (386 AD), Melito of Sardis's <em>On Pascha</em>, the language of "the Jews" in later Christian liturgy and preaching, and the canonical legislation that increasingly marginalized Jewish communities in Christian Europe shaped the soil from which medieval and modern anti-Semitism grew.</p>
+    <p>The medieval period saw the development of distinctively Jewish communities under Christian rule, with intellectual and economic flourishing alongside catastrophic persecution. The First Crusade (1096) included the slaughter of Rhineland Jewish communities. The blood libel (the false accusation of ritual murder), the expulsions (England 1290, France 1306, Spain 1492, Portugal 1497), the ghettos (Venice 1516, Rome 1555), and recurrent pogroms shaped the Jewish experience of Christian Europe.</p>
+    <p>The Holocaust — the murder of approximately six million European Jews by Nazi Germany and its collaborators between 1933 and 1945 — was not a directly Christian act, but it occurred in a culture shaped by 1,800 years of Christian anti-Judaism. The post-Holocaust Christian theological reckoning has been one of the most significant developments in 20th-century Christian thought.</p>
+    <p>Vatican II's <strong><em>Nostra Aetate</em></strong> (October 28, 1965) declared: "The Church... cannot forget that she received the revelation of the Old Testament through the people with whom God in His inexpressible mercy concluded the Ancient Covenant. Nor can she forget that she draws sustenance from the root of that well-cultivated olive tree onto which have been grafted the wild shoots, the Gentiles." The decree explicitly repudiated the charge of deicide and any teaching that the Jewish people are collectively guilty for Christ's death.</p>
+    <p>The Vatican's <em>The Gifts and the Calling of God Are Irrevocable</em> (December 10, 2015) went further: "The Catholic Church neither conducts nor supports any specific institutional mission work directed towards Jews." Various Protestant statements — the Evangelical Lutheran Church in America's <em>Declaration to the Jewish Community</em> (1994), the World Council of Churches' statements, the Leuenberg Church Fellowship's documents — have similarly addressed the post-Holocaust theological question.</p>
+    <p>Significant Jewish-Christian dialogue continues through bodies including the International Council of Christians and Jews, the Christian Scholars Group on Christian-Jewish Relations, and many local and regional dialogues. The question of the State of Israel (since 1948), of Christian Zionism, and of the relationship between modern political Israel and biblical Israel adds further complexity that the Israel-Church topic on the doctrinal ledger addresses in detail.</p>`,
+    historicalNote: 'Maimonides (Moses ben Maimon, 1138–1204) — Rambam — is the most influential Jewish thinker after the Talmudic age; his Mishneh Torah and Guide for the Perplexed shape both Jewish law and philosophy. Rashi (Solomon ben Isaac, 1040–1105) wrote the most studied commentary on the Talmud and Hebrew Bible. The expulsion of Jews from Spain on Tisha B\'Av 1492 (the same day commemorating the destruction of both Temples) precipitated the Sephardic dispersion and shaped the Kabbalistic flowering of 16th-century Safed (Isaac Luria). Hasidism, founded by the Baal Shem Tov (c. 1700–60), introduced mystical and joyful piety to Eastern European Judaism. The Haskalah (Jewish Enlightenment, 18th–19th centuries) led to Reform Judaism (Germany, 19th century) and reshaped modern Jewish identity. Theodor Herzl\'s Zionism produced the State of Israel (1948). Approximately six million Jews were murdered in the Holocaust (1933–45). The post-Holocaust era has seen the largest Jewish population shift since the Babylonian exile — over 95% of Jews today live in Israel or the United States.',
+    relatedReligions: ['rel-islam'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'rel-islam',
+    name: 'Islam',
+    icon: '☪️',
+    founded: '610 AD, with the first revelation to Muhammad in the cave of Hira',
+    adherents: '~1.9 billion worldwide (2023); approximately 24% of global population',
+    category: 'Abrahamic',
+    founder: 'Muhammad ibn Abdullah (c. 570–632 AD), the Seal of the Prophets',
+    summary: `Islam is the second-largest religion in the world and the most rapidly-growing of the Abrahamic faiths. The Arabic word <em>islam</em> means "submission" — the voluntary surrender of the human will to the will of Allah, the one God. A Muslim is "one who submits." Muslims confess that Allah is the same God worshipped by Abraham, Moses, and Jesus; that the Qur'an is the final, uncorrupted revelation given through the angel Gabriel to Muhammad over 23 years (610–632 AD); that Muhammad is the Seal of the Prophets, the final messenger of God. The major divisions are Sunni (~85–90% of Muslims worldwide) and Shi'a (~10–15%, predominantly in Iran, Iraq, Bahrain, Azerbaijan, and Lebanon), with various sub-traditions including Wahhabi/Salafi, the Sufi spiritual orders, the Ibadi (in Oman), and the Ahmadiyya (whose status as Muslim is contested by mainstream Islam). Islam shares with Judaism and Christianity an Abrahamic genealogy, a strict monotheism, a sacred Scripture, prophetic mediation, and an eschatological orientation — and diverges sharply from Christianity on the doctrine of God (rejecting the Trinity), the person of Jesus (a prophet but not divine, not crucified, not the son of God in any but a metaphorical sense), and the nature of salvation.`,
+    coreBeliefs: `<p><strong>Tawhid — the absolute oneness of God.</strong> The central confession of Islam is <em>la ilaha illa Allah</em> — "there is no god but Allah." Tawhid (oneness) is the heart of Islamic theology: Allah is absolutely one, indivisible, without partners, without offspring, without equal. The Qur'an explicitly rejects any conception of God as having children or sharing his divinity (Surah 112: "Say: He is Allah, the One; Allah, the Eternal Refuge; He neither begets nor is born, nor is there to Him any equivalent").</p>
+    <p><strong>The Five Pillars of Islam.</strong> The five obligatory acts that structure the Muslim life: (1) the Shahada — the testimony of faith ("There is no god but Allah, and Muhammad is the Messenger of Allah"); (2) Salah — the five daily prayers, performed facing Mecca; (3) Zakat — the obligatory almsgiving of approximately 2.5% of net wealth annually; (4) Sawm — the fast of Ramadan, the lunar month commemorating the first revelation of the Qur'an; (5) Hajj — the pilgrimage to Mecca, obligatory once in a lifetime for those who are able.</p>
+    <p><strong>The Six Articles of Faith.</strong> Belief in: (1) Allah, the one God; (2) the angels, including Gabriel (Jibril) who brought revelation, Michael (Mikail), and Israfil who will sound the trumpet on the Day of Judgment; (3) the prophets and messengers — beginning with Adam, including Noah, Abraham, Moses, David, Jesus, and culminating in Muhammad (some traditions enumerate 25 named prophets, others speak of 124,000); (4) the holy books — the Torah given to Moses (Tawrat), the Psalms given to David (Zabur), the Gospel given to Jesus (Injil), and the Qur'an given to Muhammad, the last and final and uncorrupted revelation; (5) the Day of Judgment, when all humans will be raised and judged according to their deeds; (6) Qadar — divine predestination, the sovereign decree of Allah.</p>
+    <p><strong>The Qur'an.</strong> The Muslim sacred scripture, revealed by the angel Gabriel to Muhammad over 23 years (610–632 AD). The Qur'an consists of 114 chapters (surahs) of varying length, traditionally arranged from longest to shortest (with the opening Surah al-Fatiha as an exception). The Qur'an is held to be the literal word of Allah, preserved without alteration; its Arabic original is the only canonical text — translations are regarded as interpretations, not as the Qur'an proper.</p>
+    <p><strong>Sharia and the path of life.</strong> Sharia (the "path") is the comprehensive Islamic law derived from the Qur'an, the Sunnah (the practice of Muhammad, preserved in the hadith literature), ijma (scholarly consensus), and qiyas (analogical reasoning). The four major Sunni schools of jurisprudence (madhhab) — Hanafi, Maliki, Shafi'i, Hanbali — and the Shi'a schools (primarily Ja'fari) interpret sharia somewhat differently in matters of detail while agreeing on essentials. Islam is comprehensive in scope: it provides guidance for prayer, marriage, inheritance, commerce, criminal law, war, and the structure of society.</p>
+    <p><strong>Eschatology.</strong> Islam teaches the resurrection of the body, the Day of Judgment, paradise (Jannah) for the righteous and hell (Jahannam) for the wicked. The intermediate state (barzakh) describes the period between death and resurrection. Various signs precede the Day of Judgment, including the appearance of the Mahdi (the rightly-guided one, in Shi'a Islam the Hidden Imam returned), the return of Jesus (Isa) — who in Islamic eschatology returns to defeat the false messiah (al-Dajjal) and to confirm Islam as the true religion.</p>`,
+    keyTexts: [
+      { title: 'The Qur\'an', desc: 'The central sacred text of Islam, comprising 114 surahs. Held to be the literal word of Allah revealed to Muhammad in Arabic. The text is divided into Meccan surahs (revealed during Muhammad\'s years in Mecca, 610–622 AD, focused on monotheism, prophecy, and judgment) and Medinan surahs (revealed during the Medina period, 622–632 AD, focused on community life, law, and warfare). Standardized in its current form under the third caliph Uthman c. 650 AD.' },
+      { title: 'The Hadith Collections', desc: 'The recorded sayings and actions of Muhammad. The Sunni canonical "Six Books" are Sahih al-Bukhari, Sahih Muslim (the two most authoritative), Sunan Abu Dawud, Jami al-Tirmidhi, Sunan al-Nasa\'i, and Sunan ibn Majah. Shi\'a Islam has its own distinct canonical collections, including al-Kafi by al-Kulayni.' },
+      { title: 'The Sunnah', desc: 'The "path" or "way" of the Prophet — Muhammad\'s example of how a Muslim should live, derived from the hadith literature. Together with the Qur\'an, the Sunnah forms the primary basis of sharia.' },
+      { title: 'The Tafsir tradition', desc: 'Qur\'anic commentary. Major classical works include al-Tabari\'s Jami al-Bayan (10th century), al-Razi\'s Mafatih al-Ghayb (12th–13th century), and ibn Kathir\'s Tafsir al-Qur\'an al-Azim (14th century). Modern works include the highly influential Tafhim al-Qur\'an by Sayyid Abul A\'la Mawdudi.' },
+      { title: 'Ihya Ulum al-Din by al-Ghazali', desc: 'The Revival of the Religious Sciences (c. 1100), Abu Hamid al-Ghazali\'s monumental work synthesizing law, theology, and Sufi spirituality. Among the most influential Islamic books outside the Qur\'an and hadith.' },
+      { title: 'The Masnavi by Rumi', desc: 'Jalal al-Din Rumi\'s (1207–1273) vast mystical poem, the foundational text of Persian Sufi spirituality and one of the supreme works of Islamic literature.' },
+    ],
+    pointsOfContact: `<p>Islam, Christianity, and Judaism share an Abrahamic genealogy that is closer than any other interreligious relationship in the world.</p>
+    <p><strong>One Creator God.</strong> Islam and Christianity both confess that there is one God, eternal, transcendent, the Creator and sustainer of all that exists. Muslims and Christians agree against polytheism and against atheism that ultimate reality is personal, righteous, and just.</p>
+    <p><strong>The Abrahamic narrative.</strong> Muslims revere Abraham (Ibrahim) as a great prophet and the father of monotheism. Both traditions affirm Abraham's call by God (Genesis 12; Surah 6, 14), his testing in the offering of his son (the Aqedah, Genesis 22; the Eid al-Adha tradition, Surah 37), and his role as the spiritual father of the believing community.</p>
+    <p><strong>The prophetic tradition.</strong> Muslims affirm Noah, Abraham, Moses, David, John the Baptist (Yahya), and Jesus (Isa) as genuine prophets sent by God. The Qur'an speaks at length of Moses (musa) and the exodus, and of Jesus (Isa) — including his virgin birth (Surah 19), his miracles (Surah 5:110), his title as al-Masih (the Messiah), and his being a "word from God" and "spirit from God" (Surah 4:171, though interpreted in Islamic theology in ways that do not affirm his divinity).</p>
+    <p><strong>The reality of revelation.</strong> Both traditions hold that God reveals himself through prophets and through Scripture. Both believe that human beings are accountable to God for how they live, and that God's revelation provides authoritative guidance.</p>
+    <p><strong>The eschatological framework.</strong> The resurrection of the dead, the Day of Judgment, the moral seriousness of human life, heaven and hell — these are shared with Christianity (and Judaism) and are not features of most non-Abrahamic traditions.</p>
+    <p><strong>The dignity of every human being.</strong> Both traditions teach that every human being is created by God with dignity and worth, that the murder of an innocent is "as though he had murdered all of mankind" (Qur'an 5:32), that justice and mercy are central divine attributes that humans are called to imitate.</p>
+    <p><strong>Mary, the mother of Jesus.</strong> Mary (Maryam) is more frequently named in the Qur'an than in the New Testament. She is the only woman named in the Qur'an and is honored as one of the four perfect women in Islamic tradition (along with Asiyah the wife of Pharaoh, Khadijah the wife of Muhammad, and Fatimah the daughter of Muhammad). Surah 19 (Maryam) is named for her and gives an extended account of the Annunciation and the virgin birth.</p>`,
+    pointsOfDivergence: `<p>The differences between Islam and Christianity are profound and concentrate on the doctrine of God, the person of Jesus, and the nature of revelation.</p>
+    <p><strong>The Trinity.</strong> Islam's most central conviction — tawhid, the absolute oneness of God — explicitly rejects the Christian doctrine of the Trinity. The Qur'an states: "Say not, 'Three' — desist! It is better for you. Indeed, Allah is but one God" (Surah 4:171). Surah 5:73 condemns those who say "Allah is the third of three." From the Islamic perspective, the Trinity is shirk — the unforgivable sin of associating partners with Allah. From the Christian perspective, the Trinity is the deepest expression of biblical monotheism, drawn from the New Testament's portrait of Jesus and the Spirit. The two cannot both be right.</p>
+    <p><strong>The deity of Christ.</strong> Islam honors Jesus (Isa) as a great prophet, born of a virgin, a worker of miracles, a Messiah — but emphatically denies that he was God incarnate. Surah 5:75: "The Messiah, son of Mary, was no more than a messenger; messengers passed away before him." Surah 4:171: "The Messiah, Jesus the son of Mary, was only a messenger of Allah, and His word which He directed to Mary and a soul created at a command from Him. So believe in Allah and His messengers. And do not say, 'Three.'"</p>
+    <p><strong>The crucifixion.</strong> Surah 4:157–158 denies the crucifixion of Jesus: "and they did not kill him, nor did they crucify him; but [another] was made to resemble him to them. And indeed, those who differ over it are in doubt about it. They have no knowledge of it except the following of assumption. And they did not kill him, for certain. Rather, Allah raised him to Himself." Various Islamic traditions explain that Allah took Jesus directly to heaven, with another person (often identified as Judas) being crucified in his place. The historical evidence for Jesus's crucifixion is among the most attested facts in ancient history — even most non-Christian scholars accept it.</p>
+    <p><strong>The Bible.</strong> Islam holds that the Tawrat (Torah), Zabur (Psalms), and Injil (Gospel) were genuinely revealed by Allah, but that the texts now possessed by Jews and Christians have been corrupted (tahrif) — through textual alteration, loss, or theological distortion. The Qur'an is held to be the final, perfectly preserved revelation that corrects the earlier scriptures. Christians and Jews hold that their scriptures, while subject to ordinary textual transmission processes that scholars can study, have not been corrupted in any substantive theological sense.</p>
+    <p><strong>Muhammad as the Seal of the Prophets.</strong> Islam teaches that Muhammad is the final prophet of God (Khatam an-Nabiyyin, "the Seal of the Prophets" — Surah 33:40). After Muhammad, no further prophet will come. The Christian claim that the apostles were sent by the risen Christ is incompatible with this finality. Conversely, Christianity holds Christ to be God's final and complete revelation (Hebrews 1:1–2) — not one prophet among many, and not subject to supersession by any later messenger.</p>
+    <p><strong>Sin and salvation.</strong> Islam does not hold the Christian doctrine of original sin. Every human is born in a state of fitra — innate goodness, oriented toward God. Salvation in Islam comes through submission to Allah, faith in the prophets and messengers, performance of the five pillars, and right living — with the mercy of Allah as the decisive factor on the Day of Judgment. The Christian doctrine of justification by grace through faith, with Christ's death as substitutionary atonement, has no Islamic parallel; from the Islamic perspective, every person bears their own sins and answers for them directly.</p>
+    <p><strong>The role of Muhammad and Jesus.</strong> Christianity confesses Jesus as Lord, worships him, and centers worship on him. Islam regards worship of any but Allah as the gravest of sins (shirk). Muhammad himself is honored as the greatest prophet but is not worshipped; the phrase "Peace be upon him" (sallallahu alayhi wa sallam) is said after his name, but he is not invoked in prayer to Allah.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'The crucifixion',
+        body: `<p>Surah 4:157 denies that Jesus was crucified, asserting that "it appeared so to them" — Allah took Jesus directly to heaven. The historical evidence for Jesus's crucifixion under Pontius Pilate is among the most attested facts in ancient history: the four Gospels, the Pauline letters (written within 25 years of the event), the Roman historian Tacitus (Annals 15.44), the Jewish historian Josephus (Antiquities 18.3.3), and the Babylonian Talmud all attest it. No first- or second-century source denies it.</p>
+        <p><strong>What does it mean that the Qur'an, six centuries after the event, denies what virtually every first- and second-century source affirms? And how should historical evidence weigh against a later revelatory text?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'Tawhid and the Trinity',
+        body: `<p>Islam's deepest theological commitment is tawhid — the absolute, indivisible oneness of God. The Qur'an repeatedly rejects "three gods" and "associating partners" with Allah (Surah 4:171; 5:73; 5:116). Christianity confesses one God in three persons — Father, Son, Holy Spirit — drawing the same conclusion from the same monotheistic premise: that God is one, eternal, indivisible, but eternally exists in tri-personal life of love.</p>
+        <p><strong>Is the Trinity a violation of monotheism, as Islam insists, or its deepest possible expression? What turns on this — for prayer, for worship, for the very identity of God?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'The corruption of the earlier Scriptures',
+        body: `<p>Islam honors the Tawrat, Zabur, and Injil as originally revealed by Allah, but teaches that they have been corrupted (tahrif). The Qur'an is the final, perfectly preserved revelation. Christians and Jews argue: if Allah preserved the Qur'an perfectly across 14 centuries (transmitted through enormous Muslim populations across vast geography), why would he have failed to preserve the earlier revelations he himself gave to Jews and Christians?</p>
+        <p><strong>What kind of God would give a revelation he could not protect from corruption? And how would the alleged corruption of the Torah, Psalms, and Gospels have occurred given the enormous scholarly attention and broad geographic dispersion of the Jewish and Christian communities?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'The Seal of the Prophets',
+        body: `<p>Islam holds Muhammad to be the final prophet — Khatam an-Nabiyyin — completing and superseding all prior revelation. Christianity holds Christ to be God's final and definitive Word (Hebrews 1:1–2): "Long ago, at many times and in many ways, God spoke to our fathers by the prophets, but in these last days he has spoken to us by his Son."</p>
+        <p><strong>On what grounds should one decide between these two final-word claims? And if both claims of finality cannot be true, how does an honest seeker after God evaluate which (if either) is in fact final?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Salvation: submission or grace',
+        body: `<p>Islam frames the human relationship to God as submission (the literal meaning of <em>islam</em>) — surrender to Allah's will, performance of the five pillars, observance of sharia, with mercy from Allah weighing the deeds at judgment. Christianity frames it as receiving grace — God's free gift of forgiveness through Christ's atoning death, with works flowing from gratitude rather than meriting salvation.</p>
+        <p><strong>Which account better fits the human condition as we actually find it — broken, divided, unable fully to do what we know we should — and which produces deeper transformation of the heart: the demand for obedience or the gift of grace?</strong></p>`,
+      },
+    ],
+    historicalRelation: `<p>The Christian-Muslim relationship spans 1,400 years and has been the most consequential interreligious encounter in world history outside the Christian-Jewish relationship itself.</p>
+    <p>The early Islamic conquests (633–732 AD) brought the previously-Christian heartlands of the Middle East and North Africa under Muslim political rule within a single century. Syria, Egypt, Palestine, North Africa, Spain — Christian communities under Roman and Byzantine rule were now under the rule of Muslim caliphs, with the dhimmi (protected non-Muslim) status that permitted continued Christian (and Jewish) life under specific legal constraints and the payment of the jizya tax.</p>
+    <p>Christian theological engagement with Islam began immediately. <strong>John of Damascus</strong> (c. 675–749), a Christian theologian writing under the early Umayyad caliphate, gave the first significant Christian theological response to Islam in his <em>Fount of Knowledge</em>, classifying Islam as a Christian heresy (specifically a derivative of Arianism) rather than a new religion. The medieval Western Christian engagement was shaped by the Crusades (1095–1291) — eight major military campaigns to recover the Holy Land from Muslim rule — and by the parallel intellectual encounter through Arabic scholarship in Spain (the convivencia, the period of relative Christian-Muslim-Jewish coexistence under Andalusian rule).</p>
+    <p>The fall of Constantinople to the Ottoman Turks on May 29, 1453, ended the Byzantine Empire and shaped Eastern Orthodox identity for centuries thereafter. The siege of Vienna (1683) marked the high-water mark of Ottoman expansion into Europe.</p>
+    <p>Major Christian theological engagements: <strong>Thomas Aquinas's <em>Summa Contra Gentiles</em></strong> (1259–65), partly composed as resources for Christian missionaries among Muslims. <strong>Ramon Llull</strong> (1232–1315), the Catalan philosopher who learned Arabic and devoted his life to the conversion of Muslims, the founder of Christian Arabic studies and ultimately martyred in Tunis. <strong>Henry Martyn</strong> (1781–1812), Anglican missionary to India and Persia who translated the New Testament into Urdu, Persian, and Arabic.</p>
+    <p>The modern era has produced both sharper confrontation and deeper dialogue. <strong>Louis Massignon</strong> (1883–1962), the French Catholic Islamicist whose study of al-Hallaj transformed Catholic-Muslim understanding. <strong>Kenneth Cragg</strong> (1913–2012), Anglican bishop and one of the most influential 20th-century Christian engagers of Islam (<em>The Call of the Minaret</em>, 1956). <strong>Hans Küng</strong>'s <em>Christianity and the World Religions</em> (1985) and <em>Islam: Past, Present, and Future</em> (2004). The contemporary movement of "Christian witness in a multi-religious world" through the World Council of Churches and the Vatican's Pontifical Council for Interreligious Dialogue continues this engagement.</p>
+    <p>Vatican II's <strong><em>Nostra Aetate</em></strong> §3 addressed Islam directly: "The Church regards with esteem also the Moslems. They adore the one God, living and subsisting in Himself; merciful and all-powerful, the Creator of heaven and earth, who has spoken to men; they take pains to submit wholeheartedly to even His inscrutable decrees, just as Abraham, with whom the faith of Islam takes pleasure in linking itself, submitted to God." The decree called for both parties to "forget the past and to work sincerely for mutual understanding and to preserve as well as to promote together for the benefit of all mankind social justice and moral welfare, as well as peace and freedom."</p>
+    <p>The <strong>A Common Word</strong> initiative (October 2007) was an open letter from 138 Muslim scholars to Pope Benedict XVI and other Christian leaders, calling for dialogue on the basis of the shared commandments to love God and neighbour. The initiative generated significant Christian response and ongoing dialogue networks.</p>
+    <p>The 21st century has been marked by violent extremism on the part of small but significant Muslim minorities (al-Qaeda, ISIS, Boko Haram), the persecution of Middle Eastern Christian communities to the point of near-extinction in some regions (Syria, Iraq), and ongoing demographic and political tensions in Western Europe and elsewhere — alongside vigorous dialogue, the continuing growth of Islam globally, and the conversion of significant numbers of Muslims to Christianity, particularly in the Middle East and North Africa (Iran, Algeria) under conditions of significant persecution.</p>`,
+    historicalNote: 'Muhammad was born c. 570 AD in Mecca, orphaned young, raised by his grandfather and uncle, became a merchant, and married the wealthy widow Khadijah at age 25. At age 40 (610 AD), during a religious retreat in the cave of Hira near Mecca, he received the first revelation through the angel Gabriel. The Hijra — Muhammad\'s migration from Mecca to Medina in 622 AD — marks the beginning of the Islamic calendar. After consolidating power in Medina, Muhammad returned to conquer Mecca peacefully in 630 AD; he died in 632 AD. The Sunni-Shi\'a split originates in the question of succession after Muhammad\'s death — Sunnis affirming the legitimacy of the first four "rightly-guided" caliphs (Abu Bakr, Umar, Uthman, Ali); Shi\'a holding that leadership belonged by right to Ali (Muhammad\'s cousin and son-in-law) and his descendants. The early Islamic conquests took Muslim rule from Spain to India within a century. The Abbasid Caliphate (750–1258), centred in Baghdad, produced the Islamic Golden Age — extraordinary contributions in mathematics (al-Khwarizmi, algorithms; algebra), medicine (Ibn Sina, the Canon of Medicine), philosophy (al-Farabi, Ibn Rushd/Averroes), and astronomy. The Ottoman Empire (1299–1923) was the last great Sunni Islamic empire; the Safavid (1501–1736) established Shi\'a Islam as the state religion of Iran.',
+    relatedReligions: ['rel-judaism'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'rel-hinduism',
+    name: 'Hinduism',
+    icon: '🕉️',
+    founded: 'Vedic period c. 1500–500 BC; classical Hinduism c. 200 BC–500 AD; no single founding moment',
+    adherents: '~1.2 billion worldwide; ~1.1 billion in India',
+    category: 'Dharmic',
+    founder: 'No single founder; the Vedas are held to be eternal (apaurusheya — "not of human authorship")',
+    summary: `Hinduism is the world's oldest major living religion — a vast and diverse tradition without a single founder, central authority, or universally-agreed creed. The English term "Hinduism" was coined by 19th-century British colonial administrators for the religious traditions of the Indian subcontinent; the term sanatana dharma ("eternal religion" or "eternal way") is the more traditional self-designation. Hinduism encompasses an extraordinary diversity of philosophical schools, devotional movements (bhakti), ritual traditions, monastic orders, and folk practices — held together not by doctrinal uniformity but by shared scriptures (the Vedas and the great epics), shared concepts (dharma, karma, moksha, samsara), shared rituals, and shared cultural matrices. Hindu thought encompasses strict monism (Advaita Vedanta, in which only Brahman is real), qualified non-dualism (Vishishtadvaita, in which souls are real distinct beings eternally related to Brahman), dualism (Dvaita, with God and souls as genuinely distinct), polytheism (the thousands of deities of folk practice), pantheism, and panentheism. The encounter between Hinduism and Christianity has been complex and continuing for two thousand years (the tradition of Thomas the Apostle in Kerala dates to the first century), though intensive engagement dates from the European colonial era.`,
+    coreBeliefs: `<p><strong>Brahman.</strong> The Absolute Reality, the ground of all being. In Advaita Vedanta (Shankara, 8th century), Brahman is nirguna ("without qualities") — the impersonal Absolute, beyond all distinctions, beyond all concepts; the world we perceive is maya, a kind of cosmic illusion. In other Vedantic schools (Ramanuja's Vishishtadvaita, Madhva's Dvaita), Brahman is saguna ("with qualities") — personal, supremely good, the proper object of devotion. The tension between impersonal and personal conceptions of the Absolute runs through all Hindu thought.</p>
+    <p><strong>The deities.</strong> Hindu devotional practice centres on a vast pantheon of deities. The Trimurti (the "three forms") — Brahma the creator, Vishnu the preserver, Shiva the destroyer-renewer — frames the cosmic functions. Vishnu's ten avataras (incarnations) include Rama and Krishna, around whom enormous devotional traditions have grown. Shiva is worshipped with his consort Parvati and his sons Ganesha (the elephant-headed remover of obstacles) and Kartikeya. The Devi — the Goddess in her many forms (Durga, Kali, Lakshmi, Saraswati, Parvati) — is worshipped both as the consort of male deities and as supreme deity in her own right in the Shakta traditions. The relationship between these deities and the one ultimate Brahman is variously understood: in some traditions they are aspects, manifestations, or accessible forms of the one Brahman; in others they are genuinely distinct deities; in still others they are devotional foci that point beyond themselves to the formless Absolute.</p>
+    <p><strong>Atman and the self.</strong> The atman is the true self, the inner consciousness, the witness behind the changing flux of body, sensations, thoughts, and emotions. In Advaita Vedanta, the atman is identical with Brahman — "tat tvam asi" ("that art thou," Chandogya Upanishad 6.8.7); the realization of this identity is liberation. In dualistic schools, the atman is distinct from Brahman but eternally related to him through devotion (bhakti) and grace.</p>
+    <p><strong>Karma and samsara.</strong> Every action has consequences that bear fruit; good actions produce good results, bad actions produce bad results, both in this life and in future lives. Samsara is the cycle of birth, death, and rebirth in which souls travel through countless lives, accumulating and burning karma, until eventual liberation (moksha). Time is cyclical and vast — yugas (epochs) succeed each other in long cycles, kalpas (cosmic days of Brahma) stretch across billions of years.</p>
+    <p><strong>Moksha — liberation.</strong> The ultimate spiritual goal is liberation from samsara — release from the cycle of rebirth into eternal union with or relationship to the Absolute. Different schools offer different paths (margas): the path of knowledge (jnana marga, the way of philosophical realization), the path of action (karma marga, the way of selfless action), the path of devotion (bhakti marga, the way of loving surrender to a personal God), and the path of meditation (raja marga or yoga, the way of inner discipline).</p>
+    <p><strong>Dharma.</strong> The cosmic and moral order; one's duty in accordance with that order. Dharma is shaped by one's stage of life (ashrama: student, householder, forest-dweller, renunciant), by one's social context (varna and jati, traditionally — caste in the Western shorthand), and by universal moral principles (sanatana dharma — the eternal principles such as non-violence, truthfulness, non-stealing, self-control, purity).</p>`,
+    keyTexts: [
+      { title: 'The Vedas', desc: 'The oldest sacred texts of Hinduism, traditionally regarded as eternally existing and not of human authorship (apaurusheya). The four Vedas are the Rig Veda (the oldest, c. 1500–1200 BC, containing hymns), Sama Veda, Yajur Veda, and Atharva Veda. Each Veda has four parts: Samhitas (hymns), Brahmanas (ritual instructions), Aranyakas (forest texts), and Upanishads (philosophical dialogues).' },
+      { title: 'The Upanishads', desc: 'The philosophical texts at the end of the Vedas (c. 800–500 BC), containing the foundational reflections on Brahman, atman, and moksha. The major (mukhya) Upanishads — Chandogya, Brihadaranyaka, Isha, Kena, Katha, Mundaka, Mandukya, Prasna, Aitareya, Taittiriya — are the source of most subsequent Hindu philosophy.' },
+      { title: 'The Bhagavad Gita', desc: 'Perhaps the single most widely-read Hindu text. Embedded in the Mahabharata, the Gita (c. 200 BC–200 AD) presents Krishna\'s discourse to the warrior Arjuna on the eve of battle, integrating the paths of knowledge, action, and devotion into a coherent vision. The 700 verses of the Gita are routinely committed to memory.' },
+      { title: 'The Mahabharata and the Ramayana', desc: 'The two great Sanskrit epics. The Mahabharata (composed c. 400 BC–400 AD) is the longest epic in world literature, containing the central Hindu philosophical reflections. The Ramayana (c. 500 BC–100 BC) tells the story of Rama, Sita, and Hanuman, and is the cultural backbone of Hindu devotional life.' },
+      { title: 'The Puranas', desc: 'Eighteen great Puranas (c. 300–1500 AD) containing mythology, cosmology, genealogy, and theology, with the Vishnu Purana, Shiva Purana, and Devi Bhagavata Purana shaping the devotional life of their respective sectarian traditions.' },
+      { title: 'The Brahma Sutras and the major commentaries', desc: 'Badarayana\'s Brahma Sutras (c. 200 BC–200 AD) systematize Upanishadic teaching. The three great commentaries — Shankara\'s Advaita (c. 800 AD), Ramanuja\'s Vishishtadvaita (12th century), and Madhva\'s Dvaita (13th century) — represent the three major Vedantic schools.' },
+    ],
+    pointsOfContact: `<p>Hinduism and Christianity, despite enormous differences, share more philosophical and religious territory than is often recognized.</p>
+    <p><strong>The transcendent Absolute.</strong> Both traditions affirm an ultimate reality that transcends the natural order — God in Christianity, Brahman in much of Hindu thought. Both refuse a flat materialism that reduces reality to physical processes alone.</p>
+    <p><strong>The personal God.</strong> The bhakti traditions of Hinduism — the Vaishnava devotion to Vishnu and his avataras (especially Krishna and Rama), the Shaiva devotion to Shiva, the Shakta devotion to the Goddess — affirm a personal supreme Being with whom human beings can enter into relationship of love. Ramanuja's Vishishtadvaita and Madhva's Dvaita are particularly close to the theistic structures of Christianity: a real personal God, a real distinct soul, a real relationship of love between them, a real grace.</p>
+    <p><strong>The longing for liberation.</strong> Both traditions affirm that the human predicament involves a deep need for release from the patterns that bind us — sin in Christianity, samsara and avidya (ignorance) in Hinduism. Both teach that liberation comes ultimately as gift, not as achievement alone.</p>
+    <p><strong>The path of devotion (bhakti).</strong> The Hindu bhakti tradition — the way of loving surrender to a personal God — has remarkable convergences with Christian spirituality. Krishna's promise in Bhagavad Gita 18:66 — "Abandoning all duties, take refuge in me alone; I will deliver you from all evils, do not grieve" — has been read by Christian dialogue partners as remarkably close to the gospel call to faith in Christ. The mystical writings of the Vaishnava and Shaiva poets — Ramprasad's hymns to Kali, Mira Bai's love-poems to Krishna, the Tamil Alvars and Nayanars — have a depth of devotional intensity that finds its closest Christian parallel in the mystical traditions of Bernard, Teresa, John of the Cross.</p>
+    <p><strong>The moral order (dharma).</strong> The Hindu concept of dharma — the cosmic and moral order — affirms that there is an objective right and wrong, that human life is meaningful, that ethical behavior matters cosmically. The principles of ahimsa (non-violence), satya (truthfulness), and karuna (compassion) overlap significantly with Christian moral teaching.</p>
+    <p><strong>The integration of life and worship.</strong> Hindu religious life integrates worship, meal, family, work, study, and meditation into a unified life of dharma. The Christian sacramental tradition has parallels — the sanctification of ordinary life through liturgical rhythm, the recognition that the secular and the sacred are not finally separable.</p>
+    <p><strong>Asceticism, monasticism, and contemplative life.</strong> Hindu monastic traditions (the sannyasi tradition, the swamis of the major monastic orders) have remarkable parallels with Christian monastic life — celibacy, simplicity, contemplative prayer, withdrawal from the world for the sake of God.</p>`,
+    pointsOfDivergence: `<p>The divergences between Hinduism and Christianity are deep and concentrated on the doctrine of God, the nature of the human person, the source of liberation, and the relationship between God and the world.</p>
+    <p><strong>The doctrine of God.</strong> Hinduism's most distinctive philosophical position — the Advaita Vedanta of Shankara — holds that ultimate reality (Brahman) is ultimately impersonal, without qualities, beyond all conceptual distinctions. The personal deities (Vishnu, Shiva, Devi) are saguna manifestations of the nirguna Brahman, eventually transcended in liberation. Christianity confesses God as eternally personal, eternally tri-personal, eternally relational — never finally beyond personhood, never the personhood is a lower level of reality to be transcended. The personal-impersonal question is one of the deepest divides in comparative religion.</p>
+    <p><strong>Reincarnation and resurrection.</strong> Hinduism teaches reincarnation (samsara) — the soul travels through countless lives, accumulating and burning karma, until eventual liberation. Christianity teaches one earthly life, followed by death, then judgment and resurrection to eternal life or eternal separation. The metaphysical assumptions about the soul, time, history, and the body that underlie these two pictures are fundamentally different.</p>
+    <p><strong>The self.</strong> Advaita Hinduism teaches that the deepest truth about the self is its identity with Brahman — that "I" in the deepest sense is Brahman, not a creature distinct from God. Christianity teaches that the self is a creature, real and distinct from God, never absorbed into God but eternally in relationship with him. "He must increase, but I must decrease" (John 3:30) is a different claim from "tat tvam asi" ("that art thou").</p>
+    <p><strong>The avatar and the Incarnation.</strong> Hinduism teaches that the divine descends into the world periodically through avataras — manifestations of Vishnu (Rama, Krishna, and others) who appear when dharma is in decline. Christianity confesses the Incarnation — God the Son becoming truly and permanently human, with a definite historical body, a definite death, a definite resurrection. The avatar is one of many descents in cyclical time; the Incarnation is the unique event of God entering history once and forever. As Krishna himself says in Bhagavad Gita 4:7–8, he comes "whenever there is decline of righteousness... in every age" — repeatedly. The Christian "once for all" (Hebrews 9:26) is incompatible.</p>
+    <p><strong>Salvation.</strong> Hinduism's primary soteriology (especially in the philosophical schools) is liberation through knowledge (jnana) — realizing one's true identity with Brahman, or one's true relationship as soul to the personal God. Karma — one's accumulated actions across many lifetimes — must be exhausted. Christianity teaches salvation by grace through faith in Christ's atoning death — not as the realization of an eternal truth about the self, but as a gift received from a God who has acted decisively in history.</p>
+    <p><strong>Caste.</strong> Traditional Hinduism is structured by the caste system (varna and jati), which Hindu reformers (Ram Mohan Roy in the 19th century, Gandhi in the 20th, Ambedkar's mass Buddhist conversions) have repeatedly challenged from within and which Hindu philosophy itself has resources to critique. Christianity teaches the equal dignity of every person in Christ (Galatians 3:28); the historic Christian engagement with caste has been a major locus of evangelism in India, with Dalit communities representing a disproportionately large share of Indian Christianity.</p>
+    <p><strong>The world.</strong> Some Hindu traditions (particularly Advaita) teach that the world is maya — illusion or appearance, ultimately not real. Christianity teaches the world as God's good creation, fallen but to be redeemed, not transcended but transfigured.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'Personal God or impersonal Absolute',
+        body: `<p>Advaita Vedanta teaches that ultimate reality (Brahman) is beyond personhood — that the personal God of devotional practice is a lower-level reality, ultimately transcended in liberation. Christianity confesses God as eternally personal — that personhood is not a limitation of God but the very reality of God, who has always existed in tri-personal love.</p>
+        <p><strong>Is the highest reality personal or beyond personhood? Does the human experience of love, knowledge, and moral responsibility point to a personal God who is their source, or to a deeper impersonal Absolute beyond all such distinctions?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'Avatar and Incarnation',
+        body: `<p>Hindu theology affirms many avataras — Krishna's promise in Bhagavad Gita 4:7–8 that he comes "whenever there is decline of righteousness" in every age. Christianity affirms a unique Incarnation — God the Son becoming permanently human, one historical body that died, rose, and ascended. Hinduism asks why Christ's claim should be unique; Christianity asks how an incarnation that recurs through history could ever finally save.</p>
+        <p><strong>What makes Christ's claim to be uniquely incarnate different in kind from the Hindu doctrine of repeated avataras — and is the difference one of theology or merely of historical accident?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'Reincarnation and one life',
+        body: `<p>Hinduism teaches that the soul migrates through countless lifetimes, accumulating and burning karma, until eventual liberation. Christianity teaches "it is appointed for man to die once, and after that comes judgment" (Hebrews 9:27). Hinduism finds in reincarnation a way to account for the apparent injustice of life — why some are born to suffering and others to ease, why apparent randomness governs lives. Christianity sees in resurrection the irreplaceable seriousness of this one life.</p>
+        <p><strong>Does reincarnation make sense of suffering and injustice in ways that one-life Christianity cannot? Or does the urgency and weight of this single life, on Christian assumptions, ground a moral seriousness that endless lifetimes dilute?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'The self: distinct creature or one with God',
+        body: `<p>Advaita Hinduism's central insight — "tat tvam asi" ("that art thou") — teaches that the deepest truth of the self is its identity with Brahman. Christianity teaches that the self is real, distinct from God, a creature made in God's image but never absorbed into God. The relationship between divine and human, in Hinduism's most rigorous philosophical form, is one of identity at the deepest level; in Christianity, of communion across an unbridgeable but lovingly crossed ontological distinction.</p>
+        <p><strong>Is the goal of religious life the discovery that you are God, or that you are loved by God? What is at stake — for prayer, for ethics, for the experience of selfhood — in this difference?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Many ways to one God',
+        body: `<p>Hinduism characteristically frames itself as inclusive: all sincere religious paths lead toward the divine; Vivekananda at the World's Parliament of Religions (Chicago, 1893) declared that Hinduism teaches "not only toleration but acceptance" of all religions as true paths. Christianity has traditionally claimed that Christ is "the way, the truth, and the life" (John 14:6) and that "there is no other name under heaven... by which we must be saved" (Acts 4:12).</p>
+        <p><strong>Can a religion be both fully committed to its own tradition's truth claim and genuinely open to other religions? Is Hinduism's tolerance a deeper truth, or a refusal to make the kinds of decisive claims that the gospel itself requires?</strong></p>`,
+      },
+    ],
+    historicalRelation: `<p>The Christian-Hindu encounter spans two thousand years and is one of the most theologically and culturally rich interreligious relationships in history.</p>
+    <p><strong>The Mar Thoma Christians.</strong> The Christian tradition of Kerala in southwest India traces itself to the Apostle Thomas, who tradition holds arrived in India in 52 AD and was martyred near Chennai (Mylapore) in 72 AD. The historical evidence for Thomas's actual ministry is contested, but ancient Christian communities in Kerala (the Saint Thomas Christians or Nasranis) have existed at least from the 3rd–4th centuries and represent one of the oldest continuous Christian communities outside the Mediterranean world.</p>
+    <p><strong>The Portuguese era (16th–17th centuries).</strong> The arrival of Vasco da Gama in Calicut (1498) and subsequent Portuguese colonization of Goa initiated a new era of Christian-Hindu contact. The Jesuit mission, beginning with Francis Xavier (in India from 1542), undertook substantial missionary work. <strong>Roberto de Nobili</strong> (1577–1656), the Jesuit in Madurai, pioneered what would later be called "inculturation" — adopting Indian customs, dress, and food, learning Sanskrit, engaging with Hindu philosophy on its own terms, and presenting Christianity in categories the Brahmin intellectual class could engage. Nobili's work was controversial in Rome but influential in subsequent missionary practice.</p>
+    <p><strong>The Protestant missions (18th–19th centuries).</strong> The Tranquebar Mission (Bartholomäus Ziegenbalg, 1706) and the work of <strong>William Carey</strong> (1761–1834) in Serampore launched the modern Protestant missionary movement in India. Carey translated the Bible into many Indian languages, established Serampore College (1818), and engaged Hindu society on social reform questions (notably the abolition of sati). The 19th-century encounter between Hindu reformers and Christianity transformed both traditions.</p>
+    <p><strong>The Hindu Renaissance.</strong> The encounter with Christianity (and with Western Enlightenment thought through colonial education) catalyzed a major reform movement within Hinduism. <strong>Raja Ram Mohan Roy</strong> (1772–1833) founded the Brahmo Samaj (1828), a monotheistic reform movement that drew on Upanishadic philosophy and Christian ethics in equal measure. <strong>Swami Vivekananda</strong> (1863–1902), the disciple of Ramakrishna, presented Hinduism to the World's Parliament of Religions (Chicago, September 1893) in a form that has shaped Western perceptions of Hinduism ever since. <strong>Sarvepalli Radhakrishnan</strong> (1888–1975), philosopher and President of India, gave the most influential 20th-century philosophical interpretation of Hinduism in its dialogue with Christianity.</p>
+    <p><strong>Gandhi.</strong> Mohandas Karamchand Gandhi (1869–1948) read the Sermon on the Mount with deep devotion and developed his theory of non-violent resistance (satyagraha) drawing on both Hindu (ahimsa) and Christian (the Sermon on the Mount, Tolstoy's interpretation of Christ) sources. Gandhi's witness has been a major touchpoint in 20th-century Christian-Hindu dialogue.</p>
+    <p><strong>Christian engagement with Hindu philosophy.</strong> The Catholic theologian <strong>Henri Le Saux</strong> (Swami Abhishiktananda, 1910–73) lived as a Hindu sannyasi while remaining a Catholic priest, producing significant works on the meeting of Christian and Hindu spiritual experience. <strong>Bede Griffiths</strong> (1906–1993), the Benedictine monk who founded Shantivanam ashram in Tamil Nadu, similarly explored the integration of Christian and Hindu contemplative life. <strong>Raimon Panikkar</strong> (1918–2010), the Spanish-Indian theologian, devoted his career to the systematic exploration of Christian-Hindu dialogue.</p>
+    <p><strong>The contemporary situation.</strong> Indian Christianity comprises approximately 2.3% of the Indian population (28 million people). The Catholic Church in India is the second-largest Christian community in Asia (after the Philippines). Dalit and Adivasi (tribal) communities have been disproportionate sources of Christian conversion. The rise of Hindutva nationalism since the 1990s has brought increased tension and, in some states, anti-conversion legislation. Persecution of Christian converts and missionaries has been documented in various contexts.</p>
+    <p>Hinduism's expansion into the Western world through the 20th century — the migrations following Indian independence (1947), the post-1965 American immigration reform, the Hare Krishna movement (ISKCON, founded by A.C. Bhaktivedanta Swami Prabhupada in 1966), the influence of figures like Maharishi Mahesh Yogi (Transcendental Meditation) — has made Christian-Hindu encounter no longer confined to India but a feature of life in Britain, the United States, Canada, Australia, and beyond.</p>`,
+    historicalNote: 'The Indus Valley Civilization (c. 2600–1900 BC) shows possible religious continuities with later Hinduism but predates the textual tradition. The Vedic period (c. 1500–500 BC) saw the composition of the Rig Veda and subsequent texts. The Upanishadic philosophical revolution (c. 800–500 BC) developed the central concepts of Brahman, atman, karma, and moksha. The Bhagavad Gita (c. 200 BC–200 AD) and the development of the major Vedantic schools — Shankara\'s Advaita (8th century), Ramanuja\'s Vishishtadvaita (11th–12th century), Madhva\'s Dvaita (13th century) — gave classical Hinduism its enduring philosophical form. The bhakti devotional movement (6th–17th century, with poets including the Tamil Alvars and Nayanars, the Vaishnava poets of North India, Mira Bai, Tulsidas, the Marathi saints) transformed Hindu religious life into one of personal devotion to a personal God. The colonial period (16th–20th centuries) brought decisive encounters with Christianity and Western thought. Indian independence (1947) and the subsequent rise of Hindu nationalism (the BJP\'s political ascendancy from 1980, formation of government 1996, dominance since 2014) have made Hinduism not only a religion but a politically organized cultural identity. The contemporary global Hindu diaspora numbers approximately 30 million.',
+    relatedReligions: ['rel-buddhism', 'rel-sikhism'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'rel-buddhism',
+    name: 'Buddhism',
+    icon: '☸️',
+    founded: 'c. 5th century BC, by Siddhartha Gautama (the Buddha)',
+    adherents: '~500 million worldwide; dominant in Thailand, Myanmar, Cambodia, Laos, Sri Lanka, Tibet, Mongolia, and significant in China, Japan, Korea, Vietnam',
+    category: 'Dharmic',
+    founder: 'Siddhartha Gautama, the Buddha ("the Awakened One"), c. 563–483 BC',
+    summary: `Buddhism is the fourth-largest world religion, founded in the 5th century BC in northern India by Siddhartha Gautama, the prince who renounced his royal life to discover the cause and cessation of suffering. After six years of ascetic seeking and a profound enlightenment under the Bodhi tree at Bodh Gaya, the Buddha taught for 45 years before his death (parinirvana) at approximately age 80. His teaching (the Dharma) is structured around the Four Noble Truths — the reality of suffering (dukkha), the cause of suffering (craving / tanha), the cessation of suffering, and the Eightfold Path that leads to cessation. Buddhism is distinctive among world religions in being non-theistic at its core — neither affirming nor denying a creator God, but considering the God-question soteriologically irrelevant. The three major branches are Theravada (the "Way of the Elders," dominant in Sri Lanka and Southeast Asia, focused on the original Pali canon and the path of personal liberation), Mahayana (the "Great Vehicle," dominant in East Asia, with the bodhisattva ideal of postponing personal liberation to help all sentient beings), and Vajrayana (the "Diamond Vehicle," primarily Tibetan Buddhism, integrating tantric practice with Mahayana foundations). The encounter between Buddhism and Christianity is one of the great unsettled philosophical conversations of the modern world.`,
+    coreBeliefs: `<p><strong>The Four Noble Truths.</strong> The Buddha's foundational diagnosis of the human predicament. (1) <em>Dukkha</em> — life is characterized by suffering, unsatisfactoriness, instability; even apparent pleasure is shadowed by its impermanence. (2) <em>Samudaya</em> — the cause of suffering is tanha (craving, attachment, thirst): we suffer because we cling to what is impermanent as if it were permanent, to what is not-self as if it were self. (3) <em>Nirodha</em> — the cessation of suffering is possible; by letting go of craving, the cycle of suffering can end. (4) <em>Magga</em> — the Eightfold Path is the way to cessation: right understanding, right intention, right speech, right action, right livelihood, right effort, right mindfulness, right concentration.</p>
+    <p><strong>The Three Marks of Existence.</strong> The Buddha's deepest metaphysical observations: (1) <em>Anicca</em> — impermanence: everything that arises also passes away; nothing endures unchanged. (2) <em>Dukkha</em> — unsatisfactoriness: because everything is impermanent, all conditioned existence is ultimately unable to provide lasting satisfaction. (3) <em>Anatta</em> — non-self: there is no permanent, unchanging "I" or soul behind the changing flux of body, sensations, perceptions, mental formations, and consciousness; the "person" is a conventional designation for a continually-changing stream of psychophysical events.</p>
+    <p><strong>Karma, samsara, and rebirth.</strong> Buddhism, sharing the Indian intellectual matrix from which it emerged, accepts karma (the moral law of action and result) and samsara (the cycle of birth, death, and rebirth across countless lives). But Buddhism distinctively reframes these: there is no soul (atman) that transmigrates from life to life. What "rebirth" means in Buddhism is a contested philosophical question — the various schools have given different accounts, but all maintain that the doctrine of anatta requires a careful reformulation of how karma and rebirth function without a substantial self.</p>
+    <p><strong>Nirvana.</strong> The final goal is nirvana (nibbana in Pali) — literally "extinguishing" or "blowing out." Nirvana is the extinguishing of craving, the cessation of suffering, the end of the cycle of rebirth. What nirvana positively is — beyond the cessation of craving — is one of the deep questions of Buddhist philosophy. The Buddha himself characteristically declined to specify nirvana positively, treating questions like "does the enlightened one exist after death?" as unproductive speculation that does not lead toward awakening.</p>
+    <p><strong>The Three Jewels.</strong> The basic objects of Buddhist refuge: the Buddha (the awakened teacher), the Dharma (his teaching, the truth he discovered), and the Sangha (the community of practitioners). Taking refuge in the Three Jewels is the basic act of becoming a Buddhist.</p>
+    <p><strong>The bodhisattva path (Mahayana).</strong> Mahayana Buddhism teaches that the highest spiritual aspiration is not personal liberation alone but to become a bodhisattva — one who, motivated by great compassion (mahakaruna), seeks enlightenment for the sake of all sentient beings, vowing to postpone final nirvana until all are liberated. The bodhisattva vow shapes Mahayana spirituality and ethics fundamentally.</p>
+    <p><strong>Emptiness (sunyata).</strong> Mahayana Buddhism, especially in Nagarjuna's Madhyamaka (2nd–3rd century AD), teaches that all phenomena are "empty" of inherent self-existence — nothing exists as a self-contained substance; everything arises in interdependent origination (pratityasamutpada). Emptiness is not nothingness but the absence of the kind of fixed, independent existence we ordinarily project onto things.</p>`,
+    keyTexts: [
+      { title: 'The Pali Canon (Tipitaka)', desc: 'The scriptures of Theravada Buddhism, in the Pali language, traditionally said to preserve the Buddha\'s teachings as recited at the First Council (c. 480 BC) and committed to writing in Sri Lanka c. 30 BC. The "Three Baskets" are the Vinaya (monastic discipline), Sutta (discourses of the Buddha), and Abhidhamma (systematic philosophical analysis). The Dhammapada — a collection of 423 verses from the Buddha — is the most widely-read Theravada text.' },
+      { title: 'The Mahayana Sutras', desc: 'A vast corpus of texts that emerged from the 1st century BC, claiming to preserve teachings the Buddha gave to advanced disciples. The most influential: the Heart Sutra and Diamond Sutra (foundational for understanding emptiness), the Lotus Sutra (foundational for East Asian Buddhism, especially Tendai and Nichiren traditions), the Pure Land Sutras (foundational for devotional Buddhism), and the Avatamsaka Sutra (foundational for Huayan/Hwaeom philosophy).' },
+      { title: 'Nagarjuna\'s Mulamadhyamakakarika', desc: 'The Fundamental Verses on the Middle Way (2nd–3rd century AD), the foundational philosophical text of the Madhyamaka school. Nagarjuna\'s analytical demonstration of emptiness has shaped Mahayana philosophy ever since.' },
+      { title: 'The Tibetan Book of the Dead (Bardo Thodol)', desc: 'The Liberation Through Hearing During the Intermediate State, a Tibetan funerary text describing the experiences of consciousness between death and rebirth. Said to have been composed by Padmasambhava in the 8th century and rediscovered as terma in the 14th century by Karma Lingpa.' },
+      { title: 'The Platform Sutra of Huineng', desc: 'The foundational Chan/Zen text, attributed to the Sixth Patriarch Huineng (638–713 AD), emphasizing sudden enlightenment and the doctrine that buddha-nature is innately present in every being.' },
+      { title: 'Dogen\'s Shobogenzo', desc: 'The Treasury of the True Dharma Eye (13th century), the magnum opus of Soto Zen\'s founder Eihei Dogen. Among the most philosophically demanding texts in any religious tradition.' },
+    ],
+    pointsOfContact: `<p>Buddhism and Christianity share more than a casual observer would expect, given their radically different starting points.</p>
+    <p><strong>The seriousness of the human condition.</strong> Both traditions take with full seriousness the predicament of human existence — that something is profoundly wrong with how we live, that we cannot fix it ourselves through ordinary means, that the cure requires a radical reorientation. Christian sin and Buddhist dukkha are not identical, but both refuse the easy optimism that says everything is basically fine.</p>
+    <p><strong>The diagnosis of self-centredness.</strong> Buddhism's analysis of craving (tanha) as the cause of suffering converges remarkably with the Christian analysis of sin as fundamentally curving in on the self (incurvatus in se, Augustine and Luther). Both identify the central spiritual problem as something like a fundamental misorientation of desire — toward self and toward what is finite — that generates the suffering we experience and the suffering we inflict.</p>
+    <p><strong>Compassion as central virtue.</strong> Mahayana Buddhism's exaltation of karuna (compassion) and the bodhisattva ideal has profound parallels in Christianity's love commandment and the imitation of Christ. Both traditions teach that the deepest moral truth is the call to love the suffering other.</p>
+    <p><strong>Non-grasping and self-emptying.</strong> The Christian doctrine of kenosis — Christ "emptying himself" (Philippians 2:7) — and the broader Christian call to give up the self for the sake of others has remarkable points of contact with the Buddhist call to relinquish attachment. Thomas Merton noted that the Christian "death to self" and the Buddhist letting-go of self are not the same, but they are not unrelated.</p>
+    <p><strong>Contemplative practice.</strong> Buddhist meditation traditions — vipassana, samatha, zazen, dzogchen — and Christian contemplative traditions — the Jesus Prayer, lectio divina, Carmelite contemplation, Centering Prayer — have generated centuries of mutually-illuminating practice and dialogue. Figures like Thomas Merton, Bede Griffiths, and the contemporary monastic interreligious dialogue have made this dialogue a major feature of late 20th and 21st century Christianity.</p>
+    <p><strong>Renunciation and monastic life.</strong> The Buddhist Sangha and the Christian monastic tradition are among the few institutions that have produced sustained communities of celibate, contemplative, non-violent renunciation across millennia. The structural parallels — vows, discipline, schedules of prayer/meditation, the relationship between cenobitic and eremitic life — are too close to be coincidence and too divergent to be the same thing.</p>
+    <p><strong>Non-violence.</strong> The Buddhist commitment to ahimsa (non-violence) and the Christian Sermon on the Mount converge in their teaching of radical non-retaliation and love even of enemies.</p>`,
+    pointsOfDivergence: `<p>The divergences are deep and concentrate on God, the self, salvation, and the nature of ultimate reality.</p>
+    <p><strong>God.</strong> The most striking difference is that Buddhism is non-theistic at its philosophical core. The Buddha himself, when asked metaphysical questions about a creator God, characteristically declined to answer — not because he denied a creator but because he held that such questions did not lead toward liberation. Mahayana traditions developed sophisticated theologies of the dharmakaya (the body of reality, the unconditioned), the Buddha-nature, and other transcendent realities — but these are not equivalent to the personal Creator God of Christianity. The Christian gospel begins with God's prior love and action; Buddhism does not.</p>
+    <p><strong>The self.</strong> The doctrine of anatta (non-self) is among Buddhism's most distinctive teachings. There is no permanent self, no eternal soul, no fixed "I" that persists through time and across lives. Christianity teaches the soul created by God in his image, real, persistent, and destined for resurrection. The two anthropologies are fundamentally different.</p>
+    <p><strong>Salvation: extinguishing or resurrection.</strong> The Buddhist soteriological goal is nirvana — the extinguishing of craving, the cessation of suffering, the end of rebirth. The Christian eschatological goal is resurrection — the bodily raising of the dead to eternal life with God, the new heaven and new earth, every tear wiped away. These are radically different visions of what the final human destiny is. The Buddhist hope is for cessation; the Christian hope is for fullness of being.</p>
+    <p><strong>The reality of the world.</strong> Buddhism teaches the impermanence of all conditioned things; many Buddhist schools (especially Madhyamaka) emphasize the emptiness of all phenomena. Christianity teaches the world as God's good creation, fallen but to be redeemed, not transcended but transfigured. The Buddhist movement is fundamentally one of release; the Christian movement is one of redemption.</p>
+    <p><strong>Suffering: intrinsic or fallen.</strong> The First Noble Truth — life is suffering — frames suffering as woven into the very fabric of conditioned existence. Christianity teaches that suffering entered through the Fall, that creation was originally good, and that suffering will be definitively overcome in the new creation. The Buddhist diagnosis treats suffering as a function of attachment to what is intrinsically impermanent; the Christian diagnosis treats it as a function of broken relationship that will be restored.</p>
+    <p><strong>The Other.</strong> Christianity is fundamentally a religion of encounter with the personal God who reveals himself, calls, judges, forgives, and saves. Buddhism, even in its most theistic Mahayana forms, is fundamentally a religion of awakening to a truth that is always present — the dharma was the dharma before the Buddha and would be after him. The Christian gospel is news; the Buddhist Dharma is timeless. The structural difference between revelation and realization runs deep.</p>
+    <p><strong>The role of the founder.</strong> Christ in Christianity is not a teacher whose discoveries we now possess — he is the unique incarnate God whose person and work are the salvation itself. The Buddha in Buddhism is a teacher who discovered and taught the timeless Dharma — what saves is the Dharma, not the Buddha. As the Theravada formulation puts it: "Whether Tathagatas (Buddhas) arise or do not arise, this principle remains" (Samyutta Nikaya 12.20).</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'God or no-God',
+        body: `<p>Buddhism is fundamentally non-theistic — neither affirming nor denying a creator God, but considering the God-question soteriologically irrelevant. Christianity makes the personal Creator God the centre of reality. The Buddha taught that questions about a creator God were "thickets, wildernesses, contortions" that did not lead to liberation; Christianity teaches that knowing God is precisely the point.</p>
+        <p><strong>Can a religion that brackets the God-question still answer the deepest human longings? Or does the Christian claim that we are created and loved by a Person make a difference the Buddha overlooked?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'Anatta and the soul',
+        body: `<p>Buddhism teaches anatta — that there is no permanent self; the "person" is a continually-changing aggregate of physical and mental phenomena. Christianity teaches the immortal soul, made in God's image, destined for resurrection. The Buddhist analysis of the self as conventional designation rather than substantial entity is among the most rigorous in world philosophy.</p>
+        <p><strong>Are we genuinely persons with continuing identity, or is the persistent sense of "I" a sustained illusion? And if there is no real self, who is it that is liberated in nirvana — and who is it that loves and is loved in this lifetime?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'Suffering as intrinsic or fallen',
+        body: `<p>The First Noble Truth is that life is dukkha — suffering, unsatisfactoriness — woven into the very nature of conditioned existence. Christianity teaches that creation was originally good, that suffering entered through the Fall, and that suffering will be definitively overcome in the new creation. The Buddha says suffering is intrinsic to existence; the Bible says it is a wound in existence that will be healed.</p>
+        <p><strong>Is the world we live in fundamentally broken, or fundamentally fine but full of attachment? Does the universal experience of suffering point to a metaphysical truth about existence as such, or to a particular fall from a good creation that will be redeemed?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Nirvana and resurrection',
+        body: `<p>Buddhism's final hope is nirvana — the extinguishing of craving, the cessation of rebirth, the end of suffering. Christianity's final hope is resurrection — bodily life in the new creation, the kingdom of God where God dwells with his people, every tear wiped from every eye. The Buddhist hope is for the cessation of conditioned existence; the Christian hope is for the transformation and intensification of being.</p>
+        <p><strong>Is the deepest human hope the extinguishing of self, or its redemption? Do we yearn for the end of our striving or for its fulfillment?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Compassion without a creator',
+        body: `<p>Mahayana Buddhism's karuna (compassion) and the bodhisattva ideal — the vow to delay personal liberation to help all sentient beings — has commanded profound moral seriousness for two thousand years. Christianity grounds love in the very nature of the Triune God himself: "God is love" (1 John 4:8). The Buddhist bodhisattva acts out of recognition of the suffering of others without needing a metaphysical foundation in a loving God.</p>
+        <p><strong>Without a personal God, what finally grounds the moral demand to love? Is the bodhisattva ideal a free-standing moral discovery, or does it implicitly point toward what Christianity makes explicit — that ultimate reality is itself love?</strong></p>`,
+      },
+    ],
+    historicalRelation: `<p>The Christian-Buddhist encounter is comparatively young as major interreligious encounters go, though it now ranks among the most theologically and philosophically significant.</p>
+    <p><strong>Early contacts.</strong> Greco-Buddhist contact in the Hellenistic period (after Alexander's conquests, 4th century BC) produced both philosophical exchange (Pyrrho of Elis is said to have encountered Indian gymnosophists) and artistic exchange (the Greco-Buddhist art of Gandhara produced some of the earliest figural representations of the Buddha). The Greek-influenced Indo-Greek and Kushan kingdoms (2nd century BC–3rd century AD) hosted Buddhist communities. Whether early Christianity encountered Buddhism in any direct way is debated — the parallels noted by some between the lives of Jesus and the Buddha are more likely products of common features of religious biography than of historical influence.</p>
+    <p><strong>The Silk Road.</strong> Buddhist communities along the Silk Road encountered Nestorian Christians from at least the 7th century. The Xi'an Stele (781 AD) documents the presence of a Christian (Nestorian) community in Tang dynasty China, sometimes called the "Luminous Religion" (Jingjiao). The interactions between Nestorian Christianity and Chinese Buddhism are evident in some of the Chinese Christian texts of this era (the Jesus Sutras), though the Nestorian community was largely extinguished by the 9th century.</p>
+    <p><strong>The European discovery of Buddhism.</strong> European awareness of Buddhism as a coherent religious system developed gradually through Catholic missionary contacts. Marco Polo's accounts (13th century) mention Buddhist practices. The Jesuit missions to Japan (Francis Xavier from 1549) and China (Matteo Ricci from 1583) brought Christianity into substantial contact with Mahayana Buddhism. Xavier's encounters with Japanese Buddhism shaped his missionary strategy and his (sometimes uncharitable) characterizations. Ricci's accommodationist strategy in China engaged Confucianism more than Buddhism but indirectly shaped Christian-Buddhist relations.</p>
+    <p><strong>The colonial and missionary era.</strong> 19th-century European discovery of Buddhist texts — the publication of the Pali Canon, the translation of major Sanskrit Buddhist works, the work of scholars like T.W. Rhys Davids and Max Müller — gave European intellectuals their first systematic access to Buddhist thought. Schopenhauer was deeply influenced by his encounter with Buddhism through translations available to him. The Theosophical Society (Helena Blavatsky, 1875) introduced Buddhism (in a particular Western form) to Western publics. The World's Parliament of Religions (Chicago, 1893) brought Buddhist representatives (notably Anagarika Dharmapala from Sri Lanka and Soyen Shaku from Japan) to international attention.</p>
+    <p><strong>The 20th-century Western encounter.</strong> D.T. Suzuki's introductions to Zen Buddhism (from the 1920s) introduced Mahayana Buddhism to Western audiences in significant depth. The Beat Generation (Jack Kerouac, Allen Ginsberg, Gary Snyder) brought Buddhism into American popular culture in the 1950s–60s. The Tibetan diaspora following Chinese invasion of Tibet (1950–59) brought the Dalai Lama and substantial Tibetan Buddhist community to the West.</p>
+    <p><strong>Christian-Buddhist monastic dialogue.</strong> The most theologically serious Christian-Buddhist dialogue has developed through monastic encounter. <strong>Thomas Merton</strong> (1915–68), the Trappist monk, undertook serious engagement with Buddhist thought, particularly with D.T. Suzuki and the Dalai Lama. Merton's death in Bangkok during a monastic interreligious dialogue conference (December 10, 1968) marked both the high point and tragic interruption of his Buddhist engagement. The Monastic Interreligious Dialogue (MID, founded 1978) has sustained this exchange. <strong>Bede Griffiths</strong> at Shantivanam in India, the Snowmass Conference (since 1980), and many other initiatives have continued the dialogue.</p>
+    <p><strong>Major theological engagements.</strong> <strong>Paul Tillich</strong> engaged Buddhism in his late work, particularly his trip to Japan in 1960. <strong>John Cobb</strong>'s <em>Christ in a Pluralistic Age</em> (1975) and <em>Beyond Dialogue</em> (1982) developed process-theological engagement with Buddhist philosophy. <strong>Masao Abe</strong> (1915–2006), the Kyoto School philosopher, conducted sustained dialogue with Christian theologians on questions of kenosis, emptiness, and ultimate reality. <strong>Hans Küng</strong>'s <em>Christianity and the World Religions</em> includes substantial Buddhist engagement.</p>
+    <p><strong>The contemporary global situation.</strong> Buddhism in the West has shifted from primarily ethnic immigrant communities (Chinese, Vietnamese, Tibetan, Japanese) to substantial convert communities, with mindfulness practices migrating into therapeutic and medical contexts. Christian communities in traditionally Buddhist countries (South Korea is approximately 30% Christian, Vietnam approximately 7%, Thailand under 1%) have shown different patterns of growth and challenge. The Buddhist persecution of Christian and Muslim minorities in Myanmar (Rohingya crisis), Sri Lanka (anti-Tamil and anti-Christian violence), and elsewhere has complicated the popular Western image of Buddhism as uniquely peaceful.</p>`,
+    historicalNote: 'Siddhartha Gautama was born c. 563 BC (some scholars favor c. 480 BC) in Lumbini (modern Nepal) to the Shakya royal family. After encountering old age, sickness, death, and a wandering ascetic outside his palace, he renounced his royal life at age 29, undertook six years of severe asceticism, and achieved enlightenment under the Bodhi tree at Bodh Gaya at age 35. He taught for 45 years before his death (parinirvana) at Kushinagar at approximately age 80. The First Council (c. 480 BC) at Rajagriha is traditionally said to have established the Buddhist canon by oral recitation. The Third Council under Emperor Ashoka (c. 250 BC) sent Buddhist missionaries throughout the known world, beginning the spread of Buddhism beyond India. The arrival of Buddhism in China (1st century AD), Korea (4th century), Japan (6th century), and Tibet (7th century) shaped East Asian civilization profoundly. The decline of Buddhism in India (5th–13th centuries) and its near-extinction there after the Muslim conquests was paralleled by its flourishing across East and Southeast Asia. The 14th Dalai Lama (Tenzin Gyatso, b. 1935) was awarded the Nobel Peace Prize in 1989. Buddhism\'s contemporary global growth in Western countries through mindfulness, meditation, and convert communities has made it one of the fastest-growing religious traditions outside its traditional homelands.',
+    relatedReligions: ['rel-hinduism'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'rel-sikhism',
+    name: 'Sikhism',
+    icon: '☬',
+    founded: '1469 AD, by Guru Nanak Dev Ji (1469–1539)',
+    adherents: '~30 million worldwide; ~25 million in India (predominantly Punjab); significant diaspora in Canada, UK, USA',
+    category: 'Dharmic',
+    founder: 'Guru Nanak Dev Ji (1469–1539); succession of ten gurus through Guru Gobind Singh (1666–1708)',
+    summary: `Sikhism is the youngest of the major world religions, founded in the Punjab region of South Asia in the late 15th century by Guru Nanak Dev Ji. The Sikh tradition is structured around the teaching and example of ten human gurus (1469–1708) and the eternal Guru — the sacred scripture, the Guru Granth Sahib, which Guru Gobind Singh (the tenth guru) declared the perpetual guru after him. Sikhism teaches strict monotheism — one God who is creator of all that exists, beyond gender, beyond form, present in all reality and accessible to every human being regardless of caste, sex, or social status. The Sikh way of life centers on honest work (kirat karni), remembrance of God's name (naam japna), and sharing with others (vand chakna). The fivefold articles of faith for initiated (Khalsa) Sikhs — kesh (uncut hair, usually under a turban), kara (steel bracelet), kanga (wooden comb), kachera (cotton undergarments), and kirpan (ceremonial sword) — give Sikhs their distinctive global identity. Sikhism is the fifth-largest organized religion in the world.`,
+    coreBeliefs: `<p><strong>Ik Onkar — One God.</strong> The opening words of the Guru Granth Sahib: "Ik Onkar" — "One God." Sikhism is strictly monotheistic. God is one, eternal, the creator of all, beyond birth and death, beyond gender, beyond all human categories, accessible to every soul through devotion. God is variously named in the Sikh tradition — Waheguru (Wonderful Lord), Sat Nam (True Name), Akal Purakh (Timeless Being) — but is in essence beyond all names.</p>
+    <p><strong>The ten Gurus.</strong> The lineage of teachers who shaped Sikhism: Guru Nanak (1469–1539, the founder); Guru Angad (1504–1552, who systematized Gurmukhi script); Guru Amar Das (1479–1574, who established the langar tradition); Guru Ram Das (1534–1581, founder of Amritsar); Guru Arjan (1563–1606, compiler of the Adi Granth, martyred by the Mughal emperor Jahangir); Guru Hargobind (1595–1644, who introduced the warrior dimension); Guru Har Rai (1630–1661); Guru Har Krishan (1656–1664); Guru Tegh Bahadur (1621–1675, martyred defending Kashmiri Hindus' religious freedom); Guru Gobind Singh (1666–1708, founder of the Khalsa, the tenth and final human guru, who declared the Guru Granth Sahib the eternal guru).</p>
+    <p><strong>The Guru Granth Sahib.</strong> The sacred scripture of Sikhism, declared by Guru Gobind Singh in 1708 to be the eternal Guru. It contains 5,894 hymns — the writings of six of the Sikh Gurus plus selected writings from Hindu bhakti saints (Kabir, Ravidas, Namdev, Sain) and Sufi mystics (Sheikh Farid). The Adi Granth was first compiled by Guru Arjan in 1604 and given final form by Guru Gobind Singh. The Guru Granth Sahib is treated with the reverence due to a living guru — placed on a throne (palki) in every gurdwara, ceremonially opened in the morning and put to rest at night, addressed in worship and consulted in major life decisions.</p>
+    <p><strong>The three pillars of Sikh life.</strong> (1) <em>Naam Japna</em> — remembrance of God's name through prayer, meditation, and continual mindfulness. (2) <em>Kirat Karni</em> — honest work as the basis of livelihood; Sikhs are forbidden from begging and are expected to earn through legitimate labor. (3) <em>Vand Chakna</em> — sharing with others; the obligation to give to those in need and to share what one has earned.</p>
+    <p><strong>The Khalsa and the Five Ks.</strong> Initiated Sikhs (Khalsa, "the pure") wear five articles of faith established by Guru Gobind Singh at the Vaisakhi of 1699: (1) <em>Kesh</em> — uncut hair, symbolizing acceptance of God's will and natural form; (2) <em>Kara</em> — a steel bracelet, symbolizing the unbroken bond with God; (3) <em>Kanga</em> — a wooden comb, symbolizing cleanliness and discipline; (4) <em>Kachera</em> — cotton undergarments, symbolizing modesty and self-control; (5) <em>Kirpan</em> — a ceremonial sword, symbolizing the duty to defend the weak and oppose injustice.</p>
+    <p><strong>Equality.</strong> Sikhism teaches the equality of all human beings regardless of caste, sex, religion, or social status. Guru Nanak's foundational declaration — "There is no Hindu, no Muslim" — established Sikhism as a religion that transcends communal divisions. The langar (free community meal served in every gurdwara) embodies this commitment: all are seated together on the floor at the same level, all eat the same food, regardless of background.</p>
+    <p><strong>Reincarnation and liberation.</strong> Sikhism, sharing the Indian intellectual matrix, accepts reincarnation. The soul transmigrates through countless lives until liberation (mukti) is achieved through union with God. But Sikhism teaches that liberation is possible in this life through grace and dedicated devotion — not as a postponed result of countless lifetimes.</p>`,
+    keyTexts: [
+      { title: 'The Guru Granth Sahib', desc: 'The eternal Guru of the Sikhs, declared so by Guru Gobind Singh in 1708. Contains 5,894 hymns in 31 ragas (musical modes), with contributions from six Sikh Gurus (Nanak, Angad, Amar Das, Ram Das, Arjan, Tegh Bahadur), 15 Hindu bhakti saints and Sufi Muslim mystics, and other contributors. The standard text contains 1,430 pages (angs).' },
+      { title: 'The Dasam Granth', desc: 'The "Tenth Book," primarily attributed to Guru Gobind Singh. Contains his compositions including the Jaap Sahib, Akal Ustat, and the Zafarnama (his letter to Emperor Aurangzeb). The Dasam Granth\'s authority is secondary to the Guru Granth Sahib but central to Khalsa practice.' },
+      { title: 'The Janamsakhis', desc: 'The traditional biographies of Guru Nanak, recording his life, travels, and teachings. The earliest extant Janamsakhis date from the late 16th and 17th centuries.' },
+      { title: 'Bhai Gurdas\'s Vaars', desc: 'The compositions of Bhai Gurdas (1551–1636), the scribe of the Adi Granth and a leading early Sikh theologian. His 39 vaars (ballads) are read as the "key to the Guru Granth Sahib."' },
+      { title: 'The Rehat Maryada', desc: 'The "Sikh Code of Conduct" — the official prescribed practice of Sikh life and worship, published in 1945 by the Shiromani Gurdwara Parbandhak Committee.' },
+    ],
+    pointsOfContact: `<p>Sikhism, despite emerging from a different historical and cultural matrix, shares significant theological and ethical territory with Christianity.</p>
+    <p><strong>Strict monotheism.</strong> Sikhism's "Ik Onkar" (One God) is structurally similar to the Christian (and Jewish, and Islamic) confession of one God. Both traditions reject polytheism, both teach that God is one, eternal, creator of all that exists. The opening of the Mool Mantar — "Ik Onkar, Sat Nam, Karta Purakh" ("One God, True Name, Creator Being") — would be unobjectionable to Christian monotheism in its basic structure.</p>
+    <p><strong>God as personal and accessible.</strong> Both traditions teach a personal God to whom human beings can pray, with whom they can have relationship, who hears, who responds in love. The Sikh emphasis on naam japna (remembrance of God's name) has parallels in the Christian Jesus Prayer tradition and the broader practice of continual prayer.</p>
+    <p><strong>The dignity and equality of every person.</strong> Sikhism's foundational commitment to the equality of all human beings — irrespective of caste, sex, religion, race — converges with the Christian conviction that every person bears the image of God. Guru Nanak's challenge to caste and his elevation of women to spiritual equality were among the most radical social claims of his era; they parallel similar (if differently grounded) Christian convictions.</p>
+    <p><strong>The integration of devotion and ethics.</strong> The three pillars of Sikh life — remembrance of God, honest work, sharing with others — articulate a vision of integrated spiritual and ethical life that is structurally similar to Christian teaching: prayer, vocational integrity, generosity. Both traditions refuse the separation of "spiritual" and "worldly" categories.</p>
+    <p><strong>Religion as service.</strong> The langar tradition — the free community meal served in every gurdwara, with millions of meals served weekly worldwide — embodies a vision of religion as practical service to humanity that Christian traditions of hospitality and care for the poor recognize as their own.</p>
+    <p><strong>Martyrdom and witness.</strong> Sikhism has a substantial martyrdom tradition — particularly the martyrdom of Guru Arjan (1606), Guru Tegh Bahadur (1675), and the four sahibzade (the sons of Guru Gobind Singh). Tegh Bahadur's martyrdom was specifically for the religious freedom of Kashmiri Hindus — dying not for his own faith but for others' freedom to practice theirs. This witness to religious freedom and the courage of faith has clear Christian resonances.</p>
+    <p><strong>The defense of the oppressed.</strong> The kirpan — the ceremonial sword worn by initiated Sikhs — symbolizes the duty to defend the weak and oppose injustice. Sikh tradition has a substantial just-war tradition, with limits on warfare and a commitment to fight only as a last resort. The Christian just-war tradition, while differently developed, shares similar concerns.</p>`,
+    pointsOfDivergence: `<p>The divergences are real and concentrated on the person of Christ, the doctrine of God, the nature of salvation, and several distinctive Indian/Christian metaphysical assumptions.</p>
+    <p><strong>The Trinity and the Incarnation.</strong> Sikhism, like Islam and Judaism, rejects the Christian doctrine of the Trinity as inconsistent with strict monotheism. God in Sikh theology is one — without partners, without offspring, without incarnation. The Christian claim that God became permanently human in Christ is incompatible with the Sikh understanding of God as Akal Purakh — the Timeless Being beyond all forms. Sikhism honors Jesus as one among many holy teachers, but does not affirm his unique deity or his role as savior.</p>
+    <p><strong>Reincarnation and one life.</strong> Sikhism teaches reincarnation — the soul migrates through many lives until liberation is achieved through grace and devotion. Christianity teaches one earthly life followed by judgment and resurrection. The Indian framework of karma, samsara, and moksha that Sikhism inherits from its broader Dharmic matrix is foreign to Christian eschatology.</p>
+    <p><strong>The Gurus and the saints.</strong> Sikhism's distinctive doctrine — that the ten human Gurus and the eternal Guru (the Guru Granth Sahib) are the channel of God's saving message — has no direct Christian parallel. Christianity affirms the unique authority of Christ and (in Catholic, Orthodox, and Anglican traditions) the apostolic succession through bishops and the canonical Scriptures. The Sikh doctrine of a specific lineage of Gurus is distinctive.</p>
+    <p><strong>Salvation.</strong> Sikh soteriology is centered on union with God through naam japna (remembrance), grace, and ethical living across one or many lifetimes. Christian soteriology is centered on Christ's atoning death and resurrection, with salvation as God's gift received by faith. The Sikh tradition does not have a doctrine of the atonement in the Christian sense — there is no need for one because there is no Christian doctrine of original sin or substitutionary atonement to which Sikh theology must respond.</p>
+    <p><strong>The body and physical practice.</strong> Sikhism's distinctive bodily disciplines — the Five Ks, particularly the uncut hair (kesh) — are unique to Sikh practice and have no Christian parallel. The body, in Sikh tradition, bears the marks of devotion in ways that most Christian traditions do not require.</p>
+    <p><strong>Religious inclusivism.</strong> Sikhism characteristically takes an inclusivist view of other religions — many paths can lead to God; Guru Nanak's declaration that "There is no Hindu, no Muslim" is read as affirming the underlying unity beneath diverse religious expressions. Christianity has traditionally claimed Christ as the way, the truth, and the life (John 14:6); the contemporary Christian theological discussion of religious pluralism is one of the most contested questions in modern theology.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'One God, no incarnation',
+        body: `<p>Sikhism affirms one God as strongly as any monotheistic tradition — Akal Purakh, the Timeless Being, beyond all forms, beyond all incarnations. Christianity affirms one God who has become permanently human in Christ. Sikhism honors Jesus as a great teacher and saint but denies his unique deity; Christianity holds that Christ's deity is not optional to the gospel.</p>
+        <p><strong>Can the Christian doctrine of the Incarnation be reconciled with the strict monotheism that Sikhism, Judaism, and Islam all share — or does the Incarnation finally name a different conception of God than these other monotheisms allow?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'The equality of all',
+        body: `<p>Sikhism's foundational commitment to the equality of all human beings — across caste, sex, race, religion — was articulated in late 15th-century Punjab with extraordinary radicality. Guru Nanak's declaration "There is no Hindu, no Muslim" and the practice of langar (where all eat together at the same level regardless of background) embodied this commitment. Christianity has historically affirmed the equal dignity of every person in Christ but has often failed to embody it (the history of caste-like distinctions, racial segregation, gender hierarchies).</p>
+        <p><strong>Has Sikhism done a better job than historic Christianity of living out the equal dignity of every human being? And what does it mean theologically that Sikh practice — particularly the langar — has so visibly embodied a principle that Christianity has often only proclaimed?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'Many paths or one way',
+        body: `<p>Sikhism characteristically holds that many religious paths can lead to God; God is named differently in different traditions but is finally one. Guru Granth Sahib includes writings from Hindu bhakti saints and Muslim Sufi mystics alongside the Sikh Gurus — institutionalizing this religious inclusivism in the very structure of Sikh scripture. Christianity has traditionally claimed that Christ is "the way, the truth, and the life" (John 14:6) and that "there is no other name under heaven... by which we must be saved" (Acts 4:12).</p>
+        <p><strong>Is the Sikh inclusivist position closer to the truth than traditional Christian exclusivism — that God receives sincere devotion under whatever name? Or does the Christian gospel require an exclusivity that the Sikh tradition refuses?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'Reincarnation vs. resurrection',
+        body: `<p>Sikhism teaches that the soul migrates through countless lives until liberation through union with God. Christianity teaches one earthly life followed by judgment and resurrection. The reincarnation framework gives Sikh ethics a long arc — actions across many lifetimes are accumulating consequences. The Christian one-life framework gives this single life an irreplaceable weight.</p>
+        <p><strong>Does the seriousness of this single life depend on its uniqueness, as Christianity teaches — or can the moral weight of action survive the recognition that we may live many lives, as Sikhism teaches?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'The body, the hair, the sword',
+        body: `<p>The Five Ks of the Khalsa — uncut hair, the steel bracelet, the comb, the cotton undergarments, the ceremonial sword — mark initiated Sikhs visibly in every culture they enter. The body bears the marks of devotion in a way most Christian traditions do not require (with the partial exceptions of clerical and monastic dress). The kirpan symbolizes both the duty of self-defense and the duty to defend others.</p>
+        <p><strong>Does the Sikh integration of body, identity, and faith offer something the Christian tradition has lost — or does the freedom of Christian believers from required external markers reflect a different (and better) theology of the body and grace?</strong></p>`,
+      },
+    ],
+    historicalRelation: `<p>The Sikh-Christian encounter is comparatively recent, dating substantially from the British colonial period in India (18th–20th centuries).</p>
+    <p><strong>The founding context.</strong> Guru Nanak (1469–1539) developed Sikhism in the religious matrix of late medieval Punjab, where Hindu bhakti traditions and Muslim Sufi mysticism encountered each other intensively. Nanak's teaching can be read in part as a response to and integration of these two traditions — a unifying monotheism that transcended Hindu-Muslim sectarian division. Christianity was not a significant interlocutor in early Sikh theological development; the first European Christian contact with Sikhism dates from after Guru Nanak's lifetime.</p>
+    <p><strong>The Mughal period.</strong> The major theological and political opposition Sikhism faced through its formative period (1469–1708) was from Mughal Islam, not Christianity. The martyrdoms of Guru Arjan (1606, under Emperor Jahangir) and Guru Tegh Bahadur (1675, under Emperor Aurangzeb) shaped Sikh identity as a religion willing to die for religious freedom — for itself and others.</p>
+    <p><strong>The British colonial era.</strong> Christian-Sikh encounter began substantially in the 18th and 19th centuries through British colonial presence in Punjab. The British annexation of Punjab in 1849 brought Protestant Christian missionary work into the heartland of Sikhism. Major missionary activity included translation work (the Bible was translated into Punjabi and Gurmukhi) and educational institutions. Christian Punjabi communities developed, with some conversion from Sikh and Hindu backgrounds — though Sikhism was generally less penetrated by Christian conversion than Hindu society more broadly.</p>
+    <p><strong>The Singh Sabha and Sikh reform.</strong> Late 19th-century Sikhism, partly in response to Christian and Hindu reformist pressure, developed its own reform and self-articulation movement — the Singh Sabha (founded 1873). The Sikh tradition's distinctive identity was sharpened in this period, particularly through the work of Bhai Vir Singh, Bhai Kahn Singh Nabha, and others.</p>
+    <p><strong>Partition and diaspora.</strong> The Partition of India (August 1947) cut the Punjab in two, with West Punjab going to Pakistan and East Punjab to India. The Sikh community suffered catastrophically — approximately one million people died across the Punjab Partition, and Sikhs were essentially eliminated from West Punjab. The Sikh diaspora dates substantially from this period and has expanded enormously in subsequent decades. The Sikh diaspora today is largest in Canada (~770,000), the UK (~500,000), the United States (~700,000), and Australia (~210,000).</p>
+    <p><strong>Operation Blue Star and the 1984 violence.</strong> The Indian Army's assault on the Golden Temple complex in Amritsar (June 1984) and the subsequent anti-Sikh violence after the assassination of Indira Gandhi (October–November 1984) shaped contemporary Sikh identity profoundly. Christian-Sikh relations were not directly involved, but the experience of state violence has shaped the Sikh diaspora's political engagement.</p>
+    <p><strong>Contemporary dialogue.</strong> Christian-Sikh dialogue has developed primarily in the diaspora contexts where Sikh and Christian communities live in proximity. The Council on Christian-Sikh Relations (UK), various American interfaith organizations, and gurdwara-church partnerships in Canada and elsewhere have built sustained relationships. The post-9/11 increase in anti-Sikh violence (often based on the misidentification of turban-wearing Sikhs as Muslims) has shaped Christian-Sikh interfaith solidarity in the West.</p>
+    <p><strong>Sikh communities in the West.</strong> Sikh gurdwaras in cities across North America, Europe, and Australia have become focal points for interfaith engagement. The langar tradition — open to anyone of any background — has been a particularly accessible point of contact. Sikh communities have been involved in disaster relief globally (during COVID, in flood response, in famine relief) with notable scale and discipline.</p>`,
+    historicalNote: 'Guru Nanak was born at Talwandi (now Nankana Sahib, Pakistan) in 1469. He undertook extensive travels (the udasis) reportedly reaching Mecca, Baghdad, Sri Lanka, and Tibet, teaching everywhere. He established the first Sikh community at Kartarpur. The succession of ten Gurus shaped Sikhism through 239 years (1469–1708). Guru Arjan compiled the Adi Granth in 1604 at Amritsar. Guru Gobind Singh established the Khalsa at the Vaisakhi of April 13, 1699, and declared the Guru Granth Sahib the eternal Guru in 1708 before his death. The Sikh Empire under Maharaja Ranjit Singh (1801–1839) was the last great pre-colonial Indian state, conquered by the British in two Anglo-Sikh Wars (1845–46 and 1848–49). The Singh Sabha reform movement (founded 1873) sharpened modern Sikh identity. The Partition of India (1947) killed approximately one million people across the Punjab and created the modern Sikh diaspora. The Indian Army\'s Operation Blue Star (June 1984) and the anti-Sikh pogroms of November 1984 killed thousands. The Sikh diaspora today numbers approximately 5 million worldwide.',
+    relatedReligions: ['rel-hinduism', 'rel-islam'],
+  },
+
+  // ╔══════════════════════════════════════════════════════════╗
+  {
+    id: 'rel-bahai',
+    name: 'The Bahá\'í Faith',
+    icon: '⭐',
+    founded: '1844 (the Báb), 1863 (Bahá\'u\'lláh\'s public declaration)',
+    adherents: '~8 million worldwide, present in over 220 countries and territories',
+    category: 'Independent monotheism',
+    founder: 'The Báb (Siyyid \'Alí Muhammad, 1819–1850) and Bahá\'u\'lláh (Mírzá Husayn-\'Alí Núrí, 1817–1892)',
+    summary: `The Bahá'í Faith is one of the youngest of the world religions and the only major one to claim that all the great religions — Hinduism, Judaism, Zoroastrianism, Buddhism, Christianity, Islam — are progressive revelations from one God, each given for a particular time, culminating (for the present age) in the revelation given through Bahá'u'lláh. Founded in 19th-century Iran, the Bahá'í Faith emerged from the Bábí movement of Siyyid 'Alí Muhammad (the Báb, "the Gate"), a Persian merchant who in 1844 announced that he was the herald of a coming messianic figure. After the Báb's execution by Persian authorities in 1850, Mírzá Husayn-'Alí Núrí — Bahá'u'lláh ("the Glory of God") — declared himself in 1863 to be the one whom the Báb had foretold. Exiled to the Ottoman Empire and eventually imprisoned in Akká (modern Akko, Israel), Bahá'u'lláh wrote extensive scriptures from prison and died in 1892. The Bahá'í Faith is distinctive for its emphasis on the unity of religions, the unity of humanity, the equality of men and women, the elimination of all prejudice, universal compulsory education, the harmony of science and religion, and the establishment of a world federal commonwealth. The world center of the Faith is at Haifa, Israel (the resting place of the Báb and the seat of the Universal House of Justice). The Bahá'í Faith has been one of the most persecuted religious minorities in modern times — particularly in its land of origin, Iran, where Bahá'ís have faced systematic state persecution since the 1979 Islamic Revolution.`,
+    coreBeliefs: `<p><strong>The unity of God.</strong> Bahá'í teaching affirms one God — eternal, transcendent, the Creator and Sustainer of all that exists. God is beyond human comprehension; humans can know God only through His Manifestations (the founders of the great religions) who reflect divine attributes within human history.</p>
+    <p><strong>Progressive revelation.</strong> The most distinctive Bahá'í teaching is that God reveals himself progressively through history through a succession of Manifestations — Adam, Noah, Krishna, Abraham, Moses, Zoroaster, Buddha, Jesus, Muhammad, the Báb, and Bahá'u'lláh — each appropriate to the time and culture in which they appeared. Each revelation builds on previous ones and prepares for what is to come. Bahá'u'lláh is the Manifestation for the present age and the fulfillment of the messianic expectations of all prior religions.</p>
+    <p><strong>The unity of religions.</strong> Bahá'ís hold that all the great religions are essentially one in their spiritual teaching, differing in their social teachings according to the needs of different historical periods. The differences between religions (about the nature of God, salvation, ethics, ritual) are products of human accretion, sectarianism, or the requirements of particular historical contexts — not of fundamental differences in divine revelation.</p>
+    <p><strong>The unity of humanity.</strong> All human beings constitute one human family. Distinctions of race, nationality, class, sex, and religion are accidents of birth that should not divide the human family. The Bahá'í Faith calls for the elimination of all forms of prejudice as a precondition for human flourishing.</p>
+    <p><strong>The equality of men and women.</strong> Bahá'í teaching affirms the equality of men and women as a foundational principle. Bahá'u'lláh's writings address this explicitly; the elevation of women to full equality with men is one of the cardinal principles of the present age.</p>
+    <p><strong>Universal education.</strong> Every human being has the right and the obligation to be educated. Compulsory education for both girls and boys is a Bahá'í principle. Education is the means of spiritual and social progress.</p>
+    <p><strong>The harmony of science and religion.</strong> True religion and true science cannot contradict each other; both seek truth, and apparent conflicts arise from misunderstanding of either. The Bahá'í Faith rejects both blind religion and atheistic materialism.</p>
+    <p><strong>The need for a world commonwealth.</strong> Bahá'í teaching anticipates the eventual establishment of a federal world commonwealth — with a universal auxiliary language, common standards of currency and measure, and an international tribunal — as necessary for permanent peace and human flourishing. This is not yet realized, but is the eschatological direction toward which humanity is being drawn.</p>
+    <p><strong>No clergy.</strong> The Bahá'í Faith has no professional clergy. Local Bahá'í communities elect Local Spiritual Assemblies (nine members) annually; National Spiritual Assemblies are elected from delegates. The Universal House of Justice — an elected body of nine men — serves as the supreme administrative and legislative authority of the Faith, sitting in Haifa.</p>`,
+    keyTexts: [
+      { title: 'The Kitáb-i-Aqdas (The Most Holy Book)', desc: 'Bahá\'u\'lláh\'s book of laws, composed c. 1873 in Arabic. The foundational legal and devotional text of the Bahá\'í Faith.' },
+      { title: 'The Kitáb-i-Íqán (The Book of Certitude)', desc: 'Bahá\'u\'lláh\'s major theological work, composed in 1862 in Persian. Explains the principles of progressive revelation, the unity of religions, and the interpretation of religious scripture.' },
+      { title: 'The Seven Valleys and The Four Valleys', desc: 'Bahá\'u\'lláh\'s mystical writings on the soul\'s journey toward God, drawing on Sufi spiritual traditions.' },
+      { title: 'The Hidden Words', desc: 'A collection of short ethical and spiritual aphorisms by Bahá\'u\'lláh, composed in 1857–58 during his Baghdad period. The basic devotional text for individual Bahá\'í spiritual practice.' },
+      { title: 'The Writings of Abdu\'l-Bahá', desc: 'The extensive writings of Bahá\'u\'lláh\'s son and authorized interpreter, Abbas Effendi (1844–1921), known as the Center of the Covenant. Includes Some Answered Questions and The Promulgation of Universal Peace.' },
+      { title: 'The Bayán', desc: 'The principal work of the Báb, written in his Persian and Arabic forms. The major scripture of the Bábí dispensation that preceded and prepared for Bahá\'u\'lláh.' },
+    ],
+    pointsOfContact: `<p>The Bahá'í Faith is uniquely positioned among world religions in its relationship to Christianity. It affirms Christ as a Manifestation of God, accepts the New Testament as inspired scripture, honours Christian ethics, and includes Christianity within its progressive-revelation framework.</p>
+    <p><strong>Christ as Manifestation of God.</strong> The Bahá'í Faith holds Jesus Christ to be a Manifestation of God — one of the great Manifestations whose teaching is divinely revealed. Bahá'í writings honor Christ extensively: his virgin birth, his teaching, his miracles, and his role as the Word of God are affirmed.</p>
+    <p><strong>The unity of God.</strong> The Bahá'í Faith and Christianity share strict monotheism. Both teach that there is one God, eternal, the Creator, the Source of all that exists.</p>
+    <p><strong>The dignity of every human being.</strong> Both traditions teach that every human being has intrinsic dignity and worth. Bahá'í teaching on the elimination of prejudice and the unity of humanity converges significantly with Christian teaching on the universal love commandment.</p>
+    <p><strong>The value of community and worship.</strong> Bahá'í community life — the regular Nineteen Day Feast, devotional meetings, study circles — embodies a vision of religious community that has structural parallels with Christian parish life.</p>
+    <p><strong>The hope of universal peace.</strong> The Bahá'í eschatological vision of a world commonwealth, of peace among nations, of an end to violence and prejudice, parallels the Christian hope of the kingdom of God — God's just and peaceful rule embracing all the nations.</p>
+    <p><strong>The harmony of faith and reason.</strong> Bahá'í teaching that science and religion are not opposed converges with major Christian intellectual traditions (Catholic and Anglican especially) that have affirmed the same.</p>
+    <p><strong>Persecution and witness.</strong> Bahá'ís have been one of the most persecuted religious minorities in modern times — particularly in Iran since the 1979 Revolution. Christian communities in similar circumstances (especially Christian minorities in Muslim-majority countries) have found common cause with Bahá'í communities in advocating for religious freedom.</p>`,
+    pointsOfDivergence: `<p>The fundamental divergence is the claim of Bahá'u'lláh.</p>
+    <p><strong>The status of Bahá'u'lláh.</strong> The Bahá'í Faith holds Bahá'u'lláh to be the Manifestation of God for the present age — the fulfillment of the messianic expectations of all prior religions, including the second coming of Christ. Christianity holds that Christ's coming was unique and final — that no further Manifestation is needed or possible, that the Holy Spirit was given to the Church at Pentecost to lead it into all truth, and that the canonical New Testament closed public revelation in its apostolic form.</p>
+    <p><strong>Progressive revelation vs. final revelation.</strong> The Bahá'í doctrine of progressive revelation — that each great religion is given for its time and is then completed and superseded by the next Manifestation — is incompatible with the Christian conviction that Christ is the final, definitive revelation (Hebrews 1:1–2). The trajectory of revelation in Christianity terminates in Christ; in Bahá'í teaching, it continues through Bahá'u'lláh and into a future when further Manifestations may come.</p>
+    <p><strong>The deity of Christ.</strong> The Bahá'í Faith honors Christ as a Manifestation of God but does not affirm his deity in the Nicene sense — Christ is the most perfect mirror of divine attributes available to humanity in his age, but not God incarnate in the sense of being homoousios with the Father. The Christian doctrine of the Incarnation is reframed within the Bahá'í Manifestation theology.</p>
+    <p><strong>The atonement.</strong> The Bahá'í Faith does not affirm a substitutionary doctrine of the atonement. Christ's death is meaningful as the supreme example of self-sacrificial love and as the seal of his teaching, but not as a propitiation for sin in the Pauline-Augustinian sense. The Bahá'í framework treats salvation as a process of spiritual development through obedience to the current Manifestation rather than as a definitive event in Christ's saving work.</p>
+    <p><strong>Original sin.</strong> The Bahá'í Faith does not hold a doctrine of original sin in the Augustinian form. Human beings are not fundamentally fallen and incapable; they are capable of spiritual progress through education, ethical effort, and devotion. The Christian doctrine of grace as God's prior gift to a humanity that cannot save itself has no direct Bahá'í parallel.</p>
+    <p><strong>The Trinity and the Holy Spirit.</strong> The Bahá'í Faith, like the other strict monotheisms (Islam, Judaism, Sikhism), rejects the doctrine of the Trinity as inconsistent with the unity of God. The Holy Spirit in Bahá'í teaching is God's grace and influence in the world, not a person of the Godhead.</p>
+    <p><strong>The Church and the Bahá'í community.</strong> Christianity teaches the Church as the Body of Christ, the household of God, the Bride of Christ — a divinely-instituted community with sacramental life and apostolic succession. The Bahá'í Faith has no sacraments, no professional clergy, no doctrine of apostolic succession, and a primarily administrative-democratic ecclesiology.</p>`,
+    discussionQuestions: [
+      {
+        id: 'q1',
+        title: 'Progressive revelation or final revelation',
+        body: `<p>The Bahá'í Faith teaches that God reveals himself progressively through a succession of Manifestations — Abraham, Moses, Jesus, Muhammad, the Báb, Bahá'u'lláh — each for their own age. Christianity teaches that Christ's revelation is final, complete in itself, and not subject to supersession (Hebrews 1:1–2: "in these last days he has spoken to us by his Son").</p>
+        <p><strong>Is revelation a progressive series of teachers each appropriate to their time, or is there one final and definitive revelation that completes what came before? What kind of evidence could distinguish between these two pictures?</strong></p>`,
+      },
+      {
+        id: 'q2',
+        title: 'The unity of religions',
+        body: `<p>Bahá'í teaching holds that all the great religions are essentially one in their spiritual core, differing only in their social teachings according to the needs of different times. Christianity has traditionally held that Christ's revelation is unique and that other religions, however containing elements of truth and goodness, do not lead independently to salvation (John 14:6; Acts 4:12).</p>
+        <p><strong>Are the religions essentially one beneath their apparent differences, or are their differences so fundamental that they teach genuinely different things about God, salvation, and the human condition? Is the Bahá'í position generous wisdom, or a denial of what each religion actually claims about itself?</strong></p>`,
+      },
+      {
+        id: 'q3',
+        title: 'The status of Christ',
+        body: `<p>The Bahá'í Faith honors Christ as a Manifestation of God — a great teacher whose divine character was the perfect mirror of God for his age. Christianity confesses Christ as God incarnate, of the same divine essence as the Father, uniquely Lord and Savior. The Bahá'í honoring of Christ is sincere and substantial; the Bahá'í denial of Christ's unique deity is also substantial.</p>
+        <p><strong>Is the Bahá'í honoring of Christ as one Manifestation among many compatible with what the New Testament actually says about Christ — or does it implicitly demote Christ in a way the apostolic witness will not allow?</strong></p>`,
+      },
+      {
+        id: 'q4',
+        title: 'The world commonwealth',
+        body: `<p>The Bahá'í Faith anticipates the eventual establishment of a federal world commonwealth — universal language, common currency, international tribunal, the end of war and prejudice — as essential to human flourishing in the present age. Christianity awaits the coming of the kingdom of God — God's just and peaceful rule — but has historically been ambivalent about specific political programs for its realization.</p>
+        <p><strong>Is the Bahá'í political vision of a federal world order an authentic expression of religious hope for justice and peace, or does it conflate the kingdom of God with a particular political program? Can religion specify what political institutions will accompany the world's redemption?</strong></p>`,
+      },
+      {
+        id: 'q5',
+        title: 'Persecution and the witness of suffering',
+        body: `<p>The Bahá'í community has been one of the most persecuted religious minorities in modern times — particularly in Iran since the 1979 Revolution, where systematic state persecution has resulted in executions, imprisonment, exclusion from higher education, denial of property rights, and constant pressure to recant. The Bahá'í response has emphasized non-retaliation, continued community life, and refusal to abandon faith. Early Christian witness in the Roman Empire bore similar characteristics.</p>
+        <p><strong>Does the contemporary Bahá'í witness under persecution — its non-violence, its refusal to recant, its continued faithfulness — bear marks of authentic religious witness? And what should Christians learn from contemporary Bahá'í suffering that resembles their own tradition's foundational experience?</strong></p>`,
+      },
+    ],
+    historicalRelation: `<p>The Bahá'í-Christian encounter is relatively young (the Bahá'í Faith itself is only about 180 years old) but has been intensive from early in the Bahá'í Faith's development.</p>
+    <p><strong>The founding context.</strong> The Bahá'í Faith emerged from the Bábí movement in 19th-century Iran, in the context of Shi'a Islam. Bahá'u'lláh's exile took him to Baghdad (1853–63, then Ottoman Iraq), Constantinople and Adrianople (1863–68), and finally to the Ottoman penal colony at Akká (Acre) in Ottoman Palestine, where he died in 1892. The Bahá'í world center has remained in this area — the Shrine of Bahá'u'lláh at Bahjí (near Akká) and the Shrine of the Báb on Mount Carmel in Haifa are the holiest sites of the Faith.</p>
+    <p><strong>'Abdu'l-Bahá and the West.</strong> Bahá'u'lláh's son and authorized interpreter, 'Abdu'l-Bahá (1844–1921), led the Bahá'í community after his father's death and was the primary figure in the Faith's expansion to the West. After his release from Ottoman imprisonment (he had been a prisoner from age 9 until 1908), 'Abdu'l-Bahá traveled extensively in Europe (1911) and North America (April–December 1912). His talks to Christian audiences — at the Church of the Ascension in New York (April 14, 1912), at Plymouth Congregational Church in Chicago, at Stanford University, and many other venues — established the early American Bahá'í community.</p>
+    <p><strong>The Bahá'í community in the West.</strong> The American Bahá'í community grew significantly in the early 20th century, particularly after 'Abdu'l-Bahá's 1912 visit. The Bahá'í House of Worship in Wilmette, Illinois (begun 1920, completed 1953) was the first major Bahá'í House of Worship outside the Middle East. The European, Australian, and other Western communities developed in parallel.</p>
+    <p><strong>The Universal House of Justice.</strong> Established in 1963 in Haifa, the Universal House of Justice is the supreme administrative and legislative authority of the Bahá'í Faith. The election of the nine male members of the House every five years marks the most significant institutional event of the Bahá'í Faith.</p>
+    <p><strong>Persecution in Iran.</strong> Since the Islamic Revolution of 1979, the Bahá'í community in Iran (the largest religious minority in Iran, comprising approximately 300,000 people) has faced systematic state persecution. Bahá'ís have been excluded from universities, denied government employment, prevented from holding public worship, had cemeteries desecrated, and faced periodic imprisonments and executions. The international human rights community — including major Christian denominations — has been a significant advocate for the Iranian Bahá'í community. Major Christian voices including the World Council of Churches, the Vatican, and Anglican leaders have spoken out in support of Bahá'í religious freedom in Iran and elsewhere.</p>
+    <p><strong>Christian theological engagement.</strong> Substantial Christian engagement with Bahá'í theology has been limited but has produced significant works. <strong>William McElwee Miller's <em>The Baha'i Faith: Its History and Teachings</em></strong> (1974) gave the major mid-20th century evangelical Protestant assessment, generally critical. <strong>Francis Beckwith</strong>, <strong>Robert Stockman</strong>, and others have engaged Bahá'í theology in more recent decades. Bahá'í engagement with Christian theology has been characteristically irenic and inclusive, with major Bahá'í authors (Stockman, Moojan Momen, William Hatcher) producing substantial works on the relationship between the two faiths.</p>
+    <p><strong>The contemporary encounter.</strong> Bahá'í communities exist in essentially every country and territory; estimated 8 million adherents make the Faith small but globally dispersed. Bahá'í-Christian dialogue has been substantial particularly in interfaith and religious-freedom contexts. The Bahá'í International Community has been active in United Nations advocacy on religious freedom, the rights of women, and other matters that often align with Christian advocacy.</p>`,
+    historicalNote: 'The Báb (Siyyid \'Alí Muhammad) was born in Shiraz, Iran, in 1819. His public declaration as the Báb ("the Gate") on May 23, 1844, is celebrated as the founding of the Bábí dispensation. He was executed by firing squad in Tabriz on July 9, 1850. Approximately 20,000 Bábís were killed in the Bábí persecutions of the 1850s. Bahá\'u\'lláh (Mírzá Husayn-\'Alí Núrí) was born in Tehran in 1817. After his initial declaration in the Garden of Ridván in Baghdad (April 21, 1863), he was successively exiled — to Constantinople, to Adrianople (Edirne), and finally to the Ottoman prison colony at Akká, where he arrived in 1868 and remained until his death on May 29, 1892. \'Abdu\'l-Bahá led the Faith from 1892 until his death in 1921; he is buried in the Shrine of the Báb on Mount Carmel. Shoghi Effendi (1897–1957) led the Faith as Guardian from 1921 to 1957. The Universal House of Justice was established in 1963. The Bahá\'í Faith\'s formal recognition by the United Nations as a non-governmental organization with consultative status reflects its diplomatic position in international religious dialogue. The current Bahá\'í population, while smaller than the major world religions, is one of the most geographically dispersed.',
+    relatedReligions: ['rel-islam', 'rel-judaism'],
+  },
+
+];
+
 
 // ═══════════════════════════════════════════════════════════════
 //   STATE & CONSTANTS
@@ -3624,7 +4617,7 @@ function renderThreadedComment(c, depth) {
     </div>` : '';
 
   return `
-    <div class="${classes}">
+    <div class="${classes}" data-comment-id="${c.id}">
       <div class="comment-avatar">${initials}</div>
       <div class="comment-body">
         <div class="comment-meta">
@@ -4447,3 +5440,552 @@ submitReply = async function(parentId) {
     showInlineMsg(msg, 'error', err.message || 'Failed to post reply.');
   }
 };
+
+// ═══════════════════════════════════════════════════════════════
+//   RELIGIONS — The Wider Conversation (Patch 6)
+// ═══════════════════════════════════════════════════════════════
+
+let currentReligion = null;
+let openReligionQuestions = new Set();
+
+function updateReligionStats() {
+  const el = document.getElementById('stat-religions');
+  if (el) el.textContent = RELIGIONS.length;
+}
+
+function renderReligions() {
+  const grid = document.getElementById('religion-grid');
+  if (!grid) return;
+  grid.innerHTML = RELIGIONS.map(r => `
+    <div class="religion-card" onclick="showReligion('${r.id}')">
+      <div class="religion-card-top">
+        <div class="religion-icon">${r.icon}</div>
+        <div class="religion-badge">${escHtml(r.category)}</div>
+      </div>
+      <div class="religion-name">${escHtml(r.name)}</div>
+      <div class="religion-founded">${escHtml(r.founded.slice(0, 80))}${r.founded.length > 80 ? '…' : ''}</div>
+      <div class="religion-summary-preview">${escHtml(stripTags(r.summary).slice(0, 240))}…</div>
+      <div class="religion-card-foot">
+        <span class="religion-adherents">${escHtml(r.adherents.split(';')[0].split('(')[0].trim())}</span>
+        <span class="religion-questions-tag">5 questions →</span>
+      </div>
+    </div>`).join('');
+}
+
+async function showReligion(id) {
+  const r = RELIGIONS.find(x => x.id === id);
+  if (!r) return;
+  currentReligion = r;
+  currentTopic = null;
+  currentMovement = null;
+  openReligionQuestions = new Set();
+  bottomCtype = 'general';
+
+  document.getElementById('home-view').style.display = 'none';
+  document.getElementById('detail-view').style.display = 'none';
+  const mv = document.getElementById('movement-view');
+  if (mv) mv.style.display = 'none';
+  const rv = document.getElementById('religion-view');
+  if (rv) rv.style.display = 'block';
+
+  document.getElementById('religion-title').textContent = r.name;
+  document.getElementById('religion-founded-line').textContent = r.founded;
+  document.getElementById('religion-adherents-line').textContent = r.adherents;
+  document.getElementById('religion-founder-line').textContent = r.founder;
+  document.getElementById('religion-category-tag').textContent = r.category;
+
+  document.getElementById('religion-summary').innerHTML = escHtml(r.summary).replace(/\n/g, '<br/>');
+  document.getElementById('religion-core-beliefs').innerHTML = r.coreBeliefs;
+
+  // Key texts
+  const textsEl = document.getElementById('religion-key-texts');
+  textsEl.innerHTML = r.keyTexts.map(t => `
+    <div class="keytext-card">
+      <div class="keytext-title">${escHtml(t.title)}</div>
+      <div class="keytext-desc">${escHtml(t.desc)}</div>
+    </div>`).join('');
+
+  document.getElementById('religion-contact').innerHTML = r.pointsOfContact;
+  document.getElementById('religion-divergence').innerHTML = r.pointsOfDivergence;
+
+  // Discussion questions
+  await renderReligionQuestions(r);
+
+  document.getElementById('religion-historical-relation').innerHTML = r.historicalRelation;
+
+  const noteEl = document.getElementById('religion-historical-note');
+  if (noteEl) noteEl.innerHTML = `<span class="hist-label">📜 Historical context</span> ${escHtml(r.historicalNote)}`;
+
+  const relEl = document.getElementById('religion-related');
+  if (relEl) {
+    if (r.relatedReligions && r.relatedReligions.length) {
+      relEl.innerHTML = `<h3 class="related-title">Related traditions</h3><div class="related-pills">${r.relatedReligions.map(rid => {
+        const rel = RELIGIONS.find(x => x.id === rid);
+        return rel ? `<button class="related-pill" onclick="showReligion('${rid}')">${rel.icon} ${escHtml(rel.name)}</button>` : '';
+      }).join('')}</div>`;
+      relEl.style.display = 'block';
+    } else relEl.style.display = 'none';
+  }
+
+  await loadReligionComments(r.id);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function renderReligionQuestions(r) {
+  const container = document.getElementById('religion-questions');
+  if (!container) return;
+  container.innerHTML = r.discussionQuestions.map((q, i) => {
+    const qKey = `${r.id}::${q.id}`;
+    const isOpen = openReligionQuestions.has(qKey);
+    const count = countCommentsForQuestion(r.id, q.id);
+    return `
+      <div class="question-card ${isOpen ? 'q-open' : ''}" data-rqkey="${escAttr(qKey)}">
+        <div class="question-card-head">
+          <div class="question-number">Q${i + 1}</div>
+          <div class="question-content">
+            <div class="question-title">${escHtml(q.title)}</div>
+            <div class="question-body">${q.body}</div>
+          </div>
+        </div>
+        <button class="question-toggle" onclick="toggleReligionQuestionForum('${escAttr(qKey)}')">
+          <span class="question-toggle-left">
+            <span class="question-toggle-icon">💬</span>
+            <span>${isOpen ? 'Hide responses' : 'Discuss this question'}</span>
+            <span class="question-activity-count ${count === 0 ? 'zero' : ''}">${count}</span>
+          </span>
+          <span class="question-chevron">▾</span>
+        </button>
+        <div class="question-forum-body">
+          ${renderReligionQuestionForum(r.id, q.id)}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function toggleReligionQuestionForum(qKey) {
+  if (openReligionQuestions.has(qKey)) openReligionQuestions.delete(qKey);
+  else openReligionQuestions.add(qKey);
+  if (currentReligion) renderReligionQuestions(currentReligion);
+}
+
+function renderReligionQuestionForum(religionId, questionId) {
+  const tag = 'q:' + questionId;
+  const topLevel = allComments.filter(c =>
+    c.target_denomination === tag && !c.parent_comment_id
+  ).sort((a, b) => (b.upvotes || 0) - (a.upvotes || 0));
+
+  const compose = renderReligionQuestionCompose(religionId, questionId);
+  const list = topLevel.length === 0
+    ? `<div class="denom-forum-empty">No one has weighed in on this question yet. Be the first.</div>`
+    : `<div class="forum-comment-list">${topLevel.map(c => renderThreadedComment(c, 0)).join('')}</div>`;
+  return compose + list;
+}
+
+function renderReligionQuestionCompose(religionId, questionId) {
+  if (!currentUser || !currentUserProfile) {
+    return `<div class="forum-locked">Sign in to respond to this question. <button class="btn btn-primary btn-sm" onclick="openModal('signup')">Join the Synod</button></div>`;
+  }
+  const fid = `rqc-${cssId(questionId)}`;
+  return `
+    <div class="forum-compose" data-question="${escAttr(questionId)}">
+      <div class="ctype-helper">Engage the question, draw on Scripture or other sources, be charitable across traditions.</div>
+      <textarea id="${fid}-text" maxlength="600" placeholder="Your response (max 600 characters)…"></textarea>
+      <div class="forum-compose-bottom">
+        <span class="char-count" id="${fid}-count">0 / 600</span>
+        <button class="btn btn-primary btn-sm" onclick="submitReligionQuestionResponse('${escAttr(religionId)}', '${escAttr(questionId)}')">Post response</button>
+      </div>
+      <div id="${fid}-msg"></div>
+    </div>`;
+}
+
+async function submitReligionQuestionResponse(religionId, questionId) {
+  if (!currentUser || !currentUserProfile) return;
+  const fid = `rqc-${cssId(questionId)}`;
+  const ta = document.getElementById(`${fid}-text`);
+  const msg = document.getElementById(`${fid}-msg`);
+  if (!ta) return;
+  const body = ta.value.trim();
+  if (!body) { showInlineMsg(msg, 'error', 'Please write something first.'); return; }
+  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: religionId,
+      user_id: currentUser.id,
+      display_name: currentUserProfile.display_name,
+      denomination: currentUserProfile.denomination || null,
+      body,
+      upvotes: 0,
+      comment_type: 'responding',
+      target_denomination: 'q:' + questionId,
+      parent_comment_id: null,
+    });
+    if (error) throw error;
+    ta.value = '';
+    showInlineMsg(msg, 'success', 'Posted.');
+    await loadReligionComments(religionId);
+  } catch (err) {
+    showInlineMsg(msg, 'error', err.message || 'Failed to post.');
+  }
+}
+
+async function loadReligionComments(religionId) {
+  if (!supabaseClient || typeof SUPABASE_CONFIGURED === 'undefined' || !SUPABASE_CONFIGURED) {
+    allComments = [];
+    if (currentReligion) renderReligionQuestions(currentReligion);
+    return;
+  }
+  try {
+    const { data, error } = await supabaseClient
+      .from('comments').select('*').eq('topic_id', religionId)
+      .order('upvotes', { ascending: false })
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    allComments = data || [];
+
+    if (currentUser && allComments.length > 0) {
+      const ids = allComments.map(c => c.id);
+      const { data: votes } = await supabaseClient
+        .from('upvotes').select('comment_id').eq('user_id', currentUser.id).in('comment_id', ids);
+      userVotes = new Set((votes || []).map(v => v.comment_id));
+    } else {
+      userVotes = new Set();
+    }
+
+    if (currentReligion) renderReligionQuestions(currentReligion);
+  } catch (err) {
+    console.error('Religion comments load failed:', err);
+  }
+}
+
+// Extend showHome to also clear religion state
+const _origShowHomeP5 = showHome;
+showHome = function() {
+  currentTopic = null;
+  currentMovement = null;
+  currentReligion = null;
+  document.getElementById('home-view').style.display = 'block';
+  document.getElementById('detail-view').style.display = 'none';
+  const mv = document.getElementById('movement-view');
+  if (mv) mv.style.display = 'none';
+  const rv = document.getElementById('religion-view');
+  if (rv) rv.style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+// Extend startReply / cancelReply / submitReply to handle religion view
+const _origStartReplyP5 = startReply;
+startReply = function(parentId) {
+  if (!currentUser) { openModal('login'); return; }
+  activeReplyTo = parentId;
+  if (currentTopic) renderDenominations(currentTopic);
+  if (currentMovement) renderMovementQuestions(currentMovement);
+  if (currentReligion) renderReligionQuestions(currentReligion);
+  filterComments();
+  setTimeout(() => {
+    const ta = document.getElementById(`reply-text-${parentId}`);
+    if (ta) {
+      ta.focus();
+      ta.addEventListener('input', () => {
+        const el = document.getElementById(`reply-count-${parentId}`);
+        if (el) {
+          const len = ta.value.length;
+          el.textContent = `${len} / 600`;
+          el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
+        }
+      });
+    }
+  }, 30);
+};
+
+const _origCancelReplyP5 = cancelReply;
+cancelReply = function() {
+  activeReplyTo = null;
+  if (currentTopic) renderDenominations(currentTopic);
+  if (currentMovement) renderMovementQuestions(currentMovement);
+  if (currentReligion) renderReligionQuestions(currentReligion);
+  filterComments();
+};
+
+const _origSubmitReplyP5 = submitReply;
+submitReply = async function(parentId) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById(`reply-text-${parentId}`);
+  const msg = document.getElementById(`reply-msg-${parentId}`);
+  if (!ta) return;
+  const body = ta.value.trim();
+  if (!body) { showInlineMsg(msg, 'error', 'Write something first.'); return; }
+  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  try {
+    const contextId = currentReligion ? currentReligion.id : (currentMovement ? currentMovement.id : (currentTopic ? currentTopic.id : null));
+    if (!contextId) throw new Error('No active context');
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: contextId,
+      user_id: currentUser.id,
+      display_name: currentUserProfile.display_name,
+      denomination: currentUserProfile.denomination || null,
+      body,
+      upvotes: 0,
+      parent_comment_id: parentId,
+    });
+    if (error) throw error;
+    activeReplyTo = null;
+    if (currentReligion) await loadReligionComments(currentReligion.id);
+    else if (currentMovement) await loadMovementComments(currentMovement.id);
+    else if (currentTopic) await loadComments(currentTopic.id);
+  } catch (err) {
+    showInlineMsg(msg, 'error', err.message || 'Failed to post reply.');
+  }
+};
+
+// Initialize religions on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+  renderReligions();
+  updateReligionStats();
+});
+
+
+// ═══════════════════════════════════════════════════════════════
+//   NOTIFICATIONS  (Patch 7)
+// ═══════════════════════════════════════════════════════════════
+
+let userNotifications = [];
+let notificationsLoaded = false;
+let notificationPanelOpen = false;
+
+async function loadNotifications() {
+  if (!currentUser || !supabaseClient) {
+    userNotifications = [];
+    renderNotificationBell();
+    return;
+  }
+  try {
+    const { data, error } = await supabaseClient
+      .from('notifications')
+      .select('*')
+      .eq('recipient_id', currentUser.id)
+      .order('created_at', { ascending: false })
+      .limit(50);
+    if (error) throw error;
+    userNotifications = data || [];
+    notificationsLoaded = true;
+    renderNotificationBell();
+  } catch (err) {
+    console.error('Notifications load failed:', err);
+    userNotifications = [];
+    renderNotificationBell();
+  }
+}
+
+function unreadNotificationCount() {
+  return userNotifications.filter(n => !n.read).length;
+}
+
+function renderNotificationBell() {
+  const wrap = document.getElementById('notif-wrap');
+  if (!wrap) return;
+  if (!currentUser) {
+    wrap.style.display = 'none';
+    return;
+  }
+  wrap.style.display = 'inline-flex';
+  const unread = unreadNotificationCount();
+  wrap.innerHTML = `
+    <button class="notif-bell ${unread > 0 ? 'has-unread' : ''}" onclick="toggleNotifPanel()" aria-label="Notifications">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+      ${unread > 0 ? `<span class="notif-badge">${unread > 99 ? '99+' : unread}</span>` : ''}
+    </button>
+    <div class="notif-panel ${notificationPanelOpen ? 'open' : ''}" id="notif-panel">
+      <div class="notif-panel-head">
+        <span>Notifications</span>
+        ${unread > 0 ? `<button class="notif-mark-all" onclick="markAllNotificationsRead()">Mark all read</button>` : ''}
+      </div>
+      <div class="notif-panel-body">
+        ${userNotifications.length === 0
+          ? `<div class="notif-empty">No notifications yet. When someone replies to your contribution or upvotes it, you'll see it here.</div>`
+          : userNotifications.map(renderNotificationItem).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderNotificationItem(n) {
+  const when = timeAgo(n.created_at);
+  const icon = n.type === 'reply' ? '💬' : '👍';
+  const verb = n.type === 'reply' ? 'replied to your comment' : 'upvoted your comment';
+  const excerpt = n.comment_excerpt ? `<div class="notif-excerpt">"${escHtml(n.comment_excerpt.slice(0, 100))}${n.comment_excerpt.length > 100 ? '…' : ''}"</div>` : '';
+  return `
+    <button class="notif-item ${n.read ? 'read' : 'unread'}" onclick="onNotificationClick(${n.id}, '${escAttr(n.topic_id)}', ${n.comment_id || 'null'})">
+      <div class="notif-item-icon">${icon}</div>
+      <div class="notif-item-body">
+        <div class="notif-item-line"><strong>${escHtml(n.actor_name || 'Someone')}</strong> ${verb}</div>
+        ${excerpt}
+        <div class="notif-item-when">${when}</div>
+      </div>
+      ${!n.read ? '<span class="notif-dot"></span>' : ''}
+    </button>`;
+}
+
+function timeAgo(iso) {
+  if (!iso) return '';
+  const then = new Date(iso).getTime();
+  const now = Date.now();
+  const sec = Math.floor((now - then) / 1000);
+  if (sec < 60) return 'just now';
+  const min = Math.floor(sec / 60);
+  if (min < 60) return `${min}m ago`;
+  const hr = Math.floor(min / 60);
+  if (hr < 24) return `${hr}h ago`;
+  const day = Math.floor(hr / 24);
+  if (day < 7) return `${day}d ago`;
+  return new Date(iso).toLocaleDateString();
+}
+
+function toggleNotifPanel() {
+  notificationPanelOpen = !notificationPanelOpen;
+  renderNotificationBell();
+}
+
+async function markAllNotificationsRead() {
+  if (!currentUser || !supabaseClient) return;
+  try {
+    const { error } = await supabaseClient
+      .from('notifications')
+      .update({ read: true })
+      .eq('recipient_id', currentUser.id)
+      .eq('read', false);
+    if (error) throw error;
+    userNotifications = userNotifications.map(n => ({ ...n, read: true }));
+    renderNotificationBell();
+  } catch (err) {
+    console.error('Mark all read failed:', err);
+  }
+}
+
+async function onNotificationClick(notifId, topicId, commentId) {
+  // Mark this one as read
+  if (currentUser && supabaseClient) {
+    try {
+      await supabaseClient.from('notifications').update({ read: true }).eq('id', notifId);
+    } catch (e) { console.error(e); }
+  }
+  userNotifications = userNotifications.map(n => n.id === notifId ? { ...n, read: true } : n);
+  notificationPanelOpen = false;
+  renderNotificationBell();
+
+  // Navigate
+  if (topicId.startsWith('rel-')) {
+    await showReligion(topicId);
+  } else if (topicId.startsWith('mov-')) {
+    await showMovement(topicId);
+  } else {
+    const t = TOPICS.find(x => x.id === topicId);
+    if (t) await showTopic(topicId);
+  }
+
+  // Try to scroll to the comment after a beat
+  if (commentId) {
+    setTimeout(() => {
+      const el = document.querySelector(`[data-comment-id="${commentId}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('notif-flash');
+        setTimeout(() => el.classList.remove('notif-flash'), 2000);
+      }
+    }, 600);
+  }
+}
+
+// ─── Hooks: create notifications when replies/upvotes happen ──────────
+// We wrap submitReply and toggleUpvote to also insert a notifications row.
+
+async function createNotificationForReply(parentComment, replyBody) {
+  if (!parentComment || !currentUser || !supabaseClient) return;
+  if (parentComment.user_id === currentUser.id) return; // don't notify yourself
+  try {
+    await supabaseClient.from('notifications').insert({
+      recipient_id: parentComment.user_id,
+      type: 'reply',
+      actor_name: currentUserProfile?.display_name || 'Someone',
+      actor_denom: currentUserProfile?.denomination || null,
+      comment_id: parentComment.id,
+      comment_excerpt: replyBody,
+      topic_id: parentComment.topic_id,
+    });
+  } catch (err) {
+    console.error('Notif (reply) failed:', err);
+  }
+}
+
+async function createNotificationForUpvote(comment) {
+  if (!comment || !currentUser || !supabaseClient) return;
+  if (comment.user_id === currentUser.id) return;
+  try {
+    await supabaseClient.from('notifications').insert({
+      recipient_id: comment.user_id,
+      type: 'upvote',
+      actor_name: currentUserProfile?.display_name || 'Someone',
+      actor_denom: currentUserProfile?.denomination || null,
+      comment_id: comment.id,
+      comment_excerpt: comment.body,
+      topic_id: comment.topic_id,
+    });
+  } catch (err) {
+    console.error('Notif (upvote) failed:', err);
+  }
+}
+
+// Wrap submitReply to also create a notification
+const _origSubmitReplyP7 = submitReply;
+submitReply = async function(parentId) {
+  if (!currentUser || !currentUserProfile) return;
+  const parent = allComments.find(c => c.id === parentId);
+  const ta = document.getElementById(`reply-text-${parentId}`);
+  const body = ta ? ta.value.trim() : '';
+  await _origSubmitReplyP7(parentId);
+  if (parent && body) await createNotificationForReply(parent, body);
+};
+
+// Wrap toggleUpvote to create a notification (only on the upvote action, not the un-upvote)
+if (typeof toggleUpvote === 'function') {
+  const _origToggleUpvote = toggleUpvote;
+  toggleUpvote = async function(commentId) {
+    const wasVoted = userVotes.has(commentId);
+    const comment = allComments.find(c => c.id === commentId);
+    await _origToggleUpvote(commentId);
+    if (!wasVoted && comment) await createNotificationForUpvote(comment);
+  };
+}
+
+// Click-outside to close panel
+document.addEventListener('click', (e) => {
+  if (!notificationPanelOpen) return;
+  const wrap = document.getElementById('notif-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    notificationPanelOpen = false;
+    renderNotificationBell();
+  }
+});
+
+// Load notifications when user signs in — wrap updateAuthUI
+const _origUpdateAuthUI = updateAuthUI;
+updateAuthUI = function() {
+  _origUpdateAuthUI();
+  if (currentUser) {
+    loadNotifications();
+  } else {
+    userNotifications = [];
+    renderNotificationBell();
+  }
+};
+
+// Initial render of bell wrapper (it'll be hidden if no user yet)
+document.addEventListener('DOMContentLoaded', () => {
+  renderNotificationBell();
+});
+
+// Poll for new notifications every 60 seconds when user is logged in
+setInterval(() => {
+  if (currentUser && document.visibilityState === 'visible') {
+    loadNotifications();
+  }
+}, 60000);
