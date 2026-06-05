@@ -27,12 +27,15 @@
       <div class="nav-links">
         <a onclick="showHome()" class="nav-link">Ledger</a>
         <a onclick="scrollToSection('movements')" class="nav-link">Outside the Creeds</a>
+        <a onclick="scrollToSection('religions')" class="nav-link">Other Faiths</a>
         <a onclick="scrollToSection('about')" class="nav-link">About</a>
-        <a onclick="scrollToSection('method')" class="nav-link">Method</a>
       </div>
-      <div class="topbar-auth" id="header-auth">
-        <button class="btn btn-ghost" onclick="openModal('login')">Sign in</button>
-        <button class="btn btn-primary" onclick="openModal('signup')">Join the Synod</button>
+      <div class="topbar-right">
+        <span id="notif-wrap" class="notif-wrap" style="display:none"></span>
+        <div class="topbar-auth" id="header-auth">
+          <button class="btn btn-ghost" onclick="openModal('login')">Sign in</button>
+          <button class="btn btn-primary" onclick="openModal('signup')">Join the Synod</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -51,7 +54,7 @@
       <div class="hero-inner">
         <div class="hero-eyebrow">A scholarly comparison · For the curious, the convicted, and the searching</div>
         <h1 class="hero-title">Where doctrine divides,<br/><em>let the witnesses speak.</em></h1>
-        <p class="hero-lede">The Doctrine Ledger sets the great traditions of Christianity side by side — Catholic, Orthodox, Lutheran, Reformed, Anglican, Baptist, Methodist, Pentecostal, Anabaptist — on the questions that have shaped two thousand years of debate. Every position is sourced to its confessions, councils, and Scripture. You bring the conversation.</p>
+        <p class="hero-lede">The Doctrine Ledger sets the great traditions of Christianity side by side — Catholic, Orthodox, Lutheran, Reformed, Anglican, Baptist, Methodist, Pentecostal, Anabaptist — on the questions that have shaped two thousand years of debate. Then it widens the lens to movements at the margin of orthodoxy, and to the world's other great religious traditions. Every position is sourced to its own confessions, councils, and scriptures. You bring the conversation.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="#topics">Browse the Ledger ↓</a>
           <a class="btn btn-outline btn-lg" onclick="openModal('signup')">Join the Synod</a>
@@ -59,7 +62,7 @@
         <div class="hero-stats">
           <div class="hero-stat"><div class="stat-num" id="stat-topics">—</div><div class="stat-lbl">Doctrinal debates</div></div>
           <div class="hero-stat"><div class="stat-num" id="stat-movements">—</div><div class="stat-lbl">Movements profiled</div></div>
-          <div class="hero-stat"><div class="stat-num">11</div><div class="stat-lbl">Traditions surveyed</div></div>
+          <div class="hero-stat"><div class="stat-num" id="stat-religions">—</div><div class="stat-lbl">World religions</div></div>
         </div>
       </div>
     </section>
@@ -74,10 +77,20 @@
         </div>
 
         <div class="controls">
-          <div class="search-wrap">
+          <!-- Nuclear search autofill fix: type=search, randomized name, autocomplete=off, role=search,
+               plus invisible decoy fields that browsers latch onto first -->
+          <form class="search-wrap" onsubmit="return false" autocomplete="off" role="search">
+            <input type="text" name="username_decoy" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="username" aria-hidden="true" />
+            <input type="password" name="password_decoy" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="current-password" aria-hidden="true" />
+            <input type="email" name="email_decoy" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0" tabindex="-1" autocomplete="email" aria-hidden="true" />
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="topic-search" class="search-input" placeholder="Search debates, e.g. baptism, predestination, papacy…" autocomplete="off" name="ledger-search" />
-          </div>
+            <input type="search" id="topic-search" class="search-input"
+                   placeholder="Search debates, e.g. baptism, predestination, papacy…"
+                   autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                   name="ledger-query-x73q9p" role="searchbox"
+                   aria-label="Search the doctrinal ledger"
+                   data-lpignore="true" data-form-type="other" data-1p-ignore="true" />
+          </form>
           <div id="category-filters" class="cat-pills"></div>
         </div>
 
@@ -92,10 +105,24 @@
         <div class="section-head">
           <div class="section-eyebrow movements-eyebrow">Outside the Creeds</div>
           <h2 class="section-title">Movements at the margin of orthodoxy</h2>
-          <p class="section-sub">Religious movements that emerged from — or claim — Christian roots, but depart from the historic creeds of the undivided Church on points the early councils defined as essential. Each profile gives the movement's self-description first, then the historic Christian assessment, then five questions to drive the conversation.</p>
+          <p class="section-sub">Religious movements that emerged from — or define themselves against — Christianity, but depart from the historic creeds of the undivided Church on points the early councils defined as essential. Each profile gives the movement's self-description first, then the historic Christian assessment, then five questions to drive the conversation.</p>
         </div>
 
         <div id="movement-grid" class="movement-grid"></div>
+      </div>
+    </section>
+
+    <!-- ═══ OTHER FAITHS / WIDER CONVERSATION ═══ -->
+    <section id="religions" class="religions-section">
+      <div class="section-inner">
+
+        <div class="section-head">
+          <div class="section-eyebrow religions-eyebrow">The Wider Conversation</div>
+          <h2 class="section-title">The world's other great religious traditions</h2>
+          <p class="section-sub">Christianity is one of the great religions of the world, but it is not the only one. The Doctrine Ledger sets the major world religions side by side with Christianity — each in its own integrity, with its own scriptures, its own theology, and its own historical encounter with the Christian movement. We frame these not as departures from Christianity but as traditions in their own right, with points of contact and points of divergence laid out for the reader to weigh.</p>
+        </div>
+
+        <div id="religion-grid" class="religion-grid"></div>
       </div>
     </section>
 
@@ -104,14 +131,14 @@
         <div>
           <div class="section-eyebrow">About the Ledger</div>
           <h2 class="section-title">Charitable, accurate, accessible.</h2>
-          <p class="prose">Synod of Soup exists for one reason: to let each Christian tradition speak its own conviction, from its own confessional documents, in its own theological idiom — without caricature.</p>
-          <p class="prose">We are not adjudicators. The Ledger is not a verdict. It is a witness stand, where the Council of Trent and the Westminster Confession, the Confession of Dositheus and the Schleitheim Articles, each get their hearing in full. When traditions disagree, the disagreement is preserved exactly — not flattened into false agreement, not sharpened into caricature.</p>
-          <p class="prose">The Synod is also a forum. Once you have read the historic positions, the threads under each tradition are yours: argue, question, defend, refine. The marketplace of theological reasoning is one of the oldest institutions in the Christian tradition. We are simply giving it a new room.</p>
+          <p class="prose">Synod of Soup exists for one reason: to let each tradition speak its own conviction, from its own primary documents, in its own theological idiom — without caricature.</p>
+          <p class="prose">We are not adjudicators. The Ledger is not a verdict. It is a witness stand, where the Council of Trent and the Westminster Confession, the Confession of Dositheus and the Schleitheim Articles, the Qur'an and the Bhagavad Gita and the Guru Granth Sahib, each get their hearing in full. When traditions disagree, the disagreement is preserved exactly — not flattened into false agreement, not sharpened into caricature.</p>
+          <p class="prose">The Synod is also a forum. Once you have read the positions, the threads under each tradition are yours: argue, question, defend, refine. The marketplace of religious reasoning is one of the oldest institutions in the world. We are simply giving it a new room.</p>
         </div>
         <aside class="about-aside">
           <div class="aside-card">
-            <div class="aside-title">📜 Confessional citations</div>
-            <p>Every position quotes or paraphrases its own primary documents: Trent, Westminster, Augsburg, Heidelberg, Dort, the Thirty-Nine Articles, the Confession of Dositheus, the Schleitheim Confession, the Baptist Faith & Message, and many more.</p>
+            <div class="aside-title">📜 Primary-source citations</div>
+            <p>Every position quotes or paraphrases its own foundational documents — confessions, conciliar decrees, scriptures, and authoritative writings — without filtering through external commentary.</p>
           </div>
           <div class="aside-card">
             <div class="aside-title">📖 Scripture in full</div>
@@ -122,23 +149,6 @@
             <p>The comment threads are for theological reasoning, not for personal attack. We expect the dignity of disagreement — and remove what falls below it.</p>
           </div>
         </aside>
-      </div>
-    </section>
-
-    <section id="method" class="method-section">
-      <div class="section-inner">
-        <div class="section-head section-head-center">
-          <div class="section-eyebrow">Our method</div>
-          <h2 class="section-title">How the Ledger is built</h2>
-        </div>
-        <div class="method-grid">
-          <div class="method-card"><div class="method-num">01</div><div class="method-title">Primary sources first</div><p>We cite confessions, conciliar decrees, papal documents, and patristic writings directly. No second-hand polemics, no straw men.</p></div>
-          <div class="method-card"><div class="method-num">02</div><div class="method-title">Each tradition in its idiom</div><p>Catholics speak of <em>transubstantiation</em>; the Orthodox of <em>theosis</em>; Lutherans of <em>sola fide</em>. We let each speak its own language.</p></div>
-          <div class="method-card"><div class="method-num">03</div><div class="method-title">Scripture for all sides</div><p>Every key biblical passage adduced by any tradition is listed. Different schools read the same verses to opposite conclusions — and we show how.</p></div>
-          <div class="method-card"><div class="method-num">04</div><div class="method-title">Historical context</div><p>Every debate is set in its historical frame: when it broke out, who shaped it, which councils settled or failed to settle it.</p></div>
-          <div class="method-card"><div class="method-num">05</div><div class="method-title">Living conversation</div><p>Each tradition has its own discussion thread. Argue, defend, refine — the marketplace of theological reasoning is one of the oldest institutions in Christianity.</p></div>
-          <div class="method-card"><div class="method-num">06</div><div class="method-title">Charity, not caricature</div><p>If a tradition would not recognise itself in our summary, we have failed. We revise as readers — especially insiders — flag inaccuracies.</p></div>
-        </div>
       </div>
     </section>
 
@@ -290,7 +300,6 @@
           <div class="movement-departures" id="movement-departures"></div>
         </section>
 
-        <!-- DISCUSSION QUESTIONS — THE CENTERPIECE -->
         <section class="movement-questions-block" id="discussion">
           <div class="questions-banner">
             <div class="questions-eyebrow">Discussion</div>
@@ -314,6 +323,79 @@
         <div class="historical-note" id="movement-historical-note"></div>
 
         <section class="related-section" id="movement-related"></section>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ═══ RELIGION DETAIL VIEW ═══ -->
+  <main id="religion-view" style="display:none">
+    <div class="detail-bar religion-detail-bar">
+      <div class="detail-bar-inner">
+        <button class="back-link" onclick="showHome()">← Back to the Ledger</button>
+        <span class="detail-category-tag religion-detail-tag" id="religion-category-tag"></span>
+      </div>
+    </div>
+
+    <article class="religion-article">
+      <div class="detail-inner">
+
+        <header class="religion-head">
+          <div class="religion-head-eyebrow">The Wider Conversation</div>
+          <h1 class="religion-title" id="religion-title"></h1>
+          <div class="religion-meta-grid">
+            <div class="religion-meta-row"><span class="religion-meta-label">Founded</span><span id="religion-founded-line"></span></div>
+            <div class="religion-meta-row"><span class="religion-meta-label">Adherents</span><span id="religion-adherents-line"></span></div>
+            <div class="religion-meta-row"><span class="religion-meta-label">Founder / tradition</span><span id="religion-founder-line"></span></div>
+          </div>
+        </header>
+
+        <section class="religion-summary-block">
+          <div class="religion-summary" id="religion-summary"></div>
+        </section>
+
+        <section class="religion-core-block">
+          <h2 class="part-title">Core beliefs</h2>
+          <p class="part-sub">The central doctrines and practices in this tradition's own theological idiom.</p>
+          <div class="religion-core-beliefs" id="religion-core-beliefs"></div>
+        </section>
+
+        <section class="religion-keytexts-block">
+          <h2 class="part-title">Key texts and authorities</h2>
+          <div class="keytexts-grid" id="religion-key-texts"></div>
+        </section>
+
+        <section class="religion-comparison-block">
+          <div class="comparison-grid">
+            <div class="comparison-column contact-column">
+              <h3 class="comparison-title contact-title">Points of contact with Christianity</h3>
+              <div class="comparison-body" id="religion-contact"></div>
+            </div>
+            <div class="comparison-column divergence-column">
+              <h3 class="comparison-title divergence-title">Points of divergence</h3>
+              <div class="comparison-body" id="religion-divergence"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="religion-questions-block" id="religion-discussion">
+          <div class="questions-banner religion-questions-banner">
+            <div class="questions-eyebrow">Discussion</div>
+            <h2 class="questions-title">Five questions to start the conversation</h2>
+            <p class="questions-sub">Questions designed for genuine comparative theology — real arguments on both sides. Read, think, sign in, post.</p>
+          </div>
+          <div class="questions-list" id="religion-questions"></div>
+        </section>
+
+        <section class="religion-relation-block">
+          <h2 class="part-title">Historical relationship with Christianity</h2>
+          <p class="part-sub">The actual historical encounter between this tradition and the Christian movement — from the earliest contacts through to today.</p>
+          <div class="religion-historical-relation" id="religion-historical-relation"></div>
+        </section>
+
+        <div class="historical-note" id="religion-historical-note"></div>
+
+        <section class="related-section" id="religion-related"></section>
 
       </div>
     </article>
@@ -360,6 +442,14 @@
           <option>Seventh-day Adventist</option>
           <option>Oneness Pentecostal</option>
           <option>Christian Science</option>
+          <option>Unitarian Universalist</option>
+          <option>Other Christian</option>
+          <option>Jewish</option>
+          <option>Muslim</option>
+          <option>Hindu</option>
+          <option>Buddhist</option>
+          <option>Sikh</option>
+          <option>Bahá'í</option>
           <option>Exploring / No tradition</option>
           <option>Other</option>
         </select>
@@ -386,7 +476,7 @@
         </div>
       </div>
       <div class="foot-text">
-        <p>A scholarly, charitable, lay-readable comparison of Christian doctrinal traditions. All confessional and primary-source citations are reproduced from their respective documents. The Synod takes no theological position of its own.</p>
+        <p>A scholarly, charitable, lay-readable comparison of religious traditions. All confessional and primary-source citations are reproduced from their respective documents. The Synod takes no theological position of its own.</p>
         <p class="foot-meta">© 2025 Synod of Soup · All rights reserved · For the curious, the convicted, and the searching · Soli Deo gloria</p>
       </div>
     </div>
