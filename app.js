@@ -6149,7 +6149,7 @@ function _applyRoute() {
     about: document.getElementById('about'),
   };
   const layouts = {
-    ledger:    ['hero', 'topics', 'about'],
+    ledger:    ['hero', 'topics'],
     movements: ['movements'],
     religions: ['religions'],
     questions: ['questions'],
