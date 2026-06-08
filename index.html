@@ -17,7 +17,7 @@
   <!-- ═══ TOP NAV ═══ -->
   <nav class="topbar">
     <div class="topbar-inner">
-      <a class="brand" onclick="showHome()">
+      <a class="brand" onclick="goLedger()">
         <span class="brand-mark">⛪</span>
         <span class="brand-text">
           <span class="brand-name">Synod of Soup</span>
@@ -25,10 +25,10 @@
         </span>
       </a>
       <div class="nav-links">
-        <a onclick="showHome()" class="nav-link">Ledger</a>
-        <a onclick="scrollToSection('movements')" class="nav-link">Outside the Creeds</a>
-        <a onclick="scrollToSection('religions')" class="nav-link">Other Faiths</a>
-        <a onclick="scrollToSection('about')" class="nav-link">About</a>
+        <a onclick="goLedger()" class="nav-link" data-route="ledger">Ledger</a>
+        <a onclick="goMovements()" class="nav-link" data-route="movements">Outside the Creeds</a>
+        <a onclick="goReligions()" class="nav-link" data-route="religions">Other Faiths</a>
+        <a onclick="goAbout()" class="nav-link" data-route="about">About</a>
       </div>
       <div class="topbar-right">
         <span id="notif-wrap" class="notif-wrap" style="display:none"></span>
@@ -260,7 +260,7 @@
   <main id="movement-view" style="display:none">
     <div class="detail-bar movement-detail-bar">
       <div class="detail-bar-inner">
-        <button class="back-link" onclick="showHome()">← Back to the Ledger</button>
+        <button class="back-link" onclick="goMovements()">← Back to Movements</button>
         <span class="detail-category-tag movement-detail-tag" id="movement-category-tag"></span>
       </div>
     </div>
@@ -332,7 +332,7 @@
   <main id="religion-view" style="display:none">
     <div class="detail-bar religion-detail-bar">
       <div class="detail-bar-inner">
-        <button class="back-link" onclick="showHome()">← Back to the Ledger</button>
+        <button class="back-link" onclick="goReligions()">← Back to Other Faiths</button>
         <span class="detail-category-tag religion-detail-tag" id="religion-category-tag"></span>
       </div>
     </div>
