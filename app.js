@@ -6052,3 +6052,74 @@ setInterval(() => {
     loadNotifications();
   }
 }, 60000);
+
+
+// ═══════════════════════════════════════════════════════════════
+//   PATCH 8 — Hash routing (Ledger / Movements / Religions / About)
+// ═══════════════════════════════════════════════════════════════
+
+function _getRoute() {
+  const h = (window.location.hash || '').toLowerCase();
+  if (h.startsWith('#/movements')) return 'movements';
+  if (h.startsWith('#/religions')) return 'religions';
+  if (h.startsWith('#/about')) return 'about';
+  return 'ledger';
+}
+
+function _applyRoute() {
+  const route = _getRoute();
+  const hero = document.querySelector('.hero');
+  const topics = document.getElementById('topics');
+  const movements = document.getElementById('movements');
+  const religions = document.getElementById('religions');
+  const about = document.getElementById('about');
+  const show = (el, on) => { if (el) el.style.display = on ? '' : 'none'; };
+
+  if (route === 'ledger') {
+    show(hero, true); show(topics, true); show(movements, false); show(religions, false); show(about, true);
+  } else if (route === 'movements') {
+    show(hero, false); show(topics, false); show(movements, true); show(religions, false); show(about, false);
+  } else if (route === 'religions') {
+    show(hero, false); show(topics, false); show(movements, false); show(religions, true); show(about, false);
+  } else if (route === 'about') {
+    show(hero, false); show(topics, false); show(movements, false); show(religions, false); show(about, true);
+  }
+
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.classList.toggle('active', a.dataset.route === route);
+  });
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+window.addEventListener('hashchange', () => {
+  // If currently on a detail view, return to home first
+  const dv = document.getElementById('detail-view');
+  const mv = document.getElementById('movement-view');
+  const rv = document.getElementById('religion-view');
+  const onDetail = (dv && dv.style.display !== 'none')
+                || (mv && mv.style.display !== 'none')
+                || (rv && rv.style.display !== 'none');
+  if (onDetail) {
+    if (dv) dv.style.display = 'none';
+    if (mv) mv.style.display = 'none';
+    if (rv) rv.style.display = 'none';
+    const hv = document.getElementById('home-view');
+    if (hv) hv.style.display = '';
+  }
+  _applyRoute();
+});
+
+document.addEventListener('DOMContentLoaded', _applyRoute);
+
+// Wrap showHome so it respects the current route
+const _origShowHomeP8 = showHome;
+showHome = function() {
+  _origShowHomeP8();
+  _applyRoute();
+};
+
+// Navigation helpers
+function goLedger()    { if (window.location.hash !== '#/' && window.location.hash !== '') { window.location.hash = '#/'; } else { showHome(); } }
+function goMovements() { if (window.location.hash !== '#/movements') { window.location.hash = '#/movements'; } else { showHome(); } }
+function goReligions() { if (window.location.hash !== '#/religions') { window.location.hash = '#/religions'; } else { showHome(); } }
+function goAbout()     { if (window.location.hash !== '#/about') { window.location.hash = '#/about'; } else { showHome(); } }
