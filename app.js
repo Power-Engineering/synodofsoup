@@ -6123,3 +6123,404 @@ function goLedger()    { if (window.location.hash !== '#/' && window.location.ha
 function goMovements() { if (window.location.hash !== '#/movements') { window.location.hash = '#/movements'; } else { showHome(); } }
 function goReligions() { if (window.location.hash !== '#/religions') { window.location.hash = '#/religions'; } else { showHome(); } }
 function goAbout()     { if (window.location.hash !== '#/about') { window.location.hash = '#/about'; } else { showHome(); } }
+
+// ═══════════════════════════════════════════════════════════════
+//   PATCH 9 v2 — Questions Corner (with per-denom ask) + routing
+//   REPLACES patch-9-engine.js. Append to app.js.
+// ═══════════════════════════════════════════════════════════════
+
+// ─── Routing (overrides patch-8) ───────────────────────────────
+function _getRoute() {
+  const h = (window.location.hash || '').toLowerCase();
+  if (h.startsWith('#/movements')) return 'movements';
+  if (h.startsWith('#/religions')) return 'religions';
+  if (h.startsWith('#/questions')) return 'questions';
+  if (h.startsWith('#/about'))     return 'about';
+  return 'ledger';
+}
+function _applyRoute() {
+  const route = _getRoute();
+  const els = {
+    hero: document.querySelector('.hero'),
+    topics: document.getElementById('topics'),
+    movements: document.getElementById('movements'),
+    religions: document.getElementById('religions'),
+    questions: document.getElementById('questions'),
+    about: document.getElementById('about'),
+  };
+  const layouts = {
+    ledger:    ['hero', 'topics', 'about'],
+    movements: ['movements'],
+    religions: ['religions'],
+    questions: ['questions'],
+    about:     ['about'],
+  };
+  const visible = layouts[route] || layouts.ledger;
+  Object.entries(els).forEach(([k, el]) => { if (el) el.style.display = visible.includes(k) ? '' : 'none'; });
+  if (route === 'questions') renderQuestionsCorner();
+  document.querySelectorAll('.nav-link').forEach(a => a.classList.toggle('active', a.dataset.route === route));
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+function goQuestions() {
+  if (window.location.hash !== '#/questions') window.location.hash = '#/questions';
+  else showHome();
+}
+
+// ─── Seed: 5 challenge questions × 12 traditions = 60 ──────────
+const QC_SEEDS = [
+  { d: 'Roman Catholic', q: 'What is the strongest biblical case for papal infallibility?' },
+  { d: 'Roman Catholic', q: 'How does Catholic theology reconcile the Marian dogmas (Immaculate Conception, Assumption) with sola scriptura concerns?' },
+  { d: 'Roman Catholic', q: 'What is the best Catholic defense of purgatory given Hebrews 9:27?' },
+  { d: 'Roman Catholic', q: 'How is transubstantiation philosophically coherent given modern critiques of Aristotelian substance metaphysics?' },
+  { d: 'Roman Catholic', q: 'Why did the Catholic Church only formally define the Immaculate Conception in 1854 if it was always believed?' },
+
+  { d: 'Eastern Orthodox', q: 'What is the strongest case against the filioque clause given John 15:26?' },
+  { d: 'Eastern Orthodox', q: 'How does Orthodoxy defend apostolic continuity against Catholic and Old Catholic counter-claims?' },
+  { d: 'Eastern Orthodox', q: 'How is theosis (deification) compatible with the Creator-creature distinction?' },
+  { d: 'Eastern Orthodox', q: 'Why is rejecting later Western developments principled, given Orthodoxy\'s own developments like Palamism?' },
+  { d: 'Eastern Orthodox', q: 'How does Orthodox ancestral-sin doctrine handle the Augustinian-sounding language of Romans 5:12–19?' },
+
+  { d: 'Anglican / Episcopal', q: 'How does Anglicanism remain coherent given the wide gulf between Anglo-Catholic and evangelical Anglicans?' },
+  { d: 'Anglican / Episcopal', q: 'What is the defense of episcopal government given that "elder" and "overseer" appear interchangeable in the New Testament?' },
+  { d: 'Anglican / Episcopal', q: 'How do Anglicans defend retention of the 39 Articles when many clergy don\'t actually believe several of them?' },
+  { d: 'Anglican / Episcopal', q: 'Is the Book of Common Prayer a true reform of medieval worship, or a political compromise?' },
+  { d: 'Anglican / Episcopal', q: 'Can the Anglican via media survive modern polarization, or is it inherently unstable?' },
+
+  { d: 'Lutheran', q: 'What is the strongest biblical case for sacramental union ("in, with, and under") over transubstantiation?' },
+  { d: 'Lutheran', q: 'How does Luther\'s bondage of the will avoid making God the author of evil?' },
+  { d: 'Lutheran', q: 'If salvation is by faith alone, on what basis do Lutherans retain infant baptism?' },
+  { d: 'Lutheran', q: 'How does the two-kingdoms doctrine handle the church\'s prophetic call against state injustice?' },
+  { d: 'Lutheran', q: 'Does "simul justus et peccator" undermine genuine sanctification?' },
+
+  { d: 'Presbyterian / Reformed', q: 'What is the strongest biblical case for infant baptism given that all explicit New Testament baptisms involve professing believers?' },
+  { d: 'Presbyterian / Reformed', q: 'How does limited atonement avoid making God\'s love arbitrary or insufficient?' },
+  { d: 'Presbyterian / Reformed', q: 'Was the Westminster Confession right to call the pope the Antichrist (WCF 25.6 original)?' },
+  { d: 'Presbyterian / Reformed', q: 'How does Reformed Sabbatarianism reconcile with Romans 14:5–6 and Colossians 2:16?' },
+  { d: 'Presbyterian / Reformed', q: 'Why should Presbyterian polity be preferred when the early church practiced various forms of governance?' },
+
+  { d: 'Baptist', q: 'How do Baptists respond to household baptisms (Acts 16:33; 1 Cor 1:16) and covenant-continuity arguments from Genesis 17?' },
+  { d: 'Baptist', q: 'How do Baptists defend local church autonomy given the apostolic regulation of multiple churches in the Pauline letters?' },
+  { d: 'Baptist', q: 'What is the strongest biblical case for believer\'s-only baptism by immersion?' },
+  { d: 'Baptist', q: 'Why is the Lord\'s Supper typically a memorial rather than a means of grace in Baptist practice?' },
+  { d: 'Baptist', q: 'How does Baptist "soul liberty" coexist with meaningful church discipline?' },
+
+  { d: 'Methodist / Wesleyan', q: 'What is the strongest defense of entire sanctification / Christian perfection given Romans 7\'s continuing struggle?' },
+  { d: 'Methodist / Wesleyan', q: 'How does prevenient grace differ functionally from Catholic actual grace?' },
+  { d: 'Methodist / Wesleyan', q: 'If salvation is decisional and personal, why retain infant baptism?' },
+  { d: 'Methodist / Wesleyan', q: 'How does the Wesleyan quadrilateral avoid relativizing sola scriptura?' },
+  { d: 'Methodist / Wesleyan', q: 'How does Methodism respond to Reformed charges that Arminianism makes salvation cooperative?' },
+
+  { d: 'Pentecostal', q: 'What is the strongest biblical case for tongues as the initial physical evidence of Spirit baptism?' },
+  { d: 'Pentecostal', q: 'How do Pentecostals respond to cessationist appeals to 1 Corinthians 13:8–10?' },
+  { d: 'Pentecostal', q: 'Why isn\'t healing always available to those with sufficient faith?' },
+  { d: 'Pentecostal', q: 'How do Pentecostals distinguish authentic ecstatic worship from psychological or social phenomena?' },
+  { d: 'Pentecostal', q: 'What is the Pentecostal response when prophetic words demonstrably fail to come true?' },
+
+  { d: 'Charismatic', q: 'What distinguishes Charismatic Renewal from classical Pentecostalism beyond initial-evidence theology?' },
+  { d: 'Charismatic', q: 'How do Charismatics defend modern apostolic and prophetic offices given Ephesians 2:20\'s foundation language?' },
+  { d: 'Charismatic', q: 'What is the strongest defense of impartation through laying on of hands?' },
+  { d: 'Charismatic', q: 'How do Charismatics respond to prosperity-gospel critiques without abandoning expectation of supernatural provision?' },
+  { d: 'Charismatic', q: 'What is the case for the New Apostolic Reformation\'s restructuring of church governance?' },
+
+  { d: 'Anabaptist / Mennonite', q: 'What is the case for pacifism given Romans 13\'s affirmation of the state\'s sword?' },
+  { d: 'Anabaptist / Mennonite', q: 'How does Anabaptist separation from the world differ from monastic withdrawal?' },
+  { d: 'Anabaptist / Mennonite', q: 'Why reject infant baptism when the broader church has practiced it since at least the 2nd century?' },
+  { d: 'Anabaptist / Mennonite', q: 'How do Anabaptists respond to charges that the discipleship emphasis trends toward works-righteousness?' },
+  { d: 'Anabaptist / Mennonite', q: 'Can Anabaptist non-participation in civic life avoid collapsing into social irresponsibility?' },
+
+  { d: 'Non-denominational', q: 'How do non-denominational churches handle questions where Scripture is genuinely ambiguous (e.g., baptism)?' },
+  { d: 'Non-denominational', q: 'Why does the non-denominational impulse keep producing new denominations?' },
+  { d: 'Non-denominational', q: 'Does non-denominationalism preserve apostolic simplicity or abandon theological discipline?' },
+  { d: 'Non-denominational', q: 'How do non-denominational churches address every-pastor-as-pope without external doctrinal checks?' },
+  { d: 'Non-denominational', q: 'What is the defense against charges of consumerism in church choice?' },
+
+  { d: 'Seventh-day Adventist', q: 'What is the strongest biblical case for Saturday Sabbath being binding on New Covenant believers?' },
+  { d: 'Seventh-day Adventist', q: 'How do SDAs respond to charges that Ellen G. White functions as a quasi-canonical authority?' },
+  { d: 'Seventh-day Adventist', q: 'What is the best defense of the investigative judgment doctrine and its 1844 dating?' },
+  { d: 'Seventh-day Adventist', q: 'How does conditional immortality / annihilationism handle Matthew 25:46 and Revelation 14:11?' },
+  { d: 'Seventh-day Adventist', q: 'Why is the SDA position on health and diet theologically significant rather than merely cultural?' },
+];
+
+function _qcSlug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40); }
+
+const QC_INDEXED = (() => {
+  const byDenom = {};
+  QC_SEEDS.forEach(s => {
+    if (!byDenom[s.d]) byDenom[s.d] = [];
+    byDenom[s.d].push({ ...s, threadId: `qc-${_qcSlug(s.d)}-${byDenom[s.d].length + 1}` });
+  });
+  return byDenom;
+})();
+
+let qcRendered = false;
+function renderQuestionsCorner() {
+  if (qcRendered) return;
+  const root = document.getElementById('questions');
+  if (!root) return;
+  qcRendered = true;
+
+  root.innerHTML = `
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow qc-eyebrow">Questions Corner</div>
+        <h2 class="section-title">Pose, defend, refine.</h2>
+        <p class="section-sub">Every tradition opens with five challenge questions hitting its hardest theological pressure points. Answer them, vote on the strongest defenses, or pose your own question to any tradition.</p>
+      </div>
+
+      <div class="qc-floor">
+        <h3 class="qc-section-h">📣 Open the floor — any question, any tradition</h3>
+        <div id="qc-floor-thread" class="qc-thread-host"></div>
+      </div>
+
+      <h3 class="qc-section-h qc-section-h-spaced">Ask any tradition anything</h3>
+      <div class="qc-denom-list">
+        ${Object.entries(QC_INDEXED).map(([denom, qs]) => {
+          const slug = _qcSlug(denom);
+          const openTopicId = `qc-${slug}-open`;
+          return `
+          <details class="qc-denom" data-denom-thread="${openTopicId}">
+            <summary class="qc-denom-head">
+              <span class="qc-denom-name">${escHtml(denom)}</span>
+              <span class="qc-denom-arrow">▾</span>
+            </summary>
+            <div class="qc-denom-body">
+
+              <div class="qc-subsection-label">⭑ Starter challenges</div>
+              <div class="qc-questions-list">
+                ${qs.map(q => `
+                  <details class="qc-q" data-thread="${q.threadId}">
+                    <summary class="qc-q-head">
+                      <span class="qc-q-text">${escHtml(q.q)}</span>
+                      <span class="qc-q-arrow">›</span>
+                    </summary>
+                    <div class="qc-q-thread"></div>
+                  </details>
+                `).join('')}
+              </div>
+
+              <div class="qc-subsection-label qc-subsection-label-spaced">💬 Community questions to ${escHtml(denom)}</div>
+              <div class="qc-user-q-list" id="qc-userq-${slug}"></div>
+
+              <div class="qc-ask-host">
+                <div class="qc-ask-label">Pose your own question to ${escHtml(denom)}</div>
+                <textarea class="comment-textarea qc-ask-input" id="qc-ask-input-${slug}" maxlength="400" placeholder="e.g., What is your tradition's best response to…" ${currentUser ? '' : 'disabled'}></textarea>
+                <div class="qc-form-actions">
+                  ${currentUser
+                    ? `<button class="btn btn-primary btn-sm" onclick="_qcAskQuestion('${openTopicId}','${slug}')">Ask ${escHtml(denom)}</button>`
+                    : `<span class="qc-locked-inline">Sign in to ask.</span>`}
+                </div>
+              </div>
+
+            </div>
+          </details>
+        `}).join('')}
+      </div>
+    </div>
+  `;
+
+  root.querySelectorAll('details.qc-q').forEach(d => {
+    d.addEventListener('toggle', async () => {
+      if (!d.open) return;
+      const host = d.querySelector('.qc-q-thread');
+      if (host.dataset.loaded) return;
+      host.dataset.loaded = '1';
+      await _qcMountSeedThread(d.dataset.thread, host);
+    });
+  });
+
+  root.querySelectorAll('details.qc-denom').forEach(d => {
+    d.addEventListener('toggle', async () => {
+      if (!d.open) return;
+      if (d.dataset.userQLoaded) return;
+      d.dataset.userQLoaded = '1';
+      await _qcLoadUserQuestions(d.dataset.denomThread);
+    });
+  });
+
+  const floor = document.getElementById('qc-floor-thread');
+  if (floor) _qcMountSeedThread('qc-open-floor', floor);
+}
+
+// ─── Seeded / Open-floor threads (flat) ────────────────────────
+async function _qcMountSeedThread(threadId, host) {
+  host.innerHTML = `
+    <div class="qc-form-host">
+      ${currentUser
+        ? `<textarea class="comment-textarea qc-input" id="qc-input-${threadId}" maxlength="600" placeholder="Post an answer or comment…"></textarea>
+           <div class="qc-form-actions"><button class="btn btn-primary btn-sm" onclick="_qcSubmitFlat('${threadId}')">Post</button></div>`
+        : `<div class="qc-locked">Sign in to participate.</div>`}
+    </div>
+    <div class="qc-list" id="qc-list-${threadId}"></div>
+  `;
+  await _qcLoadFlat(threadId);
+}
+async function _qcLoadFlat(threadId) {
+  const listEl = document.getElementById(`qc-list-${threadId}`);
+  if (!listEl) return;
+  if (!supabaseClient) { listEl.innerHTML = '<div class="qc-empty">Discussion unavailable — Supabase not configured.</div>'; return; }
+  try {
+    const { data, error } = await supabaseClient.from('comments').select('*')
+      .eq('topic_id', threadId).is('parent_id', null)
+      .order('upvote_count', { ascending: false }).order('created_at', { ascending: false });
+    if (error) throw error;
+    if (!data || !data.length) { listEl.innerHTML = '<div class="qc-empty">Be the first.</div>'; return; }
+    listEl.innerHTML = data.map(c => _qcRenderAnswer(c, `_qcVoteFlat(${c.id}, '${escAttr(c.topic_id)}')`)).join('');
+  } catch (err) { console.error(err); listEl.innerHTML = '<div class="qc-empty">Couldn\'t load discussion.</div>'; }
+}
+async function _qcSubmitFlat(threadId) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById(`qc-input-${threadId}`);
+  if (!ta) return;
+  const body = ta.value.trim(); if (!body) return;
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: threadId, user_id: currentUser.id,
+      display_name: currentUserProfile.display_name, user_denomination: currentUserProfile.denomination,
+      body, comment_type: 'general', parent_id: null,
+    });
+    if (error) throw error;
+    ta.value = ''; await _qcLoadFlat(threadId);
+  } catch (err) { alert('Could not post: ' + err.message); }
+}
+async function _qcVoteFlat(commentId, threadId) {
+  if (!currentUser) return;
+  if (typeof toggleUpvote === 'function') await toggleUpvote(commentId);
+  await _qcLoadFlat(threadId);
+}
+
+// ─── Community questions per denom ─────────────────────────────
+async function _qcLoadUserQuestions(openTopicId) {
+  const slug = openTopicId.replace(/^qc-/, '').replace(/-open$/, '');
+  const listEl = document.getElementById(`qc-userq-${slug}`);
+  if (!listEl) return;
+  if (!supabaseClient) { listEl.innerHTML = '<div class="qc-empty">Discussion unavailable — Supabase not configured.</div>'; return; }
+  try {
+    const { data, error } = await supabaseClient.from('comments').select('*')
+      .eq('topic_id', openTopicId).is('parent_id', null)
+      .order('upvote_count', { ascending: false }).order('created_at', { ascending: false });
+    if (error) throw error;
+    if (!data || !data.length) { listEl.innerHTML = '<div class="qc-empty">No community questions yet — be the first to ask.</div>'; return; }
+    listEl.innerHTML = data.map(q => _qcRenderUserQuestion(q, openTopicId)).join('');
+    listEl.querySelectorAll('details.qc-uq').forEach(d => {
+      d.addEventListener('toggle', async () => {
+        if (!d.open) return;
+        const host = d.querySelector('.qc-uq-answers');
+        if (host.dataset.loaded) return;
+        host.dataset.loaded = '1';
+        await _qcMountAnswerThread(parseInt(d.dataset.questionId, 10), openTopicId, host);
+      });
+    });
+  } catch (err) { console.error(err); listEl.innerHTML = '<div class="qc-empty">Couldn\'t load community questions.</div>'; }
+}
+
+function _qcRenderUserQuestion(q, openTopicId) {
+  const voted = (typeof userVotes !== 'undefined' && userVotes && userVotes.has) ? userVotes.has(q.id) : false;
+  return `
+    <details class="qc-uq" data-question-id="${q.id}">
+      <summary class="qc-uq-head">
+        <div class="qc-vote qc-vote-inline" onclick="event.preventDefault(); event.stopPropagation();">
+          <button class="qc-upbtn ${voted ? 'voted' : ''}" onclick="_qcVoteUserQ(${q.id}, '${escAttr(openTopicId)}')" ${!currentUser ? 'disabled' : ''}>▲</button>
+          <div class="qc-votecount">${q.upvote_count || 0}</div>
+        </div>
+        <div class="qc-uq-body">
+          <div class="qc-uq-text">${escHtml(q.body)}</div>
+          <div class="qc-uq-meta">
+            <strong>${escHtml(q.display_name || 'Anonymous')}</strong>
+            ${q.user_denomination ? `<span class="qc-denom-tag">${escHtml(q.user_denomination)}</span>` : ''}
+            <span class="qc-when">${typeof timeAgo === 'function' ? timeAgo(q.created_at) : ''}</span>
+          </div>
+        </div>
+        <span class="qc-q-arrow">›</span>
+      </summary>
+      <div class="qc-uq-answers"></div>
+    </details>
+  `;
+}
+
+async function _qcAskQuestion(openTopicId, slug) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById(`qc-ask-input-${slug}`);
+  if (!ta) return;
+  const body = ta.value.trim(); if (!body) return;
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: openTopicId, user_id: currentUser.id,
+      display_name: currentUserProfile.display_name, user_denomination: currentUserProfile.denomination,
+      body, comment_type: 'general', parent_id: null,
+    });
+    if (error) throw error;
+    ta.value = ''; await _qcLoadUserQuestions(openTopicId);
+  } catch (err) { alert('Could not post: ' + err.message); }
+}
+
+async function _qcVoteUserQ(commentId, openTopicId) {
+  if (!currentUser) return;
+  if (typeof toggleUpvote === 'function') await toggleUpvote(commentId);
+  await _qcLoadUserQuestions(openTopicId);
+}
+
+// ─── Answer threads under a community question ─────────────────
+async function _qcMountAnswerThread(questionId, openTopicId, host) {
+  host.innerHTML = `
+    <div class="qc-form-host">
+      ${currentUser
+        ? `<textarea class="comment-textarea qc-input" id="qc-ans-input-${questionId}" maxlength="600" placeholder="Answer this question…"></textarea>
+           <div class="qc-form-actions"><button class="btn btn-primary btn-sm" onclick="_qcSubmitAnswer(${questionId}, '${escAttr(openTopicId)}')">Post answer</button></div>`
+        : `<div class="qc-locked">Sign in to answer.</div>`}
+    </div>
+    <div class="qc-list" id="qc-ans-list-${questionId}"></div>
+  `;
+  await _qcLoadAnswers(questionId, openTopicId);
+}
+async function _qcLoadAnswers(questionId, openTopicId) {
+  const listEl = document.getElementById(`qc-ans-list-${questionId}`);
+  if (!listEl) return;
+  try {
+    const { data, error } = await supabaseClient.from('comments').select('*')
+      .eq('topic_id', openTopicId).eq('parent_id', questionId)
+      .order('upvote_count', { ascending: false }).order('created_at', { ascending: false });
+    if (error) throw error;
+    if (!data || !data.length) { listEl.innerHTML = '<div class="qc-empty">No answers yet.</div>'; return; }
+    listEl.innerHTML = data.map(c => _qcRenderAnswer(c, `_qcVoteAnswer(${c.id}, ${questionId}, '${escAttr(openTopicId)}')`)).join('');
+  } catch (err) { console.error(err); listEl.innerHTML = '<div class="qc-empty">Couldn\'t load answers.</div>'; }
+}
+async function _qcSubmitAnswer(questionId, openTopicId) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById(`qc-ans-input-${questionId}`);
+  if (!ta) return;
+  const body = ta.value.trim(); if (!body) return;
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: openTopicId, user_id: currentUser.id,
+      display_name: currentUserProfile.display_name, user_denomination: currentUserProfile.denomination,
+      body, comment_type: 'general', parent_id: questionId,
+    });
+    if (error) throw error;
+    ta.value = ''; await _qcLoadAnswers(questionId, openTopicId);
+  } catch (err) { alert('Could not post: ' + err.message); }
+}
+async function _qcVoteAnswer(commentId, questionId, openTopicId) {
+  if (!currentUser) return;
+  if (typeof toggleUpvote === 'function') await toggleUpvote(commentId);
+  await _qcLoadAnswers(questionId, openTopicId);
+}
+
+function _qcRenderAnswer(c, voteOnclick) {
+  const voted = (typeof userVotes !== 'undefined' && userVotes && userVotes.has) ? userVotes.has(c.id) : false;
+  return `
+    <div class="qc-item" data-comment-id="${c.id}">
+      <div class="qc-vote">
+        <button class="qc-upbtn ${voted ? 'voted' : ''}" onclick="${voteOnclick}" ${!currentUser ? 'disabled' : ''}>▲</button>
+        <div class="qc-votecount">${c.upvote_count || 0}</div>
+      </div>
+      <div class="qc-body-wrap">
+        <div class="qc-meta">
+          <strong>${escHtml(c.display_name || 'Anonymous')}</strong>
+          ${c.user_denomination ? `<span class="qc-denom-tag">${escHtml(c.user_denomination)}</span>` : ''}
+          <span class="qc-when">${typeof timeAgo === 'function' ? timeAgo(c.created_at) : ''}</span>
+        </div>
+        <div class="qc-text">${escHtml(c.body)}</div>
+      </div>
+    </div>
+  `;
+}
