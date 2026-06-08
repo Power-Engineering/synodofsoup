@@ -5853,14 +5853,14 @@ function renderNotificationBell() {
   wrap.style.display = 'inline-flex';
   const unread = unreadNotificationCount();
   wrap.innerHTML = `
-    <button class="notif-bell ${unread > 0 ? 'has-unread' : ''}" onclick="toggleNotifPanel()" aria-label="Notifications">
+   <button class="notif-bell ${unread > 0 ? 'has-unread' : ''}" onclick="event.stopPropagation(); toggleNotifPanel()" aria-label="Notifications">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
       ${unread > 0 ? `<span class="notif-badge">${unread > 99 ? '99+' : unread}</span>` : ''}
     </button>
     <div class="notif-panel ${notificationPanelOpen ? 'open' : ''}" id="notif-panel">
       <div class="notif-panel-head">
         <span>Notifications</span>
-        ${unread > 0 ? `<button class="notif-mark-all" onclick="markAllNotificationsRead()">Mark all read</button>` : ''}
+        ${unread > 0 ? `<button class="notif-mark-all" onclick="event.stopPropagation(); markAllNotificationsRead()">Mark all read</button>` : ''}
       </div>
       <div class="notif-panel-body">
         ${userNotifications.length === 0
