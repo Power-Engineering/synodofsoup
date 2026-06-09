@@ -8067,3 +8067,99 @@ function _renderDiscussionPosition(ctx, topicSlug) {
   }
   return `<div class="discussion-error">Discussion context not found.</div>`;
 }
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 13.1 — Discussion-page lifecycle fixes
+//   Append to end of app.js. Tiny patch.
+// ═══════════════════════════════════════════════════════════════════════
+
+// Helper: re-render the current discussion thread (used after delete/reply/submit)
+async function _refreshDiscussionView() {
+  if (_getRoute() !== 'discussion') return;
+  const parsed = _parseDiscussionRoute();
+  if (!parsed) return;
+  const ctx = _traditionContext(parsed.tradition);
+  await _loadDiscussionThread(parsed.tradition, parsed.topic, ctx);
+}
+
+// Helper: re-render JUST the thread list (no refetch — uses current allComments)
+function _rerenderDiscussionListOnly() {
+  if (_getRoute() !== 'discussion') return;
+  const parsed = _parseDiscussionRoute();
+  if (!parsed) return;
+  const ctx = _traditionContext(parsed.tradition);
+  let targetTag = null;
+  let isFlat = false;
+  if (ctx.type === 'denomination' && parsed.topic.startsWith('qc-')) { isFlat = true; }
+  else if (ctx.type === 'denomination') { targetTag = ctx.denomName; }
+  else if (ctx.type === 'movement' || ctx.type === 'religion') { targetTag = 'q:' + parsed.topic; }
+  const topLevel = isFlat
+    ? allComments.filter(c => !c.parent_comment_id)
+    : allComments.filter(c => c.target_denomination === targetTag && !c.parent_comment_id);
+  _renderDiscussionThread(parsed.tradition, parsed.topic, ctx, topLevel);
+}
+
+// ─── Fix 1: back button uses browser history when available ────────────
+function _discussionBack(traditionSlug, topicSlug) {
+  if (window.history.length > 1) {
+    window.history.back();
+    return;
+  }
+  // Fallback if no history
+  if (traditionSlug && traditionSlug.startsWith('m-')) {
+    showMovement('mov-' + traditionSlug.slice(2));
+  } else if (traditionSlug && traditionSlug.startsWith('r-')) {
+    showReligion('rel-' + traditionSlug.slice(2));
+  } else if (topicSlug && topicSlug.startsWith('qc-')) {
+    goQuestions();
+  } else {
+    const t = TOPICS.find(x => x.id === topicSlug);
+    if (t) showTopic(topicSlug); else showHome();
+  }
+}
+
+// ─── Fix 2: delete refreshes the view ──────────────────────────────────
+if (typeof deleteComment === 'function') {
+  const _origDeleteCommentP13 = deleteComment;
+  deleteComment = async function(commentId) {
+    await _origDeleteCommentP13(commentId);
+    await _refreshDiscussionView();
+  };
+}
+
+// ─── Fix 3: clicking Reply re-renders so the form appears ──────────────
+if (typeof startReply === 'function') {
+  const _origStartReplyP13 = startReply;
+  startReply = function(commentId) {
+    _origStartReplyP13(commentId);
+    _rerenderDiscussionListOnly();
+  };
+}
+if (typeof cancelReply === 'function') {
+  const _origCancelReplyP13 = cancelReply;
+  cancelReply = function() {
+    _origCancelReplyP13();
+    _rerenderDiscussionListOnly();
+  };
+}
+
+// ─── Fix 4: submitting a reply refreshes the view ──────────────────────
+if (typeof submitReply === 'function') {
+  const _origSubmitReplyP13 = submitReply;
+  submitReply = async function(parentId) {
+    await _origSubmitReplyP13(parentId);
+    await _refreshDiscussionView();
+  };
+}
+
+// ─── Fix 5: toggling upvotes refreshes the view ────────────────────────
+if (typeof toggleUpvote === 'function') {
+  const _origToggleUpvoteP13 = toggleUpvote;
+  toggleUpvote = async function(commentId) {
+    await _origToggleUpvoteP13(commentId);
+    // Only refresh if we're on a discussion view — other views handle it themselves
+    if (_getRoute() === 'discussion') {
+      await _refreshDiscussionView();
+    }
+  };
+}
