@@ -8163,3 +8163,162 @@ if (typeof toggleUpvote === 'function') {
     }
   };
 }
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 13.2 — "Show empty" toggle now hides ALL empty discussions
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// Bug: starter content (QC seed questions, movement questions, religion
+// questions) was always shown regardless of the "Show empty discussions"
+// toggle, because of a `priorityShow` override in the filter logic.
+//
+// Fix: re-declare renderQuestionsCorner with the priorityShow override
+// removed. The toggle now hides every discussion that has zero activity.
+
+async function renderQuestionsCorner(forceRerender) {
+  const root = document.getElementById('questions');
+  if (!root) return;
+  if (!forceRerender && root.dataset.qcRendered === '1') return;
+  root.dataset.qcRendered = '1';
+
+  _qcReadFiltersFromUrl();
+
+  const denomNames = []; const movNames = []; const relNames = [];
+  const seen = new Set();
+  for (const item of _qcCatalog) {
+    if (seen.has(item.tradition)) continue;
+    seen.add(item.tradition);
+    if (item.traditionType === 'denomination') denomNames.push(item.tradition);
+    else if (item.traditionType === 'movement') movNames.push(item.tradition);
+    else if (item.traditionType === 'religion') relNames.push(item.tradition);
+  }
+  const topicList = TOPICS.map(t => ({ id: t.id, name: t.name }));
+  const typeList = [
+    { id: 'general', label: '💬 General' },
+    { id: 'responding', label: '⚔️ Response' },
+    { id: 'edit_suggestion', label: '✏️ Edit' },
+    { id: 'verse_citation', label: '📖 Verse' },
+  ];
+
+  const f = _qcFilters;
+  const isActive = (dim, v) => f[dim].includes(v);
+  const pill = (dim, id, label, classes) =>
+    `<button class="qc-pill ${classes || ''} ${isActive(dim, id) ? 'active' : ''}" onclick="_qcToggleFilter('${dim}','${escAttr(id)}')">${label}</button>`;
+
+  root.innerHTML = `
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="section-eyebrow qc-eyebrow">Questions Corner</div>
+        <h2 class="section-title">Browse every discussion</h2>
+        <p class="section-sub">A unified view across the entire site. Filter by tradition, by topic, by response type — paste the URL to share any filter combination.</p>
+      </div>
+
+      <div class="qc-filter-panel">
+        <div class="qc-filter-row">
+          <div class="qc-filter-label">Tradition</div>
+          <div class="qc-pills">
+            ${denomNames.map(n => pill('traditions', n, escHtml(n), 'qc-pill-denom')).join('')}
+            <span class="qc-pill-sep"></span>
+            ${movNames.map(n => pill('traditions', n, escHtml(n), 'qc-pill-mov')).join('')}
+            <span class="qc-pill-sep"></span>
+            ${relNames.map(n => pill('traditions', n, escHtml(n), 'qc-pill-rel')).join('')}
+          </div>
+        </div>
+        <div class="qc-filter-row">
+          <div class="qc-filter-label">Topic <span class="qc-filter-sublabel">(Ledger only)</span></div>
+          <div class="qc-pills">
+            ${topicList.map(t => pill('topics', t.id, escHtml(t.name))).join('')}
+          </div>
+        </div>
+        <div class="qc-filter-row">
+          <div class="qc-filter-label">Type</div>
+          <div class="qc-pills qc-pills-type">
+            ${typeList.map(t => pill('types', t.id, t.label)).join('')}
+          </div>
+        </div>
+        <div class="qc-filter-actions">
+          <label class="qc-toggle">
+            <input type="checkbox" ${f.showEmpty ? 'checked' : ''} onchange="_qcToggleShowEmpty()"/>
+            Show empty discussions (including starter questions)
+          </label>
+          <div class="qc-sort-control">
+            <label>Sort:</label>
+            <select onchange="_qcSetSort(this.value)">
+              <option value="active" ${f.sort === 'active' ? 'selected' : ''}>Most recently active</option>
+              <option value="upvotes" ${f.sort === 'upvotes' ? 'selected' : ''}>Top upvotes</option>
+              <option value="count" ${f.sort === 'count' ? 'selected' : ''}>Most contributions</option>
+            </select>
+          </div>
+          ${(f.traditions.length || f.topics.length || f.types.length || f.showEmpty || f.sort !== 'active')
+            ? `<button class="qc-clear-btn" onclick="_qcClearFilters()">Clear all filters</button>`
+            : ''}
+        </div>
+      </div>
+
+      <div class="qc-results-info" id="qc-results-info">Loading…</div>
+      <div class="qc-results" id="qc-results"></div>
+    </div>
+  `;
+
+  const activity = await _qcFetchActivity();
+
+  let items = _qcCatalog.slice();
+
+  if (f.traditions.length) {
+    items = items.filter(it => f.traditions.includes(it.tradition));
+  }
+  if (f.topics.length) {
+    items = items.filter(it => it.kind === 'ledger' && f.topics.includes(it.ledgerTopicId));
+  }
+  for (const it of items) {
+    const key = `${it.topicId}|${it.targetTag || ''}`;
+    const a = activity.get(key);
+    it._activity = a || { count: 0, latest: null, topUpvotes: 0, sampleBody: null, types: new Set() };
+  }
+  if (f.types.length) {
+    items = items.filter(it => {
+      if (!it._activity || !it._activity.types) return false;
+      return f.types.some(t => it._activity.types.has(t));
+    });
+  }
+
+  // FIX: respect the showEmpty toggle for ALL items.  No more priorityShow override.
+  if (!f.showEmpty) {
+    items = items.filter(it => it._activity.count > 0);
+  }
+
+  items.sort((a, b) => {
+    const ac = a._activity.count, bc = b._activity.count;
+    if (f.sort === 'count') return bc - ac;
+    if (f.sort === 'upvotes') return (b._activity.topUpvotes || 0) - (a._activity.topUpvotes || 0);
+    if (ac && !bc) return -1;
+    if (!ac && bc) return 1;
+    if (ac && bc) return (b._activity.latest || 0) - (a._activity.latest || 0);
+    if (a.priorityShow && !b.priorityShow) return -1;
+    if (!a.priorityShow && b.priorityShow) return 1;
+    return (a.title || '').localeCompare(b.title || '');
+  });
+
+  const MAX_INITIAL = 200;
+  const total = items.length;
+  const display = items.slice(0, MAX_INITIAL);
+
+  const infoEl = document.getElementById('qc-results-info');
+  if (infoEl) {
+    const filterCount = f.traditions.length + f.topics.length + f.types.length;
+    if (total === 0 && !f.showEmpty && filterCount === 0) {
+      // Helpful empty state: no active discussions and no filters applied
+      infoEl.innerHTML = `<span class="qc-results-empty">No active discussions yet. <button class="qc-link-btn" onclick="_qcToggleShowEmpty()">Show all starter questions</button> to browse what's available, or post a contribution from any topic, movement, or religion page.</span>`;
+    } else if (total === 0) {
+      infoEl.innerHTML = `<span class="qc-results-empty">No discussions match your filters. <button class="qc-link-btn" onclick="_qcClearFilters()">Clear filters</button>.</span>`;
+    } else {
+      infoEl.innerHTML = `<span class="qc-results-count">${total} ${total === 1 ? 'discussion' : 'discussions'}${filterCount ? ' matching filters' : ''}</span>${total > MAX_INITIAL ? ` <span class="qc-results-cap">· showing first ${MAX_INITIAL}</span>` : ''}`;
+    }
+  }
+
+  const resultsEl = document.getElementById('qc-results');
+  if (!resultsEl) return;
+
+  resultsEl.innerHTML = display.map(_qcRenderResultCard).join('');
+}
