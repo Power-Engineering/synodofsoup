@@ -67,6 +67,9 @@ a:hover { color: var(--crimson); }
 /* TOP NAV */
 .topbar { background: var(--white-warm); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
 .topbar-inner { max-width: var(--max-w); margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; gap: 32px; }
+.topbar-inner {
+  flex-wrap: wrap;
+}
 .brand { display: flex; align-items: center; gap: 12px; cursor: pointer; color: var(--ink); }
 .brand:hover { color: var(--crimson); }
 .brand-mark { font-size: 28px; filter: sepia(20%); }
@@ -2559,5 +2562,23 @@ a:hover { color: var(--crimson); }
 .question-card-flat-body {
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+@media (max-width: 700px) {
+  .topbar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 15px;
+  }
 }
 
