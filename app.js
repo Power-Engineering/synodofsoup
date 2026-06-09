@@ -4948,10 +4948,25 @@ async function submitComment() {
 
 async function deleteComment(commentId) {
   if (!confirm('Delete this comment?')) return;
+
   try {
-    await supabaseClient.from('comments').delete().eq('id', commentId);
-    await loadComments(currentTopic.id);
-  } catch (err) { console.error(err); }
+    const { error } = await supabaseClient
+      .from('comments')
+      .delete()
+      .eq('id', commentId);
+
+    if (error) throw error;
+
+    if (currentReligion) {
+      await loadReligionComments(currentReligion.id);
+    } else if (currentMovement) {
+      await loadMovementComments(currentMovement.id);
+    } else if (currentTopic) {
+      await loadComments(currentTopic.id);
+    }
+  } catch (err) {
+    console.error('Delete failed:', err);
+  }
 }
 
 function showFormMsg(type, text) {
