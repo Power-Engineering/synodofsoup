@@ -8322,3 +8322,83 @@ async function renderQuestionsCorner(forceRerender) {
 
   resultsEl.innerHTML = display.map(_qcRenderResultCard).join('');
 }
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 13.3 — renderThreadedComment layout fix
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// Bug: replies were rendered as a sibling of .comment-body inside the
+// flex-row .comment-item, squeezing the parent's text into a narrow
+// vertical strip.
+//
+// Fix: put the replies block back INSIDE .comment-body, as a block-level
+// child below the actions. The P11 flatten logic still prevents cascade
+// because only one .comment-replies-wrap is ever created per chain.
+
+function renderThreadedComment(c, depth) {
+  const directReplies = allComments.filter(r => r.parent_comment_id === c.id)
+    .sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+  const initials = (c.display_name || 'A').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  const voted = userVotes.has(c.id);
+  const date = new Date(c.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+  const isOwn = currentUser && c.user_id === currentUser.id;
+  const classes = depth === 0 ? 'comment-item' : 'comment-item comment-reply-item';
+  const replyForm = (activeReplyTo === c.id) ? renderReplyForm(c.id) : '';
+
+  // "In reply to X" marker for flattened deep replies
+  let inReplyToMarker = '';
+  if (depth >= 2 && c.parent_comment_id) {
+    const parent = allComments.find(x => x.id === c.parent_comment_id);
+    if (parent) {
+      inReplyToMarker = `<div class="in-reply-to">↳ in reply to <strong>${escHtml(parent.display_name || 'Anonymous')}</strong></div>`;
+    }
+  }
+
+  // Reply nesting (P11 flatten): only top-level (depth 0) renders the wrap;
+  // all descendants become siblings inside that single wrap at depth 1+.
+  let nestedHtml = '';
+  if (depth === 0 && directReplies.length) {
+    const flat = [];
+    for (const r of directReplies) {
+      flat.push(r);
+      flat.push(..._getAllDescendants(r.id));
+    }
+    nestedHtml = `<div class="comment-replies-wrap">${flat.map(r => renderThreadedComment(r, r.parent_comment_id === c.id ? 1 : 2)).join('')}</div>`;
+  }
+
+  return `
+    <div class="${classes}" data-comment-id="${c.id}">
+      <div class="comment-avatar">${initials}</div>
+      <div class="comment-body">
+        ${inReplyToMarker}
+        <div class="comment-meta">
+          <span class="comment-author">${escHtml(c.display_name)}</span>
+          ${c.denomination ? `<span class="comment-denom-tag">${escHtml(c.denomination)}</span>` : ''}
+          ${renderCtypeBadge(c)}
+          <span class="comment-date">${date}</span>
+        </div>
+        ${c.verse_reference ? `<div class="comment-target-line">📖 <strong>${escHtml(c.verse_reference)}</strong></div>` : ''}
+        <div class="comment-text">${escHtml(c.body)}</div>
+        <div class="comment-actions">
+          <button class="upvote-btn ${voted ? 'voted' : ''}" onclick="toggleUpvote(${c.id})" id="upvote-${c.id}">
+            ${voted ? '▲' : '△'} <span id="upvote-count-${c.id}">${c.upvotes || 0}</span>
+          </button>
+          ${currentUser ? `<button class="reply-btn" onclick="startReply(${c.id})">↳ Reply</button>` : ''}
+          ${isOwn ? `<button class="delete-btn" onclick="deleteComment(${c.id})">Delete</button>` : ''}
+        </div>
+        ${replyForm}
+        ${nestedHtml}
+      </div>
+    </div>`;
+}
+
+// Also ensure .comment-body can shrink properly inside its flex parent
+(function _ensureCommentBodyFlex() {
+  const styleId = 'patch-13-3-comment-body-style';
+  if (document.getElementById(styleId)) return;
+  const s = document.createElement('style');
+  s.id = styleId;
+  s.textContent = `.comment-item > .comment-body { flex: 1; min-width: 0; }`;
+  document.head.appendChild(s);
+})();
