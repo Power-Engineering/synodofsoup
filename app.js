@@ -8402,3 +8402,315 @@ function renderThreadedComment(c, depth) {
   s.textContent = `.comment-item > .comment-body { flex: 1; min-width: 0; }`;
   document.head.appendChild(s);
 })();
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 14 — The Library / Essay layer
+//   Append to end of app.js. Requires Marked.js (added via index.html).
+// ═══════════════════════════════════════════════════════════════════════
+
+let _essayManifest = null;
+let _essayManifestPromise = null;
+
+async function _loadEssayManifest() {
+  if (_essayManifest) return _essayManifest;
+  if (_essayManifestPromise) return _essayManifestPromise;
+  _essayManifestPromise = (async () => {
+    try {
+      const res = await fetch('essays/index.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('manifest fetch failed: ' + res.status);
+      const data = await res.json();
+      const list = (data && Array.isArray(data.essays)) ? data.essays : [];
+      list._byKey = new Map();
+      for (const e of list) list._byKey.set(`${e.traditionSlug}/${e.topic}`, e);
+      _essayManifest = list;
+      return list;
+    } catch (err) {
+      console.warn('Essay manifest unavailable:', err);
+      const empty = [];
+      empty._byKey = new Map();
+      _essayManifest = empty;
+      return empty;
+    } finally {
+      _essayManifestPromise = null;
+    }
+  })();
+  return _essayManifestPromise;
+}
+
+function _findEssay(traditionSlug, topicId) {
+  if (!_essayManifest) return null;
+  return _essayManifest._byKey.get(`${traditionSlug}/${topicId}`) || null;
+}
+
+// ─── Navigation ────────────────────────────────────────────────────────
+function goLibrary() {
+  if (window.location.hash !== '#/library') window.location.hash = '#/library';
+  else showLibrary();
+}
+function goEssay(traditionSlug, topicId) {
+  const target = `#/essay/${encodeURIComponent(traditionSlug)}/${encodeURIComponent(topicId)}`;
+  if (window.location.hash !== target) window.location.hash = target;
+  else showEssay();
+}
+
+// ─── Routing extension (overrides P13) ─────────────────────────────────
+function _getRoute() {
+  const h = (window.location.hash || '').toLowerCase();
+  if (h.startsWith('#/d/'))        return 'discussion';
+  if (h.startsWith('#/me'))        return 'me';
+  if (h.startsWith('#/library'))   return 'library';
+  if (h.startsWith('#/essay/'))    return 'essay';
+  if (h.startsWith('#/movements')) return 'movements';
+  if (h.startsWith('#/religions')) return 'religions';
+  if (h.startsWith('#/questions')) return 'questions';
+  if (h.startsWith('#/about'))     return 'about';
+  return 'ledger';
+}
+
+function _applyRoute() {
+  const route = _getRoute();
+  const hide = (id) => { const el = document.getElementById(id); if (el) el.style.display = 'none'; };
+  hide('detail-view');
+  hide('movement-view');
+  hide('religion-view');
+  hide('discussion-view');
+  hide('me-view');
+  hide('essay-view');
+  hide('library-view');
+
+  const homeView = document.getElementById('home-view');
+
+  if (route === 'discussion') { if (homeView) homeView.style.display = 'none'; showDiscussion(); return; }
+  if (route === 'me')         { if (homeView) homeView.style.display = 'none'; showMePage(); return; }
+  if (route === 'essay')      { if (homeView) homeView.style.display = 'none'; showEssay(); return; }
+  if (route === 'library')    { if (homeView) homeView.style.display = 'none'; showLibrary(); return; }
+
+  if (homeView) homeView.style.display = '';
+  const els = {
+    hero: document.querySelector('.hero'),
+    topics: document.getElementById('topics'),
+    movements: document.getElementById('movements'),
+    religions: document.getElementById('religions'),
+    questions: document.getElementById('questions'),
+    about: document.getElementById('about'),
+  };
+  const layouts = {
+    ledger:    ['hero', 'topics'],
+    movements: ['movements'],
+    religions: ['religions'],
+    questions: ['questions'],
+    about:     ['about'],
+  };
+  const visible = layouts[route] || layouts.ledger;
+  Object.entries(els).forEach(([k, el]) => { if (el) el.style.display = visible.includes(k) ? '' : 'none'; });
+  if (route === 'questions') renderQuestionsCorner();
+  document.querySelectorAll('.nav-link').forEach(a => a.classList.toggle('active', a.dataset.route === route));
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+function _parseEssayRoute() {
+  const raw = window.location.hash || '';
+  const stripped = raw.replace(/^#/, '');
+  const [path] = stripped.split('?');
+  const parts = path.split('/').filter(Boolean);
+  if (parts[0] !== 'essay' || parts.length < 3) return null;
+  return {
+    traditionSlug: decodeURIComponent(parts[1]),
+    topicId: decodeURIComponent(parts[2]),
+  };
+}
+
+function _parseFrontmatter(text) {
+  const m = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!m) return { meta: {}, body: text };
+  const meta = {};
+  m[1].split('\n').forEach(line => {
+    const idx = line.indexOf(':');
+    if (idx > 0) {
+      const k = line.slice(0, idx).trim();
+      const v = line.slice(idx + 1).trim().replace(/^["']|["']$/g, '');
+      meta[k] = v;
+    }
+  });
+  return { meta, body: m[2] };
+}
+
+// ─── Show single essay ────────────────────────────────────────────────
+async function showEssay() {
+  const parsed = _parseEssayRoute();
+  if (!parsed) return;
+  const view = document.getElementById('essay-view');
+  if (!view) return;
+  view.style.display = '';
+
+  await _loadEssayManifest();
+  const meta = _findEssay(parsed.traditionSlug, parsed.topicId);
+
+  view.innerHTML = `
+    <div class="detail-bar">
+      <div class="detail-bar-inner">
+        <button class="back-link" onclick="window.history.back()">← Back</button>
+        <span class="detail-category-tag">The Library</span>
+      </div>
+    </div>
+    <article class="essay-article">
+      <div class="essay-inner">
+        <div class="loading-state">Loading essay…</div>
+      </div>
+    </article>
+  `;
+  window.scrollTo({ top: 0, behavior: 'auto' });
+
+  if (!meta) {
+    view.querySelector('.essay-inner').innerHTML = `<div class="essay-missing">
+      <h1>Essay not yet written</h1>
+      <p>No long-form essay exists yet for this combination. <a href="#/library">Browse the Library</a> for what is available, or join the discussion at <a href="#/d/${encodeURIComponent(parsed.traditionSlug)}/${encodeURIComponent(parsed.topicId)}">the regular discussion page</a>.</p>
+    </div>`;
+    return;
+  }
+
+  try {
+    const res = await fetch(`essays/${meta.slug}.md`, { cache: 'no-store' });
+    if (!res.ok) throw new Error('fetch failed: ' + res.status);
+    const text = await res.text();
+    const { meta: fm, body } = _parseFrontmatter(text);
+    const title = fm.title || meta.title || meta.slug;
+    const author = fm.author || meta.author || 'Editor';
+    const date = fm.date || meta.date || '';
+    const wordCount = fm.words || meta.words || '';
+
+    const renderedBody = (typeof marked !== 'undefined' && marked.parse)
+      ? marked.parse(body)
+      : `<pre>${escHtml(body)}</pre>`;
+
+    view.querySelector('.essay-inner').innerHTML = `
+      <header class="essay-head">
+        <div class="essay-eyebrow">${escHtml(meta.tradition || '')}${meta.topicLabel ? ' · ' + escHtml(meta.topicLabel) : ''}</div>
+        <h1 class="essay-title">${escHtml(title)}</h1>
+        <div class="essay-meta">
+          <span>by <strong>${escHtml(author)}</strong></span>
+          ${date ? `<span class="essay-meta-sep">·</span><span>${escHtml(date)}</span>` : ''}
+          ${wordCount ? `<span class="essay-meta-sep">·</span><span>${escHtml(String(wordCount))} words</span>` : ''}
+        </div>
+      </header>
+      <div class="essay-body">${renderedBody}</div>
+      <footer class="essay-foot">
+        <a class="essay-discuss-link" href="#/d/${encodeURIComponent(meta.traditionSlug)}/${encodeURIComponent(meta.topic)}">💬 Discuss the position →</a>
+        <p class="essay-foot-note">Suggested edits, defenses, and responses welcome.</p>
+      </footer>
+    `;
+  } catch (err) {
+    console.error('essay load:', err);
+    view.querySelector('.essay-inner').innerHTML = `<div class="essay-missing">
+      <h1>Couldn't load the essay</h1>
+      <p>The essay file <code>essays/${escHtml(meta.slug)}.md</code> may be missing. <a href="#/library">Back to Library</a>.</p>
+    </div>`;
+  }
+}
+
+// ─── Show Library browse view ─────────────────────────────────────────
+async function showLibrary() {
+  const view = document.getElementById('library-view');
+  if (!view) return;
+  view.style.display = '';
+  await _loadEssayManifest();
+
+  if (!_essayManifest || _essayManifest.length === 0) {
+    view.innerHTML = `
+      <div class="library-page">
+        <div class="library-inner">
+          <div class="essay-eyebrow">The Library</div>
+          <h1 class="library-title">Long-form essays</h1>
+          <p class="library-lede">In-depth, full-length defenses of how each tradition reads its own position. Where the Ledger gives you the case in a paragraph, the Library gives the argument at length.</p>
+          <div class="library-empty">
+            <p><strong>No essays yet.</strong></p>
+            <p>This is where 4000+ word, in-depth defenses of tradition positions will live. The first ones are being written.</p>
+          </div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Group by tradition
+  const byTradition = {};
+  for (const e of _essayManifest) {
+    if (!byTradition[e.tradition]) byTradition[e.tradition] = [];
+    byTradition[e.tradition].push(e);
+  }
+
+  view.innerHTML = `
+    <div class="library-page">
+      <div class="library-inner">
+        <div class="essay-eyebrow">The Library</div>
+        <h1 class="library-title">Long-form essays</h1>
+        <p class="library-lede">In-depth, full-length defenses of how each tradition reads its own position. Where the Ledger gives you the case in a paragraph, the Library gives the argument at length — sourced, expanded, the real argument.</p>
+        ${Object.entries(byTradition).map(([trad, essays]) => `
+          <div class="library-section">
+            <h2 class="library-section-title">${escHtml(trad)}</h2>
+            <div class="library-grid">
+              ${essays.map(e => `
+                <a class="library-card" href="#/essay/${encodeURIComponent(e.traditionSlug)}/${encodeURIComponent(e.topic)}">
+                  <div class="library-card-eyebrow">${escHtml(e.topicLabel || e.topic)}</div>
+                  <h3 class="library-card-title">${escHtml(e.title)}</h3>
+                  ${e.excerpt ? `<p class="library-card-excerpt">${escHtml(e.excerpt)}</p>` : ''}
+                  <div class="library-card-foot">
+                    <span>by ${escHtml(e.author || 'Editor')}</span>
+                    ${e.words ? `<span>· ${escHtml(String(e.words))} words</span>` : ''}
+                  </div>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+// ─── Override renderDenominations to add "Read full case" link ────────
+const _origRenderDenominationsP14 = (typeof renderDenominations === 'function') ? renderDenominations : null;
+renderDenominations = function(topic) {
+  const grid = document.getElementById('denom-grid');
+  if (!grid) return;
+  grid.innerHTML = topic.denominations.map(d => {
+    const count = countCommentsForDenom(d.name);
+    const slug = _denomSlug(d.name);
+    const essay = _findEssay(slug, topic.id);
+    return `
+    <div class="denom-card stance-${d.stance}" data-denom="${escAttr(d.name)}">
+      <div class="denom-card-content">
+        <div class="denom-card-top">
+          <div class="denom-name">${escHtml(d.name)}</div>
+          <div class="stance-badge badge-${d.stance}">${stanceLabel(d.stance)}</div>
+        </div>
+        <div class="denom-position">${d.position}</div>
+        ${d.verses && d.verses.length ? `
+          <div class="denom-verses">
+            <div class="denom-verses-label">Their proof-texts</div>
+            <div>${d.verses.map(v => `<span class="verse-pill">${escHtml(v)}</span>`).join(' ')}</div>
+          </div>` : ''}
+        ${essay ? `
+          <a class="essay-link-inline" href="#/essay/${encodeURIComponent(slug)}/${encodeURIComponent(topic.id)}">
+            📖 Read the full case${essay.words ? ` (${typeof essay.words === 'number' ? essay.words.toLocaleString() : essay.words} words)` : ''} →
+          </a>` : ''}
+      </div>
+      <a class="denom-discuss-btn" href="#/d/${encodeURIComponent(slug)}/${encodeURIComponent(topic.id)}">
+        <span class="denom-discuss-btn-left">
+          <span class="denom-discuss-icon">💬</span>
+          <span class="denom-discuss-label">${count > 0 ? `${count} ${count === 1 ? 'contribution' : 'contributions'}` : 'Start the discussion'}</span>
+        </span>
+        <span class="denom-discuss-arrow">Discuss →</span>
+      </a>
+    </div>`;
+  }).join('');
+  if (typeof enhanceVersePills === 'function') enhanceVersePills();
+};
+
+// Preload manifest at startup so essay links appear without delay
+_loadEssayManifest().then(() => {
+  if (typeof currentTopic !== 'undefined' && currentTopic && _getRoute() !== 'discussion' && _getRoute() !== 'essay') {
+    renderDenominations(currentTopic);
+  }
+});
