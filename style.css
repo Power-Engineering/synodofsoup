@@ -2542,3 +2542,21 @@ a:hover { color: var(--crimson); }
   .qc-filter-label { flex: none; padding-top: 0; }
   .qc-results { grid-template-columns: 1fr; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PATCH 13.1 — Long-text overflow fix
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Break very long unbreakable strings (URLs, "TestTestTest…") so they
+   don't overflow the comment card off the right edge. */
+.comment-text,
+.qc-text,
+.qc-card-sample,
+.qc-card-title,
+.qc-uq-text,
+.me-comment-body,
+.discussion-position-body,
+.question-card-flat-body {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
