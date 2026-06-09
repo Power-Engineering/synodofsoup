@@ -8403,3 +8403,62 @@ function renderThreadedComment(c, depth) {
   document.head.appendChild(s);
 })();
 
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 15 — Expand comment max from 600 to 1500 characters
+//   Append to end of app.js.  Runs the SQL migration FIRST.
+// ═══════════════════════════════════════════════════════════════════════
+(function() {
+  const NEW_MAX = 3000;
+  const OLD_MAX = 600;
+
+  function fixTextarea(ta) {
+    if (!ta || ta.tagName !== 'TEXTAREA') return;
+    if (ta.maxLength === OLD_MAX) ta.maxLength = NEW_MAX;
+    if (ta.placeholder && ta.placeholder.includes(String(OLD_MAX))) {
+      ta.placeholder = ta.placeholder.replace(new RegExp(String(OLD_MAX), 'g'), String(NEW_MAX));
+    }
+  }
+
+  function fixCharCount(el) {
+    if (!el || !el.textContent) return;
+    if (el.textContent.includes('/ ' + OLD_MAX)) {
+      el.textContent = el.textContent.replace(new RegExp('/ ?' + OLD_MAX, 'g'), '/ ' + NEW_MAX);
+    } else if (el.textContent.includes('/' + OLD_MAX)) {
+      el.textContent = el.textContent.replace(new RegExp('/ ?' + OLD_MAX, 'g'), '/' + NEW_MAX);
+    }
+  }
+
+  function sweep(root) {
+    if (!root || !root.querySelectorAll) return;
+    root.querySelectorAll('textarea').forEach(fixTextarea);
+    root.querySelectorAll('.char-count').forEach(fixCharCount);
+  }
+
+  // Initial sweep
+  sweep(document.body);
+
+  // Watch for dynamically-rendered forms
+  new MutationObserver((muts) => {
+    for (const m of muts) {
+      for (const n of m.addedNodes) {
+        if (n.nodeType !== 1) continue;
+        if (n.tagName === 'TEXTAREA') fixTextarea(n);
+        if (n.classList && n.classList.contains('char-count')) fixCharCount(n);
+        sweep(n);
+      }
+    }
+  }).observe(document.body, { childList: true, subtree: true });
+
+  // Intercept the char-count update after each keystroke
+  // (original handlers write "${len} / 600" — we overwrite to /1500 after they run)
+  document.addEventListener('input', (e) => {
+    const ta = e.target;
+    if (!ta || ta.tagName !== 'TEXTAREA') return;
+    if (ta.maxLength !== NEW_MAX) return;
+    setTimeout(() => {
+      const scope = ta.closest('.comment-form-wrap, .forum-compose, .discussion-compose, .qc-form-host, .qc-ask-host, .forum-reply-form, .reply-form, form, div') || document.body;
+      scope.querySelectorAll('.char-count').forEach(fixCharCount);
+    }, 0);
+  }, false);
+})();
