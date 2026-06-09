@@ -2540,7 +2540,7 @@ a:hover { color: var(--crimson); }
   color: var(--ink-faint);
 }
 
-/* MOBILE NAV FIX */
+/* REAL MOBILE FIX — SYNOD OF SOUP TOPBAR */
 @media (max-width: 780px) {
 
   .topbar-inner {
@@ -2551,18 +2551,16 @@ a:hover { color: var(--crimson); }
   }
 
   .nav-links {
-    flex-wrap: wrap;
     width: 100%;
+    flex-wrap: wrap;
     gap: 12px;
-  }
-
-  .nav-link {
-    font-size: 15px;
+    margin-left: 0;
   }
 
   .topbar-auth {
     width: 100%;
     justify-content: flex-start;
+    margin-left: 0;
   }
 }
 
