@@ -1869,3 +1869,16 @@ a:hover { color: var(--crimson); }
 }
 .foot-links a:hover { color: var(--crimson, #8a2a2a); text-decoration: underline; }
 .foot-links .sep { color: var(--line-soft); }
+
+/* Patch 11 — flattened-reply marker */
+.in-reply-to {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+  padding: 2px 8px;
+  background: var(--parchment-warm, #f5efe2);
+  border-radius: 3px;
+  display: inline-block;
+}
+.in-reply-to strong { color: var(--ink-soft); font-weight: 600; }
