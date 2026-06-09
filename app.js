@@ -6556,3 +6556,944 @@ function _qcRenderAnswer(c, voteOnclick) {
     </div>
   `;
 }
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 12 — Discussion page refactor + findability + QC column fixes
+//   Append entire contents to end of app.js
+// ═══════════════════════════════════════════════════════════════════════
+
+// ─── Tradition slug helpers ─────────────────────────────────────────────
+function _denomSlug(name) {
+  return (name || '').toLowerCase()
+    .replace(/[/]/g, ' ')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+}
+
+function _findDenomByDisplayName(name) {
+  for (const t of TOPICS) {
+    if (!t.denominations) continue;
+    const d = t.denominations.find(x => x.name === name);
+    if (d) return d;
+  }
+  return null;
+}
+
+// Build a canonical list of denomination names from all topics
+const _ALL_DENOMS = (() => {
+  const seen = new Set();
+  const out = [];
+  for (const t of TOPICS) {
+    if (!t.denominations) continue;
+    for (const d of t.denominations) {
+      if (!seen.has(d.name)) { seen.add(d.name); out.push(d.name); }
+    }
+  }
+  return out;
+})();
+
+function _slugToDenom(slug) {
+  return _ALL_DENOMS.find(n => _denomSlug(n) === slug) || null;
+}
+
+// ─── URL parsing for discussion routes ──────────────────────────────────
+// Routes: #/d/{tradition}/{topic}  optionally ?c=NNN
+function _parseDiscussionRoute() {
+  const raw = window.location.hash || '';
+  // Strip leading #
+  const stripped = raw.replace(/^#/, '');
+  // Split off query string
+  const [path, queryStr] = stripped.split('?');
+  const parts = path.split('/').filter(Boolean);
+  if (parts[0] !== 'd' || parts.length < 3) return null;
+  const tradition = decodeURIComponent(parts[1]);
+  const topic = decodeURIComponent(parts[2]);
+  const query = {};
+  if (queryStr) {
+    queryStr.split('&').forEach(kv => {
+      const [k, v] = kv.split('=');
+      if (k) query[k] = decodeURIComponent(v || '');
+    });
+  }
+  return { tradition, topic, query };
+}
+
+// Determine whether a tradition slug refers to a denomination, movement, or religion
+function _traditionContext(traditionSlug) {
+  if (traditionSlug.startsWith('m-')) {
+    const movId = 'mov-' + traditionSlug.slice(2);
+    const mov = MOVEMENTS && MOVEMENTS.find(m => m.id === movId);
+    if (mov) return { type: 'movement', movement: mov };
+  }
+  if (traditionSlug.startsWith('r-')) {
+    const relId = 'rel-' + traditionSlug.slice(2);
+    const rel = (typeof RELIGIONS !== 'undefined') && RELIGIONS.find(r => r.id === relId);
+    if (rel) return { type: 'religion', religion: rel };
+  }
+  // Denomination
+  const denomName = _slugToDenom(traditionSlug);
+  if (denomName) return { type: 'denomination', denomName };
+  return { type: 'unknown' };
+}
+
+// ─── Navigation helpers ────────────────────────────────────────────────
+function goDiscussion(traditionSlug, topicId, commentId) {
+  let hash = `#/d/${encodeURIComponent(traditionSlug)}/${encodeURIComponent(topicId)}`;
+  if (commentId) hash += `?c=${commentId}`;
+  if (window.location.hash === hash) { showDiscussion(); }
+  else { window.location.hash = hash; }
+}
+
+function goMe() {
+  if (window.location.hash !== '#/me') window.location.hash = '#/me';
+  else showMePage();
+}
+
+// ─── Update routing to handle new routes ────────────────────────────────
+function _getRoute() {
+  const h = (window.location.hash || '').toLowerCase();
+  if (h.startsWith('#/d/'))         return 'discussion';
+  if (h.startsWith('#/me'))         return 'me';
+  if (h.startsWith('#/movements'))  return 'movements';
+  if (h.startsWith('#/religions'))  return 'religions';
+  if (h.startsWith('#/questions'))  return 'questions';
+  if (h.startsWith('#/about'))      return 'about';
+  return 'ledger';
+}
+
+function _applyRoute() {
+  const route = _getRoute();
+
+  // Hide all detail views
+  const hide = (id) => { const el = document.getElementById(id); if (el) el.style.display = 'none'; };
+  hide('detail-view');
+  hide('movement-view');
+  hide('religion-view');
+  hide('discussion-view');
+  hide('me-view');
+
+  const homeView = document.getElementById('home-view');
+
+  if (route === 'discussion') {
+    if (homeView) homeView.style.display = 'none';
+    showDiscussion();
+    return;
+  }
+  if (route === 'me') {
+    if (homeView) homeView.style.display = 'none';
+    showMePage();
+    return;
+  }
+
+  // Home routes
+  if (homeView) homeView.style.display = '';
+  const els = {
+    hero: document.querySelector('.hero'),
+    topics: document.getElementById('topics'),
+    movements: document.getElementById('movements'),
+    religions: document.getElementById('religions'),
+    questions: document.getElementById('questions'),
+    about: document.getElementById('about'),
+  };
+  const layouts = {
+    ledger:    ['hero', 'topics'],
+    movements: ['movements'],
+    religions: ['religions'],
+    questions: ['questions'],
+    about:     ['about'],
+  };
+  const visible = layouts[route] || layouts.ledger;
+  Object.entries(els).forEach(([k, el]) => { if (el) el.style.display = visible.includes(k) ? '' : 'none'; });
+  if (route === 'questions') renderQuestionsCorner();
+  document.querySelectorAll('.nav-link').forEach(a => a.classList.toggle('active', a.dataset.route === route));
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+// ─── DISCUSSION PAGE ───────────────────────────────────────────────────
+let _discussionCache = null;  // { traditionSlug, topicId, comments }
+
+async function showDiscussion() {
+  const parsed = _parseDiscussionRoute();
+  if (!parsed) return;
+  const view = document.getElementById('discussion-view');
+  if (!view) return;
+  view.style.display = '';
+
+  const ctx = _traditionContext(parsed.tradition);
+  const positionHtml = _renderDiscussionPosition(ctx, parsed.topic);
+
+  view.innerHTML = `
+    <div class="detail-bar">
+      <div class="detail-bar-inner">
+        <button class="back-link" onclick="_discussionBack('${escAttr(parsed.tradition)}','${escAttr(parsed.topic)}')">← Back</button>
+        <span class="detail-category-tag">${_discussionContextLabel(ctx)}</span>
+      </div>
+    </div>
+    <article class="discussion-article">
+      <div class="detail-inner">
+        ${positionHtml}
+        <section class="discussion-thread" id="discussion-thread-host">
+          <div class="loading-state">Loading discussion…</div>
+        </section>
+      </div>
+    </article>
+  `;
+  window.scrollTo({ top: 0, behavior: 'auto' });
+
+  await _loadDiscussionThread(parsed.tradition, parsed.topic, ctx);
+
+  // Handle permalink: scroll to specific comment if ?c=N
+  if (parsed.query.c) {
+    setTimeout(() => {
+      const el = document.querySelector(`[data-comment-id="${parsed.query.c}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('notif-flash');
+        setTimeout(() => el.classList.remove('notif-flash'), 2200);
+      }
+    }, 350);
+  }
+}
+
+function _discussionBack(traditionSlug, topicSlug) {
+  // Smart back: if tradition is a movement/religion, go to its detail; if denom, go to topic
+  if (traditionSlug.startsWith('m-')) {
+    const movId = 'mov-' + traditionSlug.slice(2);
+    showMovement(movId);
+  } else if (traditionSlug.startsWith('r-')) {
+    const relId = 'rel-' + traditionSlug.slice(2);
+    showReligion(relId);
+  } else {
+    // Try to find the topic
+    const t = TOPICS.find(x => x.id === topicSlug);
+    if (t) { showTopic(topicSlug); }
+    else { showHome(); }
+  }
+}
+
+function _discussionContextLabel(ctx) {
+  if (ctx.type === 'movement') return 'Outside the Creeds';
+  if (ctx.type === 'religion') return 'The Wider Conversation';
+  return 'The Ledger';
+}
+
+function _renderDiscussionPosition(ctx, topicSlug) {
+  if (ctx.type === 'denomination') {
+    const topic = TOPICS.find(t => t.id === topicSlug);
+    if (!topic) return `<div class="discussion-error">Topic not found.</div>`;
+    const d = topic.denominations.find(x => x.name === ctx.denomName);
+    if (!d) return `<div class="discussion-error">Position not found.</div>`;
+    return `
+      <header class="discussion-head">
+        <div class="discussion-eyebrow">${escHtml(topic.name)} · ${escHtml(ctx.denomName)}</div>
+        <h1 class="discussion-title">The ${escHtml(ctx.denomName)} position on ${escHtml(topic.name)}</h1>
+        <div class="discussion-stance stance-${d.stance}">${stanceLabel ? stanceLabel(d.stance) : d.stance}</div>
+        <div class="discussion-position-body">${d.position}</div>
+        ${d.verses && d.verses.length ? `
+          <div class="discussion-verses">
+            <div class="discussion-verses-label">Their proof-texts</div>
+            <div>${d.verses.map(v => `<span class="verse-pill">${escHtml(v)}</span>`).join(' ')}</div>
+          </div>` : ''}
+      </header>
+    `;
+  }
+  if (ctx.type === 'movement') {
+    const mov = ctx.movement;
+    const q = (mov.discussionQuestions || []).find(x => x.id === topicSlug);
+    if (!q) return `<div class="discussion-error">Question not found.</div>`;
+    return `
+      <header class="discussion-head movement-discussion-head">
+        <div class="discussion-eyebrow">${escHtml(mov.name)} · Discussion question</div>
+        <h1 class="discussion-title">${escHtml(q.title)}</h1>
+        <div class="discussion-position-body">${q.body}</div>
+      </header>
+    `;
+  }
+  if (ctx.type === 'religion') {
+    const rel = ctx.religion;
+    const q = (rel.discussionQuestions || []).find(x => x.id === topicSlug);
+    if (!q) return `<div class="discussion-error">Question not found.</div>`;
+    return `
+      <header class="discussion-head religion-discussion-head">
+        <div class="discussion-eyebrow">${escHtml(rel.name)} · Discussion question</div>
+        <h1 class="discussion-title">${escHtml(q.title)}</h1>
+        <div class="discussion-position-body">${q.body}</div>
+      </header>
+    `;
+  }
+  return `<div class="discussion-error">Discussion context not found.</div>`;
+}
+
+async function _loadDiscussionThread(traditionSlug, topicSlug, ctx) {
+  const host = document.getElementById('discussion-thread-host');
+  if (!host) return;
+  if (!supabaseClient) {
+    host.innerHTML = `<div class="discussion-locked">Discussion unavailable — Supabase not configured.</div>`;
+    return;
+  }
+  try {
+    let q = supabaseClient.from('comments').select('*');
+    let targetTag = null;
+    if (ctx.type === 'denomination') {
+      q = q.eq('topic_id', topicSlug);
+      targetTag = ctx.denomName;
+    } else if (ctx.type === 'movement') {
+      q = q.eq('topic_id', ctx.movement.id);
+      targetTag = 'q:' + topicSlug;
+    } else if (ctx.type === 'religion') {
+      q = q.eq('topic_id', ctx.religion.id);
+      targetTag = 'q:' + topicSlug;
+    }
+    const { data, error } = await q.order('created_at', { ascending: true });
+    if (error) throw error;
+
+    // Filter: top-level matching this target, plus all descendants of those
+    const allForTopic = data || [];
+    const topLevel = allForTopic.filter(c =>
+      c.target_denomination === targetTag && !c.parent_comment_id
+    );
+    const ids = new Set(topLevel.map(c => c.id));
+    // Collect descendants by parent-id chain
+    let added = true;
+    while (added) {
+      added = false;
+      for (const c of allForTopic) {
+        if (!ids.has(c.id) && c.parent_comment_id && ids.has(c.parent_comment_id)) {
+          ids.add(c.id); added = true;
+        }
+      }
+    }
+    const threadComments = allForTopic.filter(c => ids.has(c.id));
+
+    // Stash into globals so existing renderThreadedComment works
+    allComments = threadComments;
+
+    _renderDiscussionThread(traditionSlug, topicSlug, ctx, topLevel);
+  } catch (err) {
+    console.error('discussion load:', err);
+    host.innerHTML = `<div class="discussion-locked">Couldn't load the discussion.</div>`;
+  }
+}
+
+let _discussionSort = 'upvotes';
+let _discussionFilter = 'all';
+
+function _renderDiscussionThread(traditionSlug, topicSlug, ctx, topLevelAll) {
+  const host = document.getElementById('discussion-thread-host');
+  if (!host) return;
+
+  // Apply filter
+  let topLevel = topLevelAll.slice();
+  if (_discussionFilter !== 'all') {
+    topLevel = topLevel.filter(c => (c.comment_type || 'general') === _discussionFilter);
+  }
+  // Apply sort
+  if (_discussionSort === 'upvotes') {
+    topLevel.sort((a, b) => (b.upvotes || 0) - (a.upvotes || 0));
+  } else if (_discussionSort === 'recent') {
+    topLevel.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  }
+
+  const targetTag = ctx.type === 'denomination' ? ctx.denomName : ('q:' + topicSlug);
+  const composeHtml = _renderDiscussionCompose(traditionSlug, topicSlug, ctx, targetTag);
+
+  const filterChips = `
+    <div class="discussion-filter-bar">
+      <div class="discussion-filter-chips">
+        ${['all', 'general', 'responding', 'edit_suggestion', 'verse_citation'].map(f => {
+          const labels = { all: 'All', general: '💬 General', responding: '⚔️ Response', edit_suggestion: '✏️ Edit', verse_citation: '📖 Verse' };
+          return `<button class="discussion-chip ${_discussionFilter === f ? 'active' : ''}" onclick="_setDiscussionFilter('${f}','${escAttr(traditionSlug)}','${escAttr(topicSlug)}')">${labels[f]}</button>`;
+        }).join('')}
+      </div>
+      <div class="discussion-sort">
+        <label>Sort:</label>
+        <select onchange="_setDiscussionSort(this.value, '${escAttr(traditionSlug)}', '${escAttr(topicSlug)}')">
+          <option value="upvotes" ${_discussionSort === 'upvotes' ? 'selected' : ''}>Most upvoted</option>
+          <option value="recent" ${_discussionSort === 'recent' ? 'selected' : ''}>Most recent</option>
+        </select>
+      </div>
+    </div>
+  `;
+
+  // "Your contributions in this discussion" jump shortcut
+  let myShortcut = '';
+  if (currentUser) {
+    const mine = allComments.filter(c => c.user_id === currentUser.id);
+    if (mine.length > 0) {
+      const firstId = mine[0].id;
+      myShortcut = `
+        <div class="my-contributions-bar">
+          📍 You have ${mine.length} contribution${mine.length > 1 ? 's' : ''} in this discussion.
+          <button class="my-jump-btn" onclick="_jumpToMyComment(${firstId})">Jump to mine ↓</button>
+        </div>`;
+    }
+  }
+
+  const listHtml = topLevel.length === 0
+    ? `<div class="discussion-empty">No contributions yet. Be the first.</div>`
+    : `<div class="forum-comment-list discussion-list">${topLevel.map(c => renderThreadedComment(c, 0)).join('')}</div>`;
+
+  host.innerHTML = `
+    <h2 class="discussion-section-title">Open discussion</h2>
+    ${composeHtml}
+    ${myShortcut}
+    ${filterChips}
+    ${listHtml}
+  `;
+
+  // Wire up permalink-on-timestamp clicks
+  setTimeout(_wireTimestampPermalinks, 50);
+}
+
+function _renderDiscussionCompose(traditionSlug, topicSlug, ctx, targetTag) {
+  if (!currentUser || !currentUserProfile) {
+    return `<div class="forum-locked">Sign in to engage this discussion. <button class="btn btn-primary btn-sm" onclick="openModal('signup')">Join the Synod</button></div>`;
+  }
+  return `
+    <div class="discussion-compose">
+      <div class="ctype-tabs ctype-tabs-discussion">
+        <button class="ctype-tab active" data-ctype="general" onclick="_setDiscussionCtype('general')">💬 General</button>
+        <button class="ctype-tab" data-ctype="responding" onclick="_setDiscussionCtype('responding')">⚔️ Respond</button>
+        <button class="ctype-tab" data-ctype="edit_suggestion" onclick="_setDiscussionCtype('edit_suggestion')">✏️ Suggest edit</button>
+        <button class="ctype-tab" data-ctype="verse_citation" onclick="_setDiscussionCtype('verse_citation')">📖 Cite verse</button>
+      </div>
+      <div id="discussion-verse-ref-row" style="display:none">
+        <label class="ctype-field-label">Bible reference</label>
+        <input type="text" id="discussion-verse-ref" class="text-input" placeholder="e.g. Rom 9:11–23" autocomplete="off"/>
+      </div>
+      <textarea id="discussion-compose-text" class="comment-textarea" maxlength="600" placeholder="Make your case. Cite Scripture. Be charitable. (Max 600 characters.)"></textarea>
+      <div class="form-bottom">
+        <span class="char-count" id="discussion-char-count">0 / 600</span>
+        <button class="btn btn-primary" onclick="_submitDiscussionContribution('${escAttr(traditionSlug)}','${escAttr(topicSlug)}','${escAttr(targetTag)}')">Post contribution</button>
+      </div>
+    </div>
+  `;
+}
+
+let _discussionCtype = 'general';
+function _setDiscussionCtype(t) {
+  _discussionCtype = t;
+  document.querySelectorAll('.ctype-tabs-discussion .ctype-tab').forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.ctype === t);
+  });
+  const row = document.getElementById('discussion-verse-ref-row');
+  if (row) row.style.display = (t === 'verse_citation') ? '' : 'none';
+}
+
+function _setDiscussionFilter(f, traditionSlug, topicSlug) {
+  _discussionFilter = f;
+  const ctx = _traditionContext(traditionSlug);
+  _loadDiscussionThread(traditionSlug, topicSlug, ctx);
+}
+
+function _setDiscussionSort(s, traditionSlug, topicSlug) {
+  _discussionSort = s;
+  const ctx = _traditionContext(traditionSlug);
+  _loadDiscussionThread(traditionSlug, topicSlug, ctx);
+}
+
+async function _submitDiscussionContribution(traditionSlug, topicSlug, targetTag) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById('discussion-compose-text');
+  const body = ta ? ta.value.trim() : '';
+  if (!body) return;
+  const verseRef = document.getElementById('discussion-verse-ref');
+  const verseValue = (verseRef && _discussionCtype === 'verse_citation') ? verseRef.value.trim() : null;
+  const ctx = _traditionContext(traditionSlug);
+  let topicIdForInsert;
+  if (ctx.type === 'denomination') topicIdForInsert = topicSlug;
+  else if (ctx.type === 'movement') topicIdForInsert = ctx.movement.id;
+  else if (ctx.type === 'religion') topicIdForInsert = ctx.religion.id;
+  else return;
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: topicIdForInsert,
+      user_id: currentUser.id,
+      display_name: currentUserProfile.display_name,
+      denomination: currentUserProfile.denomination,
+      target_denomination: targetTag,
+      body,
+      comment_type: _discussionCtype,
+      verse_reference: verseValue,
+      parent_comment_id: null,
+    });
+    if (error) throw error;
+    if (ta) ta.value = '';
+    if (verseRef) verseRef.value = '';
+    _setDiscussionCtype('general');
+    await _loadDiscussionThread(traditionSlug, topicSlug, ctx);
+  } catch (err) {
+    alert('Could not post: ' + err.message);
+  }
+}
+
+function _jumpToMyComment(commentId) {
+  const el = document.querySelector(`[data-comment-id="${commentId}"]`);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.classList.add('notif-flash');
+    setTimeout(() => el.classList.remove('notif-flash'), 2000);
+  }
+}
+
+// Permalinks: clicking a comment date copies its permalink URL
+function _wireTimestampPermalinks() {
+  document.querySelectorAll('.discussion-list .comment-date').forEach(el => {
+    if (el.dataset.permalinked) return;
+    el.dataset.permalinked = '1';
+    el.style.cursor = 'pointer';
+    el.title = 'Click to copy permalink to this comment';
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = el.closest('[data-comment-id]');
+      if (!card) return;
+      const cid = card.dataset.commentId;
+      const parsed = _parseDiscussionRoute();
+      if (!parsed) return;
+      const baseUrl = window.location.origin + window.location.pathname;
+      const permalink = `${baseUrl}#/d/${encodeURIComponent(parsed.tradition)}/${encodeURIComponent(parsed.topic)}?c=${cid}`;
+      navigator.clipboard.writeText(permalink).then(() => {
+        const tip = document.createElement('span');
+        tip.textContent = ' ✓ link copied';
+        tip.style.color = 'var(--ledger-green, #2d5547)';
+        tip.style.marginLeft = '6px';
+        tip.style.fontSize = '11px';
+        el.appendChild(tip);
+        setTimeout(() => tip.remove(), 1600);
+      }).catch(() => {
+        alert('Permalink:\n' + permalink);
+      });
+    });
+  });
+}
+
+// ─── TOPIC PAGE — refactor tradition cards to use "Discuss →" button ───
+function renderDenominations(topic) {
+  const grid = document.getElementById('denom-grid');
+  if (!grid) return;
+  grid.innerHTML = topic.denominations.map(d => {
+    const count = countCommentsForDenom(d.name);
+    const slug = _denomSlug(d.name);
+    return `
+    <div class="denom-card stance-${d.stance}" data-denom="${escAttr(d.name)}">
+      <div class="denom-card-content">
+        <div class="denom-card-top">
+          <div class="denom-name">${escHtml(d.name)}</div>
+          <div class="stance-badge badge-${d.stance}">${stanceLabel(d.stance)}</div>
+        </div>
+        <div class="denom-position">${d.position}</div>
+        ${d.verses && d.verses.length ? `
+          <div class="denom-verses">
+            <div class="denom-verses-label">Their proof-texts</div>
+            <div>${d.verses.map(v => `<span class="verse-pill">${escHtml(v)}</span>`).join(' ')}</div>
+          </div>` : ''}
+      </div>
+      <a class="denom-discuss-btn" href="#/d/${encodeURIComponent(slug)}/${encodeURIComponent(topic.id)}">
+        <span class="denom-discuss-btn-left">
+          <span class="denom-discuss-icon">💬</span>
+          <span class="denom-discuss-label">${count > 0 ? `${count} ${count === 1 ? 'contribution' : 'contributions'}` : 'Start the discussion'}</span>
+        </span>
+        <span class="denom-discuss-arrow">Discuss →</span>
+      </a>
+    </div>`;
+  }).join('');
+  if (typeof enhanceVersePills === 'function') enhanceVersePills();
+}
+
+// ─── MOVEMENT PAGE — refactor question accordions to use "Discuss →" ───
+function renderMovementQuestions(movement) {
+  const host = document.getElementById('movement-questions');
+  if (!host) return;
+  const qs = movement.discussionQuestions || [];
+  host.innerHTML = qs.map(q => {
+    const count = countCommentsForQuestion(movement.id, q.id);
+    const movSlug = 'm-' + movement.id.replace(/^mov-/, '');
+    return `
+      <div class="question-card-flat">
+        <div class="question-card-flat-content">
+          <h3 class="question-card-flat-title">${escHtml(q.title)}</h3>
+          <div class="question-card-flat-body">${q.body}</div>
+        </div>
+        <a class="denom-discuss-btn" href="#/d/${encodeURIComponent(movSlug)}/${encodeURIComponent(q.id)}">
+          <span class="denom-discuss-btn-left">
+            <span class="denom-discuss-icon">💬</span>
+            <span class="denom-discuss-label">${count > 0 ? `${count} ${count === 1 ? 'contribution' : 'contributions'}` : 'Start the discussion'}</span>
+          </span>
+          <span class="denom-discuss-arrow">Discuss →</span>
+        </a>
+      </div>
+    `;
+  }).join('');
+}
+
+// ─── RELIGION PAGE — same treatment ────────────────────────────────────
+function renderReligionQuestions(religion) {
+  const host = document.getElementById('religion-questions');
+  if (!host) return;
+  const qs = religion.discussionQuestions || [];
+  host.innerHTML = qs.map(q => {
+    const count = countCommentsForQuestion(religion.id, q.id);
+    const relSlug = 'r-' + religion.id.replace(/^rel-/, '');
+    return `
+      <div class="question-card-flat">
+        <div class="question-card-flat-content">
+          <h3 class="question-card-flat-title">${escHtml(q.title)}</h3>
+          <div class="question-card-flat-body">${q.body}</div>
+        </div>
+        <a class="denom-discuss-btn" href="#/d/${encodeURIComponent(relSlug)}/${encodeURIComponent(q.id)}">
+          <span class="denom-discuss-btn-left">
+            <span class="denom-discuss-icon">💬</span>
+            <span class="denom-discuss-label">${count > 0 ? `${count} ${count === 1 ? 'contribution' : 'contributions'}` : 'Start the discussion'}</span>
+          </span>
+          <span class="denom-discuss-arrow">Discuss →</span>
+        </a>
+      </div>
+    `;
+  }).join('');
+}
+
+// ─── PERSONAL ACTIVITY PAGE (#/me) ─────────────────────────────────────
+async function showMePage() {
+  const view = document.getElementById('me-view');
+  if (!view) return;
+  view.style.display = '';
+  if (!currentUser) {
+    view.innerHTML = `
+      <div class="detail-bar"><div class="detail-bar-inner">
+        <button class="back-link" onclick="goLedger()">← Back to the Ledger</button>
+      </div></div>
+      <article class="discussion-article">
+        <div class="detail-inner">
+          <h1 class="discussion-title">Sign in to see your contributions</h1>
+          <p class="me-empty">Your personal activity page shows every contribution you've made across the site, with links back to each discussion.</p>
+          <p><button class="btn btn-primary" onclick="openModal('login')">Sign in</button></p>
+        </div>
+      </article>
+    `;
+    return;
+  }
+  view.innerHTML = `
+    <div class="detail-bar"><div class="detail-bar-inner">
+      <button class="back-link" onclick="goLedger()">← Back to the Ledger</button>
+    </div></div>
+    <article class="discussion-article">
+      <div class="detail-inner">
+        <header class="discussion-head">
+          <div class="discussion-eyebrow">Your activity</div>
+          <h1 class="discussion-title">My contributions</h1>
+        </header>
+        <section id="me-content" class="me-content">
+          <div class="loading-state">Loading your contributions…</div>
+        </section>
+      </div>
+    </article>
+  `;
+  await _loadMyContributions();
+}
+
+async function _loadMyContributions() {
+  const host = document.getElementById('me-content');
+  if (!host) return;
+  if (!supabaseClient) { host.innerHTML = `<div class="me-empty">Discussion unavailable — Supabase not configured.</div>`; return; }
+  try {
+    const { data, error } = await supabaseClient.from('comments')
+      .select('*').eq('user_id', currentUser.id)
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    if (!data || data.length === 0) {
+      host.innerHTML = `<div class="me-empty">You haven't posted any contributions yet. Browse the Ledger and join a discussion.</div>`;
+      return;
+    }
+    // Group by (topic_id + target_denomination)
+    const groups = new Map();
+    for (const c of data) {
+      const key = `${c.topic_id}|${c.target_denomination || ''}`;
+      if (!groups.has(key)) groups.set(key, { topic_id: c.topic_id, target_denomination: c.target_denomination, comments: [] });
+      groups.get(key).comments.push(c);
+    }
+    const rows = [];
+    for (const g of groups.values()) {
+      rows.push(_renderMeGroup(g));
+    }
+    host.innerHTML = rows.join('');
+  } catch (err) {
+    console.error('me load:', err);
+    host.innerHTML = `<div class="me-empty">Couldn't load your contributions.</div>`;
+  }
+}
+
+function _renderMeGroup(group) {
+  const c0 = group.comments[0];
+  // Figure out URL + title for this discussion
+  let url = '#/', title = group.topic_id, contextLabel = '';
+  const target = group.target_denomination || '';
+
+  if (group.topic_id && group.topic_id.startsWith('mov-')) {
+    // Movement question
+    const mov = MOVEMENTS.find(m => m.id === group.topic_id);
+    if (mov) {
+      const qid = target.startsWith('q:') ? target.slice(2) : null;
+      const q = qid && (mov.discussionQuestions || []).find(x => x.id === qid);
+      const movSlug = 'm-' + mov.id.replace(/^mov-/, '');
+      if (q) {
+        url = `#/d/${encodeURIComponent(movSlug)}/${encodeURIComponent(q.id)}`;
+        title = q.title;
+        contextLabel = mov.name;
+      }
+    }
+  } else if (group.topic_id && group.topic_id.startsWith('rel-')) {
+    // Religion question
+    const rel = (typeof RELIGIONS !== 'undefined') && RELIGIONS.find(r => r.id === group.topic_id);
+    if (rel) {
+      const qid = target.startsWith('q:') ? target.slice(2) : null;
+      const q = qid && (rel.discussionQuestions || []).find(x => x.id === qid);
+      const relSlug = 'r-' + rel.id.replace(/^rel-/, '');
+      if (q) {
+        url = `#/d/${encodeURIComponent(relSlug)}/${encodeURIComponent(q.id)}`;
+        title = q.title;
+        contextLabel = rel.name;
+      }
+    }
+  } else if (group.topic_id && group.topic_id.startsWith('qc-')) {
+    // Questions Corner
+    url = `#/questions`;
+    title = `Questions Corner`;
+    contextLabel = '';
+  } else {
+    // Ledger topic + denomination
+    const topic = TOPICS.find(t => t.id === group.topic_id);
+    if (topic) {
+      title = `${topic.name}${target ? ` · ${target}` : ''}`;
+      contextLabel = 'Ledger';
+      if (target) {
+        const slug = _denomSlug(target);
+        url = `#/d/${encodeURIComponent(slug)}/${encodeURIComponent(topic.id)}`;
+      } else {
+        url = `#/t/${encodeURIComponent(topic.id)}`;
+      }
+    }
+  }
+
+  return `
+    <div class="me-group">
+      <div class="me-group-head">
+        <a class="me-group-title" href="${url}">${escHtml(title)}</a>
+        ${contextLabel ? `<span class="me-context-tag">${escHtml(contextLabel)}</span>` : ''}
+        <span class="me-count">${group.comments.length} contribution${group.comments.length > 1 ? 's' : ''}</span>
+      </div>
+      <div class="me-comments">
+        ${group.comments.map(c => {
+          // Build permalink to that specific comment
+          let cmtUrl = url;
+          if (cmtUrl.startsWith('#/d/')) cmtUrl += `?c=${c.id}`;
+          const date = new Date(c.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+          return `
+            <a class="me-comment" href="${cmtUrl}">
+              <div class="me-comment-meta">${date} · ${(c.upvotes || 0)} upvote${(c.upvotes || 0) === 1 ? '' : 's'}</div>
+              <div class="me-comment-body">${escHtml(c.body)}</div>
+            </a>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// ─── NOTIFICATION DEEP-LINK UPDATE ─────────────────────────────────────
+// Override onNotificationClick from patch 7 to use new discussion URLs
+async function onNotificationClick(notifId, topicId, commentId) {
+  if (currentUser && supabaseClient) {
+    try { await supabaseClient.from('notifications').update({ read: true }).eq('id', notifId); }
+    catch (e) { console.error(e); }
+  }
+  userNotifications = userNotifications.map(n => n.id === notifId ? { ...n, read: true } : n);
+  notificationPanelOpen = false;
+  renderNotificationBell();
+
+  if (!commentId) {
+    // Fallback: just navigate to the topic/movement/religion page
+    if (topicId && topicId.startsWith('rel-')) { await showReligion(topicId); }
+    else if (topicId && topicId.startsWith('mov-')) { await showMovement(topicId); }
+    else if (topicId) { const t = TOPICS.find(x => x.id === topicId); if (t) await showTopic(topicId); }
+    return;
+  }
+
+  // Look up the actual comment to figure out the right discussion URL
+  try {
+    const { data, error } = await supabaseClient.from('comments').select('*').eq('id', commentId).limit(1).maybeSingle();
+    if (error || !data) throw new Error('comment lookup failed');
+    const target = data.target_denomination || '';
+    let traditionSlug = null, topicForUrl = null;
+    if (data.topic_id.startsWith('mov-')) {
+      const mov = MOVEMENTS.find(m => m.id === data.topic_id);
+      if (mov && target.startsWith('q:')) {
+        traditionSlug = 'm-' + mov.id.replace(/^mov-/, '');
+        topicForUrl = target.slice(2);
+      }
+    } else if (data.topic_id.startsWith('rel-')) {
+      const rel = (typeof RELIGIONS !== 'undefined') && RELIGIONS.find(r => r.id === data.topic_id);
+      if (rel && target.startsWith('q:')) {
+        traditionSlug = 'r-' + rel.id.replace(/^rel-/, '');
+        topicForUrl = target.slice(2);
+      }
+    } else if (target) {
+      traditionSlug = _denomSlug(target);
+      topicForUrl = data.topic_id;
+    }
+    if (traditionSlug && topicForUrl) {
+      window.location.hash = `#/d/${encodeURIComponent(traditionSlug)}/${encodeURIComponent(topicForUrl)}?c=${commentId}`;
+      return;
+    }
+  } catch (e) { console.error('notif lookup', e); }
+
+  // Last-resort fallback
+  if (topicId && topicId.startsWith('rel-')) await showReligion(topicId);
+  else if (topicId && topicId.startsWith('mov-')) await showMovement(topicId);
+  else if (topicId) { const t = TOPICS.find(x => x.id === topicId); if (t) await showTopic(topicId); }
+}
+
+// ─── QC COLUMN FIXES — re-declare patch-9 functions with correct names ─
+// parent_id → parent_comment_id, upvote_count → upvotes, user_denomination → denomination
+
+async function _qcLoadFlat(threadId) {
+  const listEl = document.getElementById(`qc-list-${threadId}`);
+  if (!listEl) return;
+  if (!supabaseClient) { listEl.innerHTML = '<div class="qc-empty">Discussion unavailable — Supabase not configured.</div>'; return; }
+  try {
+    const { data, error } = await supabaseClient.from('comments').select('*')
+      .eq('topic_id', threadId).is('parent_comment_id', null)
+      .order('upvotes', { ascending: false }).order('created_at', { ascending: false });
+    if (error) throw error;
+    if (!data || !data.length) { listEl.innerHTML = '<div class="qc-empty">Be the first.</div>'; return; }
+    listEl.innerHTML = data.map(c => _qcRenderAnswer(c, `_qcVoteFlat(${c.id}, '${escAttr(c.topic_id)}')`)).join('');
+  } catch (err) { console.error(err); listEl.innerHTML = '<div class="qc-empty">Couldn\'t load discussion.</div>'; }
+}
+
+async function _qcSubmitFlat(threadId) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById(`qc-input-${threadId}`);
+  if (!ta) return;
+  const body = ta.value.trim(); if (!body) return;
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: threadId, user_id: currentUser.id,
+      display_name: currentUserProfile.display_name, denomination: currentUserProfile.denomination,
+      body, comment_type: 'general', parent_comment_id: null,
+    });
+    if (error) throw error;
+    ta.value = ''; await _qcLoadFlat(threadId);
+  } catch (err) { alert('Could not post: ' + err.message); }
+}
+
+async function _qcLoadUserQuestions(openTopicId) {
+  const slug = openTopicId.replace(/^qc-/, '').replace(/-open$/, '');
+  const listEl = document.getElementById(`qc-userq-${slug}`);
+  if (!listEl) return;
+  if (!supabaseClient) { listEl.innerHTML = '<div class="qc-empty">Discussion unavailable — Supabase not configured.</div>'; return; }
+  try {
+    const { data, error } = await supabaseClient.from('comments').select('*')
+      .eq('topic_id', openTopicId).is('parent_comment_id', null)
+      .order('upvotes', { ascending: false }).order('created_at', { ascending: false });
+    if (error) throw error;
+    if (!data || !data.length) { listEl.innerHTML = '<div class="qc-empty">No community questions yet — be the first to ask.</div>'; return; }
+    listEl.innerHTML = data.map(q => _qcRenderUserQuestion(q, openTopicId)).join('');
+    listEl.querySelectorAll('details.qc-uq').forEach(d => {
+      d.addEventListener('toggle', async () => {
+        if (!d.open) return;
+        const host = d.querySelector('.qc-uq-answers');
+        if (host.dataset.loaded) return;
+        host.dataset.loaded = '1';
+        await _qcMountAnswerThread(parseInt(d.dataset.questionId, 10), openTopicId, host);
+      });
+    });
+  } catch (err) { console.error(err); listEl.innerHTML = '<div class="qc-empty">Couldn\'t load community questions.</div>'; }
+}
+
+function _qcRenderUserQuestion(q, openTopicId) {
+  const voted = (typeof userVotes !== 'undefined' && userVotes && userVotes.has) ? userVotes.has(q.id) : false;
+  return `
+    <details class="qc-uq" data-question-id="${q.id}">
+      <summary class="qc-uq-head">
+        <div class="qc-vote qc-vote-inline" onclick="event.preventDefault(); event.stopPropagation();">
+          <button class="qc-upbtn ${voted ? 'voted' : ''}" onclick="_qcVoteUserQ(${q.id}, '${escAttr(openTopicId)}')" ${!currentUser ? 'disabled' : ''}>▲</button>
+          <div class="qc-votecount">${q.upvotes || 0}</div>
+        </div>
+        <div class="qc-uq-body">
+          <div class="qc-uq-text">${escHtml(q.body)}</div>
+          <div class="qc-uq-meta">
+            <strong>${escHtml(q.display_name || 'Anonymous')}</strong>
+            ${q.denomination ? `<span class="qc-denom-tag">${escHtml(q.denomination)}</span>` : ''}
+            <span class="qc-when">${typeof timeAgo === 'function' ? timeAgo(q.created_at) : ''}</span>
+          </div>
+        </div>
+        <span class="qc-q-arrow">›</span>
+      </summary>
+      <div class="qc-uq-answers"></div>
+    </details>
+  `;
+}
+
+async function _qcAskQuestion(openTopicId, slug) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById(`qc-ask-input-${slug}`);
+  if (!ta) return;
+  const body = ta.value.trim(); if (!body) return;
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: openTopicId, user_id: currentUser.id,
+      display_name: currentUserProfile.display_name, denomination: currentUserProfile.denomination,
+      body, comment_type: 'general', parent_comment_id: null,
+    });
+    if (error) throw error;
+    ta.value = ''; await _qcLoadUserQuestions(openTopicId);
+  } catch (err) { alert('Could not post: ' + err.message); }
+}
+
+async function _qcLoadAnswers(questionId, openTopicId) {
+  const listEl = document.getElementById(`qc-ans-list-${questionId}`);
+  if (!listEl) return;
+  try {
+    const { data, error } = await supabaseClient.from('comments').select('*')
+      .eq('topic_id', openTopicId).eq('parent_comment_id', questionId)
+      .order('upvotes', { ascending: false }).order('created_at', { ascending: false });
+    if (error) throw error;
+    if (!data || !data.length) { listEl.innerHTML = '<div class="qc-empty">No answers yet.</div>'; return; }
+    listEl.innerHTML = data.map(c => _qcRenderAnswer(c, `_qcVoteAnswer(${c.id}, ${questionId}, '${escAttr(openTopicId)}')`)).join('');
+  } catch (err) { console.error(err); listEl.innerHTML = '<div class="qc-empty">Couldn\'t load answers.</div>'; }
+}
+
+async function _qcSubmitAnswer(questionId, openTopicId) {
+  if (!currentUser || !currentUserProfile) return;
+  const ta = document.getElementById(`qc-ans-input-${questionId}`);
+  if (!ta) return;
+  const body = ta.value.trim(); if (!body) return;
+  try {
+    const { error } = await supabaseClient.from('comments').insert({
+      topic_id: openTopicId, user_id: currentUser.id,
+      display_name: currentUserProfile.display_name, denomination: currentUserProfile.denomination,
+      body, comment_type: 'general', parent_comment_id: questionId,
+    });
+    if (error) throw error;
+    ta.value = ''; await _qcLoadAnswers(questionId, openTopicId);
+  } catch (err) { alert('Could not post: ' + err.message); }
+}
+
+function _qcRenderAnswer(c, voteOnclick) {
+  const voted = (typeof userVotes !== 'undefined' && userVotes && userVotes.has) ? userVotes.has(c.id) : false;
+  return `
+    <div class="qc-item" data-comment-id="${c.id}">
+      <div class="qc-vote">
+        <button class="qc-upbtn ${voted ? 'voted' : ''}" onclick="${voteOnclick}" ${!currentUser ? 'disabled' : ''}>▲</button>
+        <div class="qc-votecount">${c.upvotes || 0}</div>
+      </div>
+      <div class="qc-body-wrap">
+        <div class="qc-meta">
+          <strong>${escHtml(c.display_name || 'Anonymous')}</strong>
+          ${c.denomination ? `<span class="qc-denom-tag">${escHtml(c.denomination)}</span>` : ''}
+          <span class="qc-when">${typeof timeAgo === 'function' ? timeAgo(c.created_at) : ''}</span>
+        </div>
+        <div class="qc-text">${escHtml(c.body)}</div>
+      </div>
+    </div>
+  `;
+}
