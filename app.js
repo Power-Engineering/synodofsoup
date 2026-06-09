@@ -4662,27 +4662,59 @@ async function submitForumComment(denomName) {
 //   THREADED COMMENT RENDERING
 // ═══════════════════════════════════════════════════════════════
 
+function _getAllDescendants(parentId) {
+  const direct = allComments.filter(r => r.parent_comment_id === parentId)
+    .sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+  const out = [];
+  for (const r of direct) {
+    out.push(r);
+    out.push(..._getAllDescendants(r.id));
+  }
+  return out;
+}
+
 function renderThreadedComment(c, depth) {
-  const replies = allComments.filter(r => r.parent_comment_id === c.id)
+  const directReplies = allComments.filter(r => r.parent_comment_id === c.id)
     .sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
   const initials = (c.display_name || 'A').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
   const voted = userVotes.has(c.id);
   const date = new Date(c.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
   const isOwn = currentUser && c.user_id === currentUser.id;
   const classes = depth === 0 ? 'comment-item' : 'comment-item comment-reply-item';
-
   const replyForm = (activeReplyTo === c.id) ? renderReplyForm(c.id) : '';
 
-  // Nested replies (only one level of visual nesting beyond the top)
-  const nestedHtml = replies.length ? `
-    <div class="comment-replies-wrap">
-      ${replies.map(r => renderThreadedComment(r, depth >= 1 ? 1 : depth + 1)).join('')}
-    </div>` : '';
+  // "In reply to X" marker for flattened deep replies
+  let inReplyToMarker = '';
+  if (depth >= 1 && c.parent_comment_id) {
+    const parent = allComments.find(x => x.id === c.parent_comment_id);
+    // Only show marker when the parent isn't the visual container above us
+    // (i.e., only for depth 2+ that have been flattened)
+    if (parent && depth >= 2) {
+      inReplyToMarker = `<div class="in-reply-to">↳ in reply to <strong>${escHtml(parent.display_name || 'Anonymous')}</strong></div>`;
+    }
+  }
+
+  // Reply nesting: depth 0 → render direct replies with depth=1 (nested visually).
+  // Depth 1 → flatten ALL descendants as siblings at depth 1, no further nesting.
+  let nestedHtml = '';
+  if (directReplies.length) {
+    if (depth === 0) {
+      // First reply level: collect direct replies AND all their descendants, render all as siblings
+      const flat = [];
+      for (const r of directReplies) {
+        flat.push(r);
+        flat.push(..._getAllDescendants(r.id));
+      }
+      nestedHtml = `<div class="comment-replies-wrap">${flat.map((r, i) => renderThreadedComment(r, r.parent_comment_id === c.id ? 1 : 2)).join('')}</div>`;
+    }
+    // depth >= 1 → no further nesting; descendants are handled by the depth-0 ancestor
+  }
 
   return `
     <div class="${classes}" data-comment-id="${c.id}">
       <div class="comment-avatar">${initials}</div>
       <div class="comment-body">
+        ${inReplyToMarker}
         <div class="comment-meta">
           <span class="comment-author">${escHtml(c.display_name)}</span>
           ${c.denomination ? `<span class="comment-denom-tag">${escHtml(c.denomination)}</span>` : ''}
