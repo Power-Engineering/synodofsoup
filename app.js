@@ -3,6 +3,8 @@
 // app.js v4 — Full academic edition with biblical apparatus
 // ═══════════════════════════════════════════════════════════
 
+const MAX_COMMENT_LENGTH = 3000;
+
 const TOPICS = [
 
   // ╔══════════════════════════════════════════════════════════╗
@@ -4600,9 +4602,9 @@ function renderForumCompose(denomName) {
         <button class="ctype-tab" data-ctype="edit_suggestion" onclick="toggleForumCtype('${escAttr(denomName)}', 'edit_suggestion')">✏️ Suggest an edit</button>
       </div>
       <div class="ctype-helper" id="${fid}-helper">Push back on, defend, or refine this tradition's position.</div>
-      <textarea id="${fid}-text" maxlength="600" placeholder="Make your case. Cite Scripture. Be charitable. (Max 600 characters.)"></textarea>
+      <textarea id="${fid}-text" maxlength="MAX_COMMENT_LENGTH" placeholder="Make your case. Cite Scripture. Be charitable. (Max 600 characters.)"></textarea>
       <div class="forum-compose-bottom">
-        <span class="char-count" id="${fid}-count">0 / 600</span>
+        <span class="char-count" id="${fid}-count">0 / MAX_COMMENT_LENGTH</span>
         <button class="btn btn-primary btn-sm" onclick="submitForumComment('${escAttr(denomName)}')">Post</button>
       </div>
       <div id="${fid}-msg"></div>
@@ -4633,7 +4635,7 @@ async function submitForumComment(denomName) {
   if (!ta) return;
   const body = ta.value.trim();
   if (!body) { showInlineMsg(msg, 'error', 'Please write something first.'); return; }
-  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  if (body.length > MAX_COMMENT_LENGTH) { showInlineMsg(msg, 'error', 'Keep it under MAX_COMMENT_LENGTH characters.'); return; }
   // ctype: read from active tab in this card
   const card = document.querySelector(`.denom-card[data-denom="${cssAttr(denomName)}"]`);
   const ctype = card?.querySelector('.forum-compose .ctype-tab.active')?.dataset.ctype || 'responding';
@@ -4749,9 +4751,9 @@ function renderCtypeBadge(c) {
 function renderReplyForm(parentId) {
   return `
     <div class="reply-form-wrap" id="reply-form-${parentId}">
-      <textarea id="reply-text-${parentId}" maxlength="600" placeholder="Write your reply…"></textarea>
+      <textarea id="reply-text-${parentId}" maxlength="MAX_COMMENT_LENGTH" placeholder="Write your reply…"></textarea>
       <div class="form-bottom">
-        <span class="char-count" id="reply-count-${parentId}">0 / 600</span>
+        <span class="char-count" id="reply-count-${parentId}">0 / MAX_COMMENT_LENGTH</span>
         <div style="display:flex;gap:6px">
           <button class="btn btn-ghost btn-sm" onclick="cancelReply()">Cancel</button>
           <button class="btn btn-primary btn-sm" onclick="submitReply(${parentId})">Post reply</button>
@@ -4776,7 +4778,7 @@ function startReply(parentId) {
         const el = document.getElementById(`reply-count-${parentId}`);
         if (el) {
           const len = ta.value.length;
-          el.textContent = `${len} / 600`;
+          el.textContent = `${len} / MAX_COMMENT_LENGTH`;
           el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
         }
       });
@@ -4797,7 +4799,7 @@ async function submitReply(parentId) {
   if (!ta) return;
   const body = ta.value.trim();
   if (!body) { showInlineMsg(msg, 'error', 'Write something first.'); return; }
-  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  if (body.length > MAX_COMMENT_LENGTH) { showInlineMsg(msg, 'error', 'Keep it under MAX_COMMENT_LENGTH characters.'); return; }
   try {
     const { error } = await supabaseClient.from('comments').insert({
       topic_id: currentTopic.id,
@@ -4914,7 +4916,7 @@ async function submitComment() {
   const body = document.getElementById('comment-text').value.trim();
   const btn = document.getElementById('submit-btn');
   if (!body) { showFormMsg('error', 'Please write something before posting.'); return; }
-  if (body.length > 600) { showFormMsg('error', 'Keep it under 600 characters.'); return; }
+  if (body.length > MAX_COMMENT_LENGTH) { showFormMsg('error', 'Keep it under MAX_COMMENT_LENGTH characters.'); return; }
   if (!currentUser || !currentUserProfile) { showFormMsg('error', 'Please sign in first.'); return; }
   const verseRef = document.getElementById('verse-ref-input')?.value.trim() || null;
   if (bottomCtype === 'verse_citation' && !verseRef) {
@@ -4935,7 +4937,7 @@ async function submitComment() {
     });
     if (error) throw error;
     document.getElementById('comment-text').value = '';
-    document.getElementById('char-count').textContent = '0 / 600';
+    document.getElementById('char-count').textContent = '0 / MAX_COMMENT_LENGTH';
     if (document.getElementById('verse-ref-input')) document.getElementById('verse-ref-input').value = '';
     showFormMsg('success', 'Posted!');
     await loadComments(currentTopic.id);
@@ -5113,7 +5115,7 @@ function setupCharCount() {
     const len = ta.value.length;
     const el = document.getElementById('char-count');
     if (!el) return;
-    el.textContent = `${len} / 600`;
+    el.textContent = `${len} / MAX_COMMENT_LENGTH`;
     el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
   });
 }
@@ -5205,7 +5207,7 @@ async function fetchVerseText(ref) {
     const clean = escHtml(data.text.trim()).replace(/\s+/g, ' ');
     if (Array.isArray(data.verses)) {
       return data.verses.map(v =>
-        `<sup style="color:var(--gold-dark);font-weight:600;margin-right:3px">${v.verse}</sup>${escHtml(v.text.trim())}`
+        `<sup style="color:var(--gold-dark);font-weight:MAX_COMMENT_LENGTH;margin-right:3px">${v.verse}</sup>${escHtml(v.text.trim())}`
       ).join(' ');
     }
     return clean;
@@ -5233,7 +5235,7 @@ document.addEventListener('input', (e) => {
   const count = compose.querySelector('.char-count');
   if (count) {
     const len = e.target.value.length;
-    count.textContent = `${len} / 600`;
+    count.textContent = `${len} / MAX_COMMENT_LENGTH`;
     count.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
   }
 });
@@ -5414,9 +5416,9 @@ function renderQuestionCompose(movementId, questionId) {
   return `
     <div class="forum-compose" data-question="${escAttr(questionId)}">
       <div class="ctype-helper">Make your case. Engage the question, cite Scripture if relevant, be charitable.</div>
-      <textarea id="${fid}-text" maxlength="600" placeholder="Your response (max 600 characters)…"></textarea>
+      <textarea id="${fid}-text" maxlength="MAX_COMMENT_LENGTH" placeholder="Your response (max MAX_COMMENT_LENGTH characters)…"></textarea>
       <div class="forum-compose-bottom">
-        <span class="char-count" id="${fid}-count">0 / 600</span>
+        <span class="char-count" id="${fid}-count">0 / MAX_COMMENT_LENGTH</span>
         <button class="btn btn-primary btn-sm" onclick="submitQuestionResponse('${escAttr(movementId)}', '${escAttr(questionId)}')">Post response</button>
       </div>
       <div id="${fid}-msg"></div>
@@ -5431,7 +5433,7 @@ async function submitQuestionResponse(movementId, questionId) {
   if (!ta) return;
   const body = ta.value.trim();
   if (!body) { showInlineMsg(msg, 'error', 'Please write something first.'); return; }
-  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  if (body.length > MAX_COMMENT_LENGTH) { showInlineMsg(msg, 'error', 'Keep it under MAX_COMMENT_LENGTH characters.'); return; }
   try {
     const { error } = await supabaseClient.from('comments').insert({
       topic_id: movementId,
@@ -5504,7 +5506,7 @@ startReply = function(parentId) {
         const el = document.getElementById(`reply-count-${parentId}`);
         if (el) {
           const len = ta.value.length;
-          el.textContent = `${len} / 600`;
+          el.textContent = `${len} / MAX_COMMENT_LENGTH`;
           el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
         }
       });
@@ -5529,7 +5531,7 @@ submitReply = async function(parentId) {
   if (!ta) return;
   const body = ta.value.trim();
   if (!body) { showInlineMsg(msg, 'error', 'Write something first.'); return; }
-  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  if (body.length > MAX_COMMENT_LENGTH) { showInlineMsg(msg, 'error', 'Keep it under MAX_COMMENT_LENGTH characters.'); return; }
   try {
     const contextId = currentMovement ? currentMovement.id : (currentTopic ? currentTopic.id : null);
     if (!contextId) throw new Error('No active context');
@@ -5699,9 +5701,9 @@ function renderReligionQuestionCompose(religionId, questionId) {
   return `
     <div class="forum-compose" data-question="${escAttr(questionId)}">
       <div class="ctype-helper">Engage the question, draw on Scripture or other sources, be charitable across traditions.</div>
-      <textarea id="${fid}-text" maxlength="600" placeholder="Your response (max 600 characters)…"></textarea>
+      <textarea id="${fid}-text" maxlength="MAX_COMMENT_LENGTH" placeholder="Your response (max MAX_COMMENT_LENGTH characters)…"></textarea>
       <div class="forum-compose-bottom">
-        <span class="char-count" id="${fid}-count">0 / 600</span>
+        <span class="char-count" id="${fid}-count">0 / MAX_COMMENT_LENGTH</span>
         <button class="btn btn-primary btn-sm" onclick="submitReligionQuestionResponse('${escAttr(religionId)}', '${escAttr(questionId)}')">Post response</button>
       </div>
       <div id="${fid}-msg"></div>
@@ -5716,7 +5718,7 @@ async function submitReligionQuestionResponse(religionId, questionId) {
   if (!ta) return;
   const body = ta.value.trim();
   if (!body) { showInlineMsg(msg, 'error', 'Please write something first.'); return; }
-  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  if (body.length > MAX_COMMENT_LENGTH) { showInlineMsg(msg, 'error', 'Keep it under MAX_COMMENT_LENGTH characters.'); return; }
   try {
     const { error } = await supabaseClient.from('comments').insert({
       topic_id: religionId,
@@ -5799,7 +5801,7 @@ startReply = function(parentId) {
         const el = document.getElementById(`reply-count-${parentId}`);
         if (el) {
           const len = ta.value.length;
-          el.textContent = `${len} / 600`;
+          el.textContent = `${len} / MAX_COMMENT_LENGTH`;
           el.style.color = len > 500 ? 'var(--crimson)' : 'var(--ink-light)';
         }
       });
@@ -5824,7 +5826,7 @@ submitReply = async function(parentId) {
   if (!ta) return;
   const body = ta.value.trim();
   if (!body) { showInlineMsg(msg, 'error', 'Write something first.'); return; }
-  if (body.length > 600) { showInlineMsg(msg, 'error', 'Keep it under 600 characters.'); return; }
+  if (body.length > MAX_COMMENT_LENGTH) { showInlineMsg(msg, 'error', 'Keep it under MAX_COMMENT_LENGTH characters.'); return; }
   try {
     const contextId = currentReligion ? currentReligion.id : (currentMovement ? currentMovement.id : (currentTopic ? currentTopic.id : null));
     if (!contextId) throw new Error('No active context');
@@ -6001,7 +6003,7 @@ async function onNotificationClick(notifId, topicId, commentId) {
         el.classList.add('notif-flash');
         setTimeout(() => el.classList.remove('notif-flash'), 2000);
       }
-    }, 600);
+    }, MAX_COMMENT_LENGTH);
   }
 }
 
@@ -6098,7 +6100,7 @@ setInterval(() => {
   if (currentUser && document.visibilityState === 'visible') {
     loadNotifications();
   }
-}, 60000);
+}, 6000);
 
 
 // ═══════════════════════════════════════════════════════════════
@@ -6393,7 +6395,7 @@ async function _qcMountSeedThread(threadId, host) {
   host.innerHTML = `
     <div class="qc-form-host">
       ${currentUser
-        ? `<textarea class="comment-textarea qc-input" id="qc-input-${threadId}" maxlength="600" placeholder="Post an answer or comment…"></textarea>
+        ? `<textarea class="comment-textarea qc-input" id="qc-input-${threadId}" maxlength="MAX_COMMENT_LENGTH" placeholder="Post an answer or comment…"></textarea>
            <div class="qc-form-actions"><button class="btn btn-primary btn-sm" onclick="_qcSubmitFlat('${threadId}')">Post</button></div>`
         : `<div class="qc-locked">Sign in to participate.</div>`}
     </div>
@@ -6511,7 +6513,7 @@ async function _qcMountAnswerThread(questionId, openTopicId, host) {
   host.innerHTML = `
     <div class="qc-form-host">
       ${currentUser
-        ? `<textarea class="comment-textarea qc-input" id="qc-ans-input-${questionId}" maxlength="600" placeholder="Answer this question…"></textarea>
+        ? `<textarea class="comment-textarea qc-input" id="qc-ans-input-${questionId}" maxlength="MAX_COMMENT_LENGTH" placeholder="Answer this question…"></textarea>
            <div class="qc-form-actions"><button class="btn btn-primary btn-sm" onclick="_qcSubmitAnswer(${questionId}, '${escAttr(openTopicId)}')">Post answer</button></div>`
         : `<div class="qc-locked">Sign in to answer.</div>`}
     </div>
@@ -6977,9 +6979,9 @@ function _renderDiscussionCompose(traditionSlug, topicSlug, ctx, targetTag) {
         <label class="ctype-field-label">Bible reference</label>
         <input type="text" id="discussion-verse-ref" class="text-input" placeholder="e.g. Rom 9:11–23" autocomplete="off"/>
       </div>
-      <textarea id="discussion-compose-text" class="comment-textarea" maxlength="600" placeholder="Make your case. Cite Scripture. Be charitable. (Max 600 characters.)"></textarea>
+      <textarea id="discussion-compose-text" class="comment-textarea" maxlength="MAX_COMMENT_LENGTH" placeholder="Make your case. Cite Scripture. Be charitable. (Max MAX_COMMENT_LENGTH characters.)"></textarea>
       <div class="form-bottom">
-        <span class="char-count" id="discussion-char-count">0 / 600</span>
+        <span class="char-count" id="discussion-char-count">0 / MAX_COMMENT_LENGTH</span>
         <button class="btn btn-primary" onclick="_submitDiscussionContribution('${escAttr(traditionSlug)}','${escAttr(topicSlug)}','${escAttr(targetTag)}')">Post contribution</button>
       </div>
     </div>
