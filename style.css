@@ -2270,3 +2270,18 @@ a:hover { color: var(--crimson); }
   .me-group-head { gap: 8px; }
   .me-group-title { font-size: 15px; }
 }
+
+/* Patch 12 — footer link contrast fix */
+.foot-links a {
+  color: var(--gold, #b08a3f);
+  text-decoration: none;
+  font-weight: 600;
+}
+.foot-links a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.foot-links .sep { color: var(--ink-faint, #8a8270); opacity: 0.5; }
+
+/* Show me-link only when signed in */
+#me-link { font-size: 13px; }
