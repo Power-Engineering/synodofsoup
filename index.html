@@ -46,7 +46,8 @@
             <a onclick="goQuestions()" class="nav-link" data-route="questions">Questions</a>
             <a onclick="goAbout()" class="nav-link" data-route="about">About</a>
       </div>
-      <div class="topbar-right">
+<div class="topbar-right">
+        <a id="me-link" class="nav-link nav-link-me" onclick="goMe()" data-route="me" style="display:none">👤 My activity</a>
         <span id="notif-wrap" class="notif-wrap" style="display:none"></span>
         <div class="topbar-auth" id="header-auth">
           <button class="btn btn-ghost" onclick="openModal('login')">Sign in</button>
