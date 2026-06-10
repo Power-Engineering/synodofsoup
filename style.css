@@ -2636,3 +2636,143 @@ a:hover { color: var(--crimson); }
   border-color: #d4b870;
   color: #8a6818;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PATCH 20 — Mobile pill scrolling + verse/button spacing
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Spacing fix: more breathing room between verse pills and the Discuss button */
+.denom-card-content {
+  padding-bottom: 22px;
+}
+.denom-verses {
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+/* Mobile Questions Corner pills — horizontal scroll instead of multi-row wrap */
+@media (max-width: 720px) {
+  .qc-filter-panel { padding: 16px 14px; }
+
+  .qc-pills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scroll-snap-type: x proximity;
+  }
+  .qc-pill, .qc-pill-sep {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  .qc-filter-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .qc-clear-btn {
+    margin-left: 0;
+    align-self: flex-start;
+  }
+  .qc-sort-control {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .qc-sort-control select { flex: 1; margin-left: 8px; }
+  .qc-toggle { font-size: 13px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PATCH 21 — Profile page styles
+   ═══════════════════════════════════════════════════════════════════════ */
+
+#profile-view {
+  background: var(--parchment, #f9f4e8);
+  min-height: 80vh;
+}
+.profile-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.profile-section {
+  background: #fff;
+  border: 1px solid var(--line-soft, #e0d8c5);
+  border-radius: 8px;
+  padding: 22px 26px;
+  margin-bottom: 18px;
+}
+.profile-section-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.profile-section-help {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+.profile-form-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+.profile-form-row .text-input { flex: 1; }
+.profile-form-row .btn { flex-shrink: 0; }
+
+.profile-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+}
+
+.profile-feedback {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 13px;
+  min-height: 16px;
+}
+.profile-feedback.ok { color: var(--ledger-green, #2d5547); }
+.profile-feedback.err { color: var(--crimson, #8a2a2a); }
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.profile-info > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.profile-info > div:last-child { border-bottom: none; }
+.profile-info-label {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.profile-section-danger {
+  border-color: #d4b0b0;
+  background: #fdf6f6;
+}
+.profile-section-danger .profile-section-title { color: var(--crimson, #8a2a2a); }
+
+@media (max-width: 720px) {
+  .profile-form-row { flex-direction: column; }
+  .profile-section { padding: 18px 18px; }
+}
+
