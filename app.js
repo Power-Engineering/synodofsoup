@@ -2945,84 +2945,96 @@ const TOPICS = [
     relatedTopics: ['filioque', 'atonement', 'canon'],
   },
 {
-  id: 'communion-cup',
+  id: 'wine-or-grape-juice',
   name: 'Wine or Grape Juice?',
-  category: 'Worship & Sacraments',
-  summary: 'What belongs in the cup at the Lord\'s Supper — fermented wine, as the Last Supper had, or unfermented grape juice, as the temperance movement introduced? A small question with large implications for sacramental theology, biblical fidelity, and pastoral care of the recovering alcoholic.',
+  icon: '🍷',
+  category: 'Sacraments / Worship Practice',
+  controversyLevel: 7,
+  desc: 'Should the cup in Christian Communion contain fermented wine, as used historically and biblically, or is unfermented grape juice an equally valid element? The debate touches Scripture, Jewish Passover practice, early church history, the temperance movement, and denominational tradition.',
+  historicalNote: 'In Scripture, the Hebrew *yayin* and Greek *oinos* overwhelmingly refer to fermented wine (Gen 9:21; Ps 104:15; John 2:1–11). Fermentation was the primary method of preserving grape products in the ancient Near East. The early church universally used wine in the Eucharist; no evidence exists of grape juice being used liturgically before the 19th century. The modern debate arose through the American temperance movement. Thomas Bramwell Welch (1825–1903) developed pasteurised grape juice in 1869 specifically to provide a non-alcoholic Communion option, which many Protestant denominations adopted in the early 20th century.',
+  keyVerses: [
+    'Lev 23:13',
+    'Ps 104:15',
+    'Prov 20:1',
+    'Isa 25:6',
+    'Matt 26:27–29',
+    'Mark 14:23–25',
+    'Luke 22:17–20',
+    'John 2:1–11',
+    '1 Cor 10:16',
+    '1 Cor 11:23–29'
+  ],
+  definition: `
+    <p>First: <em>Does “wine” in the Bible mean fermented wine?</em> Yes. The standard biblical terms (*yayin*, *oinos*) refer to fermented drink in nearly all contexts. Jesus’ Passover cup was almost certainly fermented wine, consistent with Jewish practice.</p>
+    <p>Second: <em>Does the Bible forbid alcohol?</em> No. Scripture warns against drunkenness (Prov 23:29–35; Eph 5:18) but affirms wine as a gift of God (Ps 104:15). Abstinence is a pastoral or ethical choice, not a biblical mandate.</p>
+    <p>Third: <em>Does the Bible require wine for Communion?</em> Historic Christianity says yes — the element used by Jesus and the early church was wine. Many modern Protestant bodies say no — the command refers to the “fruit of the vine” (Matt 26:29), which they interpret as including both wine and grape juice.</p>
+    <p>Fourth: <em>Is grape juice a modern innovation?</em> Yes. Pasteurised grape juice did not exist until 1869. Its liturgical use is a product of the temperance movement.</p>
+  `,
   denominations: [
     {
       name: 'Roman Catholic',
-      stance: 'traditional',
-      position: 'Wine is the only valid matter for the Eucharist. Canon law requires <strong>natural grape wine, unmixed with other substances</strong>, lightly altered only with the prescribed drop of water. The Last Supper used wine; the Mass re-presents that Supper. Grape juice cannot become the Blood of Christ — only wine can. Communicants who cannot tolerate alcohol receive under one species (host only).',
-      verses: ['Matt 26:27-29', '1 Cor 11:23-26', 'Luke 22:17-20']
+      stance: 'wine required',
+      position: 'The Catholic Church requires natural fermented grape wine for the Eucharist (Canon 924 §3). Grape juice is invalid matter except in rare cases for priests with medical conditions, and even then must be mustum (minimally fermented). The laity may receive under one kind if necessary.',
+      verses: ['Matt 26:27–29']
     },
     {
       name: 'Eastern Orthodox',
-      stance: 'traditional',
-      position: 'Wine, period. The chalice in the Divine Liturgy holds red wine mixed with warm water (the <em>zeon</em>) — an unbroken practice from the apostolic age. The wine is fermented; the Mystery requires it. Grape juice is a modern Western innovation that severs the Eucharist from its biblical and patristic form.',
-      verses: ['John 6:53-56', '1 Cor 10:16', 'Matt 26:29']
+      stance: 'wine required',
+      position: 'Orthodox liturgy requires fermented wine mixed with water, symbolising blood and water from Christ’s side. Grape juice is not permitted. The use of wine is tied to unbroken apostolic tradition.',
+      verses: ['John 19:34']
     },
     {
       name: 'Anglican / Episcopal',
-      stance: 'traditional',
-      position: 'Wine is the historic and rubrical norm in the Book of Common Prayer. Christ used wine; the Church has followed Him. Pastoral provision is made for the recovering alcoholic — usually a separate cup or intinction with a minimal touch — but the default is real wine.',
-      verses: ['Matt 26:27-29', '1 Cor 11:23-26']
+      stance: 'varies',
+      position: 'Traditional Anglicanism uses wine, as required by the Book of Common Prayer. Many provinces permit grape juice as an accommodation for pastoral or health reasons, especially in North America. Conservative provinces maintain wine-only practice.',
+      verses: ['Matt 26:29']
     },
     {
       name: 'Lutheran',
-      stance: 'traditional',
-      position: 'Wine. Confessional Lutheranism holds that Christ instituted the Supper with wine and that the Real Presence is bound to the matter He chose. <em>Verba</em> and <em>elementa</em> belong together. The Wisconsin and Missouri Synods are firm; the ELCA permits more pastoral flexibility but still uses wine as default.',
-      verses: ['Matt 26:27-29', '1 Cor 11:25-26', 'Mark 14:23-25']
+      stance: 'nuanced',
+      position: 'Historic Lutheranism uses wine. The ELCA permits grape juice as an alternative for accessibility and pastoral care. Confessional bodies (LCMS, WELS) strongly prefer wine but allow grape juice in exceptional cases.',
+      verses: ['1 Cor 10:16']
     },
     {
       name: 'Presbyterian / Reformed',
-      stance: 'mixed',
-      position: 'Historically wine — Calvin, Knox, and the Westminster Divines all used it. In modern American Reformed churches, practice varies: many congregations now offer both wine and grape juice side-by-side in the trays, leaving the choice to the communicant\'s conscience. The Reformed conviction is that the sign is what matters; whether the fruit of the vine is fermented is adiaphora.',
-      verses: ['1 Cor 11:25', 'Matt 26:29', 'Rom 14:21']
+      stance: 'varies',
+      position: 'The Reformed tradition historically used wine. The PCUSA widely uses grape juice due to temperance-era influence. Confessional bodies (PCA, OPC) prefer wine but allow grape juice for conscience or pastoral reasons.',
+      verses: ['1 Cor 11:25']
     },
     {
       name: 'Baptist',
-      stance: 'progressive',
-      position: 'Grape juice in nearly all American Baptist churches since the late 1800s. The conviction: the Bible refers to "the fruit of the vine," not specifically fermented wine, and the church should not place a stumbling block before any brother or sister — especially those recovering from alcohol abuse. Romans 14:21 governs. The substance is symbolic; what matters is the memorial and the heart.',
-      verses: ['Matt 26:29', 'Rom 14:21', '1 Cor 8:9-13', 'Prov 20:1']
+      stance: 'grape juice preferred',
+      position: 'Most Baptist churches use grape juice, influenced by the temperance movement and concerns about alcohol. Some Reformed Baptists use wine, but the majority use juice and consider it fully valid as “fruit of the vine.”',
+      verses: ['Matt 26:29']
     },
     {
       name: 'Methodist / Wesleyan',
-      stance: 'progressive',
-      position: 'Grape juice — and Methodists are arguably the reason it exists. Thomas Welch, a Methodist dentist, invented pasteurised unfermented grape juice in 1869 specifically so Methodist churches could observe Communion without serving alcohol. The conviction flows from the Wesleyan emphasis on holiness, hospitality to the weak, and total abstinence as a witness against the destruction wrought by drink.',
-      verses: ['Rom 14:21', '1 Cor 8:13', 'Prov 23:31-32']
+      stance: 'grape juice preferred',
+      position: 'Methodism was central to the temperance movement; grape juice became standard in Methodist Communion. The UMC and Wesleyan bodies overwhelmingly use grape juice, though wine is not theologically forbidden.',
+      verses: ['Luke 22:17']
     },
     {
       name: 'Pentecostal',
-      stance: 'progressive',
-      position: 'Grape juice. Pentecostal churches arose largely from the holiness movement and inherit its strong stance against alcohol. The Lord\'s Supper is a sacred memorial; serving fermented wine would compromise the witness of total abstinence that Pentecostal believers see as part of their sanctified walk.',
-      verses: ['Eph 5:18', 'Prov 20:1', 'Rom 14:21']
-    },
-    {
-      name: 'Charismatic',
-      stance: 'mixed',
-      position: 'Practice varies widely. Many independent charismatic churches use grape juice (inheriting from Pentecostal/Baptist roots); others use wine (especially Anglican-charismatic and continental European charismatic churches). The charismatic conviction tends to focus on the presence and power of the Spirit at the table rather than the precise substance in the cup.',
-      verses: ['1 Cor 10:16-17', 'Matt 26:29']
-    },
-    {
-      name: 'Anabaptist / Mennonite',
-      stance: 'mixed',
-      position: 'Historically simple: whatever bread and whatever fruit of the vine the community has. Modern Anabaptist congregations vary — some use grape juice (especially in North America), some use wine (especially in Europe and South America). The substance is secondary to the act of remembrance and the unity of the body sharing one cup.',
-      verses: ['1 Cor 10:17', '1 Cor 11:26']
+      stance: 'grape juice preferred',
+      position: 'Most Pentecostal churches use grape juice, emphasising sobriety and accessibility. Wine is rarely used, though not doctrinally impossible.',
+      verses: ['1 Cor 11:28']
     },
     {
       name: 'Non-denominational',
-      stance: 'mixed',
-      position: 'Default is grape juice in most American non-denominational evangelical churches, but practice varies. Many offer both. The conviction follows the broader evangelical pattern: the symbol matters more than the substance, and pastoral care for the recovering alcoholic shapes the default.',
-      verses: ['Matt 26:29', 'Rom 14:21']
+      stance: 'varies',
+      position: 'Practice varies by congregation. Many evangelical non-denominational churches use grape juice; some use wine; some offer both. The element is generally considered symbolic rather than sacramental.',
+      verses: ['1 Cor 11:25']
     },
     {
       name: 'Seventh-day Adventist',
-      stance: 'progressive',
-      position: 'Unfermented grape juice — never wine. Adventists hold a strong health message and total abstinence from alcohol as a moral and physical principle. The biblical "wine" of the Last Supper, they argue, was unfermented; serving fermented wine in Communion would contradict both Scripture rightly understood and the body as the temple of the Holy Spirit.',
-      verses: ['1 Cor 6:19-20', 'Prov 23:31-32', 'Hab 2:15', 'Isa 65:8']
+      stance: 'grape juice required',
+      position: 'Adventists use grape juice exclusively, grounded in their health teachings and abstinence ethic. Wine is rejected as inappropriate for worship.',
+      verses: ['Prov 20:1']
     }
-  ]
+  ],
+  relatedTopics: ['lord’s-supper', 'sacraments', 'baptism']
+}
+
 },
  
 {
