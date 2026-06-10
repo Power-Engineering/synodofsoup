@@ -8477,3 +8477,95 @@ function renderThreadedComment(c, depth) {
     }, 0);
   }, false);
 })();
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 16 — Questions Corner freshness + mobile hamburger nav
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+
+// ─── Fix 1: Always re-fetch QC activity (no stale cache) ───────────────
+// Removes the cache so every render shows fresh data. The query is small;
+// caching premature.
+_qcActivityCache = null;
+async function _qcFetchActivity(/* ignored */) {
+  if (!supabaseClient) return new Map();
+  try {
+    const { data, error } = await supabaseClient.from('comments')
+      .select('id,topic_id,target_denomination,upvotes,created_at,body,comment_type')
+      .limit(5000);
+    if (error) throw error;
+    const map = new Map();
+    for (const c of (data || [])) {
+      const target = c.target_denomination || '';
+      const key = `${c.topic_id}|${target}`;
+      let entry = map.get(key);
+      if (!entry) {
+        entry = { count: 0, latest: null, topUpvotes: -1, sampleBody: null, types: new Set() };
+        map.set(key, entry);
+      }
+      entry.count++;
+      const t = new Date(c.created_at).getTime();
+      if (!entry.latest || t > entry.latest) entry.latest = t;
+      if ((c.upvotes || 0) > entry.topUpvotes) {
+        entry.topUpvotes = c.upvotes || 0;
+        entry.sampleBody = c.body;
+      }
+      if (c.comment_type) entry.types.add(c.comment_type);
+    }
+    return map;
+  } catch (err) {
+    console.error('qc activity:', err);
+    return new Map();
+  }
+}
+
+// ─── Fix 2: Inject mobile hamburger menu button ────────────────────────
+function _ensureMobileMenu() {
+  if (document.getElementById('mobile-menu-btn')) return;
+  const inner = document.querySelector('.topbar-inner');
+  if (!inner) return;
+
+  // Identify nav and auth blocks
+  const navBlocks = inner.querySelectorAll('nav, .topbar-nav, .topbar-center');
+  const nav = navBlocks[0] || inner.querySelector('.topbar-inner > div:not(.brand):not(.topbar-right)');
+  if (!nav) return;
+  nav.classList.add('mobile-nav-target');
+
+  // Hamburger button
+  const btn = document.createElement('button');
+  btn.id = 'mobile-menu-btn';
+  btn.className = 'mobile-menu-btn';
+  btn.setAttribute('aria-label', 'Toggle navigation menu');
+  btn.innerHTML = '<span class="hamburger-icon">☰</span>';
+  btn.onclick = (e) => {
+    e.stopPropagation();
+    nav.classList.toggle('mobile-open');
+    btn.classList.toggle('open');
+  };
+
+  // Insert as first child of topbar-inner
+  inner.insertBefore(btn, inner.firstChild);
+
+  // Close menu when a nav link is tapped
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('mobile-open');
+      btn.classList.remove('open');
+    });
+  });
+
+  // Close menu when tapping outside
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+      nav.classList.remove('mobile-open');
+      btn.classList.remove('open');
+    }
+  });
+}
+
+// Run after DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _ensureMobileMenu);
+} else {
+  _ensureMobileMenu();
+}
