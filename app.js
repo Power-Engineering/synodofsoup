@@ -8892,3 +8892,260 @@ async function _qcFetchActivity() {
     }, 900);
   };
 })();
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 21 — Profile / account settings
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+
+// ─── Routing ───────────────────────────────────────────────────────────
+function _getRoute() {
+  const h = (window.location.hash || '').toLowerCase();
+  if (h.startsWith('#/d/'))        return 'discussion';
+  if (h.startsWith('#/me'))        return 'me';
+  if (h.startsWith('#/profile'))   return 'profile';
+  if (h.startsWith('#/library'))   return 'library';
+  if (h.startsWith('#/essay/'))    return 'essay';
+  if (h.startsWith('#/movements')) return 'movements';
+  if (h.startsWith('#/religions')) return 'religions';
+  if (h.startsWith('#/questions')) return 'questions';
+  if (h.startsWith('#/about'))     return 'about';
+  return 'ledger';
+}
+
+function _applyRoute() {
+  const route = _getRoute();
+  const hide = (id) => { const el = document.getElementById(id); if (el) el.style.display = 'none'; };
+  hide('detail-view');
+  hide('movement-view');
+  hide('religion-view');
+  hide('discussion-view');
+  hide('me-view');
+  hide('essay-view');
+  hide('library-view');
+  hide('profile-view');
+
+  const homeView = document.getElementById('home-view');
+
+  if (route === 'discussion') { if (homeView) homeView.style.display = 'none'; showDiscussion(); return; }
+  if (route === 'me')         { if (homeView) homeView.style.display = 'none'; showMePage(); return; }
+  if (route === 'profile')    { if (homeView) homeView.style.display = 'none'; showProfilePage(); return; }
+  if (route === 'essay')      { if (homeView) homeView.style.display = 'none'; showEssay(); return; }
+  if (route === 'library')    { if (homeView) homeView.style.display = 'none'; showLibrary(); return; }
+
+  if (homeView) homeView.style.display = '';
+  const els = {
+    hero: document.querySelector('.hero'),
+    topics: document.getElementById('topics'),
+    movements: document.getElementById('movements'),
+    religions: document.getElementById('religions'),
+    questions: document.getElementById('questions'),
+    about: document.getElementById('about'),
+  };
+  const layouts = {
+    ledger:    ['hero', 'topics'],
+    movements: ['movements'],
+    religions: ['religions'],
+    questions: ['questions'],
+    about:     ['about'],
+  };
+  const visible = layouts[route] || layouts.ledger;
+  Object.entries(els).forEach(([k, el]) => { if (el) el.style.display = visible.includes(k) ? '' : 'none'; });
+  if (route === 'questions') renderQuestionsCorner();
+  document.querySelectorAll('.nav-link').forEach(a => a.classList.toggle('active', a.dataset.route === route));
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+function goProfile() {
+  if (window.location.hash !== '#/profile') window.location.hash = '#/profile';
+  else showProfilePage();
+}
+
+// ─── Profile page rendering ────────────────────────────────────────────
+async function showProfilePage() {
+  const view = document.getElementById('profile-view');
+  if (!view) return;
+  view.style.display = '';
+  if (!currentUser) {
+    view.innerHTML = `
+      <div class="detail-bar"><div class="detail-bar-inner">
+        <button class="back-link" onclick="goLedger()">← Back to the Ledger</button>
+      </div></div>
+      <article class="discussion-article">
+        <div class="detail-inner">
+          <h1 class="discussion-title">Sign in to manage your profile</h1>
+          <p><button class="btn btn-primary" onclick="openModal('login')">Sign in</button></p>
+        </div>
+      </article>
+    `;
+    return;
+  }
+
+  const email = (currentUser && currentUser.email) ? currentUser.email : 'unknown';
+  const memberSince = currentUser && currentUser.created_at
+    ? new Date(currentUser.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })
+    : '';
+
+  // Build a denomination select options list
+  const denomOptions = _ALL_DENOMS.map(n =>
+    `<option value="${escAttr(n)}"${(currentUserProfile && currentUserProfile.denomination === n) ? ' selected' : ''}>${escHtml(n)}</option>`
+  ).join('');
+
+  view.innerHTML = `
+    <div class="detail-bar"><div class="detail-bar-inner">
+      <button class="back-link" onclick="window.history.back()">← Back</button>
+      <span class="detail-category-tag">Your Profile</span>
+    </div></div>
+    <article class="discussion-article">
+      <div class="detail-inner profile-inner">
+        <header class="discussion-head">
+          <div class="discussion-eyebrow">Account</div>
+          <h1 class="discussion-title">Your profile</h1>
+        </header>
+
+        <section class="profile-section">
+          <h2 class="profile-section-title">Display name</h2>
+          <p class="profile-section-help">This is how your contributions are signed across the site.</p>
+          <div class="profile-form-row">
+            <input type="text" id="prof-display-name" class="text-input" value="${escAttr((currentUserProfile && currentUserProfile.display_name) || '')}" maxlength="40" />
+            <button class="btn btn-primary" onclick="_profileSaveDisplayName()">Save</button>
+          </div>
+          <div class="profile-feedback" id="prof-name-feedback"></div>
+        </section>
+
+        <section class="profile-section">
+          <h2 class="profile-section-title">Tradition</h2>
+          <p class="profile-section-help">The tradition tag shown next to your contributions. You can change this freely as your convictions develop.</p>
+          <div class="profile-form-row">
+            <select id="prof-denom" class="text-input">
+              ${denomOptions}
+            </select>
+            <button class="btn btn-primary" onclick="_profileSaveDenom()">Save</button>
+          </div>
+          <div class="profile-feedback" id="prof-denom-feedback"></div>
+        </section>
+
+        <section class="profile-section">
+          <h2 class="profile-section-title">Password</h2>
+          <p class="profile-section-help">Set a new password. Minimum 8 characters.</p>
+          <div class="profile-form-stack">
+            <input type="password" id="prof-pw-new" class="text-input" placeholder="New password" autocomplete="new-password" minlength="8"/>
+            <input type="password" id="prof-pw-confirm" class="text-input" placeholder="Confirm new password" autocomplete="new-password" minlength="8"/>
+            <button class="btn btn-primary" onclick="_profileSavePassword()">Update password</button>
+          </div>
+          <div class="profile-feedback" id="prof-pw-feedback"></div>
+        </section>
+
+        <section class="profile-section">
+          <h2 class="profile-section-title">Account info</h2>
+          <div class="profile-info">
+            <div><span class="profile-info-label">Email</span><span>${escHtml(email)}</span></div>
+            ${memberSince ? `<div><span class="profile-info-label">Member since</span><span>${escHtml(memberSince)}</span></div>` : ''}
+          </div>
+        </section>
+
+        <section class="profile-section profile-section-danger">
+          <h2 class="profile-section-title">Sign out</h2>
+          <p class="profile-section-help">Sign out of this device. You can sign back in anytime.</p>
+          <button class="btn btn-secondary" onclick="signOut()">Sign out</button>
+        </section>
+      </div>
+    </article>
+  `;
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+// ─── Save handlers ─────────────────────────────────────────────────────
+async function _profileSaveDisplayName() {
+  const input = document.getElementById('prof-display-name');
+  const feedback = document.getElementById('prof-name-feedback');
+  if (!input || !feedback) return;
+  const name = input.value.trim();
+  if (!name) { feedback.textContent = 'Name cannot be empty.'; feedback.className = 'profile-feedback err'; return; }
+  if (name.length > 40) { feedback.textContent = 'Name too long (max 40 chars).'; feedback.className = 'profile-feedback err'; return; }
+  try {
+    const { error } = await supabaseClient.from('profiles')
+      .update({ display_name: name })
+      .eq('id', currentUser.id);
+    if (error) throw error;
+    if (currentUserProfile) currentUserProfile.display_name = name;
+    if (typeof updateAuthUI === 'function') updateAuthUI();
+    feedback.textContent = '✓ Display name updated.';
+    feedback.className = 'profile-feedback ok';
+  } catch (err) {
+    feedback.textContent = 'Error: ' + (err.message || 'could not update');
+    feedback.className = 'profile-feedback err';
+  }
+}
+
+async function _profileSaveDenom() {
+  const sel = document.getElementById('prof-denom');
+  const feedback = document.getElementById('prof-denom-feedback');
+  if (!sel || !feedback) return;
+  const val = sel.value;
+  try {
+    const { error } = await supabaseClient.from('profiles')
+      .update({ denomination: val })
+      .eq('id', currentUser.id);
+    if (error) throw error;
+    if (currentUserProfile) currentUserProfile.denomination = val;
+    if (typeof updateAuthUI === 'function') updateAuthUI();
+    feedback.textContent = '✓ Tradition updated.';
+    feedback.className = 'profile-feedback ok';
+  } catch (err) {
+    feedback.textContent = 'Error: ' + (err.message || 'could not update');
+    feedback.className = 'profile-feedback err';
+  }
+}
+
+async function _profileSavePassword() {
+  const newPw = document.getElementById('prof-pw-new');
+  const confirm = document.getElementById('prof-pw-confirm');
+  const feedback = document.getElementById('prof-pw-feedback');
+  if (!newPw || !confirm || !feedback) return;
+  const np = newPw.value;
+  const cp = confirm.value;
+  if (!np || np.length < 8) { feedback.textContent = 'Password must be at least 8 characters.'; feedback.className = 'profile-feedback err'; return; }
+  if (np !== cp) { feedback.textContent = 'Passwords don\'t match.'; feedback.className = 'profile-feedback err'; return; }
+  try {
+    const { error } = await supabaseClient.auth.updateUser({ password: np });
+    if (error) throw error;
+    newPw.value = ''; confirm.value = '';
+    feedback.textContent = '✓ Password updated. Use the new password next sign-in.';
+    feedback.className = 'profile-feedback ok';
+  } catch (err) {
+    feedback.textContent = 'Error: ' + (err.message || 'could not update password');
+    feedback.className = 'profile-feedback err';
+  }
+}
+
+// Expose Profile in the topbar when signed in
+(function _wireProfileLink() {
+  const linkExists = () => document.getElementById('profile-link');
+  function ensure() {
+    if (linkExists()) return;
+    const meLink = document.getElementById('me-link');
+    if (!meLink || !meLink.parentNode) return;
+    const link = document.createElement('a');
+    link.id = 'profile-link';
+    link.className = 'nav-link nav-link-profile';
+    link.textContent = '⚙ Profile';
+    link.style.display = currentUser ? 'inline-flex' : 'none';
+    link.style.fontSize = '13px';
+    link.style.cursor = 'pointer';
+    link.dataset.route = 'profile';
+    link.addEventListener('click', goProfile);
+    meLink.insertAdjacentElement('afterend', link);
+  }
+  ensure();
+  // Keep it visible/hidden in sync with auth state
+  const origUpdate = (typeof updateAuthUI === 'function') ? updateAuthUI : null;
+  if (origUpdate) {
+    updateAuthUI = function() {
+      origUpdate();
+      ensure();
+      const link = linkExists();
+      if (link) link.style.display = currentUser ? 'inline-flex' : 'none';
+    };
+  }
+})();
