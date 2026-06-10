@@ -2620,3 +2620,19 @@ a:hover { color: var(--crimson); }
   .topbar-right .denom-pill,
   .user-denom-pill { display: none; }
 }
+/* ═══════════════════════════════════════════════════════════════════════
+   PATCH 18 — Open-topic cards in Questions Corner
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.qc-card-open { border-left-color: #b08a3f; }  /* gold */
+.qc-card-open .qc-card-chip-tradition {
+  background: #fef5e3;
+  color: #8a6818;
+  border-color: #d4b870;
+}
+.qc-card-open .qc-card-count { color: #8a6818; }
+.qc-card-chip-open {
+  background: #fef5e3;
+  border-color: #d4b870;
+  color: #8a6818;
+}
