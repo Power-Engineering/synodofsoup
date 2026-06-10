@@ -2540,27 +2540,83 @@ a:hover { color: var(--crimson); }
   color: var(--ink-faint);
 }
 
-/* REAL MOBILE FIX — SYNOD OF SOUP TOPBAR */
-@media (max-width: 780px) {
+/* ═══════════════════════════════════════════════════════════════════════
+   PATCH 16 — Mobile hamburger nav
+   ═══════════════════════════════════════════════════════════════════════ */
 
-  .topbar-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 12px 20px;
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: 1px solid var(--line-soft, #e0d8c5);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink, #1a1a1a);
+  margin-right: 8px;
+  transition: background 0.15s;
+}
+.mobile-menu-btn:hover {
+  background: var(--parchment-warm, #f5efe2);
+}
+.mobile-menu-btn.open .hamburger-icon::before { content: '✕'; }
+.mobile-menu-btn .hamburger-icon { display: inline-block; }
+
+@media (max-width: 820px) {
+  .mobile-menu-btn { display: inline-flex; align-items: center; }
+
+  /* Hide the nav by default on mobile; show when .mobile-open is set */
+  .mobile-nav-target {
+    display: none !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--line-soft, #e0d8c5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 12px 16px;
+    z-index: 200;
+    flex-direction: column !important;
+    gap: 4px !important;
+    align-items: stretch !important;
+  }
+  .mobile-nav-target.mobile-open {
+    display: flex !important;
+  }
+  .mobile-nav-target a,
+  .mobile-nav-target .nav-link {
+    padding: 12px 14px !important;
+    border-radius: 6px;
+    text-align: left !important;
+    font-size: 15px !important;
+    border: none !important;
+  }
+  .mobile-nav-target a:hover,
+  .mobile-nav-target .nav-link:hover {
+    background: var(--parchment-warm, #f5efe2);
+  }
+  .mobile-nav-target a.active,
+  .mobile-nav-target .nav-link.active {
+    background: var(--crimson, #8a2a2a);
+    color: #fff;
   }
 
-  .nav-links {
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-left: 0;
-  }
+  /* Ensure topbar-inner is positioned for the dropdown */
+  .topbar-inner { position: relative; }
 
-  .topbar-auth {
-    width: 100%;
-    justify-content: flex-start;
-    margin-left: 0;
+  /* Compact the right side on mobile */
+  .topbar-right { gap: 6px; }
+  .topbar-right #me-link {
+    display: none !important; /* Move to hamburger menu instead */
   }
 }
 
+@media (max-width: 480px) {
+  /* Even tighter on small phones */
+  .brand-title { font-size: 16px; }
+  .brand-tag { display: none; }
+  .topbar-right .denom-pill,
+  .user-denom-pill { display: none; }
+}
