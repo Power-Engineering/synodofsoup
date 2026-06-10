@@ -8696,3 +8696,101 @@ window.diagnoseQC = async function() {
   console.log('Done. Send me the screenshot of these tables and I can pinpoint the mismatch.');
 };
 }
+
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 18 — Index the topic-page "Open discussion" in Questions Corner
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// Each Ledger topic page has an "Open discussion" section at the bottom
+// where comments are posted without a target_denomination (i.e. open to
+// the topic generally, not tied to a tradition). Those comments were
+// previously orphaned from Questions Corner because the catalog only
+// had (topic × tradition) entries.
+//
+// Fix: add one catalog entry per Ledger topic for its open discussion,
+// and route the card click back to the topic page so the user lands on
+// the existing open discussion thread.
+
+(function() {
+  // Append open-topic entries to the existing catalog
+  for (const t of TOPICS) {
+    _qcCatalog.push({
+      kind: 'open-topic',
+      tradition: 'Open discussion',
+      traditionSlug: null,
+      traditionType: 'open',
+      topicId: t.id,
+      topicLabel: t.name,
+      ledgerTopicId: t.id,
+      targetTag: null,        // empty key on the activity side
+      title: `${t.name} — open to the floor`,
+      url: `javascript:void(0)`,  // overridden by click handler below
+      priorityShow: false,
+      _isOpenTopic: true,
+    });
+  }
+})();
+
+// ─── Click handler: open-topic cards → topic page with scroll ──────────
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('[data-open-topic]');
+  if (!card) return;
+  e.preventDefault();
+  const topicId = card.dataset.openTopic;
+  if (typeof showTopic === 'function') {
+    showTopic(topicId);
+    // Try to scroll to the open-discussion section after render
+    setTimeout(() => {
+      const sec = document.querySelector('#open-discussion, .open-discussion, .topic-forum, [data-section="open-discussion"]');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 250);
+  }
+});
+
+// ─── Override the result-card renderer to support open-topic cards ─────
+function _qcRenderResultCard(item) {
+  const a = item._activity || { count: 0, latest: null, topUpvotes: 0, sampleBody: null };
+  const traditionClass =
+    item._isOpenTopic ? 'qc-card-open' :
+    item.traditionType === 'movement' ? 'qc-card-mov' :
+    item.traditionType === 'religion' ? 'qc-card-rel' : 'qc-card-denom';
+  const topicChip = item.topicLabel
+    ? `<span class="qc-card-chip qc-card-chip-topic">${escHtml(item.topicLabel)}</span>` : '';
+  const sample = a.sampleBody
+    ? `<div class="qc-card-sample">"${escHtml(a.sampleBody.slice(0, 180))}${a.sampleBody.length > 180 ? '…' : ''}"</div>` : '';
+  const activeAgo = a.latest ? (typeof timeAgo === 'function' ? timeAgo(new Date(a.latest).toISOString()) : '') : '';
+
+  // Open-topic cards use data-attribute → handled by delegated click listener
+  const linkAttrs = item._isOpenTopic
+    ? `href="#" data-open-topic="${escAttr(item.topicId)}"`
+    : `href="${item.url}"`;
+
+  return `
+    <a class="qc-card ${traditionClass}" ${linkAttrs}>
+      <div class="qc-card-head">
+        <span class="qc-card-chip qc-card-chip-tradition">${escHtml(item.tradition)}</span>
+        ${topicChip}
+        ${item.priorityShow && item.kind === 'qc-seed' ? '<span class="qc-card-chip qc-card-chip-seed">⭑ Starter</span>' : ''}
+        ${item._isOpenTopic ? '<span class="qc-card-chip qc-card-chip-open">🌐 Open floor</span>' : ''}
+      </div>
+      <div class="qc-card-title">${escHtml(item.title)}</div>
+      ${sample}
+      <div class="qc-card-foot">
+        ${a.count > 0
+          ? `<span class="qc-card-count">💬 ${a.count} ${a.count === 1 ? 'contribution' : 'contributions'}</span>
+             ${activeAgo ? `<span class="qc-card-when">active ${activeAgo}</span>` : ''}`
+          : `<span class="qc-card-empty">No contributions yet — be the first</span>`}
+      </div>
+    </a>
+  `;
+}
+
+// ─── Add "Open discussion" pseudo-tradition pill so users can filter ───
+// Re-render once to pick up the new catalog entries
+if (_getRoute() === 'questions') {
+  const root = document.getElementById('questions');
+  if (root) root.dataset.qcRendered = '0';
+  if (typeof renderQuestionsCorner === 'function') renderQuestionsCorner(true);
+}
