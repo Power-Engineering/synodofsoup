@@ -9149,3 +9149,43 @@ async function _profileSavePassword() {
     };
   }
 })();
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 22 — Profile signout button fix
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// The Profile signout button called signOut() which may not be the
+// actual function name in your codebase. This patch defines a defensive
+// wrapper that finds the right function or falls back to direct Supabase
+// signOut + reload.
+
+async function _profileSignOut() {
+  try {
+    // Try the most likely existing function names
+    if (typeof signOut === 'function')      return signOut();
+    if (typeof logout === 'function')       return logout();
+    if (typeof handleSignOut === 'function') return handleSignOut();
+    if (typeof doSignOut === 'function')    return doSignOut();
+    // Fallback: do it directly
+    if (typeof supabaseClient !== 'undefined' && supabaseClient) {
+      await supabaseClient.auth.signOut();
+    }
+    location.reload();
+  } catch (err) {
+    console.error('signout error:', err);
+    location.reload();
+  }
+}
+
+// Rewire the Profile page's Sign out button to use the safe wrapper
+(function _rewireProfileSignout() {
+  function fix() {
+    const view = document.getElementById('profile-view');
+    if (!view || view.style.display === 'none') return;
+    const danger = view.querySelector('.profile-section-danger .btn');
+    if (danger) danger.setAttribute('onclick', '_profileSignOut()');
+  }
+  // Run periodically — the profile view only renders on demand
+  new MutationObserver(fix).observe(document.body, { childList: true, subtree: true });
+  fix();
+})();
