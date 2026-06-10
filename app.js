@@ -8794,3 +8794,101 @@ if (_getRoute() === 'questions') {
   if (root) root.dataset.qcRendered = '0';
   if (typeof renderQuestionsCorner === 'function') renderQuestionsCorner(true);
 }
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 19 — Questions Corner initial-render race fix
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// On a hard load of #/questions, renderQuestionsCorner can fire before
+// supabaseClient is fully initialised. The activity fetch returns empty,
+// every catalog item gets filtered out (count=0, showEmpty=false), and
+// the UI shows "No active discussions yet". Toggling the sort triggers a
+// re-render once supabase is ready, which is why interacting fixes it.
+//
+// Fix in two parts:
+//   1. _qcFetchActivity waits briefly for supabaseClient to exist.
+//   2. renderQuestionsCorner wrapper schedules a single retry shortly
+//      after first paint, in case the initial fetch came back empty.
+
+// ─── Part 1: patient activity fetch ────────────────────────────────────
+async function _qcFetchActivity() {
+  // Wait up to ~3s for supabaseClient to be created by init()
+  let attempts = 0;
+  while (typeof supabaseClient === 'undefined' || !supabaseClient) {
+    if (attempts++ > 30) break;
+    await new Promise(r => setTimeout(r, 100));
+  }
+  if (!supabaseClient) return new Map();
+
+  try {
+    const { data, error } = await supabaseClient.from('comments')
+      .select('id,topic_id,target_denomination,upvotes,created_at,body,comment_type')
+      .limit(5000);
+    if (error) throw error;
+    const map = new Map();
+    const slugToDenom = new Map();
+    for (const t of TOPICS) {
+      for (const d of (t.denominations || [])) {
+        slugToDenom.set(_denomSlug(d.name), d.name);
+      }
+    }
+    for (const c of (data || [])) {
+      let topic = c.topic_id;
+      let target = c.target_denomination || '';
+      if (topic && topic.includes(':') && !topic.startsWith('qc-')) {
+        const idx = topic.indexOf(':');
+        const left = topic.slice(0, idx);
+        const right = topic.slice(idx + 1);
+        topic = left;
+        if (!target) target = slugToDenom.get(right.toLowerCase()) || right;
+      }
+      if (target && slugToDenom.has(target.toLowerCase())) {
+        target = slugToDenom.get(target.toLowerCase());
+      }
+      const key = `${topic}|${target}`;
+      let entry = map.get(key);
+      if (!entry) {
+        entry = { count: 0, latest: null, topUpvotes: -1, sampleBody: null, types: new Set() };
+        map.set(key, entry);
+      }
+      entry.count++;
+      const t = new Date(c.created_at).getTime();
+      if (!entry.latest || t > entry.latest) entry.latest = t;
+      if ((c.upvotes || 0) > entry.topUpvotes) {
+        entry.topUpvotes = c.upvotes || 0;
+        entry.sampleBody = c.body;
+      }
+      if (c.comment_type) entry.types.add(c.comment_type);
+    }
+    return map;
+  } catch (err) {
+    console.error('qc activity:', err);
+    return new Map();
+  }
+}
+
+// ─── Part 2: retry once if first render came back empty ────────────────
+(function() {
+  const _origRender = renderQuestionsCorner;
+  renderQuestionsCorner = async function(forceRerender) {
+    await _origRender(forceRerender);
+    const root = document.getElementById('questions');
+    if (!root) return;
+    if (root.dataset.qcRetried === '1') return;
+    // Detect "empty render" — info element will contain the empty-state message
+    const info = document.getElementById('qc-results-info');
+    const looksEmpty = info && /no active discussions yet/i.test(info.textContent || '');
+    if (!looksEmpty) {
+      root.dataset.qcRetried = '1';
+      return;
+    }
+    root.dataset.qcRetried = '1';
+    setTimeout(() => {
+      if (_getRoute() === 'questions') {
+        root.dataset.qcRendered = '0';
+        _origRender(true);
+      }
+    }, 900);
+  };
+})();
