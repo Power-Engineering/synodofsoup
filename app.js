@@ -2944,7 +2944,251 @@ const TOPICS = [
     ],
     relatedTopics: ['filioque', 'atonement', 'canon'],
   },
+{
+  id: 'communion-cup',
+  name: 'Wine or Grape Juice?',
+  category: 'Worship & Sacraments',
+  summary: 'What belongs in the cup at the Lord\'s Supper — fermented wine, as the Last Supper had, or unfermented grape juice, as the temperance movement introduced? A small question with large implications for sacramental theology, biblical fidelity, and pastoral care of the recovering alcoholic.',
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'traditional',
+      position: 'Wine is the only valid matter for the Eucharist. Canon law requires <strong>natural grape wine, unmixed with other substances</strong>, lightly altered only with the prescribed drop of water. The Last Supper used wine; the Mass re-presents that Supper. Grape juice cannot become the Blood of Christ — only wine can. Communicants who cannot tolerate alcohol receive under one species (host only).',
+      verses: ['Matt 26:27-29', '1 Cor 11:23-26', 'Luke 22:17-20']
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'traditional',
+      position: 'Wine, period. The chalice in the Divine Liturgy holds red wine mixed with warm water (the <em>zeon</em>) — an unbroken practice from the apostolic age. The wine is fermented; the Mystery requires it. Grape juice is a modern Western innovation that severs the Eucharist from its biblical and patristic form.',
+      verses: ['John 6:53-56', '1 Cor 10:16', 'Matt 26:29']
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'traditional',
+      position: 'Wine is the historic and rubrical norm in the Book of Common Prayer. Christ used wine; the Church has followed Him. Pastoral provision is made for the recovering alcoholic — usually a separate cup or intinction with a minimal touch — but the default is real wine.',
+      verses: ['Matt 26:27-29', '1 Cor 11:23-26']
+    },
+    {
+      name: 'Lutheran',
+      stance: 'traditional',
+      position: 'Wine. Confessional Lutheranism holds that Christ instituted the Supper with wine and that the Real Presence is bound to the matter He chose. <em>Verba</em> and <em>elementa</em> belong together. The Wisconsin and Missouri Synods are firm; the ELCA permits more pastoral flexibility but still uses wine as default.',
+      verses: ['Matt 26:27-29', '1 Cor 11:25-26', 'Mark 14:23-25']
+    },
+    {
+      name: 'Presbyterian / Reformed',
+      stance: 'mixed',
+      position: 'Historically wine — Calvin, Knox, and the Westminster Divines all used it. In modern American Reformed churches, practice varies: many congregations now offer both wine and grape juice side-by-side in the trays, leaving the choice to the communicant\'s conscience. The Reformed conviction is that the sign is what matters; whether the fruit of the vine is fermented is adiaphora.',
+      verses: ['1 Cor 11:25', 'Matt 26:29', 'Rom 14:21']
+    },
+    {
+      name: 'Baptist',
+      stance: 'progressive',
+      position: 'Grape juice in nearly all American Baptist churches since the late 1800s. The conviction: the Bible refers to "the fruit of the vine," not specifically fermented wine, and the church should not place a stumbling block before any brother or sister — especially those recovering from alcohol abuse. Romans 14:21 governs. The substance is symbolic; what matters is the memorial and the heart.',
+      verses: ['Matt 26:29', 'Rom 14:21', '1 Cor 8:9-13', 'Prov 20:1']
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'progressive',
+      position: 'Grape juice — and Methodists are arguably the reason it exists. Thomas Welch, a Methodist dentist, invented pasteurised unfermented grape juice in 1869 specifically so Methodist churches could observe Communion without serving alcohol. The conviction flows from the Wesleyan emphasis on holiness, hospitality to the weak, and total abstinence as a witness against the destruction wrought by drink.',
+      verses: ['Rom 14:21', '1 Cor 8:13', 'Prov 23:31-32']
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'progressive',
+      position: 'Grape juice. Pentecostal churches arose largely from the holiness movement and inherit its strong stance against alcohol. The Lord\'s Supper is a sacred memorial; serving fermented wine would compromise the witness of total abstinence that Pentecostal believers see as part of their sanctified walk.',
+      verses: ['Eph 5:18', 'Prov 20:1', 'Rom 14:21']
+    },
+    {
+      name: 'Charismatic',
+      stance: 'mixed',
+      position: 'Practice varies widely. Many independent charismatic churches use grape juice (inheriting from Pentecostal/Baptist roots); others use wine (especially Anglican-charismatic and continental European charismatic churches). The charismatic conviction tends to focus on the presence and power of the Spirit at the table rather than the precise substance in the cup.',
+      verses: ['1 Cor 10:16-17', 'Matt 26:29']
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'mixed',
+      position: 'Historically simple: whatever bread and whatever fruit of the vine the community has. Modern Anabaptist congregations vary — some use grape juice (especially in North America), some use wine (especially in Europe and South America). The substance is secondary to the act of remembrance and the unity of the body sharing one cup.',
+      verses: ['1 Cor 10:17', '1 Cor 11:26']
+    },
+    {
+      name: 'Non-denominational',
+      stance: 'mixed',
+      position: 'Default is grape juice in most American non-denominational evangelical churches, but practice varies. Many offer both. The conviction follows the broader evangelical pattern: the symbol matters more than the substance, and pastoral care for the recovering alcoholic shapes the default.',
+      verses: ['Matt 26:29', 'Rom 14:21']
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'progressive',
+      position: 'Unfermented grape juice — never wine. Adventists hold a strong health message and total abstinence from alcohol as a moral and physical principle. The biblical "wine" of the Last Supper, they argue, was unfermented; serving fermented wine in Communion would contradict both Scripture rightly understood and the body as the temple of the Holy Spirit.',
+      verses: ['1 Cor 6:19-20', 'Prov 23:31-32', 'Hab 2:15', 'Isa 65:8']
+    }
+  ]
+},
+ 
+{
+  id: 'bible-translation',
+  name: 'KJV-Only, Formal, or Dynamic?',
+  category: 'Authority',
+  summary: 'Which Bible translation philosophy is faithful? Some hold that the King James Version (or its underlying Textus Receptus) is uniquely preserved by God; others prefer formal-equivalence translations (ESV, NASB) built on critical Greek texts; others favour dynamic-equivalence translations (NIV, NLT) that prioritise readability. Behind the translation question lies a deeper one about textual criticism.',
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'mixed',
+      position: 'Catholics use approved translations such as the New American Bible Revised Edition (NABRE), the Revised Standard Version Catholic Edition (RSV-CE), and the New Jerusalem Bible. The KJV is not used because it lacks the deuterocanonical books and was made outside the visible Church. Translation choice is regulated by the bishops\' conference; the Magisterium, not any single translation, is the rule of faith.',
+      verses: ['2 Pet 1:20-21', '2 Thess 2:15']
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'unique',
+      position: 'Orthodox translations of the Old Testament are based on the Septuagint (LXX), not the Masoretic Text — the same Greek Bible quoted by the apostles in the New Testament. English Orthodox prefer the Orthodox Study Bible (NKJV NT + LXX OT). The KJV-only movement is a Western Protestant phenomenon; Orthodoxy holds that the LXX-based Greek text, preserved in the Church\'s liturgical tradition, is the authoritative Old Testament.',
+      verses: ['Heb 1:6', 'Acts 7:14', 'Matt 1:23']
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'mixed',
+      position: 'The KJV (or its 1928 American adaptation) holds historic and liturgical pride of place in Anglicanism — the Book of Common Prayer is saturated with KJV English. But modern Anglicans freely use the NRSV (especially Episcopal Church), ESV (more conservative Anglicans), or NIV. The conviction: the Bible itself is the Word of God; translations are tools, faithful when accurate.',
+      verses: ['2 Tim 3:16-17', 'Isa 40:8']
+    },
+    {
+      name: 'Lutheran',
+      stance: 'mixed',
+      position: 'Lutherans typically use the ESV (LCMS, WELS) or NRSV (ELCA), with the German tradition still privileging Luther\'s 1545 Bible historically. Lutheran translation philosophy is formal-equivalence biased — the words of God deserve precise rendering. KJV-only is rejected; the Reformation principle of <em>sola scriptura</em> means the Word, not any one translation, is normative.',
+      verses: ['2 Tim 3:16', 'John 17:17']
+    },
+    {
+      name: 'Presbyterian / Reformed',
+      stance: 'mixed',
+      position: 'The ESV is the modern Reformed translation of choice — formal-equivalence, conservative textual choices, theologically conscious translation. The Reformed reject KJV-only-ism as a form of bibliolatry that absolutises a 1611 translation rather than the Hebrew and Greek originals. Critical-text translations are accepted; the variants are real but doctrinally inconsequential.',
+      verses: ['2 Tim 3:16-17', '2 Pet 1:20-21']
+    },
+    {
+      name: 'Baptist',
+      stance: 'mixed',
+      position: 'Baptists are split. Most Southern Baptists and mainstream Baptists use the CSB, ESV, or NIV — modern translations from critical Greek texts. But a significant Independent Baptist minority is fiercely KJV-only, holding that the King James Version (and the Textus Receptus behind it) is the uniquely preserved Word of God in English. Modern translations, on this view, are corrupted by the Alexandrian text-type and the agendas of liberal scholarship.',
+      verses: ['Ps 12:6-7', 'Matt 5:18', 'Rev 22:18-19']
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'mixed',
+      position: 'Methodists use the NRSV (United Methodist), CEB, and increasingly the NIV. Translation choice is not a major Methodist conviction; what matters is that the Bible, in any faithful translation, witnesses to the Christ who saves. KJV-only-ism is foreign to Wesleyan thought — Wesley himself revised the KJV (the 1755 "Wesley\'s New Testament") because he believed translation should be ongoing and improvable.',
+      verses: ['2 Tim 3:16', 'Heb 4:12']
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'mixed',
+      position: 'Historically Pentecostals used the KJV; modern Pentecostals use the NIV, NLT, or NKJV. A minority Pentecostal current is KJV-only. The Pentecostal conviction is that the Spirit illuminates Scripture in whichever faithful translation it is read — but the Word itself, however translated, is the inspired, inerrant Word of God.',
+      verses: ['2 Tim 3:16', '2 Pet 1:21', 'John 16:13']
+    },
+    {
+      name: 'Charismatic',
+      stance: 'progressive',
+      position: 'Charismatics gravitate to dynamic-equivalence translations — NIV, NLT, The Message — that prioritise readability and immediate impact. The conviction: the Bible is meant to be heard, understood, and acted upon by ordinary believers. Formal-equivalence translations can become barriers; the Spirit speaks through clear language.',
+      verses: ['Acts 2:6-11', '1 Cor 14:9']
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'mixed',
+      position: 'Most Mennonites use the NRSV or NIV. Older Mennonite communities (Old Order, Old Colony) sometimes preserve Luther\'s German Bible or the KJV for liturgical use, but mainstream Mennonites approach Scripture with translation pragmatism: the goal is the community reading and obeying the text, in whatever faithful translation makes that possible.',
+      verses: ['Matt 5:18-19', 'James 1:22']
+    },
+    {
+      name: 'Non-denominational',
+      stance: 'mixed',
+      position: 'The NIV is overwhelmingly the most-used Bible in American non-denominational evangelical churches, with ESV, NLT, and CSB as common alternatives. KJV-only-ism is rare. Translation philosophy follows the broader evangelical conviction: the original Hebrew, Aramaic, and Greek texts are inspired; faithful translations communicate that inspiration; choice is pastoral, not dogmatic.',
+      verses: ['2 Tim 3:16', '2 Pet 1:20-21']
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'mixed',
+      position: 'Adventists historically used the KJV (Ellen White quoted it extensively), and many still prefer it. But mainstream Adventism now also uses the NKJV, NRSV, and NIV. The conviction: the Bible in any faithful translation is the rule of faith; Ellen White\'s writings illuminate it but do not replace it. KJV-only-ism is not an Adventist position.',
+      verses: ['Isa 8:20', '2 Tim 3:16-17']
+    }
+  ]
+},
+ 
+{
+  id: 'spiritual-gifts',
+  name: 'Cessationism or Continuationism?',
+  category: 'Holy Spirit',
+  summary: 'Did the miraculous gifts of the Spirit — tongues, prophecy, healing, miracles — cease at the close of the apostolic age, or do they continue to the present day? One of the great fault lines in modern Christianity, and the founding question of the entire Pentecostal/Charismatic movement.',
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'mixed',
+      position: 'The Catholic position is "open continuationism." The miraculous gifts have never ceased — the lives of the saints, Marian apparitions, eucharistic miracles, the gift of tongues at Pentecost, and the Charismatic Renewal (officially endorsed by Pope Paul VI in 1975) all testify that the Spirit continues to act extraordinarily. But such gifts are tested by the Magisterium and ordered to the sacramental life of the Church, not opposed to it.',
+      verses: ['1 Cor 12:7-11', 'Acts 2:17-18', 'Mark 16:17-18']
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'traditional',
+      position: 'Continuationism, but quietly. The lives of the saints, the gift of clairvoyance (<em>diakrisis</em>) among holy elders, the miracles at icons and relics, the prayers of healing — all testify that the Spirit\'s gifts continue. But Orthodoxy is suspicious of Pentecostal-style ecstatic manifestation; the genuine charisms appear in those advanced in the way of holiness, not at revival meetings.',
+      verses: ['1 Cor 12:4-11', 'James 5:14-15', 'Acts 4:30']
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'mixed',
+      position: 'Officially open. The Charismatic Renewal swept through Anglicanism in the 1960s–70s; many Anglican churches today are charismatic-evangelical. But a significant Anglican stream is more cautious — Reformed-Anglican and Anglo-Catholic alike — wary of ecstatic excess. The 39 Articles do not settle the question; the Church holds both positions in tension.',
+      verses: ['1 Cor 12-14', 'Acts 8:14-17']
+    },
+    {
+      name: 'Lutheran',
+      stance: 'traditional',
+      position: 'Confessional Lutherans (LCMS, WELS) are cessationist: the extraordinary gifts ceased with the apostolic age. The Word and Sacraments are the ordinary means by which the Spirit works now. Modern claims to apostolic gifts are treated with deep suspicion — not because the Spirit is gone, but because the Spirit binds Himself to the means of grace He has given. The ELCA is more open.',
+      verses: ['Heb 1:1-2', '1 Cor 13:8-10', 'Eph 2:20']
+    },
+    {
+      name: 'Presbyterian / Reformed',
+      stance: 'traditional',
+      position: 'Classical Reformed theology is cessationist. The miraculous gifts were given to authenticate the apostles and the formation of Scripture; once the New Testament canon was complete, the sign-gifts ceased their authenticating function. Modern claims to prophecy and tongues are at best confused, at worst dangerous additions to the closed canon. <em>Sola scriptura</em> requires nothing further from God in those modes.',
+      verses: ['Heb 1:1-2', '1 Cor 13:8-10', '2 Cor 12:12', 'Eph 2:20', 'Rev 22:18-19']
+    },
+    {
+      name: 'Baptist',
+      stance: 'traditional',
+      position: 'Most Baptists are cessationist — Southern Baptists particularly so. The miraculous gifts authenticated the apostolic foundation of the Church; with the canon closed, those gifts have served their purpose. Modern tongues-speaking, prophecy, and "words of knowledge" are not the same as the New Testament phenomena. A continuationist Baptist minority exists but does not represent the historic Baptist position.',
+      verses: ['1 Cor 13:8-10', '2 Cor 12:12', 'Heb 2:3-4']
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'progressive',
+      position: 'Continuationist. Wesley himself accepted ongoing miracles and gifts; the Methodist movement was born in the soil of camp-meeting revivals where extraordinary phenomena were common. The Wesleyan-Holiness tradition, which birthed Pentecostalism, holds that the gifts continue and that the Spirit-filled life ought to expect them. Modern Methodism is divided but officially open.',
+      verses: ['Joel 2:28-29', 'Acts 2:17-18', '1 Cor 14:1', 'Mark 16:17-18']
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'progressive',
+      position: 'Defining doctrine. The gifts of the Spirit — speaking in tongues, prophecy, divine healing, miracles, words of knowledge and wisdom — are for the Church today, exactly as they were at Pentecost and throughout Acts. Speaking in tongues is the initial physical evidence of Spirit baptism. Pentecostalism was born in 1906 at Azusa Street precisely as a recovery of these gifts; to deny them is to grieve the Spirit.',
+      verses: ['Acts 2:4', 'Acts 10:44-46', 'Acts 19:6', '1 Cor 12:7-11', 'Mark 16:17-18', 'Joel 2:28']
+    },
+    {
+      name: 'Charismatic',
+      stance: 'progressive',
+      position: 'Continuationist, with theological diversity. Charismatics across Catholic, Anglican, Reformed, and non-denominational backgrounds hold that all spiritual gifts continue. Unlike classical Pentecostalism, charismatics don\'t typically require tongues as the initial evidence of Spirit baptism — but they expect the gifts to operate, and they expect God to act in healing, prophecy, and power encounters today.',
+      verses: ['1 Cor 12:4-11', 'Acts 2:17-18', 'John 14:12']
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'mixed',
+      position: 'Historically quiet on the question. Anabaptists have emphasised the priesthood of all believers and the discernment of the gathered community over the individual exercise of dramatic gifts. Modern Mennonites are split — some quietly continuationist (especially in the Global South), others functionally cessationist. The emphasis remains on the community walking in the Spirit, not on individual miraculous demonstrations.',
+      verses: ['1 Cor 12:7', 'Eph 4:11-13']
+    },
+    {
+      name: 'Non-denominational',
+      stance: 'mixed',
+      position: 'Massive variation. Non-denominational evangelicalism includes both cessationist churches (often Reformed-leaning, John MacArthur-style) and continuationist churches (often Vineyard, Bethel, or "soft continuationist" Sovereign Grace–style). Many non-denominational Christians hold to a middle position — "open but cautious" — affirming that the gifts could continue while remaining suspicious of much of what claims to be a manifestation today.',
+      verses: ['1 Cor 12:4-11', '1 Cor 14:39-40']
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'unique',
+      position: 'Adventism holds a distinctive position: the gift of prophecy continued — and was particularly given to Ellen G. White, whose writings Adventists regard as a "lesser light" pointing to the greater light of Scripture. Other miraculous gifts are affirmed in principle but rarely emphasised in practice. Pentecostal-style ecstatic tongues are not characteristic of Adventist worship.',
+      verses: ['Joel 2:28-29', 'Rev 12:17', 'Rev 19:10', 'Eph 4:11-13']
+    }
+  ]
+},
 
+
+  
 ];
 // ═══════════════════════════════════════════════════════════
 // PATCH 5 — MOVEMENTS array (Outside the Creeds)
