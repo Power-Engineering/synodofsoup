@@ -8568,4 +8568,131 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', _ensureMobileMenu);
 } else {
   _ensureMobileMenu();
+
+  // ═══════════════════════════════════════════════════════════════════════
+//   PATCH 17 — Questions Corner robustness + debug helper
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// This patch:
+//   1. Makes _qcFetchActivity tolerant of legacy comment formats
+//      (compound topic_ids like "sola-scriptura:baptist" without
+//       target_denomination set, or with slug instead of display name).
+//   2. Exposes window.diagnoseQC() — a console diagnostic that prints
+//      every comment in your DB next to the catalog's expectations,
+//      so we can see exactly what's mismatched.
+
+async function _qcFetchActivity() {
+  if (!supabaseClient) return new Map();
+  try {
+    const { data, error } = await supabaseClient.from('comments')
+      .select('id,topic_id,target_denomination,upvotes,created_at,body,comment_type')
+      .limit(5000);
+    if (error) throw error;
+    const map = new Map();
+
+    // Slug → display-name lookup, for resolving legacy data
+    const slugToDenom = new Map();
+    for (const t of TOPICS) {
+      for (const d of (t.denominations || [])) {
+        slugToDenom.set(_denomSlug(d.name), d.name);
+      }
+    }
+
+    for (const c of (data || [])) {
+      let topic = c.topic_id;
+      let target = c.target_denomination || '';
+
+      // Legacy compound format: "sola-scriptura:baptist" → split
+      if (topic && topic.includes(':') && !topic.startsWith('qc-')) {
+        const idx = topic.indexOf(':');
+        const left = topic.slice(0, idx);
+        const right = topic.slice(idx + 1);
+        topic = left;
+        if (!target) {
+          target = slugToDenom.get(right.toLowerCase()) || right;
+        }
+      }
+
+      // Normalize target to display name when possible
+      if (target && !slugToDenom.has(target)) {
+        // It's already a display name or unknown — leave it
+      } else if (target && slugToDenom.has(target.toLowerCase())) {
+        target = slugToDenom.get(target.toLowerCase());
+      }
+
+      const key = `${topic}|${target}`;
+      let entry = map.get(key);
+      if (!entry) {
+        entry = { count: 0, latest: null, topUpvotes: -1, sampleBody: null, types: new Set() };
+        map.set(key, entry);
+      }
+      entry.count++;
+      const t = new Date(c.created_at).getTime();
+      if (!entry.latest || t > entry.latest) entry.latest = t;
+      if ((c.upvotes || 0) > entry.topUpvotes) {
+        entry.topUpvotes = c.upvotes || 0;
+        entry.sampleBody = c.body;
+      }
+      if (c.comment_type) entry.types.add(c.comment_type);
+    }
+    return map;
+  } catch (err) {
+    console.error('qc activity:', err);
+    return new Map();
+  }
+}
+
+// ─── Debug helper — run diagnoseQC() in browser console ────────────────
+window.diagnoseQC = async function() {
+  if (!supabaseClient) { console.log('No Supabase client'); return; }
+  console.log('%c=== Step 1: Every comment in your DB ===', 'color: #8a2a2a; font-weight: bold');
+  const { data, error } = await supabaseClient.from('comments')
+    .select('id,topic_id,target_denomination,comment_type,body,created_at')
+    .order('created_at', { ascending: false }).limit(50);
+  if (error) { console.error(error); return; }
+  console.table((data || []).map(c => ({
+    id: c.id,
+    topic_id: c.topic_id,
+    target_denomination: c.target_denomination,
+    type: c.comment_type,
+    body: (c.body || '').slice(0, 50),
+  })));
+
+  console.log('%c=== Step 2: What the catalog expects (Ledger entries) ===', 'color: #8a2a2a; font-weight: bold');
+  console.table(_qcCatalog
+    .filter(c => c.kind === 'ledger')
+    .map(c => ({ key: `${c.topicId}|${c.targetTag}`, tradition: c.tradition, topicId: c.topicId }))
+    .slice(0, 30));
+
+  console.log('%c=== Step 3: Activity map keys after fetch ===', 'color: #8a2a2a; font-weight: bold');
+  const activity = await _qcFetchActivity();
+  const keys = Array.from(activity.keys()).map(k => ({
+    key: k,
+    count: activity.get(k).count,
+    types: Array.from(activity.get(k).types).join(','),
+  }));
+  console.table(keys);
+
+  console.log('%c=== Step 4: Catalog keys that match activity (these will appear in QC) ===', 'color: #2d5547; font-weight: bold');
+  const matched = [];
+  for (const item of _qcCatalog) {
+    const key = `${item.topicId}|${item.targetTag || ''}`;
+    if (activity.has(key)) {
+      matched.push({ key, tradition: item.tradition, kind: item.kind, count: activity.get(key).count });
+    }
+  }
+  console.table(matched);
+
+  console.log('%c=== Step 5: Activity keys with NO matching catalog entry (these are LOST) ===', 'color: #c44; font-weight: bold');
+  const catalogKeys = new Set(_qcCatalog.map(it => `${it.topicId}|${it.targetTag || ''}`));
+  const lost = [];
+  for (const [k, v] of activity.entries()) {
+    if (!catalogKeys.has(k)) {
+      lost.push({ key: k, count: v.count });
+    }
+  }
+  console.table(lost);
+  console.log('Done. Send me the screenshot of these tables and I can pinpoint the mismatch.');
+};
 }
