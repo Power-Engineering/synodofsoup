@@ -2944,7 +2944,498 @@ const TOPICS = [
     ],
     relatedTopics: ['filioque', 'atonement', 'canon'],
   },
+{
+  id: 'communion-cup',
+  name: 'Wine or Grape Juice?',
+  icon: '🍷',
+  controversy: 64,
+  category: 'Worship & Sacraments',
+  desc: 'What belongs in the cup at the Lord\'s Supper — fermented wine, as the Last Supper had, or unfermented grape juice, as the 19th-century American temperance movement introduced? A small question with large implications for sacramental theology, biblical fidelity, and pastoral care of the recovering alcoholic.',
+  definition: `<p>The question of what liquid belongs in the communion cup seems trivial until you press it. At the Last Supper, Jesus took "the fruit of the vine" — almost certainly fermented wine, given the Passover context. For nineteen centuries, every Christian tradition used wine. Then in 1869, Thomas Welch — a Methodist dentist and committed temperance activist — pasteurised grape juice and offered it to churches as an alcohol-free alternative.</p>
+    <p>The theological divide is real. On one side: <strong>wine is the matter Christ chose</strong>, and the Church has no authority to substitute another substance. On the other: <strong>the substance is symbolic</strong>, and pastoral concern for recovering alcoholics and sobriety witnesses justifies grape juice. Behind both positions lie deeper questions about sacramental theology, the relationship of Old Testament practice to New Testament freedom, and how much innovation the Church may exercise in its worship forms.</p>`,
+  subtopics: [
+    { id: 'cc-matter', label: 'Is wine required matter?' },
+    { id: 'cc-pastoral', label: 'Pastoral care & sobriety' },
+    { id: 'cc-history', label: 'Historical practice' },
+  ],
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'affirm',
+      position: `Wine is the only valid matter for the Eucharist. Canon law requires natural grape wine, unmixed with other substances, with the prescribed drop of water added. Grape juice cannot be consecrated into the Blood of Christ; only fermented wine can. Communicants who cannot tolerate alcohol may receive under one species (the host alone), which contains the whole Christ — body, blood, soul, and divinity.`,
+      verses: ['Matt 26:27-29', '1 Cor 11:23-26', 'Luke 22:17-20'],
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'affirm',
+      position: `Wine, without exception. The chalice in the Divine Liturgy holds red wine mixed with warm water (the <em>zeon</em>) — an unbroken practice from the apostolic age. The Mystery requires fermented wine; grape juice is a modern Western innovation that severs the Eucharist from its biblical and patristic roots. Matter matters: what Christ instituted, the Church preserves.`,
+      verses: ['John 6:53-56', '1 Cor 10:16', 'Matt 26:29'],
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'affirm',
+      position: `Wine is the historic norm in the Book of Common Prayer. Christ used wine; the Church has followed him. Pastoral provision is made for the recovering alcoholic — typically intinction, a separate cup of grape juice kept out of sight, or communion under one kind — but the default and ideal is real wine. The rubrics presuppose it.`,
+      verses: ['Matt 26:27-29', '1 Cor 11:23-26'],
+    },
+    {
+      name: 'Lutheran',
+      stance: 'affirm',
+      position: `Wine. Confessional Lutheranism holds that Christ instituted the Supper with wine and that the Real Presence is bound to the matter he chose. The <em>verba</em> (words of institution) and the <em>elementa</em> (elements) belong together. The LCMS and WELS are firm on this; the ELCA permits pastoral flexibility but still uses wine as the default and the norm.`,
+      verses: ['Matt 26:27-29', '1 Cor 11:25-26', 'Mark 14:23-25'],
+    },
+    {
+      name: 'Reformed / Presbyterian',
+      stance: 'nuanced',
+      position: `Historically wine — Calvin, Knox, and the Westminster Divines all used it without question. Modern American Reformed churches vary significantly: many congregations now offer both wine and grape juice side-by-side in the communion trays, leaving the choice to the communicant. The conviction is that the sacramental sign matters; whether the fruit of the vine is fermented is treated by many as <em>adiaphora</em> — a matter for pastoral wisdom rather than doctrinal prescription.`,
+      verses: ['1 Cor 11:25', 'Matt 26:29', 'Rom 14:21'],
+    },
+    {
+      name: 'Baptist',
+      stance: 'deny',
+      position: `Grape juice, in nearly all American Baptist churches since the late 1800s. The relevant phrase is "the fruit of the vine" — not specifically fermented wine. Romans 14:21 governs the pastoral decision: the church must not place a stumbling block before a brother or sister recovering from alcohol abuse. Because the Baptist view treats the Supper as a memorial rather than as a sacrament that requires specific matter, the substance is symbolic and can be adapted for the community's welfare.`,
+      verses: ['Matt 26:29', 'Rom 14:21', '1 Cor 8:9-13', 'Prov 20:1'],
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'deny',
+      position: `Grape juice — and Methodists are the reason it exists. Thomas Welch, a Methodist dentist and fierce temperance advocate, invented pasteurised unfermented grape juice in 1869 specifically so Methodist churches could observe Communion without alcohol. The conviction flows from Wesleyan holiness theology: hospitality to the weak, total abstinence as a public witness against the social destruction wrought by drink, and the body as temple of the Holy Spirit.`,
+      verses: ['Rom 14:21', '1 Cor 8:13', 'Prov 23:31-32'],
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'deny',
+      position: `Grape juice. Pentecostal churches arose from the Wesleyan-Holiness movement and inherit its strong stance against alcohol in any form. The Lord's Supper is a sacred memorial; to serve fermented wine would compromise the witness of total abstinence that Pentecostal believers regard as integral to the sanctified life and to their public credibility.`,
+      verses: ['Eph 5:18', 'Prov 20:1', 'Rom 14:21'],
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'nuanced',
+      position: `Historically whatever the community had to hand — simple, unpretentious, whatever bread and fruit of the vine was available. Modern Anabaptist congregations vary: most North American Mennonites now use grape juice; European and Latin American Mennonite communities often use wine. The substance is secondary to the act of remembrance, the breaking of bread, and the unity of the body sharing one cup.`,
+      verses: ['1 Cor 10:17', '1 Cor 11:26'],
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'deny',
+      position: `Unfermented grape juice — never wine. Adventists hold total abstinence from alcohol as both a moral and a physical-health principle. The biblical "wine" (Hebrew <em>yayin</em>, Greek <em>oinos</em>) covers both fermented and unfermented grape products; the wine at the Last Supper, they argue, was unfermented. Serving fermented wine in Communion would contradict both Scripture rightly understood and the principle that the body is the temple of the Holy Spirit.`,
+      verses: ['1 Cor 6:19-20', 'Prov 23:31-32', 'Hab 2:15', 'Isa 65:8'],
+    },
+  ],
+  keyVerses: ['Matt 26:27-29', 'Mark 14:23-25', 'Luke 22:17-20', '1 Cor 11:23-26', 'John 2:1-11', 'Rom 14:21', '1 Cor 8:9-13', 'Eph 5:18'],
+  historicalNote: 'Thomas Welch developed pasteurised unfermented grape juice in 1869 at Vineland, New Jersey, marketing it to churches as "Dr. Welch\'s Unfermented Wine." His son Charles then founded the Welch\'s company. The shift to grape juice in American Protestant churches accelerated through the late 19th and early 20th centuries alongside the temperance movement culminating in Prohibition (1920–33). Roman Catholic canon law has never permitted grape juice in the Eucharist; this was reaffirmed explicitly in a 1974 instruction and confirmed in the 1983 Code of Canon Law.',
+  relatedTopics: ['real-presence', 'baptism', 'number-of-sacraments'],
+},
 
+{
+  id: 'bible-translation',
+  name: 'KJV-Only, Formal, or Dynamic?',
+  icon: '📚',
+  controversy: 58,
+  category: 'Authority',
+  desc: 'Which Bible translation philosophy is faithful? Some hold the King James Version is uniquely preserved by God; others prefer formal-equivalence translations built on critical Greek texts; others favour dynamic-equivalence translations that prioritise readability. Behind the translation question lies a deeper dispute about textual criticism — Textus Receptus, Majority Text, or Critical Text?',
+  definition: `<p>The <strong>Bible translation debate</strong> operates on two levels that are often conflated. The first is <em>textual</em>: which underlying Greek and Hebrew manuscripts should form the base text? The Textus Receptus (the printed Greek text behind the KJV) differs from the modern Critical Text in roughly 5,000 places, most minor but a few significant (e.g. the Comma Johanneum, 1 John 5:7-8; Mark 16:9-20; John 7:53-8:11). The second is <em>translational philosophy</em>: how closely should the translation mirror the original word order and vocabulary (formal equivalence: ESV, NASB, KJV) versus how freely should it render the meaning in contemporary idiom (dynamic equivalence: NIV, NLT, The Message)?</p>
+    <p>The <strong>KJV-Only position</strong> goes further than either of these debates: it claims that the 1611 Authorised Version is itself uniquely and providentially preserved as the Word of God in English — that modern translations based on the Critical Text are corrupted departures from the true Bible.</p>`,
+  subtopics: [
+    { id: 'bt-kjvonly', label: 'KJV-Only position' },
+    { id: 'bt-textual', label: 'Textus Receptus vs Critical Text' },
+    { id: 'bt-philosophy', label: 'Formal vs dynamic equivalence' },
+  ],
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'nuanced',
+      position: `Catholics use translations approved by the bishops' conference: the NABRE, RSV-CE, and New Jerusalem Bible are the standard liturgical and study texts. The KJV is not used — it excludes the deuterocanonical books and was produced outside the visible Church. Translation choice is regulated magisterially; the Magisterium, not any single translation, is the ultimate rule of faith. Modern critical scholarship is welcomed: the Pontifical Biblical Commission has consistently endorsed the use of critical methods since <em>Divino Afflante Spiritu</em> (1943).`,
+      verses: ['2 Pet 1:20-21', '2 Thess 2:15'],
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'nuanced',
+      position: `Orthodox translations of the Old Testament are based on the Septuagint (LXX), not the Hebrew Masoretic Text — the same Greek Old Testament the apostles quoted throughout the New Testament. The Orthodox Study Bible pairs an NKJV New Testament with an LXX-based Old Testament. KJV-onlyism is a Western Protestant phenomenon with no Orthodox analogue; what matters is fidelity to the patristic and liturgical tradition of the whole Church, not preservation of a particular printed text.`,
+      verses: ['Heb 1:6', 'Acts 7:14', 'Matt 1:23'],
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'nuanced',
+      position: `The KJV holds historic and liturgical pride of place — the Book of Common Prayer is saturated with its language, and its prose shaped the English-speaking world. But modern Anglicans freely use the NRSV, ESV, or NIV for study and preaching, and no Anglican confession treats any translation as uniquely inspired. The Bible itself is the Word of God; translations are tools, faithful when accurate.`,
+      verses: ['2 Tim 3:16-17', 'Isa 40:8'],
+    },
+    {
+      name: 'Lutheran',
+      stance: 'nuanced',
+      position: `LCMS and WELS use the ESV as their primary translation; the ELCA uses the NRSV; the German tradition still prizes Luther's 1545 translation historically. Lutheran translation philosophy is formal-equivalence biased — the words of God deserve precise rendering. KJV-onlyism is rejected; <em>sola scriptura</em> means the Hebrew and Greek originals are normative, not any particular translation. Modern textual criticism is accepted with appropriate theological care.`,
+      verses: ['2 Tim 3:16', 'John 17:17'],
+    },
+    {
+      name: 'Reformed / Presbyterian',
+      stance: 'nuanced',
+      position: `The ESV is the dominant modern Reformed translation of choice — formally equivalent, textually conservative, theologically careful. The Reformed tradition has historically rejected KJV-onlyism as a confusion of a 1611 English translation with the Hebrew and Greek originals; what the Confession calls "authentic" are the original-language texts (Westminster Confession I.8), not any translation. The textual variants in the Critical Text versus the Textus Receptus are real but theologically inconsequential for any doctrine.`,
+      verses: ['2 Tim 3:16-17', '2 Pet 1:20-21'],
+    },
+    {
+      name: 'Baptist',
+      stance: 'varies',
+      position: `Baptists are significantly divided here. Most Southern Baptists and mainstream Baptists use the CSB (Southern Baptist's own translation), ESV, or NIV. But a vocal and numerically significant Independent Fundamentalist Baptist (IFB) minority holds KJV-onlyism as a non-negotiable: the King James Version and the Textus Receptus behind it are the uniquely preserved Word of God in English. Modern translations are regarded as corrupted by the Alexandrian manuscript tradition and by liberal scholarship. The two camps do not significantly overlap.`,
+      verses: ['Ps 12:6-7', 'Matt 5:18', 'Rev 22:18-19'],
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'nuanced',
+      position: `Methodists use the NRSV, CEB, and increasingly the NIV. Translation choice is not a significant Methodist conviction; what matters is that the Bible, in any faithful translation, witnesses to Christ and forms the believer. KJV-onlyism is foreign to Wesleyan thought — Wesley himself revised the KJV New Testament in 1755 because he believed translations should be improvable and accessible, not frozen in a particular century's English.`,
+      verses: ['2 Tim 3:16', 'Heb 4:12'],
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'nuanced',
+      position: `Historically Pentecostals used the KJV almost exclusively; many older Pentecostals still regard it with special reverence. Modern Pentecostal churches have broadly shifted to the NIV, NLT, or NKJV for accessibility and reach. A minority current remains KJV-preferring or KJV-only. The broader Pentecostal conviction is that the Spirit illuminates Scripture in whichever faithful translation it is read — but the Word itself, in any reliable translation, is the inspired, inerrant Word of God.`,
+      verses: ['2 Tim 3:16', '2 Pet 1:21', 'John 16:13'],
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'nuanced',
+      position: `Most Mennonites use the NRSV or NIV. Older, more conservative Anabaptist communities (Old Order, Old Colony) sometimes preserve Luther's German Bible or the KJV as a matter of community tradition rather than theological conviction about its uniqueness. The goal in every case is the community reading and obeying the text together — in whatever faithful translation makes that possible — rather than reverence for a particular textual tradition.`,
+      verses: ['Matt 5:18-19', 'Jas 1:22'],
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'nuanced',
+      position: `Adventists historically used the KJV almost exclusively — Ellen White quoted it throughout her writings, and her language is saturated with its cadences. Mainstream Adventism now uses the NKJV, NRSV, and NIV, while many traditionalists retain a preference for the KJV. KJV-onlyism is not an official Adventist position. The Bible in any faithful translation is the rule of faith; Ellen White's writings illuminate it but do not replace it.`,
+      verses: ['Isa 8:20', '2 Tim 3:16-17'],
+    },
+  ],
+  keyVerses: ['2 Tim 3:16-17', '2 Pet 1:20-21', 'John 17:17', 'Ps 12:6-7', 'Matt 5:18', 'Rev 22:18-19', 'Isa 40:8'],
+  historicalNote: 'The King James Version was commissioned by King James I and produced by 47 scholars working in six companies, published in 1611. It was not the first English Bible but became dominant over the following century. The KJV-Only movement emerged principally in the mid-20th century, associated with figures like David Otis Fuller and Peter Ruckman, and gained significant institutional presence through Independent Fundamental Baptist networks. The discovery of Codex Sinaiticus (1844) and Codex Vaticanus gave Westcott and Hort new grounds for a revised Critical Text (1881), which underlies most modern translations and which KJV-Only advocates regard as corrupt. The debate intensified with the NIV\'s publication in 1978.',
+  relatedTopics: ['sola-scriptura', 'canon', 'papacy'],
+},
+
+{
+  id: 'eternal-security',
+  name: 'Eternal Security: Once Saved, Always Saved?',
+  icon: '🛡️',
+  controversy: 85,
+  category: 'Salvation',
+  desc: 'Can a truly regenerated Christian fall from grace and lose their salvation? Calvinists affirm the perseverance of the saints — the elect cannot finally fall. Arminians, Catholics, and Orthodox insist that genuine believers can apostatise and be lost. Baptist "eternal security" affirms perseverance without the full Reformed framework. The pastoral implications cut deep on both sides.',
+  definition: `<p><strong>Eternal security</strong> — popularly expressed as "once saved, always saved" — is the doctrine that a person who has been genuinely regenerated and justified cannot finally lose their salvation. The opposing position, held by Catholics, the Orthodox, and Arminian Protestants, teaches that genuine faith can be finally abandoned and salvation genuinely lost through apostasy or unrepented mortal sin.</p>
+    <p>The Reformed doctrine of the <strong>perseverance of the saints</strong> is closely related but distinct from Baptist eternal security: for the Reformed, the truly elect will inevitably persevere in faith and holiness because God sovereignly keeps them; for many Baptists, the moment of saving faith is decisive and the person is sealed regardless of subsequent behaviour or belief — a distinction with significant pastoral consequences.</p>
+    <p>Three questions interlock: (1) What does the New Testament teach about apostasy? (2) Were those who "fall away" ever genuinely saved? (3) What grounds the Christian's assurance of salvation?</p>`,
+  subtopics: [
+    { id: 'es-perseverance', label: 'Perseverance of the saints' },
+    { id: 'es-apostasy', label: 'Hebrews 6 and apostasy texts' },
+    { id: 'es-assurance', label: 'Assurance of salvation' },
+    { id: 'es-calvarm', label: 'Calvinist vs Arminian' },
+  ],
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'deny',
+      position: `A justified Christian can lose salvation through mortal sin — sin that destroys the charity (sanctifying grace) in the soul. The justified must persevere in grace through the sacraments, especially the Eucharist and Confession. The Council of Trent (Session VI, Canon 16) anathematised any who claim assurance of final perseverance apart from special divine revelation. Salvation is real, but never presumed; it must be "worked out with fear and trembling" (Philippians 2:12).`,
+      verses: ['Phil 2:12', 'Heb 6:4-6', 'Heb 10:26-31', '1 Cor 9:27', '2 Pet 2:20-22'],
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'deny',
+      position: `Salvation is <em>theosis</em> — an ongoing journey of transformation by grace requiring the real cooperation of the human will. Orthodoxy firmly rejects any doctrine of irresistible election or guaranteed perseverance as incompatible with human freedom and the consistent witness of the saints and the Fathers. The believer can fall away through grievous sin, neglect of the sacraments, or apostasy. Salvation is a path to be walked faithfully to the end, not a status permanently secured.`,
+      verses: ['Matt 24:13', 'Phil 2:12', 'Heb 6:4-6', '2 Pet 1:10'],
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'nuanced',
+      position: `Anglican formularies hold genuine ambiguity here. Article 17 reflects a Calvinist reading of election; the Wesleyan and Arminian inheritance within Anglicanism resists unconditional perseverance. The Reformed Anglican stream affirms that the elect persevere; the more catholic and Wesleyan-influenced stream affirms that the regenerate can fall. The Articles are deliberately capacious; both traditions coexist within Anglicanism and have done so for centuries.`,
+      verses: ['Phil 1:6', 'John 10:28-29', 'Heb 6:4-6'],
+    },
+    {
+      name: 'Lutheran',
+      stance: 'nuanced',
+      position: `Lutheranism holds a characteristically paradoxical position: the elect cannot finally fall (Romans 8:38-39), yet genuine believers can and do lose faith through unrepented sin and persistent resistance to the Holy Spirit. The Lutheran refuses to resolve this tension either by Calvinist election or by Arminian conditionality. Assurance is grounded not in introspection or spiritual achievement but in the objective means of grace — Baptism, Absolution, and the Lord's Supper.`,
+      verses: ['Rom 8:38-39', '1 Tim 1:19', 'Heb 6:4-6', '2 Pet 2:20-22'],
+    },
+    {
+      name: 'Reformed / Presbyterian',
+      stance: 'affirm',
+      position: `The perseverance of the saints — the fifth point of Calvinism (the P in TULIP) — is among the most precious Reformed doctrines. Those whom God has effectually called and sanctified cannot finally or totally fall from grace. Apparent apostates were never truly regenerate in the first place (1 John 2:19). This perseverance is not by human strength or resolve but by God's sovereign and unbreakable keeping. The Westminster Confession (Chapter XVII) states this with precision and pastoral warmth.`,
+      verses: ['John 10:28-29', 'Rom 8:30-39', 'Phil 1:6', '1 Pet 1:5', '1 John 2:19'],
+    },
+    {
+      name: 'Baptist',
+      stance: 'affirm',
+      position: `"Once saved, always saved." The vast majority of Baptists — Southern, Independent, and most conservative Baptist bodies — affirm eternal security as a biblical certainty. The moment of genuine saving faith is decisive; the believer is sealed by the Holy Spirit and cannot lose what Christ has permanently secured. This is not mere Calvinist perseverance (a few Baptists resist that label) but a conviction that the gift of eternal life, once given, cannot be revoked. Free Will Baptists are a notable exception, affirming that salvation can be lost.`,
+      verses: ['John 10:28-29', 'Eph 1:13-14', 'Eph 4:30', 'Rom 8:38-39', '1 John 5:13'],
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'deny',
+      position: `Wesley rejected both unconditional election and unconditional perseverance in some of his most passionate preaching. A genuinely converted Christian can apostatise — fall finally from grace through deliberate, unrepented sin or through the gradual abandonment of faith. This is the classical Wesleyan-Arminian position, developed in Wesley's sermon "A Call to Backsliders" and in the broader Methodist tradition. The Holiness movement intensified this conviction: entire sanctification is a real work of grace that can also be resisted and lost.`,
+      verses: ['Heb 6:4-6', 'Heb 10:26-31', '2 Pet 2:20-22', '1 Tim 4:1', 'Gal 5:4'],
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'nuanced',
+      position: `Most classical Pentecostal denominations — the Assemblies of God, Foursquare, Church of God — are Arminian and explicitly deny unconditional eternal security. A believer can backslide, apostatise, and be finally lost. The minority of Pentecostals influenced by Baptist and Reformed roots affirm eternal security. The position divides along the Wesleyan-Holiness versus Reformed-Baptist ancestry of the particular stream.`,
+      verses: ['Heb 6:4-6', 'Heb 10:26-31', 'Gal 5:4', '1 Cor 9:27'],
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'deny',
+      position: `Anabaptists hold a robust position against unconditional eternal security. A believer can fall away through unfaithfulness, unrepented sin, or apostasy. The community walks together in discipleship; the gathered church practices discipline partly because apostasy is a real and serious possibility. Salvation is the path of the cross, walked faithfully to the end — not a one-time transaction whose outcome is guaranteed regardless of subsequent life.`,
+      verses: ['Matt 24:13', 'Heb 10:26-31', '2 Pet 2:20-22'],
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'deny',
+      position: `Adventists reject eternal security. A believer can fall from grace through persistent sin, deliberate rejection of light, or loss of faith. The distinctive Adventist doctrine of the Investigative Judgment — that Christ began examining the records of professing believers in 1844 — entails that names can be "blotted out of the Book of Life." Salvation is by grace through faith, but perseverance in that faith is genuinely required; no perseverance is guaranteed unconditionally.`,
+      verses: ['Rev 3:5', 'Ezek 18:24', 'Heb 6:4-6', '2 Pet 2:20-22', 'Matt 24:13'],
+    },
+  ],
+  keyVerses: ['John 10:28-29', 'Rom 8:30-39', 'Phil 1:6', '1 Pet 1:5', '1 John 2:19', 'Heb 6:4-6', 'Heb 10:26-31', '2 Pet 2:20-22', 'Gal 5:4', '1 Tim 1:19', 'Eph 1:13-14', 'Rev 3:5'],
+  historicalNote: 'The debate crystallised at the Synod of Dort (1618-19) where the Calvinist Canons of Dort — affirming the perseverance of the saints — were framed against the Arminian Remonstrance, which affirmed conditional perseverance. John Wesley sharpened the Arminian case in 18th-century England. The American Baptist "eternal security" tradition developed partly independently of the full Calvinist architecture. The Lordship salvation controversy (John MacArthur vs Zane Hodges, 1980s-90s) exposed significant divisions within eternal-security-affirming evangelicalism about what constitutes genuine saving faith.',
+  relatedTopics: ['salvation-works', 'predestination', 'atonement'],
+},
+
+{
+  id: 'tithing',
+  name: 'Tithing: Required Today?',
+  icon: '💰',
+  controversy: 62,
+  category: 'Ethics',
+  desc: 'Does the Old Testament tithe — a tenth of one\'s income given to the temple — bind the Christian today? Or did the Mosaic ceremonial law expire with the cross, leaving New Testament giving as freewill, proportional, and cheerful? Some traditions treat the tithe as a non-negotiable minimum; others treat it as a useful historical guideline; still others reject any mandated percentage.',
+  definition: `<p>The <strong>tithing debate</strong> asks whether the Old Testament command to give one tenth of one's produce to the Levitical system (Leviticus 27:30; Numbers 18:21-26; Deuteronomy 14:22-29) carries over into the New Covenant as a binding obligation — or whether it was part of the Mosaic ceremonial law that expired with the completion of Christ's work and the end of the Levitical priesthood.</p>
+    <p>Those who affirm the tithe as binding today (most Baptist, Pentecostal, and non-denominational evangelical preaching) typically rely on Malachi 3:8-10 ("Will a man rob God?"), Abraham's pre-Mosaic tithe to Melchizedek (Genesis 14:18-20), and Christ's affirmation of tithing in Matthew 23:23. Those who deny a binding percentage point to 2 Corinthians 9:7 ("Each one must give as he has decided in his heart, not reluctantly or under compulsion") and argue that the New Testament consistently teaches proportional, joyful, Spirit-led generosity without specifying a percentage.</p>`,
+  subtopics: [
+    { id: 'tt-binding', label: 'Is 10% still binding?' },
+    { id: 'tt-malachi', label: 'Malachi 3 and "robbing God"' },
+    { id: 'tt-nt', label: 'NT teaching on giving' },
+    { id: 'tt-prosperity', label: 'Tithing and prosperity teaching' },
+  ],
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'nuanced',
+      position: `Traditional Catholic teaching obliges the faithful to support the Church and her ministers (Canon 222), but the specific 10% tithe is not strictly binding in Catholic canon law. The precise amount is a matter of conscience and pastoral guidance from one's bishop and pastor. Generous, sacrificial giving — proportional to one's means — is universally expected. In practice, Catholic giving statistics consistently fall well below 10%.`,
+      verses: ['1 Cor 9:13-14', '1 Tim 5:17-18', '2 Cor 9:7'],
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'nuanced',
+      position: `Orthodoxy has no formal tithing requirement. The faithful support the parish through pledges, candle offerings, feast-day contributions, and free almsgiving. The Old Testament tithe is read as a typological foreshadowing; the Christian gives freely, proportionally, and sacrificially — often far more than a tenth when the true spirit of the gospel takes hold. The exact amount is between the believer, his spiritual father, and God.`,
+      verses: ['2 Cor 9:7', 'Luke 21:1-4', 'Acts 4:32-35'],
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'nuanced',
+      position: `Historic Anglicanism upheld the tithe as a church tax (still legally enforceable in England until the Tithe Commutation Act of 1836 and later legislation). Modern Anglican churches teach proportional giving with the tithe as a biblical and historical benchmark, not a strict obligation. The stewardship tradition in Anglican parish life takes seriously the call to sacrificial, joyful, and proportional giving from grateful hearts.`,
+      verses: ['2 Cor 9:7', 'Mal 3:8-10', '1 Cor 16:2'],
+    },
+    {
+      name: 'Lutheran',
+      stance: 'nuanced',
+      position: `Lutherans teach proportional, cheerful giving rather than a strictly binding tithe. The Mosaic ceremonial law — including the Levitical tithe — expired with the New Covenant; what remains is the abiding principle that believers generously support the ministry of the Word and works of mercy. 10% is a useful traditional benchmark; legalistic insistence on it would compromise Christian liberty and distort the gospel motivation for giving.`,
+      verses: ['2 Cor 9:6-7', 'Gal 5:1', '1 Cor 16:2'],
+    },
+    {
+      name: 'Reformed / Presbyterian',
+      stance: 'nuanced',
+      position: `Most Reformed churches teach the tithe as a wise moral baseline for Christian stewardship — a floor from which generosity ascends, even if not strictly binding as a Mosaic ceremonial command. The Westminster Larger Catechism's treatment of the Eighth Commandment calls for "liberality and bountifulness." Calvin himself held tithing as a helpful minimum. The Reformed tradition generally avoids both legalistic insistence and the opposite error of treating all giving as unlimited personal discretion.`,
+      verses: ['Mal 3:8-10', '2 Cor 9:6-8', 'Matt 23:23'],
+    },
+    {
+      name: 'Baptist',
+      stance: 'affirm',
+      position: `The tithe is taught in most Baptist churches as a binding minimum for the believer — typically 10% of gross income given to the local church. Southern Baptist preaching on tithing is robust and frequent; Malachi 3:8 ("Will a man rob God?") is one of the most-cited Sunday texts. Many Baptist churches distinguish the tithe (which belongs to the storehouse — the local church) from offerings (freewill giving above and beyond the tithe to missions and other causes).`,
+      verses: ['Mal 3:8-10', 'Gen 14:18-20', 'Heb 7:1-10', '2 Cor 9:6-7'],
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'affirm',
+      position: `Wesley's famous rule: "Gain all you can, save all you can, give all you can." The Wesleyan tradition teaches the tithe as a starting point — the floor of Christian generosity, not the ceiling. Holiness and stewardship are inseparable in the Methodist conscience: a believer who lives simply, trusting God, will find that giving 10% is only the beginning. The goal is whole-life stewardship, not merely meeting a percentage obligation.`,
+      verses: ['Mal 3:10', '2 Cor 9:6-8', 'Matt 6:19-21', 'Luke 12:33'],
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'affirm',
+      position: `Pentecostal preaching on the tithe is among the most explicit and consistent in all of evangelicalism. Malachi 3:8-10 is treated as a binding command, with the promise of "the windows of heaven" opening for the faithful tither carrying the force of a covenantal pledge. In some Pentecostal streams influenced by prosperity theology, tithing becomes the gateway to financial blessing — giving is the act of faith that activates God's provision.`,
+      verses: ['Mal 3:8-12', 'Luke 6:38', '2 Cor 9:6-11', 'Phil 4:19'],
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'nuanced',
+      position: `The Anabaptist tradition historically taught something more radical than a tithe — the <em>community of goods</em> among the gathered church (Acts 4:32-35), where the whole of one's wealth is held in readiness for the needs of the brethren. Modern Mennonite practice has moderated considerably: many congregations teach the tithe as a guideline; others emphasise mutual aid and proportional sacrificial giving shaped by the needs of the community rather than a mathematical formula.`,
+      verses: ['Acts 4:32-35', '2 Cor 8:13-15', 'Luke 12:33'],
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'affirm',
+      position: `Adventists teach the tithe as a binding, biblical command — 10% of one's "increase" (typically gross income) is returned to God's storehouse for the support of gospel ministry, funnelled through the denominational structure to support pastors and evangelism worldwide. Beyond the tithe, members give freewill "offerings" for local church operations and missions. The tithe is regarded as God's portion — returning it is not generosity but faithfulness; generosity begins with offerings above the tithe.`,
+      verses: ['Mal 3:8-10', 'Lev 27:30', 'Gen 14:20', 'Matt 23:23'],
+    },
+  ],
+  keyVerses: ['Mal 3:8-10', 'Gen 14:18-20', 'Lev 27:30', 'Deut 14:22-29', 'Matt 23:23', 'Heb 7:1-10', '2 Cor 9:6-8', 'Luke 6:38', '1 Cor 16:2', 'Acts 4:32-35'],
+  historicalNote: 'The tithe was codified in the Mosaic law as a tax supporting the Levitical priesthood and the Jerusalem temple. After the destruction of the temple in 70 AD, the rabbinic tradition could no longer administer the tithe as a formal system. The Church Fathers addressed giving variously — some (Origen, Tertullian) argued the tithe remained binding; others (Irenaeus, Augustine) emphasised surpassing the Mosaic standard. The Council of Tours (567) and the Council of Mâcon (585) made the tithe an ecclesiastical obligation in the Western Church, eventually becoming a civil tax in medieval Europe. The modern "storehouse tithing" movement in American evangelicalism took institutional form in the 19th century alongside denominational expansion.',
+  relatedTopics: ['salvation-works', 'homosexuality', 'abortion'],
+},
+
+{
+  id: 'saints-icons',
+  name: 'Saints, Icons & Veneration',
+  icon: '🙏',
+  controversy: 89,
+  category: 'Worship & Sacraments',
+  desc: 'May Christians venerate departed saints, ask their intercession, and bow before icons or statues — or is this idolatry forbidden by the Second Commandment? Catholic and Orthodox traditions affirm the communion of saints in active form: relics, icons, prayer to Mary and the saints. Most Protestants reject these as idolatrous accretions, returning prayer and worship to God alone.',
+  definition: `<p>The veneration of saints debate has several distinct layers. The first is <strong>invocation</strong>: may the living ask departed saints to pray for them? The Catholic and Orthodox answer is yes — the saints are alive in Christ, more fully alive than we are, and can intercede. The Protestant answer is no — only Christ mediates between God and humanity, and we have no biblical warrant to address the departed.</p>
+    <p>The second layer is <strong>images</strong>: may churches display icons, statues, or paintings of Christ and the saints, and may these be reverenced? The Seventh Ecumenical Council (Nicaea II, 787) distinguished veneration (<em>proskynesis</em>) from worship (<em>latreia</em>) and affirmed the former for images; the Reformed tradition, following the Second Commandment and the iconoclasm of the Old Testament, rejected all religious images in worship.</p>
+    <p>The third is <strong>relics</strong>: may the physical remains of saints be venerated as channels of divine grace? Catholic and Orthodox tradition says yes; the Protestant Reformers uniformly condemned this as superstition.</p>`,
+  subtopics: [
+    { id: 'si-invocation', label: 'Invocation of saints' },
+    { id: 'si-icons', label: 'Icons and images' },
+    { id: 'si-relics', label: 'Relics' },
+    { id: 'si-commandment', label: 'The Second Commandment' },
+  ],
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'affirm',
+      position: `The saints in heaven are alive in Christ, interceding for the Church on earth as members of the one Body. Catholics carefully distinguish <em>latria</em> (worship — owed to the Trinity alone) from <em>dulia</em> (veneration — given to saints) and <em>hyperdulia</em> (the special honour due to the Blessed Virgin Mary). Statues and sacred images are aids to devotion that orient the heart to the holy persons they depict — not objects of worship in themselves. The Council of Trent (Session 25) reaffirmed this against Protestant objections. Relics are honoured as the remains of those in whom God's grace dwelt and through whom miracles still occur.`,
+      verses: ['Heb 12:1', 'Rev 5:8', 'Rev 8:3-4', '2 Macc 15:11-16', 'Jas 5:16'],
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'affirm',
+      position: `Icons are not decorations but theology in colour — windows into the heavenly reality. The Seventh Ecumenical Council (Nicaea II, 787) definitively defined that icons receive veneration, not worship; the honour passes through the image to the person depicted, and ultimately to God who is glorified in his saints. To refuse icons is to implicitly deny the Incarnation: in Christ, matter has been taken up into the divine, and matter can therefore mediate the divine. Orthodox Christians ask the saints' intercession, venerate relics, and kiss icons as normal acts of the Christian life.`,
+      verses: ['Heb 12:1', 'Rev 5:8', 'Col 1:18', 'John 1:14', 'Acts 19:11-12'],
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'varies',
+      position: `Anglican practice spans the full spectrum of the tradition. Anglo-Catholic and high-church Anglicans venerate saints, use icons and statues extensively, pray for the intercession of Mary, and observe saint's days with liturgical solemnity. Evangelical Anglicans and those shaped by the 39 Articles sharply reject invocation of saints (Article 22 calls it "a fond thing, vainly invented, grounded upon no warranty of Scripture, but rather repugnant to the Word of God"). Most Anglican practice lies somewhere between these poles — honouring and commemorating the saints without formally invoking their intercession.`,
+      verses: ['Heb 12:1', '1 Tim 2:5', 'Rev 5:8'],
+    },
+    {
+      name: 'Lutheran',
+      stance: 'nuanced',
+      position: `Lutherans honour the saints as inspiring examples of faith and recipients of God's grace, observing many saints' days in the liturgical calendar. But they do not pray to saints or invoke their intercession. The Augsburg Confession (Article 21) permits "the memory of saints" to strengthen our faith but condemns invocation as something that "obscures the glory of Christ and transfers trust in God to the saints." Images and crucifixes are generally permitted in Lutheran churches; the tradition resisted Reformed iconoclasm. Relics are not venerated.`,
+      verses: ['1 Tim 2:5', 'Heb 7:25', 'Heb 12:1'],
+    },
+    {
+      name: 'Reformed / Presbyterian',
+      stance: 'deny',
+      position: `The Reformed tradition is among the most thoroughgoing in its rejection of saint veneration. Prayer to saints violates the unique mediation of Christ (1 Timothy 2:5) and the Second Commandment's prohibition on all mediation through images or created beings. The Westminster Larger Catechism (Q. 108-110) enumerates the sins forbidden by the Second Commandment including "making any representation of God, of all or of the three persons, either inwardly in our mind, or outwardly in any kind of image." The Reformation-era Reformed movement was notably iconoclastic; Calvin viewed images in churches as incompatible with true worship.`,
+      verses: ['Exod 20:4-5', '1 Tim 2:5', 'Heb 4:14-16', 'Deut 4:15-19', 'Acts 10:25-26'],
+    },
+    {
+      name: 'Baptist',
+      stance: 'deny',
+      position: `Baptists reject veneration of saints, prayer to Mary, icons, relics, and all associated devotional practices as unbiblical accretions — in some formulations, as idolatry. Worship and prayer are directed to the Triune God alone (Matthew 4:10); Christ is the only mediator between God and humanity (1 Timothy 2:5); the Second Commandment forbids the use of images in religious devotion. The "communion of saints" means fellowship among living believers and looking to the heavenly cloud of witnesses for encouragement — not invocation of or communication with the departed.`,
+      verses: ['Matt 4:10', '1 Tim 2:5', 'Exod 20:4-5', 'Rev 22:8-9', '1 Cor 8:5-6'],
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'deny',
+      position: `Methodists honour the saints and observe their commemorations liturgically, but prayer is directed to God alone through Christ. The Methodist tradition is Protestant at its core on this question: veneration of Mary, invocation of saints, and the use of icons are not Methodist practices. Methodists are typically less polemical about these Catholic and Orthodox practices than the Reformed tradition, but the practical position is the same — direct access to God through Christ is the norm and the privilege of every believer.`,
+      verses: ['1 Tim 2:5', 'Heb 12:1', 'Heb 7:25'],
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'deny',
+      position: `Pentecostals strongly reject veneration of saints, prayer to Mary, icons, statues, and relics as Catholic departures from biblical Christianity — in many cases as outright idolatry. The believer prays directly to God in Jesus' name, by the Spirit, and the indwelling Spirit gives immediate access that makes all saintly mediation both unnecessary and unbiblical. The direct, experiential encounter with God that Pentecostalism prizes renders the whole apparatus of devotional mediation through images or saints superfluous.`,
+      verses: ['John 14:6', '1 Tim 2:5', 'Matt 4:10', 'Rom 8:26-27'],
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'deny',
+      position: `Early Anabaptists were iconoclastic and opposed all images, statues, and saint veneration as idolatry. The Schleitheim Confession's simplicity extends to worship: stripped of everything not directly commanded in the New Testament, including all devotion to saints or sacred objects. Modern Mennonites maintain this position — worship is offered to God alone, saints are remembered as faithful witnesses (especially the martyrs), and no mediating role is accorded them.`,
+      verses: ['Matt 4:10', '1 Tim 2:5', 'Acts 10:25-26'],
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'deny',
+      position: `Adventists firmly reject veneration of saints, prayer to Mary, and religious images as violations of the Second Commandment and as directly connected to the papacy's departure from biblical Christianity (a recurring Adventist theme in prophetic interpretation). Their doctrine of soul sleep adds a further layer: the dead are unconscious, awaiting the resurrection, and therefore utterly incapable of hearing prayer. To pray to them is not only unbiblical in principle but physically impossible on Adventist anthropology.`,
+      verses: ['Exod 20:4-5', 'Eccl 9:5-6', '1 Tim 2:5', 'Matt 4:10', 'Rev 14:7'],
+    },
+  ],
+  keyVerses: ['Exod 20:4-5', 'Deut 4:15-19', '1 Tim 2:5', 'Heb 4:14-16', 'Heb 7:25', 'Heb 12:1', 'Rev 5:8', 'Rev 8:3-4', 'Matt 4:10', 'Acts 10:25-26', 'Rev 22:8-9', '2 Macc 15:11-16'],
+  historicalNote: 'The Seventh Ecumenical Council (Nicaea II, 787) resolved the Byzantine iconoclasm controversy (726-787; 814-843) by distinguishing veneration from worship and affirming icon veneration as orthodox. The Carolingian Franks accepted the council\'s decisions only partially, and the Latin West remained more ambivalent. The Protestant Reformers — Zwingli most radically, Calvin firmly, Luther more moderately — rejected icons and images in worship. Zurich\'s Grossmünster was whitewashed in 1524; images were removed from Reformed churches across Europe. The Council of Trent (Session 25, 1563) definitively reaffirmed Catholic icon and saint veneration against Protestant objections. The Second Vatican Council\'s Lumen Gentium chapters 7-8 give the modern Catholic theology of the saints.',
+  relatedTopics: ['real-presence', 'papacy', 'sola-scriptura'],
+},
+
+{
+  id: 'purgatory',
+  name: 'Purgatory & Prayer for the Dead',
+  icon: '🕯️',
+  controversy: 92,
+  category: 'Last Things',
+  desc: 'After death, do those destined for heaven undergo purification before entering the beatific vision — and may the prayers of the living assist this passage? Catholic purgatory was a flashpoint of the Reformation and remains one of the sharpest divides between Catholic/Orthodox and Protestant Christianity.',
+  definition: `<p><strong>Purgatory</strong> is the Catholic and (in a more restrained form) Orthodox doctrine that souls destined for heaven but not yet fully purified undergo a final cleansing after death before entering the beatific vision. The prayers of the living — and supremely the sacrifice of the Mass — assist souls in this state.</p>
+    <p>The doctrine became historically explosive because of the late medieval practice of <strong>selling indulgences</strong> — certificates granting relief from purgatorial punishment, sold to fund, among other things, the rebuilding of St Peter's Basilica. It was Luther's 95 Theses against indulgences in 1517 that lit the Reformation fuse. Behind the indulgence scandal lay a serious doctrinal question: is Christ's atoning work on the cross sufficient and complete, or does post-mortem purification add something it did not supply?</p>
+    <p>Three sub-questions interlock: (1) Is there any post-mortem state between death and final judgment? (2) If so, is it purgative or merely anticipatory? (3) Can the prayers of the living affect the state of the departed?</p>`,
+  subtopics: [
+    { id: 'pg-existence', label: 'Does purgatory exist?' },
+    { id: 'pg-prayer', label: 'Prayer for the dead' },
+    { id: 'pg-mass', label: 'The Mass for the dead' },
+    { id: 'pg-intermediate', label: 'The intermediate state' },
+  ],
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'affirm',
+      position: `Defined dogma, most recently at the Council of Florence (1439) and Trent (Session 25, 1563): "Purgatory exists, and the souls there are helped by the suffrages of the faithful, but most of all by the acceptable sacrifice of the altar." The scriptural bases are 2 Maccabees 12:42-46 (Judas Maccabaeus makes atonement for the dead), 1 Corinthians 3:13-15 (some saved "as through fire"), and Matthew 12:32 (sins forgiven "in the age to come" — implying some post-mortem forgiveness is possible). The Catechism (§1030-1032) presents purgatory as the final perfecting of love, not merely punishment.`,
+      verses: ['2 Macc 12:42-46', '1 Cor 3:13-15', 'Matt 12:32', '1 Pet 3:18-20', 'Rev 21:27'],
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'nuanced',
+      position: `Orthodoxy affirms prayer for the departed and an intermediate state, but rejects the specifically Latin doctrine of purgatory as defined at Florence and Trent. The Orthodox understanding is apophatic: the departed undergo a "particular judgment," the prayers of the Church and the Liturgy assist them, and God's mercy works in ways beyond our knowledge. The language of cleansing fire, accumulated temporal punishments, and calculated indulgences belongs to Latin legal categories the Eastern tradition does not share. The mystery is held humbly, not systematised.`,
+      verses: ['2 Macc 12:42-46', 'Luke 16:19-31', '1 Cor 3:13-15', '1 Pet 4:6'],
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'nuanced',
+      position: `Article 22 of the 39 Articles condemned "the Romish Doctrine concerning Purgatory" as "a fond thing, vainly invented, and grounded upon no warranty of Scripture." But the Article targets the late medieval doctrinal and devotional elaboration, not necessarily every prayer for the departed. Anglo-Catholic Anglicans pray for the dead and may hold something close to an intermediate state of purification; evangelical Anglicans reject even prayers for the dead as theologically unnecessary given Christ's complete work. The BCP's prayers for the departed are commendatory rather than purgatorial.`,
+      verses: ['Heb 9:27', 'Luke 23:43', '2 Cor 5:8'],
+    },
+    {
+      name: 'Lutheran',
+      stance: 'deny',
+      position: `Luther rejected purgatory as among the most spiritually dangerous doctrines of Rome — he devoted one of his 95 Theses to the claim that the Pope has no power over souls in purgatory, and the Smalcald Articles call it "a mere deception of the devil." The reasoning is airtight on Lutheran premises: Christ's atonement is complete and sufficient; there is no residual temporal punishment for the justified to serve; to die in Christ is to be immediately with Christ. The indulgence system was the purgatorial doctrine's most toxic fruit, and killing the root kills the fruit.`,
+      verses: ['Luke 23:43', '2 Cor 5:8', 'Phil 1:23', 'Heb 9:27', 'John 19:30'],
+    },
+    {
+      name: 'Reformed / Presbyterian',
+      stance: 'deny',
+      position: `The Westminster Confession (Chapter XXXII, §1) is clear: at death, the souls of the righteous are "received into the highest heavens" and the souls of the wicked are "cast into hell." There is no third place; no intermediate state of purification; no passage prayer can shorten. The Reformed condemnation of purgatory is both biblical and theological: Christ's work is finished (John 19:30), the justified are fully righteous by imputation (Romans 8:1), and to pray for the dead implies they are in a state prayer can affect — which neither Scripture nor reason supports.`,
+      verses: ['Luke 23:43', 'Heb 9:27', 'John 19:30', 'Rom 8:1', '2 Cor 5:8'],
+    },
+    {
+      name: 'Baptist',
+      stance: 'deny',
+      position: `Baptists firmly reject purgatory and prayer for the dead as departures from clear scriptural teaching. Salvation is by grace through faith alone, complete in Christ; 1 John 1:7 promises that "the blood of Jesus his Son cleanses us from all sin" — there is nothing left to purge. At death the believer is immediately with the Lord (2 Corinthians 5:8; Philippians 1:23); the unbeliever is immediately separated. Prayer for the dead is not practised because there is nothing to accomplish by it and no scriptural warrant for it.`,
+      verses: ['2 Cor 5:8', 'Luke 23:43', '1 John 1:7', 'Phil 1:23', 'Heb 9:27'],
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'deny',
+      position: `Wesley rejected the Catholic doctrine of purgatory but speculated about a continued growth in holiness in the intermediate state — not a purgatorial punishment but a continuation of sanctification for those who died imperfectly sanctified. This is a minority Wesleyan position; mainstream Methodism simply affirms that the believer is with Christ immediately at death, and that prayer for the dead is not a Methodist practice. What Christ accomplished is sufficient; no post-mortem supplement is needed.`,
+      verses: ['Luke 16:22-23', '1 Cor 13:12', 'Phil 3:12', 'Heb 12:23'],
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'deny',
+      position: `Pentecostals reject purgatory as unbiblical Catholic invention. The believer is immediately with Christ at death; the lost are immediately separated from God. There is no in-between; no second chance; no prayer that can alter the state of the departed. The proper response to the death of an unbeliever is grief and renewed evangelistic urgency for the living — not masses or prayers for the dead, which would imply either that the dead can still repent or that their status is in doubt.`,
+      verses: ['2 Cor 5:8', 'Luke 23:43', 'Heb 9:27', 'Luke 16:19-31'],
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'deny',
+      position: `Anabaptists rejected purgatory as a Catholic doctrine without clear biblical warrant — one more instance of the Church's tradition overriding the simplicity of the gospel. Some early Anabaptists held "soul sleep" (consciousness suspended between death and resurrection); others affirmed immediate entry into Christ's presence. Either way, purgatory is excluded: there is no intermediate cleansing, no merit to be applied through the Mass, no indulgence to be purchased. The death of a believer is commended to God in hope and trust.`,
+      verses: ['John 5:28-29', '1 Thess 4:13-17', 'Eccl 9:5-6', 'Dan 12:2'],
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'deny',
+      position: `Adventists have a uniquely thorough basis for rejecting purgatory: soul sleep. The dead — righteous and wicked alike — are completely unconscious, knowing nothing (Ecclesiastes 9:5-6), awaiting the resurrection. There is no intermediate state of any kind, let alone a purgatorial one. Prayer for the dead is not merely inadvisable but physically impossible on Adventist anthropology — the dead cannot hear, and they are not in any condition that prayer could affect. The whole doctrine of purgatory is also entangled with what Adventism identifies as the papacy's prophetic role in Daniel and Revelation.`,
+      verses: ['Eccl 9:5-6', 'Eccl 9:10', 'Ps 6:5', 'Ps 115:17', 'John 11:11-14', '1 Thess 4:13-17'],
+    },
+  ],
+  keyVerses: ['2 Macc 12:42-46', '1 Cor 3:13-15', 'Matt 12:32', 'Luke 23:43', 'John 19:30', 'Rom 8:1', '2 Cor 5:8', 'Phil 1:23', 'Heb 9:27', '1 John 1:7', 'Eccl 9:5-6', '1 Thess 4:13-17'],
+  historicalNote: 'Augustine\'s reflections on prayer for the dead (Confessions IX; Enchiridion 109-110) and Gregory the Great\'s teaching on purgatorial fire gave the doctrine its Western patristic shape. The scholastic theologians (Aquinas, Bonaventure) developed the theology of purgatory systematically in the 12th-13th centuries. The late medieval proliferation of indulgences and Masses for the dead provoked Luther\'s 95 Theses (October 31, 1517), making purgatory the immediate trigger of the Reformation. The Council of Florence (1439) defined it dogmatically in response to the Eastern churches; Trent (1563) reaffirmed it against Protestant denial. The Second Vatican Council\'s Lumen Gentium §49-51 gives the modern Catholic theology of the communion of saints and prayer for the dead.',
+  relatedTopics: ['hell', 'salvation-works', 'real-presence'],
+},
 ];
 // ═══════════════════════════════════════════════════════════
 // PATCH 5 — MOVEMENTS array (Outside the Creeds)
@@ -2958,7 +3449,7 @@ const MOVEMENTS = [
     name: 'Mormonism (Latter-day Saints)',
     icon: '📜',
     founded: '1830, by Joseph Smith Jr. (1805–1844)',
-    adherents: '~17.2 million worldwide (LDS Church, 2023 figures)',
+        adherents: '~17.2 million worldwide (LDS Church, 2023 figures)',
     headquarters: 'Salt Lake City, Utah',
     category: 'Restorationist',
     summary: `The Church of Jesus Christ of Latter-day Saints, founded in upstate New York in 1830 by Joseph Smith, teaches that historic Christianity fell into a Great Apostasy after the death of the apostles, and that Smith was called by God to restore the true Church. The LDS Church accepts the Bible "as far as it is translated correctly" alongside three uniquely Mormon scriptures: the Book of Mormon (1830), the Doctrine and Covenants, and the Pearl of Great Price. The Church is led by a prophet (currently Russell M. Nelson, sustained 2018) who is held to receive ongoing divine revelation, supported by the Quorum of the Twelve Apostles. Mormonism's distinctive theology — a corporeal, formerly-human God; the eternal pre-existence of human spirits; the possibility of exaltation to divine status; baptism for the dead; eternal temple marriage — places it in significant tension with the historic creeds while preserving a deep devotion to Jesus Christ as Savior.`,
@@ -9188,4 +9679,27 @@ async function _profileSignOut() {
   // Run periodically — the profile view only renders on demand
   new MutationObserver(fix).observe(document.body, { childList: true, subtree: true });
   fix();
+})();
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 23 — Make verse pills clickable on discussion pages
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// The discussion page (#/d/...) renders proof-text pills as bare <span>
+// elements. The Ledger calls enhanceVersePills() after each render to
+// wrap these in BibleGateway links — that call was missing from the
+// discussion page flow.
+
+(function() {
+  if (typeof showDiscussion !== 'function') return;
+  const _orig = showDiscussion;
+  showDiscussion = async function() {
+    const p = _orig.apply(this, arguments);
+    // Run twice: once immediately (catches the position pills) and once
+    // after the async thread load completes.
+    setTimeout(() => { if (typeof enhanceVersePills === 'function') enhanceVersePills(); }, 0);
+    await p;
+    if (typeof enhanceVersePills === 'function') enhanceVersePills();
+  };
 })();
