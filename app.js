@@ -2708,242 +2708,406 @@ const TOPICS = [
     relatedTopics: ['homosexuality', 'womens-ordination', 'creation'],
   },
 
-  {
-    id: 'sabbath',
-    name: 'The Sabbath: Saturday or Sunday?',
-    icon: '📅',
-    category: 'Worship & Sacraments',
-    controversyLevel: 7,
-    desc: 'Which day is the Christian Sabbath — the seventh-day Saturday of the Hebrew Scriptures, or the first-day Sunday of the New Testament? And what kind of observance does the Lord\'s Day require?',
-    historicalNote: 'The earliest Christian sources (Didache 14, Justin Martyr c. 155, Pliny the Younger c. 112) describe Christians gathering on "the Lord\'s Day" (Sunday, the day of resurrection) rather than the Jewish Sabbath. The Council of Laodicea (c. 364) explicitly required Christians to rest on Sunday rather than Saturday. The Saturday-Sabbath position re-emerged most strongly through the Seventh-day Adventists in the 19th century (Ellen G. White, 1827–1915). The Sunday observance question — strict Sabbatarianism vs. flexible Lord\'s Day vs. no required observance — separately divided Reformed (Puritan strict Sabbath) from Lutheran (more flexible) from continental Reformed practice.',
-    keyVerses: ['Gen 2:2-3', 'Exod 20:8-11', 'Deut 5:12-15', 'Mark 2:27-28', 'Matt 12:1-12', 'Acts 20:7', '1 Cor 16:2', 'Col 2:16-17', 'Rev 1:10', 'Heb 4:9-11'],
-    definition: '<p>The Sabbath debate has two distinct questions that are often run together. First: which day? The Hebrew Scriptures command the seventh day (Saturday) as the day of rest in the fourth commandment. The New Testament shows Christians from the earliest period gathering on the first day (Sunday) for worship, breaking of bread, and offering — the day of the resurrection.</p><p>Second: what kind of observance? Strict Sabbatarians (especially in the Puritan tradition) hold that the fourth commandment\'s requirement of rest applies in full to the Christian Lord\'s Day — no work, no commerce, no recreation, the entire day set aside for worship and rest. More flexible positions hold that the Sabbath principle of rest and worship is observed in Christian practice without the detailed Mosaic restrictions. A third position (held by some Lutherans, by most modern evangelicals, and by Catholics in their characteristic way) holds that the ceremonial-Sabbath law is fulfilled in Christ and what remains is the church\'s discipline of regular corporate worship.</p>',
-    denominations: [
-      {
-        name: 'Roman Catholic',
-        stance: 'nuanced',
-        position: 'The Catechism teaches that Sunday — the Lord\'s Day — has replaced the Jewish Sabbath for Christians, fulfilling its meaning in the light of the resurrection (CCC 2174–2188). Sunday is a day of obligation: Catholics are bound to attend Mass and to abstain from work or activities that hinder worship and rest. The change of day from Saturday to Sunday is held to be by apostolic tradition. The Catechism cites the witness of the early Fathers — Ignatius, Justin Martyr — to show that Sunday observance is from the beginning of the Christian movement.',
-        verses: ['Acts 20:7', '1 Cor 16:2', 'Rev 1:10'],
-      },
-      {
-        name: 'Eastern Orthodox',
-        stance: 'nuanced',
-        position: 'The Orthodox Church observes Sunday as the Lord\'s Day — the day of the resurrection, the "eighth day" that is also the first day of the new creation. Sunday is the primary day of Eucharistic worship, with the Divine Liturgy being the central act of Orthodox life. Saturday retains a particular significance in Orthodox practice — commemorations of the departed, Saturday liturgies, the Saturday-Sunday Vespers cycle — but it is not the Sabbath in the sense of the day of rest replacing Sunday.',
-        verses: ['Rev 1:10', 'Acts 20:7'],
-      },
-      {
-        name: 'Anglican / Episcopal',
-        stance: 'nuanced',
-        position: 'Anglican tradition observes Sunday as the Lord\'s Day. Article VII of the Thirty-Nine Articles addresses the relationship of Old Testament law to Christian practice. Different Anglican traditions have practiced different degrees of Sunday observance: the English Sabbatarian tradition (heavily influenced by Puritanism) maintained strict Sunday rest into the 20th century; broader and high-church Anglicans have practiced more flexible observance centered on Sunday worship.',
-        verses: ['Acts 20:7', 'Col 2:16-17'],
-      },
-      {
-        name: 'Lutheran',
-        stance: 'nuanced',
-        position: 'Luther distinguished sharply between the ceremonial Sabbath of the Old Testament (fulfilled in Christ, no longer binding) and the moral principle of regular worship and rest (which Christian liberty has chosen to observe on Sunday). The Augsburg Confession (Article XXVIII) explicitly addresses the Sabbath: human ordinances about days are not binding on conscience, but Christians keep Sunday by Christian liberty for the sake of good order. The Lutheran tradition has generally been less strict about Sunday observance than the Reformed.',
-        verses: ['Col 2:16-17', 'Rom 14:5-6'],
-      },
-      {
-        name: 'Presbyterian / Reformed',
-        stance: 'affirm',
-        position: 'The Westminster Confession (XXI.7-8) gives the strictest Reformed position: the Sabbath commandment is moral, binding on all people in all ages; the day was changed from the seventh day (Saturday) to the first day (Sunday, "the Christian Sabbath") at the resurrection of Christ. The whole day is to be a "holy rest" — from worldly employments and recreations, given to public and private worship, works of necessity and mercy excepted. The Puritan Sabbatarian tradition, expressed in figures like Nicholas Bownd (1595) and the Westminster divines, has shaped Scottish, Dutch, and American Reformed practice profoundly.',
-        verses: ['Exod 20:8-11', 'Isa 58:13-14', 'Acts 20:7'],
-      },
-      {
-        name: 'Baptist',
-        stance: 'nuanced',
-        position: 'The Baptist tradition has been divided. The Second London Baptist Confession (1689) followed Westminster in affirming the Christian Sabbath as the first day with full Sabbath obligation. American Baptists, particularly Southern Baptists, have generally observed Sunday but with significantly less strict observance than Reformed Sabbatarians. The Seventh-Day Baptists (since the 17th century) — a small but historically significant Baptist group — observe the Saturday Sabbath. Their existence anticipated and influenced the later Adventist Saturday-Sabbath movement.',
-        verses: ['Acts 20:7', 'Col 2:16-17'],
-      },
-      {
-        name: 'Methodist / Wesleyan',
-        stance: 'nuanced',
-        position: 'John Wesley taught the perpetual obligation of the Sabbath, observed on Sunday by Christian practice. The early Methodist movement was strongly Sabbatarian — Sunday rest, attendance at multiple services, no commerce or recreation. Modern Methodism has moderated this significantly. The Lord\'s Day is observed as the central day of worship, but strict Sabbath observance has largely yielded to a less rigorous pattern in most Methodist communities.',
-        verses: ['Acts 20:7', 'Heb 10:25'],
-      },
-      {
-        name: 'Pentecostal',
-        stance: 'nuanced',
-        position: 'Pentecostal traditions universally observe Sunday as the Lord\'s Day but generally do not maintain strict Sabbatarian discipline. The emphasis is on the day of corporate worship — typically multiple Sunday services with significant time given to praise, preaching, and prayer ministry — rather than on the cessation of work in the Reformed Sabbath sense. Wednesday services and other midweek gatherings are common; the Pentecostal week is less Sunday-centred and more multi-day-centred than the traditional Reformed pattern.',
-        verses: ['Acts 2:1', 'Heb 10:25'],
-      },
-      {
-        name: 'Anabaptist / Mennonite',
-        stance: 'nuanced',
-        position: 'The Anabaptist tradition observes Sunday as the Lord\'s Day in keeping with the broader Christian practice but has tended to focus less on Sabbatarian discipline and more on the gathered worship of the congregation. The Schleitheim Confession (1527) does not address Sabbath observance specifically; subsequent Anabaptist tradition has typically followed the broader Protestant practice of Sunday worship with less developed Sabbath theology than the Reformed tradition.',
-        verses: ['Acts 20:7', 'Heb 10:25'],
-      },
-      {
-        name: 'Seventh-day Adventist',
-        stance: 'deny',
-        position: 'The SDA position is the most distinctive: the fourth commandment requires observance of the seventh day (Saturday) as the Sabbath; the change to Sunday observance was an unauthorized post-apostolic development; Saturday Sabbath observance is binding on all Christians as part of the unchanging moral law. SDA Sabbath observance runs from sunset Friday to sunset Saturday and involves abstention from secular work, attendance at worship, fellowship, and rest. Ellen G. White\'s writings ground this in both scriptural argument (the fourth commandment as part of the eternal moral law) and prophetic identification (the Sabbath as the "seal of God" of Revelation 7 and the Sunday as the "mark of the beast" of Revelation 13–14).',
-        verses: ['Exod 20:8-11', 'Isa 66:23', 'Rev 14:6-12'],
-      },
-      {
-        name: 'Seventh-Day Baptist',
-        stance: 'deny',
-        position: 'The Seventh-Day Baptist position predates Adventism by two centuries. SDBs observe the seventh-day Sabbath on biblical grounds (the fourth commandment as moral law; the example of Christ and the apostles) without the Adventist apocalyptic framework. The Seventh-Day Baptist tradition argues that the change from Saturday to Sunday lacks biblical warrant — no New Testament text changes the day; the early church\'s gradual shift was extra-scriptural and not normative.',
-        verses: ['Exod 20:8-11', 'Mark 2:27-28', 'Acts 13:42-44'],
-      },
-      {
-        name: 'Non-denominational',
-        stance: 'varies',
-        position: 'Non-denominational churches universally observe Sunday as the day of corporate worship but practice typically follows the broader evangelical pattern of less-strict Sabbatarianism. Sunday is the day to attend church; the rest of the day may include family time, rest, recreation, or even work depending on personal conviction and circumstance. The Sabbath as a strict day-of-rest discipline is rarely emphasized in non-denominational teaching.',
-        verses: ['Acts 20:7', 'Col 2:16-17'],
-      },
-    ],
-    related: ['baptism', 'eucharist', 'church-authority'],
-  },
+{
+  id: 'sabbath',
+  name: 'The Sabbath: Saturday or Sunday?',
+  icon: '📅',
+  controversy: 52,
+  category: 'Worship & Sacraments',
+  desc: 'Which day is the Christian Sabbath — the seventh-day Saturday of the Hebrew Scriptures, or the first-day Sunday of the New Testament resurrection? And what kind of observance does the Lord\'s Day require — strict rest, flexible worship, or no binding obligation at all?',
+  definition: `<p><strong>The Sabbath debate</strong> has two distinct questions. The first is <em>which day</em>: the fourth commandment specifies the seventh day (Saturday). The New Testament shows Christians gathering on the first day — Sunday, the day of resurrection — from the earliest period (Acts 20:7; 1 Corinthians 16:2; Revelation 1:10; Ignatius of Antioch, <em>Letter to the Magnesians</em> 9, c. 107 AD). Most Christians have worshipped on Sunday since the apostolic era; a minority (Seventh-day Adventists, Seventh-day Baptists) hold Saturday as permanently binding.</p>
+    <p>The second question is <em>what Sunday requires</em>. Three positions exist: <strong>Strict Sabbatarianism</strong> (Westminster/Puritan) — the fourth commandment is permanent moral law, the day was transferred to Sunday at the resurrection, and the whole day is devoted to worship and rest. <strong>Lord's Day observance</strong> (Catholic, Lutheran, Anglican mainstream) — Sunday is the primary day of worship by apostolic authority, but strict Mosaic regulations do not transfer to the New Covenant. <strong>No binding day</strong> (some evangelicals) — the Sabbath is fulfilled in Christ (Colossians 2:16-17; Hebrews 4:9-11) and Sunday worship is wise practice but not legal obligation.</p>
+    <p>The hermeneutical crux: is the fourth commandment <em>moral law</em> (permanent), <em>ceremonial law</em> (fulfilled in Christ), or both?</p>`,
+  subtopics: [
+    { id: 'sb-whichday', label: 'Saturday or Sunday?' },
+    { id: 'sb-transfer', label: 'Was the day transferred?' },
+    { id: 'sb-obligation', label: 'What does Sunday require?' },
+    { id: 'sb-fulfillment', label: 'Sabbath fulfilled in Christ?' },
+  ],
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'nuanced',
+      position: `The Catholic Church teaches that Sunday — the Lord's Day — fulfils rather than replaces the Sabbath, by apostolic authority and divine guidance. The Catechism (§§2174-2188) treats Sunday as the foundation and kernel of the whole liturgical year and imposes a grave obligation of Mass attendance (Canon 1247). The Catechism notes that serious reasons may excuse this obligation (§2181), but in ordinary circumstances missing Sunday Mass without good reason is regarded as a serious moral failure.
+      <br><br>
+      Thomas Aquinas articulated the underlying distinction in <em>Summa Theologiae</em> I-II Q.100 art.3: the <em>moral element</em> of the Sabbath (regular worship and rest owed to God) is permanent natural law; the <em>ceremonial element</em> (the specific day and its Mosaic detail) belonged to the Old Covenant and has been superseded. The Church, through the authority Christ granted to the apostles (Matthew 16:19; 18:18), transferred the observance to Sunday in light of the Resurrection.
+      <br><br>
+      The patristic witness is early and consistent. Ignatius of Antioch (<em>Letter to the Magnesians</em> 9, c. 107 AD) describes Christians as "no longer observing the Sabbath, but living in observance of the Lord's Day." Justin Martyr (<em>First Apology</em> 67, c. 155 AD) describes Sunday as the day Christians gather "because it is the first day, on which God transformed darkness and matter and made the world, and Jesus Christ our Saviour rose from the dead on the same day." Pliny the Younger's letter to the Emperor Trajan (c. 112 AD) describes Christians meeting "on a fixed day before dawn" — a description widely understood as referring to Sunday, though the day is not named explicitly.
+      <br><br>
+      Pope John Paul II's apostolic letter <em>Dies Domini</em> (May 31, 1998) gives the most developed modern Catholic theology of Sunday, integrating the creation (dies Domini — the day of the Lord), resurrection (dies Christi — the day of Christ), community (dies Ecclesiae — the day of the Church), and eschatological (dies hominis — the day of humanity) dimensions into a comprehensive account.`,
+      verses: ['Exod 20:8-11', 'Acts 20:7', '1 Cor 16:2', 'Rev 1:10', 'Matt 16:19', 'John 20:19-26'],
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'nuanced',
+      position: `Orthodoxy observes Sunday as the Lord's Day — the day of Resurrection and the "eighth day" of the new creation — as the primary day of Eucharistic worship. This practice is attested from the earliest patristic sources: Ignatius of Antioch (<em>Letter to the Magnesians</em> 9, c. 107 AD) writes that Christians "have come to the possession of a new hope, no longer observing the Sabbath, but living in observance of the Lord's Day, on which also our life has sprung up again by him." The Didache (14, c. 90-100 AD) likewise presupposes Sunday Eucharist: "On the Lord's Day of the Lord come together, break bread and hold Eucharist."
+      <br><br>
+      Saturday retains significant liturgical weight in Orthodox practice. It is the primary day commemorating the departed, with special Saturday liturgies throughout the year — the Saturday of Souls commemorations are among the most attended services outside the great feasts. The Great Sabbath (Holy Saturday) is theologically central: Christ rests in the tomb as God rested after creation, making Holy Saturday the true eschatological Sabbath before the new creation breaks open on Sunday. This dual honouring of Saturday and Sunday is distinctive to Orthodoxy and reflects its deeper continuity with the Jewish liturgical calendar.
+      <br><br>
+      Orthodox theology reads the Sabbath typologically rather than through Western categories of moral versus ceremonial law. The seventh day pointed forward to the eschatological rest inaugurated by Christ's resurrection (Hebrews 4:9-11). Sunday worship is the eschatological fulfilment of what the Sabbath promised, not its abolition or mere replacement. Alexander Schmemann's <em>Introduction to Liturgical Theology</em> (1966) and <em>For the Life of the World</em> (1963) give the most developed Orthodox theology of the Lord's Day within its broader sacramental and eschatological framework.`,
+      verses: ['Rev 1:10', 'Acts 20:7', 'John 20:19-26', 'Heb 4:9-11', 'Col 2:16-17'],
+    },
+    {
+      name: 'Reformed / Presbyterian',
+      stance: 'affirm',
+      position: `The Reformed tradition holds the most demanding doctrine of Sunday Sabbath observance in Protestantism. The Westminster Confession of Faith (1646), Chapter XXI §7-8, states: "he hath particularly appointed one day in seven for a Sabbath... from the resurrection of Christ, was changed into the first day of the week, which in Scripture is called the Lord's Day, and is to be continued to the end of the world as the Christian Sabbath." The Larger Catechism (Q.117) specifies that the whole day be devoted to "public and private exercises of God's worship" with all "worldly employments and recreations" ceasing, works of necessity and mercy excepted.
+      <br><br>
+      The theological architecture classifies the fourth commandment as <em>moral law</em> — permanent and universal — rather than ceremonial law. The Sabbath predates Sinai (Genesis 2:2-3), establishing it as a creation ordinance binding all humanity rather than merely Israel under Moses. The specific day changed at the resurrection; the obligation to keep one day in seven holy did not. This distinction is developed at length by John Murray in <em>Collected Writings Vol. 1</em> (Banner of Truth, 1976) and by Iain Campbell's <em>On the First Day of the Week: God, the Christian, and the Sabbath</em> (Day One Publications, 2005).
+      <br><br>
+      The practical tradition shaped by this theology was culturally significant. The Scottish Sabbath, the Puritan Sunday in New England, and the Dutch Sunday rest tradition were all products of Westminster Sabbatarianism, keeping Sunday strictly until the mid-20th century. Nicholas Bownd's <em>The Doctrine of the Sabbath</em> (1595) was the foundational Puritan Sabbatarian text.
+      <br><br>
+      The position faces a sustained exegetical challenge from within broadly evangelical scholarship. The volume <em>From Sabbath to Lord's Day</em> (edited by D.A. Carson, Zondervan, 1982) — a collaborative work by Baptist, Reformed, and Anglican scholars — examines whether the Westminster position survives the New Testament exegesis, particularly Colossians 2:16-17, which explicitly lists the Sabbath among the fulfilled ceremonial shadows, and Romans 14:5-6, which treats day observance as a matter of conscience. The debate within confessional Protestantism on this question remains live.`,
+      verses: ['Gen 2:2-3', 'Exod 20:8-11', 'Isa 58:13-14', 'Acts 20:7', 'Rev 1:10', 'Col 2:16-17', 'Heb 4:9-11', 'Rom 14:5-6'],
+    },
+    {
+      name: 'Lutheran',
+      stance: 'nuanced',
+      position: `Luther distinguished sharply between the ceremonial Sabbath — fulfilled in Christ, no longer binding — and the moral principle of regular corporate worship, which Christian liberty observes on Sunday for good order and the ministry of the Word. The Large Catechism (1529), Third Commandment: "Since holidays are observed anyway, such observance should be used for hearing God's Word, so that the special function of this day should be the ministry of the Word for the young and the mass of poor people."
+      <br><br>
+      The Augsburg Confession (Article XXVIII) states explicitly that the change from Saturday to Sunday was made by the Church for practical reasons, not by divine command. Melanchthon's Apology of the Augsburg Confession (Article XXVIII) makes the point clearly: the change from Saturday to Sunday was made by the Church for practical reasons rather than divine command, and no human ordinance about days can bind the Christian conscience before God.
+      <br><br>
+      This is markedly less strict than the Westminster position. Lutheranism rejects the idea that the fourth commandment as moral law requires strict Sunday rest. What the commandment requires is regular gathering around Word and Sacrament; the rest of Sunday is governed by Christian wisdom. This distinction between the <em>substance</em> of the commandment (regular worship) and its <em>form</em> (specific day and rest regulations) is characteristic of Lutheran hermeneutics. Robert Kolb and Timothy Wengert's critical edition of <em>The Book of Concord: The Confessions of the Evangelical Lutheran Church</em> (Fortress Press, 2000) is the standard scholarly source for Lutheran confessional positions.
+      <br><br>
+      In practice, LCMS and WELS require regular Sunday worship as a matter of congregational discipline and Christian responsibility, though not as a binding divine law that condemns those who miss. The ELCA holds a similar practical position while being more flexible in its theological articulation.`,
+      verses: ['Col 2:16-17', 'Rom 14:5-6', 'Acts 20:7', 'Heb 10:25', 'Gal 4:10-11'],
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'nuanced',
+      position: `Historic Anglicanism upheld Sunday as the Lord's Day with binding force. The Homily on the Time and Place of Prayer (1563), part of the Second Book of Homilies authorised by the 39 Articles, treats Sunday rest and worship as obligatory. Richard Hooker's <em>Of the Laws of Ecclesiastical Polity</em> (1594-1597), Book V, gives the mature Anglican treatment: Sunday observance rests on both divine command and apostolic tradition, though the specific Mosaic regulations do not transfer wholesale to the New Covenant.
+      <br><br>
+      The 39 Articles are silent on specific Sunday obligations, leaving space for both Puritan-leaning and more flexible traditions to coexist within Anglicanism. The Puritan wing of the Church of England pushed for strict Sunday observance in the 17th century; the Caroline divines resisted this, producing the controversy over the Declaration of Sports (first issued by James I in 1618, reissued by Charles I in 1633), which explicitly permitted Sunday afternoon recreations. Archbishop Laud's enforcement of the Declaration was a significant grievance in the lead-up to the English Civil War, illustrating how politically charged the Sabbath question became.
+      <br><br>
+      Modern Anglican practice is varied. The Church of England's <em>Common Worship</em> (2000) reflects a high theology of Sunday as the primary day of Eucharistic worship without imposing strict Sabbatarian regulation. Anglo-Catholic and evangelical Anglicans share Sunday Eucharist as their common ground. The Episcopal Church (USA) and Anglican Church of Canada treat Sunday attendance as the norm of Christian community life without framing it in legal Sabbatarian terms.`,
+      verses: ['Acts 20:7', 'Heb 10:25', 'Rev 1:10', 'Exod 20:8-11', '1 Cor 16:2'],
+    },
+    {
+      name: 'Baptist',
+      stance: 'nuanced',
+      position: `Baptist practice universally observes Sunday as the primary day of corporate worship, but the theological grounding varies. The Second London Baptist Confession (1689) follows the Westminster Confession closely on the Sabbath, affirming the fourth commandment as moral law and Sunday as the Christian Sabbath (Chapter XXII §7-8). This represents the confessional Calvinist wing of the Baptist tradition and remains the position of Reformed Baptist churches today.
+      <br><br>
+      Most contemporary Baptist churches hold a lighter position: Sunday worship is the normative Christian practice rooted in apostolic tradition and the resurrection, but strict Sabbatarian obligations do not bind the believer's conscience. The Baptist Faith and Message (2000) does not address specific Sunday obligations beyond affirming the Lord's Day as a day of worship and rest, reflecting the broader evangelical Baptist move away from Sabbatarian legalism.
+      <br><br>
+      Seventh-day Baptists are a historically significant exception. The first English Seventh-day Baptist congregation traces to the 1650s, with figures including Francis Bampfield (1614-1684) and the physician Peter Chamberlen (1601-1683) among its early advocates. The first American Seventh-day Baptist congregation was established at Newport, Rhode Island, in 1671. Their core argument is straightforwardly biblical: no New Testament text explicitly transfers the Sabbath from Saturday to Sunday; Sunday observance developed historically rather than by divine command.`,
+      verses: ['Acts 20:7', 'Col 2:16-17', 'Rom 14:5-6', 'Heb 10:25', 'Exod 20:8-11'],
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'nuanced',
+      position: `John Wesley taught that Sunday is the Lord's Day and that regular corporate worship is a binding Christian obligation. His sermon "The More Excellent Way" (1787) and his repeated insistence on frequent communion reflect his conviction that Sunday gathering around Word and Sacrament is not optional for the serious Christian. Wesley himself preached multiple times most Sundays throughout his ministry.
+      <br><br>
+      Early Methodism was structured around Sunday: the society meeting, the class meeting, the love feast, and the watch-night service gave the whole day a framework of corporate devotion. As Methodism became an independent denomination after Wesley's death in 1791, Sunday worship became its central organising reality. The Methodist tradition has consistently treated Sunday attendance as a serious Christian responsibility without imposing the Westminster tradition's legal Sabbatarian framework.
+      <br><br>
+      Modern United Methodist practice retains Sunday as the primary day of worship without strict Sabbatarian regulation. The Wesleyan-Holiness denominations — Church of the Nazarene, Free Methodist Church, Wesleyan Church — tend toward more conservative Sunday observance than mainstream United Methodism, reflecting their Holiness movement inheritance. None of these bodies hold a formal Saturday Sabbath position.`,
+      verses: ['Acts 20:7', 'Heb 10:25', 'Rev 1:10', '1 Cor 16:2', 'Exod 20:8-11'],
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'nuanced',
+      position: `Pentecostals universally observe Sunday as the Lord's Day and the primary day of corporate worship. The theological grounding follows the broader evangelical pattern: Sunday worship is rooted in apostolic practice and the resurrection, rather than in a strict fourth-commandment obligation. The Assemblies of God, Church of God (Cleveland, Tennessee), Church of God in Christ, and other classical Pentecostal denominations do not hold formal Sabbatarian positions.
+      <br><br>
+      What distinguishes Pentecostal Sunday practice is its intensity rather than its restrictiveness. Multiple services (morning and typically evening), extended worship, prayer ministry, altar calls, and spontaneous congregational participation are characteristic. The Lord's Day is understood as the day of the Spirit's manifest presence in the gathered community — a conviction that shapes practice more powerfully than any legal obligation could.
+      <br><br>
+      Wednesday night services, Friday night youth services, and other midweek gatherings mean that Pentecostal communities are less exclusively Sunday-centred than many other traditions. The Spirit moves when the community gathers; the community therefore gathers frequently rather than fulfilling a minimal weekly obligation.`,
+      verses: ['Acts 2:1-4', 'Heb 10:25', 'Acts 20:7', 'Rev 1:10'],
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'nuanced',
+      position: `The Anabaptist tradition observes Sunday as the Lord's Day for corporate worship, following the broader Christian pattern, but has not developed an elaborate theology of Sabbath observance. The Schleitheim Confession (1527) is silent on the Sabbath question entirely, focusing on the issues immediately pressing for the Radical Reformation: baptism, the ban, the Lord's Supper, separation, shepherds, the sword, and the oath.
+      <br><br>
+      Early Anabaptist worship was shaped more by necessity than theology: gathered worship occurred in homes, barns, and forests under persecution, whenever the community could safely assemble. This communal rather than legal understanding of Sunday worship persisted. Mennonite Sunday gathering is the community's act of covenant renewal and mutual edification, not the discharge of a religious duty to a prescribed day.
+      <br><br>
+      Old Order Amish and Old Order Mennonite communities observe Sunday very conservatively — no work, no commerce, no recreation; the day devoted entirely to worship (held in rotating homes rather than church buildings), visiting, and rest. More mainstream Mennonite and Brethren in Christ congregations hold Sunday worship as the central act of community life without regulating the rest of the day. John Howard Yoder's <em>The Politics of Jesus</em> (Eerdmans, 1972) and the broader Anabaptist theological tradition emphasise the gathered community's embodied life together over individual legal obligation.`,
+      verses: ['Acts 20:7', 'Heb 10:25', 'Matt 18:20', '1 Cor 16:2'],
+    },
+    {
+      name: 'Seventh-day Adventist',
+      stance: 'deny',
+      position: `The SDA position is the most fully developed Saturday-Sabbath theology in modern Christianity. Adventists hold that the seventh-day Sabbath (Saturday, sundown Friday to sundown Saturday) is God's eternal sign of his creative and redemptive lordship, permanently binding on all Christians, never abolished, and never legitimately transferred to Sunday.
+      <br><br>
+      The argument has several interlocking layers. <em>Biblically</em>: the Sabbath commandment is part of the Decalogue, which Adventists treat as the permanent moral law of God. No New Testament text explicitly commands Sunday worship or abolishes the Saturday Sabbath. The first-day references (Acts 20:7; 1 Corinthians 16:2) are insufficient to establish a divine command and merely record occasional practice. <em>Historically</em>: the shift to Sunday observance occurred gradually in the second and third centuries, driven in part by anti-Jewish sentiment in the Roman Empire and consolidated by Constantine's Sunday edict of 321 AD and subsequent councils. The Council of Laodicea (late 4th century, traditionally placed between 363 and 380 AD), Canon 29, required Christians to rest on Sunday rather than Saturday — widely cited by Adventists as evidence that Saturday observance was widespread enough to require suppression. <em>Prophetically</em>: Ellen White's <em>The Great Controversy</em> (1858, substantially expanded 1884 and 1888) identifies the Sunday-Saturday controversy as the central eschatological conflict of the last days.
+      <br><br>
+      The historical case was given systematic scholarly treatment in Samuele Bacchiocchi's <em>From Sabbath to Sunday</em> (Pontifical Gregorian University Press, 1977), a doctoral dissertation completed at the Pontifical Gregorian University in Rome. Bacchiocchi's historical argument — that Sunday observance developed in Rome under anti-Jewish pressure rather than from apostolic command — engaged the primary sources seriously and provoked significant academic response, though his theological conclusions are not widely shared outside Adventist circles. D.A. Carson's edited volume <em>From Sabbath to Lord's Day</em> (Zondervan, 1982) is the most substantial evangelical scholarly response.`,
+      verses: ['Exod 20:8-11', 'Gen 2:2-3', 'Isa 66:23', 'Luke 4:16', 'Acts 13:42-44', 'Rev 14:6-12', 'Mark 2:27-28'],
+    },
+    {
+      name: 'Seventh-Day Baptist',
+      stance: 'deny',
+      position: `Seventh-day Baptists represent the oldest continuous Protestant Saturday-Sabbath tradition, predating Seventh-day Adventism by two centuries. The movement emerged in England in the 1650s among General and Particular Baptists who became convinced through Scripture study that the Saturday Sabbath had never been divinely transferred to Sunday. Francis Bampfield (1614-1684), a Oxford-educated clergyman who was imprisoned for his Nonconformist convictions and subsequently became a Seventh-day Baptist pastor in London, and the prominent physician Peter Chamberlen (1601-1683) were among the leading early advocates. The first American Seventh-day Baptist congregation was established at Newport, Rhode Island, in 1671 by Stephen Mumford, who had emigrated from England.
+      <br><br>
+      The SDB position is exegetically similar to the SDA case but without the prophetic framework of Ellen White or the specific Adventist health and dietary theology. The argument is straightforwardly biblical: the fourth commandment specifies the seventh day; no New Testament text changes it; Sunday became the normative Christian day through historical development rather than apostolic command. Seventh-day Baptists explicitly reject the Adventist identification of Sunday worship as the mark of the beast, maintaining ecumenical relationships with Sunday-keeping Christians and participating in the Baptist World Alliance.
+      <br><br>
+      The Adventist Saturday Sabbath conviction spread into the proto-Adventist Millerite movement primarily through T.M. Preble's 1845 article in the <em>Hope of Israel</em> journal, which itself drew substantially on Seventh-day Baptist arguments. Joseph Bates (1792-1872), one of the principal founders of the Seventh-day Adventist Church, was persuaded through this literature and became the leading advocate of the Saturday Sabbath among early Adventists. The Seventh-day Baptist General Conference, organised in 1802, is the oldest Sabbatarian denominational body in America and publishes the <em>Sabbath Recorder</em>, in continuous publication since 1844.`,
+      verses: ['Exod 20:8-11', 'Gen 2:2-3', 'Mark 2:27-28', 'Luke 4:16', 'Acts 13:42-44', 'Heb 4:9-11'],
+    },
+  ],
+  keyVerses: ['Gen 2:2-3', 'Exod 20:8-11', 'Deut 5:12-15', 'Isa 58:13-14', 'Mark 2:27-28', 'Matt 12:1-12', 'Acts 20:7', '1 Cor 16:2', 'Col 2:16-17', 'Rev 1:10', 'Heb 4:9-11', 'Rom 14:5-6'],
+  historicalNote: 'The earliest Christian sources describe Sunday rather than Saturday worship from the apostolic era. The Didache (14, c. 90-100 AD) instructs communities to gather on "the Lord\'s Day of the Lord." Ignatius of Antioch (c. 107 AD) describes Christians as "no longer observing the Sabbath." Justin Martyr\'s <em>First Apology</em> (67, c. 155 AD) gives the first extended description of Sunday worship. Pliny the Younger\'s letter to Emperor Trajan (c. 112 AD) describes Christians meeting "on a fixed day before dawn" — widely understood as Sunday though the day is not named. Constantine\'s Sunday edict of 321 AD gave Sunday legal protection in the Roman Empire but did not originate Christian Sunday observance. The Council of Laodicea (late 4th century, traditionally placed between 363 and 380 AD), Canon 29, prohibited Sabbath rest on Saturday while requiring Sunday observance. Nicholas Bownd\'s <em>The Doctrine of the Sabbath</em> (1595) was the foundational Puritan Sabbatarian text, influencing the Westminster Assembly (1643-1649). D.A. Carson\'s edited volume <em>From Sabbath to Lord\'s Day</em> (Zondervan, 1982) remains the most thorough evangelical scholarly engagement with the exegetical and historical questions from a broadly evangelical perspective.',
+  relatedTopics: ['real-presence', 'baptism', 'sola-scriptura'],
+},
 
- {
-    id: 'mary',
-    name: 'Mary, Mother of Our Lord',
-    icon: '🌹',
-    category: 'Person of Christ',
-    controversyLevel: 9,
-    desc: 'No figure has divided Catholic and Protestant Christianity more sharply than the mother of Jesus. From Theotokos at Ephesus (431) to the Immaculate Conception (1854) and the Assumption (1950), Catholic and Orthodox Christians have honoured Mary with progressively higher titles; most Protestants have progressively reduced her role.',
-    historicalNote: 'The Council of Ephesus (431) affirmed Mary as Theotokos ("God-bearer") against Nestorius. The title was first a Christological claim (Christ is one person, not two) but it elevated Mary by implication. The doctrine of Mary as Aeiparthenos ("Ever-Virgin") was reinforced at the Second Council of Constantinople (553). Pius IX defined the Immaculate Conception in <em>Ineffabilis Deus</em> (December 8, 1854); Pius XII defined the bodily Assumption in <em>Munificentissimus Deus</em> (November 1, 1950) — the last ex cathedra papal definition to date. Luther maintained substantial Marian piety personally throughout his life; Calvin accepted perpetual virginity (commentary on Matthew 1:25). The strong Protestant minimisation of Mary is largely a post-Reformation development that accelerated in the 19th and 20th centuries as Catholic Marian doctrine grew more elaborate.',
-    keyVerses: ['Luke 1:26–38', 'Luke 1:39–56', 'Luke 2:34–35', 'John 2:1–11', 'John 19:25–27', 'Acts 1:14', 'Rev 12:1–6', 'Gen 3:15', 'Isa 7:14', 'Matt 13:55–56'],
-    definition: '<p>The Marian debate has several distinct layers that are often run together. The earliest — affirmed by virtually all historic Christianity — is that Mary is the mother of Jesus Christ, who is both God and man; therefore Mary is the Mother of God (<em>Theotokos</em>). The Council of Ephesus (431) made this binding on all Christians, and Protestant confessions typically affirm it.</p><p>The second layer is Mary\'s <em>perpetual virginity</em> — that she had no other children after Jesus. This was held by virtually all major Reformers (Luther, Calvin, Zwingli) and was the dominant Protestant view into the 18th century. Most modern Protestants reject it, citing the Gospel references to Jesus\' "brothers" (Matt 13:55; Mark 6:3), which Catholics and Orthodox interpret as cousins or as Joseph\'s children from a prior marriage.</p><p>The third layer — held by Catholics, not by Orthodox — is the <em>Immaculate Conception</em>: Mary was conceived without original sin. Distinctively Catholic, defined 1854.</p><p>The fourth is the <em>Assumption</em> (Catholic, 1950) / <em>Dormition</em> (Orthodox tradition): she did not see corruption; her body was taken up to heavenly glory.</p><p>The fifth is <em>Marian intercession and devotion</em> — the rosary, the Hail Mary, asking Mary to pray for us. Catholic and Orthodox practice; Protestant rejection.</p>',
-    denominations: [
-      {
-        name: 'Roman Catholic',
-        stance: 'affirm',
-        position: 'The Catholic Church confesses the full range of Marian doctrines: Theotokos (Council of Ephesus, 431), perpetual virginity (Lateran Council, 649), the Immaculate Conception (Pius IX, <em>Ineffabilis Deus</em>, 1854) — Mary was preserved from original sin from the moment of her conception by a special grace from God — and the bodily Assumption (Pius XII, <em>Munificentissimus Deus</em>, 1950). The Catechism (CCC 484–511, 963–975) sets out the full Marian theology: Mother of God, Mother of the Church, Mediatrix of all graces (a title under continued theological development), and the New Eve. Marian devotion — the Rosary, the Litany of Loreto, Marian feast days, pilgrimages to Lourdes, Fátima, and Guadalupe — is encouraged. Veneration of Mary (hyperdulia, the highest level of veneration short of latria, the worship reserved to God alone) is distinguished sharply from worship.',
-        verses: ['Luke 1:28', 'Luke 1:42', 'Luke 1:48', 'Gen 3:15', 'Rev 12:1'],
-      },
-      {
-        name: 'Eastern Orthodox',
-        stance: 'affirm',
-        position: 'The Orthodox Church honours Mary as Theotokos, Aeiparthenos (Ever-Virgin), Panagia (All-Holy), and Mother of God — "more honourable than the Cherubim, and beyond compare more glorious than the Seraphim," in the prayer of St Romanos. Orthodox doctrine differs from Catholic on two points: (1) the Immaculate Conception is <em>not</em> affirmed — Orthodox theology holds a different account of original sin (ancestral consequence rather than inherited guilt) that makes the Catholic dogma both unnecessary and problematic; (2) the <em>Dormition</em> ("falling asleep") rather than the bodily Assumption — Orthodox tradition holds that Mary died, and three days later her body was taken up, but the mechanism is not dogmatically defined. Marian veneration in Orthodox liturgy is constant; icons of the Theotokos are central to Orthodox piety.',
-        verses: ['Luke 1:28', 'Luke 1:48'],
-      },
-      {
-        name: 'Anglican / Episcopal',
-        stance: 'nuanced',
-        position: 'Anglican Marian theology spans a wide spectrum. Article XV of the Thirty-Nine Articles affirms that Christ alone was without sin, which is generally read as excluding the Immaculate Conception. The Anglo-Catholic tradition (since the Oxford Movement of the 1830s) restored substantial Marian devotion — the Rosary, Marian feast days, the title Theotokos. Low-church and evangelical Anglicans minimise Marian doctrine, honouring her as the mother of Jesus but rejecting Marian devotion. Perpetual virginity is affirmed in some Anglican traditions (Cranmer, the Caroline divines) and rejected in others. The Anglican-Roman Catholic International Commission\'s <em>Mary: Grace and Hope in Christ</em> (2005) is the most sustained recent ecumenical Anglican-Catholic engagement on Mary.',
-        verses: ['Luke 1:28', 'Heb 4:15'],
-      },
-      {
-        name: 'Lutheran',
-        stance: 'nuanced',
-        position: 'Luther himself maintained significant Marian piety throughout his life — preaching on Mary, accepting perpetual virginity, retaining several Marian feast days in the Lutheran calendar. The Lutheran Confessions (Smalcald Articles, Formula of Concord) explicitly affirm Mary as Theotokos and Ever-Virgin. However, the Reformation principle of Christ alone as mediator (1 Tim 2:5) led Lutherans to reject Marian intercession and devotion as compromising the unique mediation of Christ. Modern Lutheran practice varies: confessional Lutherans (LCMS, WELS) retain the historical Lutheran position on Theotokos and perpetual virginity while rejecting Catholic Marian dogmas; ELCA Lutheran practice has minimal Marian content. The Immaculate Conception and Assumption are universally rejected as without biblical warrant.',
-        verses: ['Luke 1:28', '1 Tim 2:5'],
-      },
-      {
-        name: 'Presbyterian / Reformed',
-        stance: 'deny',
-        position: 'The Reformed tradition affirms Mary as the mother of our Lord but rejects the developed Marian doctrines of Catholicism. Calvin himself accepted perpetual virginity (<em>Harmony of the Gospels</em>, on Matthew 1:25) and called Mary "the holy Virgin." The Westminster Confession (1647), however, gives Mary minimal mention — she is the human mother of the divine Christ, no more. The Immaculate Conception and Assumption are rejected as without biblical warrant and as compromising the unique sinlessness of Christ. Marian intercession and devotion are rejected as idolatrous, violating the sole mediation of Christ (1 Tim 2:5) and the regulative principle of worship.',
-        verses: ['1 Tim 2:5', 'Luke 11:27–28'],
-      },
-      {
-        name: 'Baptist',
-        stance: 'deny',
-        position: 'Baptist Marian theology is minimal. Mary is honoured as the faithful mother of our Lord and as a model of obedience to God\'s call. The Catholic Marian dogmas — Immaculate Conception, Assumption, Mediatrix — are rejected as Roman corruption without biblical foundation. Perpetual virginity is generally rejected on the basis of the Gospel references to Jesus\' "brothers and sisters" (Matt 13:55–56; Mark 6:3). Marian intercession is rejected as compromising the unique mediation of Christ. Baptist worship gives Mary no special place beyond the historical narrative of the Incarnation.',
-        verses: ['Matt 13:55–56', '1 Tim 2:5'],
-      },
-      {
-        name: 'Methodist / Wesleyan',
-        stance: 'nuanced',
-        position: 'John Wesley affirmed Mary as "the blessed virgin" and accepted perpetual virginity. Modern Methodist theology gives Mary an honoured but limited place — the faithful mother of Jesus, a model of discipleship — without the developed Marian devotion of Catholicism. The Catholic dogmas of Immaculate Conception and Assumption are rejected. Methodist worship may include occasional Marian content (especially in liturgical Methodist traditions) but does not feature Mary as a central object of devotion.',
-        verses: ['Luke 1:38', 'Luke 1:48'],
-      },
-      {
-        name: 'Pentecostal',
-        stance: 'deny',
-        position: 'Pentecostal Marian theology is minimal. Mary is honoured as the mother of Jesus and as a recipient of the Spirit\'s power at the Annunciation (Luke 1:35) and at Pentecost (Acts 1:14), but Marian devotion is rejected as Catholic accretion. The Pentecostal emphasis on direct relationship with Christ and the Spirit excludes intermediary Marian roles. Catholic Marian dogmas are rejected.',
-        verses: ['Luke 1:35', 'Acts 1:14'],
-      },
-      {
-        name: 'Anabaptist / Mennonite',
-        stance: 'deny',
-        position: 'Anabaptist Marian theology is minimal. Mary is honoured as the mother of Jesus. A distinctive — and ultimately rejected — early Anabaptist position was that of Menno Simons (1496–1561), who held that Christ\'s flesh was not derived from Mary but was a "heavenly flesh" that passed through her. This Christology (closely tied to Melchior Hoffmann) was rejected by most other Anabaptist traditions and is no longer held by mainstream Mennonites. Modern Mennonite Marian theology is broadly Protestant.',
-        verses: ['Luke 1:35'],
-      },
-      {
-        name: 'Non-denominational',
-        stance: 'deny',
-        position: 'Non-denominational evangelical churches give Mary minimal theological attention. She is honoured as the mother of Jesus and as an exemplar of faith. Catholic Marian doctrines are universally rejected. Marian devotion is generally absent from non-denominational worship.',
-        verses: ['Luke 1:38'],
-      },
-    ],
-    relatedTopics: ['papacy', 'real-presence', 'sola-scriptura'],
-  },
+{
+  id: 'mary',
+  name: 'Mary, Mother of Our Lord',
+  icon: '🌹',
+  controversy: 78,
+  category: 'Doctrine of God',
+  desc: 'No figure divides Catholic and Protestant Christianity more sharply than the mother of Jesus. From Theotokos at Ephesus (431) through the Immaculate Conception (1854) and the Assumption (1950), Catholic and Orthodox Christians have developed an elaborate Mariology; most Protestants have progressively minimised her role. The question touches Christology, ecclesiology, and the nature of doctrinal development.',
+  definition: `<p>The Marian debate has several distinct layers that must not be collapsed.</p>
+    <p><strong>Layer 1 — Theotokos (God-bearer).</strong> The Council of Ephesus (431 AD) declared Mary <em>Theotokos</em> against Nestorius, who preferred <em>Christotokos</em> (Christ-bearer). This was primarily a <em>Christological</em> claim: because Christ is one person, not two, the one Mary bore is truly God. Most major Christian traditions accept this title as Christologically necessary.</p>
+    <p><strong>Layer 2 — Perpetual virginity (Aeiparthenos).</strong> The doctrine that Mary had no other children after Jesus, affirmed at the Lateran Council of 649 AD. Accepted by Luther, Calvin, and Zwingli; rejected by most modern Protestants on the basis of the Gospel references to Jesus' brothers and sisters.</p>
+    <p><strong>Layer 3 — Immaculate Conception.</strong> Defined by Pius IX in <em>Ineffabilis Deus</em> (December 8, 1854): Mary was conceived without original sin. A distinctively Roman Catholic dogma — Eastern Orthodoxy does not accept it, holding a different anthropology that makes it both unnecessary and problematic on Eastern terms.</p>
+    <p><strong>Layer 4 — Assumption / Dormition.</strong> Defined by Pius XII in <em>Munificentissimus Deus</em> (November 1, 1950): Mary was taken up body and soul into heavenly glory. The Orthodox affirm the Dormition (Mary's death and subsequent bodily glorification) without the precise Catholic formulation.</p>
+    <p><strong>Layer 5 — Marian intercession and devotion.</strong> The rosary, the Hail Mary, apparitions (Guadalupe 1531, Lourdes 1858, Fatima 1917), and invocation of Mary as Mediatrix. Catholic and Orthodox practice; rejected by Protestants.</p>`,
+  subtopics: [
+    { id: 'ma-theotokos', label: 'Theotokos — God-bearer' },
+    { id: 'ma-virginity', label: 'Perpetual virginity' },
+    { id: 'ma-immaculate', label: 'Immaculate Conception' },
+    { id: 'ma-assumption', label: 'Assumption / Dormition' },
+    { id: 'ma-intercession', label: 'Marian intercession' },
+  ],
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'affirm',
+      position: `The Catholic Church confesses the full range of Marian dogmas as binding on all Catholics. The four defined dogmas are: (1) <em>Theotokos</em> / Mother of God (Ephesus, 431 AD); (2) Perpetual Virginity (Lateran Council, 649 AD); (3) Immaculate Conception (<em>Ineffabilis Deus</em>, Pius IX, December 8, 1854); (4) Bodily Assumption (<em>Munificentissimus Deus</em>, Pius XII, November 1, 1950). The third and fourth are the only formally proclaimed ex cathedra papal definitions in the history of the Catholic Church.
+      <br><br>
+      Vatican II's Dogmatic Constitution <em>Lumen Gentium</em> Chapter VIII (1964) gives the most authoritative modern Catholic treatment, deliberately situating Mary within the doctrine of the Church rather than treating her in isolation — a significant decision that resisted proposals to issue a separate Marian document. Mary is Mother of the Church (proclaimed by Paul VI at Vatican II's close), the New Eve, and the model and first fruit of redemption. The Catechism (§§484-511, §§963-975) gives the systematic treatment.
+      <br><br>
+      The title <em>Mediatrix of All Graces</em> has been used by popes and theologians for centuries; formal dogmatic definition remains under discussion. The proposal to define Mary as <em>Co-Redemptrix</em> — a title used by John Paul II on a number of occasions — has been consistently discouraged from formal dogmatic definition by the Congregation for the Doctrine of the Faith, which regards the title as potentially misleading in its current formulation, even while affirming the underlying theology of Mary's unique cooperation in the work of redemption.
+      <br><br>
+      Marian devotion is encouraged: the Rosary (given its current fifteen-mystery form largely through Dominican tradition, expanded to twenty mysteries by John Paul II in <em>Rosarium Virginis Mariae</em>, 2002), the Angelus, the Litany of Loreto, Marian feast days, and pilgrimages to approved apparition sites. Mary's veneration (<em>hyperdulia</em>) is carefully distinguished from the worship (<em>latria</em>) owed to the Trinity alone.
+      <br><br>
+      The biblical case centres on several key texts. Luke 1:28 addresses Mary as <em>kecharitomene</em> — a Greek perfect passive participle ("having been permanently graced") suggesting a prior and enduring state of grace. Luke 1:48 — "all generations will call me blessed." Genesis 3:15 — the enmity between the woman and the serpent, read as protoevangelium pointing to Mary. Revelation 12:1 — the woman clothed with the sun, read in Catholic tradition as Mary/the Church in its eschatological reality.`,
+      verses: ['Luke 1:28', 'Luke 1:42', 'Luke 1:48', 'Gen 3:15', 'Rev 12:1', 'John 19:25-27', 'Acts 1:14'],
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'nuanced',
+      position: `The Orthodox Church honours Mary as <em>Theotokos</em>, <em>Aeiparthenos</em> (Ever-Virgin), and <em>Panagia</em> (All-Holy) — "more honourable than the Cherubim and incomparably more glorious than the Seraphim," as the cherubic hymn declares. She is the supreme example of human cooperation with divine grace and the first fruit of the redeemed humanity.
+      <br><br>
+      Orthodox Mariology diverges from Catholic on two significant points. First, the <strong>Immaculate Conception</strong> is not accepted. Orthodox theology, following John of Damascus (<em>Exposition of the Orthodox Faith</em> IV.14, c. 730 AD) and the broader Greek patristic tradition, understands the consequences of Adam's fall as <em>mortality and corruption</em> transmitted to all humanity — not <em>inherited guilt</em> in the Augustinian-Catholic sense. On this anthropology, there is no need to exempt Mary from original sin as the Catholic doctrine requires; she is holy by grace, further purified at the Annunciation when the Holy Spirit overshadowed her (Luke 1:35), and sinless through cooperation with that grace throughout her life. The Catholic definition of 1854 depends on a specifically Western-Augustinian account of original sin that the Orthodox tradition does not share and has never accepted.
+      <br><br>
+      Second, Orthodox theology confesses the <strong>Dormition</strong> (<em>Koimisis tis Theotokou</em>) rather than the Assumption. The theological tradition holds that Mary died, was buried, and on the third day her body was found to have been glorified and taken up into heaven. The feast of the Dormition (August 15) is one of the twelve great feasts of the Orthodox liturgical year. Whether Mary actually died before her glorification is held by some Orthodox theologians as an open question (Metropolitan Kallistos Ware, <em>The Orthodox Church</em>, Penguin, 1963, revised editions 1993, 2015), though the great majority affirm her death as part of her full participation in human nature.
+      <br><br>
+      Marian veneration in Orthodox worship is pervasive. The Akathist Hymn to the Theotokos (traditionally dated to the 6th century, attributed variously to Romanos the Melodist or to Patriarch Sergios I of Constantinople) is one of the great monuments of Christian devotion. Vladimir Lossky's <em>The Mystical Theology of the Eastern Church</em> (1944) and Sergei Bulgakov's <em>The Burning Bush</em> (1927) give the major 20th-century Orthodox Mariological treatments. Bulgakov's broader Sophiological theology was condemned by the Moscow Patriarchate and the Russian Orthodox Church Outside Russia in 1935, though notably not by the Ecumenical Patriarchate of Constantinople, under whose broader jurisdiction Bulgakov worked at the Saint Sergius Orthodox Theological Institute in Paris until his death in 1944.`,
+      verses: ['Luke 1:28', 'Luke 1:35', 'Luke 1:48', 'John 19:25-27', 'Acts 1:14', 'Rev 12:1'],
+    },
+    {
+      name: 'Lutheran',
+      stance: 'nuanced',
+      position: `Luther's personal Marian piety was substantial and remained so throughout his life — a fact frequently overlooked in both Protestant minimisation and Catholic caricature. Luther accepted the <em>Theotokos</em> without reservation, affirmed perpetual virginity in his Christmas sermons and other writings, retained major Marian feast days in the Lutheran liturgical calendar, and consistently held Mary up as the supreme example of justifying faith — her Magnificat (Luke 1:46-55) was for Luther among the greatest expositions of the grace he championed.
+      <br><br>
+      The Lutheran Confessions affirm <em>Theotokos</em> explicitly. The Smalcald Articles (1537) and the Formula of Concord (1577) both use the title. Luther's <em>Commentary on the Magnificat</em> (1521), written during his time at the Wartburg, is one of the most sustained Mariological works produced by any Reformer and treats Mary's humility and faith with genuine theological depth.
+      <br><br>
+      What Luther rejected was Marian <em>intercession</em> — the practice of asking Mary to pray for us — as compromising the unique mediation of Christ (1 Timothy 2:5; Hebrews 7:25). Images of Mary were permitted in Lutheran churches; the aggressive iconoclasm of Zurich and Geneva was foreign to Wittenberg. Luther's personal position on the Immaculate Conception shifted across his life — he accepted it in early works and questioned it in later ones; confessional Lutheranism does not define the question either way. The bodily Assumption is rejected.
+      <br><br>
+      The 20th century saw significant Lutheran Mariological engagement. The ecumenical study <em>Mary in the New Testament</em> (Fortress Press/Paulist Press, 1978), produced collaboratively by Raymond E. Brown, Karl P. Donfried, Joseph A. Fitzmyer, and John Reumann under the auspices of the US Lutheran-Roman Catholic Dialogue, gave the most rigorous historical-critical examination of the Marian texts in the New Testament from an ecumenical perspective. The joint Anglican-Roman Catholic statement <em>Mary: Grace and Hope in Christ</em> (2005), while not a Lutheran document, has influenced Lutheran ecumenical Mariology significantly.`,
+      verses: ['Luke 1:28', 'Luke 1:46-55', '1 Tim 2:5', 'Heb 7:25', 'Luke 1:35'],
+    },
+    {
+      name: 'Reformed / Presbyterian',
+      stance: 'nuanced',
+      position: `Calvin accepted Mary as <em>Theotokos</em> without hesitation — he used the title in his <em>Institutes of the Christian Religion</em> and commentaries, understanding it as a necessary Christological statement rather than a Marian honour. His commentary on Matthew 1:25 treats the perpetual virginity question carefully, noting it as probable but not essential. He refrained from the aggressive anti-Marian polemic that characterised some of his contemporaries.
+      <br><br>
+      Beyond these early patristic affirmations, Reformed Mariology stops sharply. The Westminster Confession (1646) gives Mary minimal mention — she is the human mother of the divine Christ and no more. The Immaculate Conception is rejected as without biblical warrant and as an unnecessary supplement to Christ's unique sinlessness (Hebrews 4:15) — if Christ's sinlessness required Mary to be sinless, then consistency would require Mary's own mother to be sinless, and so on infinitely (the regress argument made by Aquinas, which led him to deny the doctrine). The Assumption is rejected. Marian intercession violates both the unique mediation of Christ (1 Timothy 2:5) and the regulative principle of worship — Christians pray to whom Scripture authorises them to address.
+      <br><br>
+      The Reformed critique of Catholic Marian dogma is structural as well as exegetical. Both the Immaculate Conception (1854) and the Assumption (1950) were defined as dogmas binding on all Catholics despite having no clear explicit biblical foundation, relying instead on theological reasoning, tradition, and the <em>sensus fidelium</em>. For the Reformed, this is precisely what sola scriptura guards against — the Magisterium generating new binding doctrines beyond the apostolic deposit. The Marian dogmas thus function as a test case for the sola scriptura debate. The Belgic Confession (1561), Article 26, addresses the intercession question directly: Christ alone is our advocate before the Father, and to place others alongside him is to diminish him.`,
+      verses: ['Luke 1:28', 'Luke 1:46-55', '1 Tim 2:5', 'Heb 4:15', 'Heb 7:25', 'Matt 13:55-56'],
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'varies',
+      position: `Anglicanism spans the full spectrum of Marian theology and has done so since the Reformation settlement. The 39 Articles are restrained: Article 15 affirms that Christ alone was without sin — implicitly excluding the Immaculate Conception without defining the question — and Article 22 condemns the "invocation of saints" as lacking scriptural warrant, but neither article addresses Marian doctrine systematically.
+      <br><br>
+      The <strong>Anglo-Catholic / Tractarian tradition</strong> developed a high Mariology approaching Catholic positions. John Henry Newman, whose movement toward Rome was shaped significantly by his Mariological development, wrote <em>An Essay on the Development of Christian Doctrine</em> (1845) arguing that Marian dogmas represent legitimate doctrinal development from apostolic seeds. After his reception into the Catholic Church (October 9, 1845), his <em>A Letter Addressed to the Rev. E.B. Pusey</em> (1866) — commonly called the <em>Eirenikon</em> response — gave one of the most careful Catholic defences of Marian doctrine against Protestant objections while acknowledging that certain popular devotional excesses were genuine obstacles to reunion. E.B. Pusey's original <em>Eirenikon</em> (1865) had itself engaged Catholic Mariology with Anglican seriousness.
+      <br><br>
+      The <strong>Evangelical Anglican tradition</strong> (J.C. Ryle, John Stott, Alister McGrath) honours Mary as the faithful and blessed mother of Jesus, a supreme model of faith, and stops there. Prayer to Mary, the rosary, and the defined dogmas of 1854 and 1950 are rejected as without sufficient scriptural basis.
+      <br><br>
+      The Anglican-Roman Catholic International Commission's <em>Mary: Grace and Hope in Christ</em> (finalised in Seattle 2004, published 2005) — commonly called the Seattle Statement — represents the furthest point of Anglican-Catholic Mariological convergence. The document agreed that Anglicans can affirm the teaching expressed in the 1854 and 1950 definitions as "consonant with the teaching of Scripture" — carefully using "consonant with" rather than "required by Scripture," a distinction that preserves Anglican confessional integrity while acknowledging genuine theological convergence. This conclusion was nonetheless contested by many Anglican evangelicals, who regarded it as overclaiming the extent of convergence. The Church of England's General Synod received but did not formally endorse the document.`,
+      verses: ['Luke 1:28', 'Luke 1:38', 'Luke 1:46-55', '1 Tim 2:5', 'Heb 4:15', 'John 19:25-27'],
+    },
+    {
+      name: 'Baptist',
+      stance: 'deny',
+      position: `Baptist theology gives Mary a minimal but genuinely honoured role: she is the faithful, obedient mother of Jesus, the human instrument through whom God took flesh, and a supreme example of trusting God's word. Her Magnificat (Luke 1:46-55) is among the greatest biblical hymns. Her courage at the foot of the cross (John 19:25-27) and her presence with the disciples at Pentecost (Acts 1:14) are acknowledged with reverence.
+      <br><br>
+      The <em>Theotokos</em> title is accepted by most theologically careful Baptists as a necessary Christological statement — if Jesus is truly God, then the one Mary bore is truly God, and in that precise sense Mary is the God-bearer. The title is rarely used in Baptist worship or preaching, but the Christological substance is affirmed.
+      <br><br>
+      Perpetual virginity is rejected by most Baptists as contradicted by the Gospel references to Jesus' brothers and sisters (Matthew 13:55-56; Mark 6:3; Galatians 1:19 — "James the Lord's brother"). The Greek <em>adelphos</em> most naturally denotes a biological brother in standard New Testament usage, though Catholic scholars note that the term occasionally carries a broader meaning in the Septuagint and in Josephus, and that the Aramaic-speaking Palestinian context may support a wider referent. The Protestant exegetical consensus holds the biological reading while acknowledging the linguistic question is not without complexity.
+      <br><br>
+      The Immaculate Conception, the Assumption, Marian intercession, and the rosary are uniformly rejected across Baptist traditions as Catholic traditions without adequate biblical foundation. First Timothy 2:5 is consistently invoked: "there is one mediator between God and men, the man Christ Jesus." To introduce Mary as a mediating figure alongside Christ is regarded as compromising the uniqueness and sufficiency of his mediation.`,
+      verses: ['Luke 1:38', 'Luke 1:46-55', 'John 19:25-27', 'Acts 1:14', '1 Tim 2:5', 'Matt 13:55-56', 'Gal 1:19'],
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'nuanced',
+      position: `John Wesley affirmed Mary as "the blessed virgin" with genuine warmth, accepted perpetual virginity as historically probable, and retained Marian feast days in early Methodist practice. His theological formation — shaped by his deep reading of the early Church Fathers and by his Anglican inheritance — made him more receptive to patristic Marian tradition than most later Methodist practice has reflected.
+      <br><br>
+      Wesley's commentary on the Magnificat in his <em>Explanatory Notes Upon the New Testament</em> (1755) treats Mary's response to God's call as the supreme example of the prevenient grace and faithful cooperation that are central to Wesleyan soteriology. Mary's <em>fiat</em> — "let it be done to me according to your word" (Luke 1:38) — is for Wesley the model of the human response to divine grace that makes salvation possible.
+      <br><br>
+      Modern United Methodist theology gives Mary an honoured but limited role — the faithful mother of Jesus, a model of discipleship, the one who bore the Word into the world. The Magnificat's social content (Luke 1:46-55 — the mighty cast down, the humble exalted, the hungry filled) resonates with the Methodist tradition's prophetic social concern and is regularly read and sung in Methodist worship. The Catholic dogmas of 1854 and 1950 are not affirmed. Marian intercession and the rosary are not practised. The United Methodist Book of Worship includes Mary in the calendar of saints; the feast of Mary, Mother of the Lord (August 15) is observed in more liturgically oriented Methodist congregations.`,
+      verses: ['Luke 1:28', 'Luke 1:38', 'Luke 1:46-55', 'John 19:25-27', 'Acts 1:14', '1 Tim 2:5'],
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'deny',
+      position: `Pentecostal Mariology is minimal. Mary is acknowledged as the mother of Jesus, as a recipient of sovereign divine grace at the Annunciation (Luke 1:35), and as present with the disciples in the upper room before Pentecost — where she presumably received the Spirit along with everyone else (Acts 1:14; 2:1-4). This detail carries genuine theological weight in Pentecostal reading: Mary was not a passive figure in the upper room but an active participant in the foundational Pentecostal event, receiving the same Spirit she had received at the Annunciation now poured out on the whole community.
+      <br><br>
+      Beyond this, Pentecostal teaching gives Mary minimal theological development. The Catholic Marian dogmas and devotional apparatus — Immaculate Conception, Assumption, rosary, apparitions, intercession — are uniformly rejected as unbiblical Catholic accretion. The directness of Pentecostal access to God through the Spirit — characterised by the cry "Abba, Father" (Romans 8:15; Galatians 4:6) — makes mediatory structures of any kind feel both unnecessary and theologically wrong.
+      <br><br>
+      The broader Pentecostal conviction here is the democratisation of spiritual experience: all believers receive what Mary received at the Annunciation — the overshadowing presence and power of the Holy Spirit. Mary is a fellow Spirit-filled believer and model of faith, not a heavenly intercessor above the community. This levelling of the spiritual playing field is itself a characteristically Pentecostal theological move.`,
+      verses: ['Luke 1:35', 'Luke 1:38', 'Acts 1:14', 'Acts 2:1-4', '1 Tim 2:5', 'Rom 8:15'],
+    },
+    {
+      name: 'Anabaptist / Mennonite',
+      stance: 'nuanced',
+      position: `Early Anabaptist Mariology was complicated by a significant Christological controversy. Menno Simons (1496-1561) held that Christ's flesh was not derived from Mary but was a "heavenly flesh" (<em>himmlisches Fleisch</em>) that passed through her as water through a channel, without taking on anything from her nature. This position, originally associated with Melchior Hoffmann (c.1495-1543) among the Strasbourg and Low Country radicals, was intended to preserve Christ's sinlessness but in practice separated him from genuine human nature. Pilgram Marpeck (c.1495-1556) was among the most articulate contemporary critics, correctly identifying the position as tending toward Docetism — the ancient heresy that Christ only appeared to be human. The heavenly-flesh Christology is not held by any mainstream Anabaptist, Mennonite, or Brethren body today.
+      <br><br>
+      Contemporary Anabaptist and Mennonite Mariology is broadly Protestant. Mary is the faithful mother of Jesus and a model of nonviolent, obedient discipleship — her <em>fiat</em> (Luke 1:38) is a model of the whole-life discipleship and costly obedience central to Anabaptist spirituality. The Magnificat's reversal of social order (Luke 1:46-55) resonates deeply with the Anabaptist commitment to justice, the rejection of violence and worldly power, and the community of the lowly and marginalised.
+      <br><br>
+      Catholic Marian dogmas and devotions are not affirmed. The question of perpetual virginity is left open in most Anabaptist circles. The focus remains consistently on the living community of disciples following Jesus rather than on the veneration of any individual saint, however honoured.`,
+      verses: ['Luke 1:38', 'Luke 1:46-55', 'John 19:25-27', 'Acts 1:14', '1 Tim 2:5'],
+    },
+  ],
+  keyVerses: ['Luke 1:28', 'Luke 1:35', 'Luke 1:38', 'Luke 1:46-55', 'John 19:25-27', 'Acts 1:14', 'Gen 3:15', 'Rev 12:1', '1 Tim 2:5', 'Heb 4:15', 'Heb 7:25', 'Matt 13:55-56', 'Gal 1:19', 'Isa 7:14'],
+  historicalNote: 'The Council of Ephesus (431 AD) defined Mary as Theotokos against Nestorius, who was condemned and deposed; the decision sparked popular celebration in the streets of Ephesus. The Lateran Council of 649 AD under Pope Martin I — who was subsequently arrested by Emperor Constans II and died in exile in Crimea in 655 AD — defined perpetual virginity as binding Western doctrine. Thomas Aquinas denied the Immaculate Conception in the 13th century on the grounds that it would compromise Christ\'s unique role as universal redeemer; Duns Scotus defended it with the argument that Christ\'s redemption could operate preventively (preserving Mary from sin) as well as restoratively. Pius IX\'s definition in Ineffabilis Deus (December 8, 1854) — the first ex cathedra papal definition — was preceded by extensive consultation of the world\'s bishops. The apparition at Lourdes followed in 1858, when Bernadette Soubirous reported the apparition identifying herself as "the Immaculate Conception." Pius XII\'s Munificentissimus Deus (November 1, 1950) defined the Assumption after likewise consulting the bishops globally; it remains the second and only other ex cathedra definition. Luther\'s Commentary on the Magnificat (1521) is the most sustained Mariological work produced by any Reformer. Newman\'s reception into the Catholic Church (October 9, 1845) was shaped significantly by his Mariological development. The ARCIC Mary: Grace and Hope in Christ (2005) represents the furthest point of Anglican-Catholic Mariological convergence to date.',
+  relatedTopics: ['papacy', 'saints-icons', 'sola-scriptura'],
+},
 
-  {
-    id: 'god-the-mother',
-    name: 'God the Mother?',
-    icon: '🌿',
-    category: 'Doctrine of God',
-    controversyLevel: 9,
-    desc: 'Is the God of the Bible properly addressed only as Father, or does God also have a Mother aspect — or even, as the World Mission Society Church of God teaches, a separate divine Mother person? The Bible uses maternal imagery for God in striking places; feminist theology has pressed the question for half a century; and one Korean new religious movement has built its identity on the answer.',
-    historicalNote: 'Maternal imagery for God appears throughout Scripture (Isaiah 49:15; Isaiah 66:13; Hosea 11:3–4; Deuteronomy 32:18; Matthew 23:37; Luke 13:34). The medieval mystic Julian of Norwich (c. 1342–after 1416) wrote extensively of "Christ our Mother" in her <em>Revelations of Divine Love</em>, without ever proposing a separate Mother God. The modern theological debate emerged in two distinct streams: (1) feminist theology (Mary Daly, <em>Beyond God the Father</em>, 1973; Rosemary Radford Ruether, <em>Sexism and God-Talk</em>, 1983; Sallie McFague, <em>Models of God</em>, 1987; Phyllis Trible, <em>God and the Rhetoric of Sexuality</em>, 1978) within mainline Protestant academic theology, arguing for revised God-language; (2) the World Mission Society Church of God (WMSCOG), founded in South Korea by Ahn Sahng-hong (1918–1985), which from the 1980s onward has identified Zahng Gil-jah (b. 1943) as the literal Mother God. The two streams are entirely independent.',
-    keyVerses: ['Isa 49:15', 'Isa 66:13', 'Hos 11:3–4', 'Deut 32:18', 'Matt 23:37', 'Luke 13:34', 'Gen 1:26–27', 'Gen 3:20', 'Gal 4:26', 'Rev 22:17'],
-    definition: '<p>The question has several distinct forms that should not be confused. First: <em>does the Bible use maternal imagery for God?</em> Yes — explicitly and repeatedly. Isaiah 49:15 ("Can a mother forget the baby at her breast?... Though she may forget, I will not forget you!"), Isaiah 66:13 ("As a mother comforts her child, so will I comfort you"), Hosea 11:3–4, Matthew 23:37 ("how often I have longed to gather your children together, as a hen gathers her chicks under her wings"). On this, all major Christian traditions agree.</p><p>Second: <em>does this mean God is properly named Mother as well as Father?</em> Mainstream Christianity says no — God transcends gender, and the maternal imagery is poetic/metaphorical, but the personal name by which God has revealed himself is Father (as Jesus addresses him throughout the Gospels and teaches us to do in the Lord\'s Prayer).</p><p>Third: <em>does the Bible teach a distinct Mother God person?</em> Mainstream Christianity says emphatically no. The World Mission Society Church of God (WMSCOG) and a few related Korean movements say yes — identifying Zahng Gil-jah as the divine Mother foretold in Scripture and arriving in the last days. They cite Galatians 4:26 ("Jerusalem above is free, and she is our mother"), Genesis 1:26 ("Let us make man in our image" — plural), and Revelation 22:17 ("The Spirit and the bride say, ‘Come!\'"). All major Christian bodies reject this reading as eisegesis and heresy.</p>',
-    denominations: [
-      {
-        name: 'Roman Catholic',
-        stance: 'nuanced',
-        position: 'The Catechism teaches that "God transcends the human distinction between the sexes. He is neither man nor woman: he is God. He also transcends human fatherhood and motherhood, although he is their origin and standard" (CCC 239). Scripture\'s maternal imagery for God is honoured and incorporated into Catholic spirituality, but the canonical name revealed by Christ is Father. "Mother God" as a proper title or alternative person of the Godhead is rejected. The Catholic veneration of Mary as Mother of God refers exclusively to her role as bearer of Christ, not to any divine Mother person. Catholic feminist theologians (Elizabeth Johnson, <em>She Who Is</em>, 1992) have argued for richer use of maternal imagery within the Catholic tradition; the magisterium has engaged this carefully without changing the canonical address.',
-        verses: ['Isa 66:13', 'Matt 6:9'],
-      },
-      {
-        name: 'Eastern Orthodox',
-        stance: 'nuanced',
-        position: 'The Orthodox tradition affirms that God transcends gender; maternal imagery for God appears in the Fathers (especially in discussions of divine compassion) and in the liturgical tradition. The Holy Spirit is grammatically feminine in Hebrew (<em>Ruach</em>) and neuter in Greek (<em>Pneuma</em>); some Orthodox theologians (notably Sergei Bulgakov) developed sophisticated theologies of divine "Sophia" with feminine resonance, though Bulgakov\'s sophiology was controversial within Orthodoxy. The canonical address remains Father. Orthodox theology rejects "Mother God" as a proper alternative title and rejects any notion of a separate divine Mother person. The Theotokos — Mary, Mother of God — is honoured as the highest of creatures, but is not God.',
-        verses: ['Isa 66:13', 'John 17:1'],
-      },
-      {
-        name: 'Anglican / Episcopal',
-        stance: 'varies',
-        position: 'Anglican practice spans the full spectrum. The Episcopal Church (USA) and the Anglican Church of Canada have authorised liturgies using inclusive God-language ("God our Father and Mother," "the One who creates, redeems, and sustains"), though traditional Father language remains in the Book of Common Prayer. The conservative Anglican provinces (GAFCON, ACNA, Sydney) reject inclusive God-language and maintain exclusively traditional address. The Church of England has authorised optional inclusive prayers for some contexts. The Anglican Communion has not formally adjudicated the question; practice depends on province and parish.',
-        verses: ['Isa 49:15', 'Matt 6:9'],
-      },
-      {
-        name: 'Lutheran',
-        stance: 'nuanced',
-        position: 'God is revealed as Father in Christ; maternal imagery in Scripture is honoured as biblical but is not understood as a basis for an alternative canonical address. The Lutheran Confessions use exclusively traditional God-language. The ELCA has experimented with inclusive language in worship (the <em>Evangelical Lutheran Worship</em> hymnal includes some inclusive options); the LCMS, WELS, and confessional Lutheran bodies reject inclusive God-language. "Mother God" as an alternative person is rejected.',
-        verses: ['Isa 66:13', 'Gal 4:6'],
-      },
-      {
-        name: 'Presbyterian / Reformed',
-        stance: 'deny',
-        position: 'The Reformed tradition holds that God has revealed himself as Father, Son, and Holy Spirit; this is the canonical name and address. Maternal imagery in Scripture is metaphorical (anthropomorphic, like other emotive descriptions of God) and does not constitute an alternative title. The PCUSA has authorised inclusive language in some contexts, generating significant controversy; the PCA, OPC, and other confessional Reformed bodies reject inclusive God-language as a departure from the canonical address Christ taught his disciples. "Mother God" as a separate divine person is rejected as heresy.',
-        verses: ['Matt 6:9', 'Eph 4:6'],
-      },
-      {
-        name: 'Baptist',
-        stance: 'deny',
-        position: 'Baptist theology holds that God has revealed himself as Father — the name Jesus taught his disciples in the Lord\'s Prayer. Scripture\'s maternal similes are metaphorical and do not warrant a Mother God address. The Southern Baptist Convention and the broader Baptist tradition reject inclusive God-language and any notion of a Mother God person. The WMSCOG position is regarded as heretical.',
-        verses: ['Matt 6:9', '1 Cor 8:6'],
-      },
-      {
-        name: 'Methodist / Wesleyan',
-        stance: 'varies',
-        position: 'The United Methodist Church has authorised inclusive God-language in some hymnody and prayer; the traditional Father address remains dominant. Conservative Methodist bodies (Wesleyan, Free Methodist, Global Methodist) reject inclusive God-language and maintain exclusively Father address. "Mother God" as a person is rejected across the Wesleyan tradition.',
-        verses: ['Matt 6:9', 'Heb 12:9'],
-      },
-      {
-        name: 'Pentecostal',
-        stance: 'deny',
-        position: 'Pentecostal theology maintains the traditional Father address of God. The Spirit (occasionally feminine in some patristic and Syriac traditions) is the third Person of the Trinity, not a Mother. Inclusive God-language and any Mother God theology is rejected as departure from the apostolic gospel.',
-        verses: ['Matt 6:9', 'Gal 4:6'],
-      },
-      {
-        name: 'Non-denominational',
-        stance: 'deny',
-        position: 'Non-denominational evangelical churches universally maintain the traditional Father address of God. Inclusive God-language is generally rejected. "Mother God" theology — whether in feminist-theological or WMSCOG form — is rejected as outside biblical Christianity.',
-        verses: ['Matt 6:9'],
-      },
-      {
-        name: 'World Mission Society Church of God (WMSCOG)',
-        stance: 'affirm',
-        position: 'The WMSCOG, founded by Ahn Sahng-hong (1918–1985) in South Korea, teaches that there is both a Father God and a Mother God, who together are the "Elohim" of Genesis 1:26 ("Let us make man in our image" — held to be a plural that includes both Father and Mother). Father God appeared as Ahn Sahng-hong (regarded as the Second Coming of Christ); Mother God is identified as Zahng Gil-jah (b. 1943), called "Heavenly Mother" or "New Jerusalem Mother." Key proof-texts include Galatians 4:26 ("Jerusalem above is free, and she is our mother"); Revelation 22:17 ("The Spirit and the bride say, ‘Come!\'"); Revelation 21:9–10 (the New Jerusalem descending as a bride). WMSCOG holds that salvation in the last days requires receiving both Father God and Mother God. The movement claims ~3 million members in 175 countries (outside estimates substantially lower). All major Christian bodies — Catholic, Orthodox, Protestant, and Korean mainstream Christianity — reject the WMSCOG teaching as heretical: a misreading of Galatians 4:26 (which identifies "Jerusalem above" with the heavenly assembly of believers, not a divine Mother person); a misreading of Genesis 1:26 (the plural is variously understood as Trinitarian, royal, or a plural of deliberation, never as Father-Mother); and the deification of two specific 20th-century human persons.',
-        verses: ['Gal 4:26', 'Gen 1:26', 'Rev 22:17', 'Rev 21:9–10'],
-      },
-    ],
-    relatedTopics: ['filioque', 'atonement', 'canon'],
-  },
+{
+  id: 'god-the-mother',
+  name: 'God the Mother?',
+  icon: '🌿',
+  controversy: 71,
+  category: 'Doctrine of God',
+  desc: 'Does the Bible\'s use of maternal imagery for God imply that God has a feminine aspect, or even — as the World Mission Society Church of God teaches — a distinct divine Mother person currently living in South Korea? The question touches the doctrine of God, biblical hermeneutics, the nature of religious language, and the boundaries of Christian orthodoxy.',
+  definition: `<p>The "God the Mother" question has several distinct forms that must be separated carefully.</p>
+    <p><strong>Form 1 — Does the Bible use maternal imagery for God?</strong> Yes, unambiguously. Isaiah 49:15 ("Can a mother forget the baby at her breast?"), Isaiah 66:13 ("As a mother comforts her child, so will I comfort you"), Hosea 11:3-4, Deuteronomy 32:18 ("the God who gave you birth"), Matthew 23:37 / Luke 13:34 (Jesus as a mother hen gathering her chicks). This is agreed by all Christian traditions.</p>
+    <p><strong>Form 2 — Does this mean God should be addressed as "Mother"?</strong> Feminist theologians within mainline Protestantism and some Catholic circles argue yes — the biblical maternal imagery justifies or requires feminine God-language in prayer and liturgy. Most traditional Catholic, Orthodox, evangelical, and conservative Protestant theology says no — maternal imagery is analogical and metaphorical, while "Father" is the proper name God has revealed, particularly as Jesus consistently addressed and taught his disciples to address God as Father.</p>
+    <p><strong>Form 3 — Is there a distinct divine Mother person?</strong> The World Mission Society Church of God (WMSCOG), founded in South Korea, teaches that there is a literal God the Mother currently living in Bucheon, South Korea — identified as Zahng Gil-jah (born 1943). This claim is rejected by all mainstream Christian bodies as incompatible with biblical monotheism and the Christian doctrine of the Trinity.</p>
+    <p>The underlying hermeneutical question: what is the relationship between <em>analogical imagery</em> (God is like a mother) and <em>revealed names</em> (God is Father, Son, Holy Spirit)? Can imagery generate new divine names, or do images and names function differently?</p>`,
+  subtopics: [
+    { id: 'gm-imagery', label: 'Maternal imagery for God' },
+    { id: 'gm-language', label: 'Inclusive God-language' },
+    { id: 'gm-wmscog', label: 'WMSCOG — God the Mother claim' },
+    { id: 'gm-feminist', label: 'Feminist theology' },
+  ],
+  denominations: [
+    {
+      name: 'Roman Catholic',
+      stance: 'nuanced',
+      position: `The Catholic Church affirms that God transcends human sexuality entirely. The Catechism states: "God transcends the human distinction between the sexes. He is neither man nor woman: he is God. He also transcends human fatherhood and motherhood, although he is their origin and standard: no one is father as God is Father" (CCC §239). Scripture's maternal imagery is genuinely revelatory of God's character and is honoured in Catholic theology and spirituality.
+      <br><br>
+      However, the canonical name by which God has revealed himself — and which Jesus taught his disciples to use — is Father. The Our Father is the Lord's own gift of the proper divine address. Catholic theology has consistently maintained that this is not merely a cultural accommodation to patriarchal society but a revealed name carrying irreplaceable theological content: the eternal Father-Son relationship within the Trinity is not a metaphor but the eternal divine reality. The CDF's 2001 instruction on liturgical translations and the Congregation's various responses to proposals for alternative Trinitarian formulas have consistently reiterated that "Father, Son, and Holy Spirit" is not interchangeable with alternatives such as "Creator, Redeemer, Sanctifier" without changing the theological content significantly.
+      <br><br>
+      Catholic feminist theologians have argued for richer use of feminine God-language within the Catholic tradition. Elizabeth Johnson's <em>She Who Is: The Mystery of God in Feminist Theological Discourse</em> (Crossroad, 1992) is the most sustained treatment, drawing on Thomas Aquinas's apophatic theology and the tradition of divine names to argue that feminine language for God is both theologically legitimate and necessary for adequate speech about the divine mystery. The US Bishops' Committee on Doctrine's critical assessment <em>The Question of God's Maternal Care: A Critique of Elizabeth A. Johnson's She Who Is</em> (2011) found significant problems with Johnson's treatment of the Trinity and her account of the relationship between Scripture, tradition, and theological construction — though not with the broader project of recovering feminine imagery for God.
+      <br><br>
+      The WMSCOG claim is rejected as outside Christianity entirely — the deification of a specific living human being contradicts both the Christian doctrine of the Trinity and the revealed name of God as Father, Son, and Holy Spirit.`,
+      verses: ['Matt 6:9', 'Isa 49:15', 'Isa 66:13', 'Deut 32:18', 'John 17:1', 'John 20:17'],
+    },
+    {
+      name: 'Eastern Orthodox',
+      stance: 'nuanced',
+      position: `Orthodox theology affirms that God transcends gender while insisting that the revealed divine name — Father, Son, Holy Spirit — is not arbitrary or interchangeable. The Holy Spirit is grammatically feminine in Hebrew (<em>Ruach</em>, feminine noun) and neuter in Greek (<em>Pneuma</em>); this linguistic fact has generated significant theological reflection, particularly in the Syriac Christian tradition where the Spirit is regularly addressed with feminine pronouns in early liturgical and theological texts (Ephrem the Syrian, 4th century). But linguistic gender does not constitute a divine Mother in Orthodox theology.
+      <br><br>
+      The Orthodox tradition produced sophisticated theological engagement with divine femininity through the doctrine of <em>Divine Sophia</em> (Holy Wisdom). Proverbs 8:22-31 — where Wisdom speaks as co-creator — generated an extensive theological and iconographic tradition in both the East and West. In Russian Orthodox theology, Vladimir Soloviev (1853-1900) developed a philosophical Sophiology; Pavel Florensky's <em>The Pillar and Ground of the Truth</em> (1914) gave it rigorous philosophical form; and Sergei Bulgakov's trilogy culminating in <em>The Bride of the Lamb</em> (written 1939, published posthumously 1945) offered the most systematic Sophiological account of the divine-world relationship. Bulgakov's Sophiology was condemned by the Moscow Patriarchate and the Russian Orthodox Church Outside Russia in 1935 on the grounds that it risked introducing a fourth hypostasis into the Trinity, though the Ecumenical Patriarchate of Constantinople did not condemn it and Bulgakov continued working at the Saint Sergius Orthodox Theological Institute in Paris until his death in 1944.
+      <br><br>
+      Contemporary Orthodox theology resists liturgical changes to the Trinitarian formula while acknowledging the wealth of biblical and patristic feminine imagery for God. Metropolitan Kallistos Ware's essays on this question model the characteristic Orthodox apophatic caution: all human language for God is analogical; feminine imagery corrects the over-literalisation of masculine language; but the revealed names — Father, Son, Holy Spirit — remain authoritative and irreplaceable.
+      <br><br>
+      The WMSCOG claim is rejected without hesitation as a form of polytheism and the deification of a human being, incompatible with both Old Testament monotheism and New Testament Trinitarian Christianity.`,
+      verses: ['Matt 6:9', 'Isa 49:15', 'Prov 8:22-31', 'John 16:13', 'Deut 32:18'],
+    },
+    {
+      name: 'Reformed / Presbyterian',
+      stance: 'deny',
+      position: `The Reformed tradition holds that God has revealed himself as Father, Son, and Holy Spirit — this is the canonical Trinitarian name given by Christ himself (Matthew 28:19) and is not interchangeable with alternative formulations. The regulative principle of worship holds that worship must conform to what Scripture authorises; since Scripture does not authorise addressing God as "Mother" in the assembly's prayer, the practice is not permitted.
+      <br><br>
+      Biblical maternal imagery for God is acknowledged as genuinely scriptural — God's attributes include what we might describe as maternal qualities (tenderness, nurture, compassion, the pang of labour in Isaiah 42:14). But the Reformed hermeneutic distinguishes between <em>analogical descriptions</em> (God is like a mother in these respects) and <em>divine names</em> (Father, Son, Holy Spirit, LORD, God). Analogy does not generate names. The maternal images function as a corrective to overly harsh or distant conceptions of God; they do not constitute a maternal dimension of the divine person warranting a new form of address.
+      <br><br>
+      The PCUSA authorised inclusive God-language options in some liturgical contexts, generating major internal controversy. The 1994 RE-Imagining Conference, held in Minneapolis and associated with the PCUSA's ecumenical activities, included invocations of "Sophia" as a divine name alongside the Trinitarian formula and sparked significant backlash within the PCUSA and across the evangelical world. The PCA, OPC, and other confessional Reformed bodies reject all inclusive God-language and maintain exclusively traditional Trinitarian naming.
+      <br><br>
+      The WMSCOG claim is rejected as a fundamental violation of the first commandment — "You shall have no other gods before me" — setting a human creature alongside or above the Creator, and as irreconcilable with the Christian doctrine of the Trinity.`,
+      verses: ['Matt 6:9', 'Matt 28:19', 'Isa 49:15', 'Deut 4:15-19', 'John 17:1-3', 'Exod 3:14-15'],
+    },
+    {
+      name: 'Lutheran',
+      stance: 'nuanced',
+      position: `Lutheran theology affirms that God is revealed as Father, Son, and Holy Spirit — the name Jesus taught and the name given at the Great Commission (Matthew 28:19). The Lutheran Confessions use the Trinitarian formula throughout and do not authorise alternative naming. The LCMS and WELS maintain the traditional name with care; the ELCA has permitted more experimental language in some contexts.
+      <br><br>
+      Luther himself used maternal imagery for God with genuine warmth in his preaching and writings. His sermons on the Psalms and the prophets frequently draw on the maternal-tenderness texts to describe God's character, and his Christmas sermons speak of the divine condescension in terms that draw on nurturing and maternal imagery. Luther never proposed addressing God as "Mother" — "Our Father" was for him Christ's own irreplaceable gift of the divine address — but he understood the full range of biblical imagery as essential to adequate proclamation of the gospel.
+      <br><br>
+      The ELCA's <em>Evangelical Lutheran Worship</em> (Augsburg Fortress, 2006) includes some settings with language that is more inclusive with regard to people, though the Trinitarian naming as Father, Son, and Holy Spirit is retained in all official liturgies. The LCMS has consistently rejected any modification of the Trinitarian formula as a departure from the scriptural and confessional tradition.
+      <br><br>
+      The WMSCOG's claims are rejected as outside Christianity. Lutheran theology's strong emphasis on the Creator-creature distinction — and its equally strong insistence that salvation is by grace through faith in Christ alone, not through recognition of particular human persons — makes the WMSCOG's deification of two specific 20th-century human beings and its membership-conditional salvation theology alien to everything Lutheran theology stands for.`,
+      verses: ['Matt 6:9', 'Isa 66:13', 'Isa 49:15', 'John 14:9', 'Gal 4:6', 'Matt 28:19'],
+    },
+    {
+      name: 'Anglican / Episcopal',
+      stance: 'varies',
+      position: `Anglican practice spans the full spectrum on this question. The Episcopal Church (USA) and the Anglican Church of Canada have authorised liturgies using more inclusive God-language in some contexts. The Church of England's General Synod has repeatedly debated the question without resolving it formally. The ACNA's <em>Book of Common Prayer 2019</em> retains traditional Trinitarian language throughout, as do the GAFCON and Global South Anglican provinces.
+      <br><br>
+      The theological argument is well-developed on both sides within Anglicanism. The Anglican apophatic tradition — God is ultimately beyond all human categories — supports openness to diverse naming; the Anglican appeal to Scripture as the primary rule of faith supports the traditional Father name as Christ's own revealed address. Richard Hooker's <em>Of the Laws of Ecclesiastical Polity</em> acknowledged the limits of human language for God while insisting that the revealed names carry genuine cognitive content.
+      <br><br>
+      The feminist theological case within Anglican contexts has been associated with figures including Janet Morley's <em>All Desires Known</em> (SPCK, 1988), which offered liturgical prayers using feminine God-language and has been widely used in progressive Anglican contexts. The conservative response, represented by the Evangelical Anglican tradition and the work of scholars like Gerald Bray, holds that the revealed names of God are not human constructions open to revision but gifts from God himself that carry irreplaceable theological content.
+      <br><br>
+      On the WMSCOG: Anglican bodies across the spectrum reject the claim as outside Christianity. No Anglican theological tradition has any framework for a divine Mother incarnate in a specific living Korean person; the claim contradicts Anglican Christology, Trinitarian theology, and basic Christian monotheism.`,
+      verses: ['Matt 6:9', 'Isa 49:15', 'Isa 66:13', 'John 17:1', 'Matt 28:19'],
+    },
+    {
+      name: 'Baptist',
+      stance: 'deny',
+      position: `Baptist theology holds that God has revealed himself as Father — the name Jesus used consistently and the name taught in the Lord's Prayer — and this name is not interchangeable with alternatives. Scripture's maternal imagery for God is acknowledged as genuine and valuable for understanding God's character, but imagery does not generate names. "God is like a mother" in certain respects does not authorise addressing God as Mother in the community's prayer.
+      <br><br>
+      Southern Baptist and most conservative Baptist bodies reject inclusive God-language firmly. The Baptist Faith and Message (2000) uses traditional Trinitarian language throughout. The SBC has consistently treated departures from traditional Trinitarian naming as theologically serious errors, consistent with the SBC's broader conservative theological commitments since the 1979-2000 Conservative Resurgence.
+      <br><br>
+      The American Baptist Churches USA (ABCUSA) and the Cooperative Baptist Fellowship (CBF) are more open in progressive congregations to exploring inclusive language in various ways, though neither has mandated it or changed official theological formulations.
+      <br><br>
+      The WMSCOG is uniformly rejected across all Baptist bodies as outside Christianity. Its salvation theology — requiring recognition of both Father God (Ahn Sahng-hong) and Mother God (Zahng Gil-jah) as conditions of salvation — contradicts the Baptist conviction that salvation is through faith in Jesus Christ alone (Acts 4:12; John 14:6; Romans 10:9-13) and that no human being may be identified with God.`,
+      verses: ['Matt 6:9', 'Matt 28:19', 'Acts 4:12', 'John 14:6', 'Isa 49:15', 'Rom 10:9-13'],
+    },
+    {
+      name: 'Methodist / Wesleyan',
+      stance: 'varies',
+      position: `The United Methodist Church has authorised some inclusive God-language options in its hymnody — <em>The United Methodist Hymnal</em> (1989) and <em>The Faith We Sing</em> (2000) include material using inclusive language, while the traditional Trinitarian formula remains in the official liturgies of the <em>Book of Worship</em>. Individual congregations and regions vary in practice, reflecting the UMC's theological breadth.
+      <br><br>
+      Wesley himself used maternal imagery for God warmly. His emphasis on prevenient grace reaching all people without exception, his heart-religion emphasising the experience of divine love, and his pastoral sensitivity to the full range of the congregation's experience have made subsequent Methodist theology receptive to the concerns raised by feminist theologians, even where specific proposals about language are debated.
+      <br><br>
+      The Wesleyan Church, Free Methodist Church, and Church of the Nazarene — the Wesleyan-Holiness denominations — maintain exclusively traditional Trinitarian language, consistent with their more conservative theological identities. The Global Methodist Church (formed 2022 from UMC disaffiliations over sexuality and other theological concerns) has committed to traditional language and Trinitarian theology as part of its founding identity.
+      <br><br>
+      The WMSCOG's claims are rejected across all Wesleyan and Methodist bodies. The movement's identification of salvation with recognising two specific living Korean individuals as divine persons contradicts both Wesleyan soteriology (salvation by grace through faith in Christ) and basic Christian monotheism.`,
+      verses: ['Matt 6:9', 'Isa 66:13', 'Isa 49:15', 'John 4:24', 'Gal 4:6'],
+    },
+    {
+      name: 'Pentecostal',
+      stance: 'deny',
+      position: `Pentecostal theology maintains the traditional Trinitarian names — Father, Son, and Holy Spirit — without qualification or alternative. God revealed himself as Father; Jesus is Lord and Saviour; the Holy Spirit is the third Person of the Trinity. Inclusive God-language is rejected as a departure from the apostolic gospel.
+      <br><br>
+      The Assemblies of God, Church of God in Christ, Foursquare Church, International Pentecostal Holiness Church, and other classical Pentecostal denominations are uniformly traditional on this question. The Pentecostal emphasis on direct relationship with God through the Spirit — characterised pre-eminently by the cry "Abba, Father" (Romans 8:15; Galatians 4:6) — makes the Father's revealed name both theologically essential and experientially precious to Pentecostal piety.
+      <br><br>
+      Oneness Pentecostalism (United Pentecostal Church International and related bodies) has a distinctive theological structure — identifying Father, Son, and Spirit as three manifestations of the one God Jesus rather than three eternal persons — but still maintains "Jesus" as the one saving divine name rather than introducing any feminine divine naming. Whatever their internal Trinitarian disagreements with Trinitarian Pentecostals, Oneness Pentecostals share the universal Pentecostal rejection of any feminine divine person.
+      <br><br>
+      The WMSCOG is categorically rejected by all Pentecostal bodies. Its identification of specific human beings as divine persons, its claim that salvation requires recognising Zahng Gil-jah as God the Mother, and its history of aggressive recruitment targeting Pentecostal and evangelical Christians are all incompatible with Pentecostal theology, ethics, and identity.`,
+      verses: ['Matt 6:9', 'Rom 8:15', 'Gal 4:6', 'Acts 4:12', 'John 14:6', 'Matt 28:19'],
+    },
+    {
+      name: 'World Mission Society Church of God (WMSCOG)',
+      stance: 'affirm',
+      position: `The WMSCOG, founded in South Korea by Ahn Sahng-hong (1918-1985) in 1964 as the Church of God, and subsequently reorganised following his death in 1985 as Zahng Gil-jah increasingly assumed a central role, teaches that both a Father God and a Mother God exist and that recognition of both is necessary for salvation in the last days. The movement claims approximately 3 million members globally — a figure that independent scholars of new religious movements regard as significantly inflated, with estimates of active membership more commonly ranging from 300,000 to 500,000 worldwide. It operates in over 175 countries, with particularly aggressive expansion in the United States, South America, Europe, and East Asia since the 2000s.
+      <br><br>
+      The WMSCOG's scriptural arguments are elaborate and deserve engagement rather than dismissal. <em>Genesis 1:26</em> — "Let <em>us</em> make man in our image" (plural) — is read as indicating both a Father and Mother God, since human beings come in male and female forms (Genesis 1:27) and must therefore reflect both a male and female original in the divine image. <em>Galatians 4:26</em> — "Jerusalem above is free, and she is our mother" — is read as referring to a literal divine Mother person, not to the heavenly community of believers as in the standard interpretation of this passage (which reads it as an allegory of the two covenants in the tradition of 4 Ezra and the Epistle of Barnabas). <em>Revelation 22:17</em> — "The Spirit and the bride say, 'Come!'" — is read as Father God (the Spirit) and Mother God (the Bride) extending the call to salvation together. <em>Revelation 21:9-10</em> — the bride, the wife of the Lamb, descending as the New Jerusalem — is similarly read as the Mother God.
+      <br><br>
+      Ahn Sahng-hong is identified by the WMSCOG as the Second Coming of Christ, returning in fulfilment of Revelation 2:17's promise of "a new name." The movement observes the Passover (understood as a foundational ordinance instituted by Jesus and lost from the church after the 2nd century Council of Nicaea), the Saturday Sabbath, and a liturgical calendar they claim represents the original apostolic practice.
+      <br><br>
+      The mainstream Christian response to the WMSCOG centres on three fundamental objections. First, the exegetical arguments are not supported by the standard contextual and grammatical reading of the proof-texts: Galatians 4:26 in context is Paul's allegorical argument contrasting the Sinai covenant (Hagar, producing slaves) with the Jerusalem-above covenant (Sarah, producing free children) — a reading supported by the entire preceding argument of Galatians 3-4 and by parallel Second Temple Jewish texts. Second, the deification of two specific 20th-century Korean human beings contradicts the Christian confession of God as eternal, uncreated, and immutable, as well as the New Testament's explicit claim that Christ's second coming will be public, visible, and universally unmistakeable (Matthew 24:27; Acts 1:11; Revelation 1:7). Third, the claim that salvation requires recognition of Zahng Gil-jah contradicts the New Testament's consistent witness that salvation is through faith in Jesus Christ alone (Acts 4:12; John 14:6; 1 Timothy 2:5). The Korean Council of Churches and major Korean Protestant denominations have formally classified the WMSCOG as a heretical group. Independent cult-awareness organisations including Steven Hassan's Freedom of Mind Resource Center have raised documented concerns about the group's recruitment practices, the use of love-bombing and deception in initial contact, and the psychological control techniques applied to members.`,
+      verses: ['Gen 1:26-27', 'Gal 4:26', 'Rev 22:17', 'Rev 21:9-10', 'Rev 7:4', 'Isa 49:15'],
+    },
+  ],
+  keyVerses: ['Gen 1:26-27', 'Deut 32:18', 'Ps 131:2', 'Isa 42:14', 'Isa 49:15', 'Isa 66:13', 'Hos 11:3-4', 'Matt 6:9', 'Matt 23:37', 'Matt 28:19', 'Luke 15:8-10', 'John 4:24', 'Gal 4:26', 'Rom 8:15', 'Rev 22:17'],
+  historicalNote: 'The maternal imagery for God in Scripture has been engaged throughout Christian history. Julian of Norwich (c.1342-after 1416) wrote extensively of "Christ our Mother" in her Revelations of Divine Love — among the earliest known works of sustained Christian mystical writing in English by a woman — without proposing a separate divine Mother person; her Motherhood theology is a meditation on Christ\'s nurturing, life-giving, and compassionate work, not a proposal about the divine nature. The modern feminist theology movement began with Mary Daly\'s The Church and the Second Sex (1968) and Beyond God the Father (1973); Daly eventually left Christianity entirely and identified as a post-Christian feminist. Rosemary Radford Ruether\'s Sexism and God-Talk (Beacon Press, 1983) and Sallie McFague\'s Models of God (Fortress Press, 1987) developed feminist theological proposals within Protestant academic theology. Elizabeth Johnson\'s She Who Is (Crossroad, 1992) is the most sustained Catholic feminist theology of God, drawing on Aquinas and engaging the full range of classical tradition. The 1994 RE-Imagining Conference (Minneapolis) generated a significant backlash in the PCUSA and across American evangelicalism. The World Mission Society Church of God was founded by Ahn Sahng-hong in 1964 in Busan, South Korea, as a small Saturday-Sabbath-observing group; it grew slowly during his lifetime and expanded dramatically after his death in 1985 as the organisation increasingly identified Zahng Gil-jah as God the Mother. It has been the subject of academic study as a new religious movement by scholars including Massimo Introvigne and various Korean sociologists of religion.',
+  relatedTopics: ['filioque', 'mary', 'sola-scriptura'],
+},
 {
   id: 'communion-cup',
   name: 'Wine or Grape Juice?',
