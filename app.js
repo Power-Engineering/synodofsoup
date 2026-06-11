@@ -9867,3 +9867,68 @@ async function _profileSignOut() {
     if (typeof enhanceVersePills === 'function') enhanceVersePills();
   };
 })();
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 24 — Discussion-page back button: smart routing, not history
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// window.history.back() only worked if the previous page created a hash
+// entry. Topic pages (showTopic) don't. So back was overshooting all the
+// way to the Ledger root. This rewrites _discussionBack to route based
+// on the discussion's context (denom→topic, movement→movement page, etc.)
+// with a bonus path for Questions Corner.
+
+let _qcEntryHash = null;
+window.addEventListener('hashchange', (e) => {
+  try {
+    const newHash = window.location.hash || '';
+    const oldHash = new URL(e.oldURL).hash || '';
+    if (newHash.startsWith('#/d/') && oldHash.startsWith('#/questions')) {
+      _qcEntryHash = oldHash;
+    } else if (!newHash.startsWith('#/d/')) {
+      _qcEntryHash = null;
+    }
+  } catch (err) {}
+});
+
+function _discussionBack(traditionSlug, topicSlug) {
+  // If we came from Questions Corner, return there (preserving any filters)
+  if (_qcEntryHash) {
+    const target = _qcEntryHash;
+    _qcEntryHash = null;
+    window.location.hash = target;
+    return;
+  }
+
+  // Smart routing by context
+  if (traditionSlug && traditionSlug.startsWith('m-')) {
+    if (typeof showMovement === 'function') {
+      showMovement('mov-' + traditionSlug.slice(2));
+      return;
+    }
+  }
+  if (traditionSlug && traditionSlug.startsWith('r-')) {
+    if (typeof showReligion === 'function') {
+      showReligion('rel-' + traditionSlug.slice(2));
+      return;
+    }
+  }
+  if (topicSlug && topicSlug.startsWith('qc-')) {
+    goQuestions();
+    return;
+  }
+
+  // Denomination on a Ledger topic → back to that topic's detail page
+  const t = TOPICS.find(x => x.id === topicSlug);
+  if (t && typeof showTopic === 'function') {
+    showTopic(topicSlug);
+    return;
+  }
+
+  // Last resort
+  if (typeof showHome === 'function') showHome();
+  else if (typeof goLedger === 'function') goLedger();
+  else window.location.hash = '';
+}
+
