@@ -9932,3 +9932,54 @@ function _discussionBack(traditionSlug, topicSlug) {
   else window.location.hash = '';
 }
 
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 25 — Discussion back button: keep URL in sync with view
+//   Append to end of app.js. Replaces P24's _discussionBack.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// When leaving the discussion page, the URL hash must be updated to
+// reflect the new view — otherwise subsequent navigation re-routes back
+// to the discussion based on the stale URL, causing a loop.
+
+function _discussionBack(traditionSlug, topicSlug) {
+  // If we came from Questions Corner, return there
+  if (_qcEntryHash) {
+    const target = _qcEntryHash;
+    _qcEntryHash = null;
+    window.location.hash = target;
+    return;
+  }
+
+  const replaceHash = (newHash) => {
+    try { history.replaceState(null, '', newHash); }
+    catch (e) { window.location.hash = newHash; }
+  };
+
+  // Movement question → back to that movement's page
+  if (traditionSlug && traditionSlug.startsWith('m-') && typeof showMovement === 'function') {
+    replaceHash('#/movements');
+    showMovement('mov-' + traditionSlug.slice(2));
+    return;
+  }
+  // Religion question → back to that religion's page
+  if (traditionSlug && traditionSlug.startsWith('r-') && typeof showReligion === 'function') {
+    replaceHash('#/religions');
+    showReligion('rel-' + traditionSlug.slice(2));
+    return;
+  }
+  // QC seed → Questions Corner
+  if (topicSlug && topicSlug.startsWith('qc-')) {
+    window.location.hash = '#/questions';
+    return;
+  }
+  // Denomination on a Ledger topic → that topic's detail page
+  const t = TOPICS.find(x => x.id === topicSlug);
+  if (t && typeof showTopic === 'function') {
+    replaceHash('#/');
+    showTopic(topicSlug);
+    return;
+  }
+  // Last resort
+  if (typeof showHome === 'function') showHome();
+  else window.location.hash = '#/';
+}
