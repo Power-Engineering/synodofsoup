@@ -10177,3 +10177,116 @@ async function renderQuestionsCorner(forceRerender) {
   const resultsEl = document.getElementById('qc-results');
   if (resultsEl) resultsEl.innerHTML = display.map(_qcRenderResultCard).join('');
 }
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 27 — Profile tradition bug + topbar/profile aesthetic
+//   Append to end of app.js. Replaces P21's showProfilePage.
+// ═══════════════════════════════════════════════════════════════════════
+
+async function showProfilePage() {
+  const view = document.getElementById('profile-view');
+  if (!view) return;
+  view.style.display = '';
+  if (!currentUser) {
+    view.innerHTML = `
+      <div class="detail-bar"><div class="detail-bar-inner">
+        <button class="back-link" onclick="goLedger()">← Back to the Ledger</button>
+      </div></div>
+      <article class="discussion-article">
+        <div class="detail-inner">
+          <h1 class="discussion-title">Sign in to manage your profile</h1>
+          <p><button class="btn btn-primary" onclick="openModal('login')">Sign in</button></p>
+        </div>
+      </article>
+    `;
+    return;
+  }
+
+  const email = (currentUser && currentUser.email) ? currentUser.email : 'unknown';
+  const memberSince = currentUser && currentUser.created_at
+    ? new Date(currentUser.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })
+    : '';
+  const displayName = (currentUserProfile && currentUserProfile.display_name) || '';
+  const currentDenom = (currentUserProfile && currentUserProfile.denomination) || '';
+  const initials = (displayName || 'A').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+
+  // Tradition select — gracefully handle case where stored value doesn't
+  // exactly match _ALL_DENOMS (whitespace, capitalisation differences, or
+  // legacy data from earlier signup form variants).
+  const inList = _ALL_DENOMS.includes(currentDenom);
+  const denomOptions =
+    (!inList && currentDenom ? `<option value="${escAttr(currentDenom)}" selected>${escHtml(currentDenom)} <em>(current)</em></option>` : '') +
+    _ALL_DENOMS.map(n =>
+      `<option value="${escAttr(n)}"${(currentDenom === n) ? ' selected' : ''}>${escHtml(n)}</option>`
+    ).join('');
+
+  view.innerHTML = `
+    <div class="detail-bar"><div class="detail-bar-inner">
+      <button class="back-link" onclick="window.history.back()">← Back</button>
+      <span class="detail-category-tag">Your Profile</span>
+    </div></div>
+    <article class="discussion-article">
+      <div class="detail-inner profile-inner">
+        <header class="profile-hero">
+          <div class="profile-hero-avatar">${escHtml(initials)}</div>
+          <div class="profile-hero-info">
+            <div class="profile-hero-eyebrow">Signed in as</div>
+            <h1 class="profile-hero-name">${escHtml(displayName || 'Anonymous')}</h1>
+            <div class="profile-hero-meta">
+              ${currentDenom ? `<span class="profile-hero-denom">${escHtml(currentDenom)}</span>` : ''}
+              <span class="profile-hero-email">${escHtml(email)}</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="profile-section">
+          <h2 class="profile-section-title">📝 Display name</h2>
+          <p class="profile-section-help">How your contributions are signed across the site.</p>
+          <div class="profile-form-row">
+            <input type="text" id="prof-display-name" class="text-input" value="${escAttr(displayName)}" maxlength="40" />
+            <button class="btn btn-primary" onclick="_profileSaveDisplayName()">Save</button>
+          </div>
+          <div class="profile-feedback" id="prof-name-feedback"></div>
+        </section>
+
+        <section class="profile-section">
+          <h2 class="profile-section-title">⛪ Tradition</h2>
+          <p class="profile-section-help">The tradition tag shown next to your contributions. Change it freely as your convictions develop.</p>
+          <div class="profile-form-row">
+            <select id="prof-denom" class="text-input">
+              ${denomOptions}
+            </select>
+            <button class="btn btn-primary" onclick="_profileSaveDenom()">Save</button>
+          </div>
+          <div class="profile-feedback" id="prof-denom-feedback"></div>
+        </section>
+
+        <section class="profile-section">
+          <h2 class="profile-section-title">🔒 Password</h2>
+          <p class="profile-section-help">Set a new password — minimum 8 characters.</p>
+          <div class="profile-form-stack">
+            <input type="password" id="prof-pw-new" class="text-input" placeholder="New password" autocomplete="new-password" minlength="8"/>
+            <input type="password" id="prof-pw-confirm" class="text-input" placeholder="Confirm new password" autocomplete="new-password" minlength="8"/>
+            <button class="btn btn-primary" onclick="_profileSavePassword()">Update password</button>
+          </div>
+          <div class="profile-feedback" id="prof-pw-feedback"></div>
+        </section>
+
+        <section class="profile-section">
+          <h2 class="profile-section-title">📋 Account info</h2>
+          <div class="profile-info">
+            <div><span class="profile-info-label">Email</span><span>${escHtml(email)}</span></div>
+            ${memberSince ? `<div><span class="profile-info-label">Member since</span><span>${escHtml(memberSince)}</span></div>` : ''}
+          </div>
+        </section>
+
+        <section class="profile-section profile-section-danger">
+          <h2 class="profile-section-title">🚪 Sign out</h2>
+          <p class="profile-section-help">Sign out of this device. You can sign back in anytime.</p>
+          <button class="btn btn-secondary" onclick="_profileSignOut()">Sign out</button>
+        </section>
+      </div>
+    </article>
+  `;
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
