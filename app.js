@@ -10290,3 +10290,147 @@ async function showProfilePage() {
   `;
   window.scrollTo({ top: 0, behavior: 'auto' });
 }
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 29 — /me page: handle all discussion kinds + inline delete
+//   Append to end of app.js. Replaces P12's _renderMeGroup.
+// ═══════════════════════════════════════════════════════════════════════
+
+function _renderMeGroup(group) {
+  const target = group.target_denomination || '';
+  let url = '#';
+  let title = group.topic_id;
+  let contextLabel = '';
+  let dataAttr = '';
+
+  if (group.topic_id && group.topic_id.startsWith('mov-')) {
+    const mov = (typeof MOVEMENTS !== 'undefined') && MOVEMENTS.find(m => m.id === group.topic_id);
+    if (mov) {
+      const movSlug = 'm-' + mov.id.replace(/^mov-/, '');
+      if (target && target.startsWith('q:')) {
+        const qid = target.slice(2);
+        const q = (mov.discussionQuestions || []).find(x => x.id === qid);
+        if (q) {
+          url = `#/d/${encodeURIComponent(movSlug)}/${encodeURIComponent(qid)}`;
+          title = q.title;
+          contextLabel = `${mov.name} · Question`;
+        }
+      } else {
+        dataAttr = `data-show-movement="${escAttr(mov.id)}"`;
+        url = '#';
+        title = `${mov.name} — Open floor`;
+        contextLabel = 'Movement · Open floor';
+      }
+    }
+  } else if (group.topic_id && group.topic_id.startsWith('rel-')) {
+    const rel = (typeof RELIGIONS !== 'undefined') && RELIGIONS.find(r => r.id === group.topic_id);
+    if (rel) {
+      const relSlug = 'r-' + rel.id.replace(/^rel-/, '');
+      if (target && target.startsWith('q:')) {
+        const qid = target.slice(2);
+        const q = (rel.discussionQuestions || []).find(x => x.id === qid);
+        if (q) {
+          url = `#/d/${encodeURIComponent(relSlug)}/${encodeURIComponent(qid)}`;
+          title = q.title;
+          contextLabel = `${rel.name} · Question`;
+        }
+      } else {
+        dataAttr = `data-show-religion="${escAttr(rel.id)}"`;
+        url = '#';
+        title = `${rel.name} — Open floor`;
+        contextLabel = 'Religion · Open floor';
+      }
+    }
+  } else if (group.topic_id && group.topic_id.startsWith('qc-')) {
+    // QC seed thread: topic_id = qc-{slug}-{n} or qc-{slug}-open or qc-open-floor
+    const m = group.topic_id.match(/^qc-(.+?)-(\d+|open)$/);
+    if (m) {
+      const slug = m[1];
+      const denomName = _slugToDenom(slug) || slug;
+      url = `#/d/${encodeURIComponent(slug)}/${encodeURIComponent(group.topic_id)}`;
+      title = `${denomName} — Starter challenge`;
+      contextLabel = 'Questions Corner';
+    } else {
+      url = '#/questions';
+      title = 'Questions Corner';
+      contextLabel = 'Questions Corner';
+    }
+  } else {
+    // Ledger topic
+    const topic = TOPICS.find(t => t.id === group.topic_id);
+    if (topic) {
+      if (target) {
+        const slug = _denomSlug(target);
+        url = `#/d/${encodeURIComponent(slug)}/${encodeURIComponent(topic.id)}`;
+        title = `${topic.name}`;
+        contextLabel = `Ledger · ${target}`;
+      } else {
+        dataAttr = `data-open-topic="${escAttr(topic.id)}"`;
+        url = '#';
+        title = `${topic.name} — Open floor`;
+        contextLabel = 'Ledger · Open floor';
+      }
+    }
+  }
+
+  return `
+    <div class="me-group">
+      <div class="me-group-head">
+        <a class="me-group-title" href="${url}" ${dataAttr}>${escHtml(title)}</a>
+        ${contextLabel ? `<span class="me-context-tag">${escHtml(contextLabel)}</span>` : ''}
+        <span class="me-count">${group.comments.length} contribution${group.comments.length > 1 ? 's' : ''}</span>
+      </div>
+      <div class="me-comments">
+        ${group.comments.map(c => {
+          let cmtUrl = url;
+          if (cmtUrl.startsWith('#/d/')) cmtUrl += `?c=${c.id}`;
+          const date = new Date(c.created_at).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
+          const typeLabels = { general: '💬 General', responding: '⚔️ Response', edit_suggestion: '✏️ Edit', verse_citation: '📖 Verse' };
+          const typeBadge = c.comment_type ? `<span class="me-comment-type">${typeLabels[c.comment_type] || c.comment_type}</span>` : '';
+          return `
+            <div class="me-comment-row" data-comment-id="${c.id}">
+              <a class="me-comment-link" href="${cmtUrl}" ${dataAttr}>
+                <div class="me-comment-meta">
+                  ${typeBadge}
+                  <span>${date}</span>
+                  <span>·</span>
+                  <span>${(c.upvotes || 0)} upvote${(c.upvotes || 0) === 1 ? '' : 's'}</span>
+                </div>
+                <div class="me-comment-body">${escHtml(c.body)}</div>
+              </a>
+              <button class="me-delete-btn" onclick="_meDeleteComment(${c.id})">Delete</button>
+            </div>`;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// ─── Inline delete from /me page ───────────────────────────────────────
+async function _meDeleteComment(commentId) {
+  if (!confirm('Delete this comment permanently? This cannot be undone.')) return;
+  try {
+    const { error } = await supabaseClient.from('comments').delete().eq('id', commentId);
+    if (error) throw error;
+    // Reload the /me page contributions
+    await _loadMyContributions();
+  } catch (err) {
+    alert('Could not delete: ' + (err.message || 'unknown error'));
+  }
+}
+
+// ─── Click handlers for non-hash views from /me anchors ────────────────
+document.addEventListener('click', (e) => {
+  const movEl = e.target.closest('[data-show-movement]');
+  if (movEl) {
+    e.preventDefault();
+    if (typeof showMovement === 'function') showMovement(movEl.dataset.showMovement);
+    return;
+  }
+  const relEl = e.target.closest('[data-show-religion]');
+  if (relEl) {
+    e.preventDefault();
+    if (typeof showReligion === 'function') showReligion(relEl.dataset.showReligion);
+    return;
+  }
+});
