@@ -2776,3 +2776,114 @@ a:hover { color: var(--crimson); }
   .profile-section { padding: 18px 18px; }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   PATCH 27 — Profile hero, topbar nav-link polish
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Topbar: My activity + Profile links ──────────────────────────── */
+#me-link,
+#profile-link {
+  font-family: var(--sans);
+  font-size: 13px !important;
+  font-weight: 500;
+  color: var(--ink-soft, #4a4438);
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+}
+#me-link:hover,
+#profile-link:hover {
+  background: var(--parchment-warm, #f5efe2);
+  color: var(--crimson, #8a2a2a);
+}
+#me-link.active,
+#profile-link.active {
+  background: var(--crimson, #8a2a2a);
+  color: #fff;
+}
+
+/* ─── Profile hero card ──────────────────────────────────────────── */
+.profile-hero {
+  background: linear-gradient(135deg, #fff 0%, var(--parchment-warm, #f5efe2) 100%);
+  border: 1px solid var(--line-soft, #e0d8c5);
+  border-left: 4px solid var(--gold, #b08a3f);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.profile-hero-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--gold, #b08a3f);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.profile-hero-info { flex: 1; min-width: 0; }
+.profile-hero-eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint, #8a8270);
+  margin-bottom: 4px;
+}
+.profile-hero-name {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink, #1a1a1a);
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+.profile-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: var(--sans);
+  font-size: 12.5px;
+}
+.profile-hero-denom {
+  background: var(--crimson, #8a2a2a);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.profile-hero-email {
+  color: var(--ink-soft, #4a4438);
+  word-break: break-all;
+}
+
+/* ─── Section title icons spacing ─────────────────────────────── */
+.profile-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 720px) {
+  .profile-hero { flex-direction: column; text-align: center; padding: 22px 18px; }
+  .profile-hero-avatar { width: 60px; height: 60px; font-size: 24px; }
+  .profile-hero-name { font-size: 22px; }
+  .profile-hero-meta { justify-content: center; }
+}
