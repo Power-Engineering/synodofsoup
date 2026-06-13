@@ -2887,3 +2887,85 @@ a:hover { color: var(--crimson); }
   .profile-hero-name { font-size: 22px; }
   .profile-hero-meta { justify-content: center; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PATCH 29 — /me comment rows: type badge + inline delete
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.me-comment-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--line-soft, #e0d8c5);
+}
+.me-comment-row:last-child { border-bottom: none; }
+
+.me-comment-link {
+  flex: 1;
+  padding: 14px 20px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  min-width: 0;
+  transition: background 0.15s;
+}
+.me-comment-link:hover { background: var(--parchment-warm, #f5efe2); }
+
+.me-comment-meta {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: var(--ink-faint, #8a8270);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.me-comment-type {
+  background: var(--parchment-warm, #f5efe2);
+  border: 1px solid var(--line-soft);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink, #1a1a1a);
+}
+.me-comment-body {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.me-delete-btn {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  color: var(--ink-faint, #8a8270);
+  padding: 0 16px;
+  font-family: var(--sans);
+  font-size: 12px;
+  cursor: pointer;
+  border-left: 1px solid var(--line-soft, #e0d8c5);
+  transition: background 0.15s, color 0.15s;
+}
+.me-delete-btn:hover {
+  background: #fdf6f6;
+  color: var(--crimson, #8a2a2a);
+}
+
+@media (max-width: 720px) {
+  .me-comment-row { flex-direction: column; }
+  .me-delete-btn {
+    border-left: none;
+    border-top: 1px solid var(--line-soft);
+    padding: 10px;
+    text-align: right;
+  }
+}
