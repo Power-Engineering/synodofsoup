@@ -10434,3 +10434,58 @@ document.addEventListener('click', (e) => {
     return;
   }
 });
+
+// ═══════════════════════════════════════════════════════════════════════
+//   PATCH 30 — Unify topbar into one row; compact auth elements
+//   Append to end of app.js.
+// ═══════════════════════════════════════════════════════════════════════
+//
+// The auth controls (My activity / Profile / bell / avatar / Sign out)
+// were rendering on a separate row from the brand + nav. This patch
+// detects any auth-related element living outside .topbar-inner and
+// moves it inside, so everything sits in one flex row.
+
+(function() {
+  const AUTH_SELECTORS = [
+    '#me-link', '#profile-link', '#notif-wrap', '#mobile-menu-btn',
+    '.user-badge', '.user-pill', '.user-info', '.denom-pill',
+    '.signout-link', '.signout-btn', '[onclick*="signOut"]', '[onclick*="logout"]'
+  ];
+
+  function unifyTopbar() {
+    const topbar = document.querySelector('.topbar, header.topbar, .site-topbar');
+    if (!topbar) return;
+    let inner = topbar.querySelector('.topbar-inner');
+    if (!inner) {
+      // No inner wrapper — promote topbar itself
+      inner = topbar;
+    }
+    // Find auth elements anywhere on the page that should be inside the topbar
+    for (const sel of AUTH_SELECTORS) {
+      const els = document.querySelectorAll(sel);
+      els.forEach(el => {
+        // If it's not already inside the topbar inner, move it in
+        if (!inner.contains(el) && topbar.contains(el)) {
+          // It's somewhere in the topbar but in a separate row — move into inner
+          inner.appendChild(el);
+        }
+      });
+    }
+    inner.classList.add('topbar-inner-unified');
+  }
+
+  // Run multiple times to catch dynamically-injected elements
+  unifyTopbar();
+  setTimeout(unifyTopbar, 100);
+  setTimeout(unifyTopbar, 500);
+  setTimeout(unifyTopbar, 1500);
+
+  // Watch for late insertions (e.g. after auth resolves)
+  let lastRun = 0;
+  new MutationObserver(() => {
+    const now = Date.now();
+    if (now - lastRun < 200) return; // throttle
+    lastRun = now;
+    unifyTopbar();
+  }).observe(document.body, { childList: true, subtree: true });
+})();
